@@ -249,21 +249,3 @@ Higiena do sprawdzenia: `WP_DEBUG_LOG=true` na produkcji wystawia `wp-content/de
    front obejrzany w przeglądarce.
 
 ### Ta instalacja
-
-| | |
-|---|---|
-| Domena / API · hosting | `https://vibekey.pl/wp-json/` · hosting **LH.pl** (instalacja z Autoinstalatora) |
-| Stan | tryb „wkrótce otwarcie” na **całej stronie** (od 2026-10-13; podgląd linkiem `?woo-share=`) · **świeża instalacja 2026-10-11** (stara strona usunięta): 0 stron, 0 wpisów, 0 mediów, 0 wtyczek |
-| WP · motyw · builder | motyw **Twenty Twenty-Five 1.5** (blokowy, FSE); w zapasie TT4, TT3 · builder: brak (Gutenberg) |
-| SEO · cache · WAF | brak wtyczek · WAF: nie zaobserwowano |
-| Ustawienia | tytuł `vibekey.pl` · język `pl_PL` · **strefa czasowa pusta** (ustawić Europe/Warsaw) · strona główna = najnowsze wpisy |
-| Konto agenta i rola | `cloude` (id 2) · **administrator** |
-| CPT i ich `rest_base` | tylko rdzeń WP: `posts`, `pages`, `media`, `blocks`, `templates`, `template-parts`, `navigation` |
-| Warstwa treści | Gutenberg + szablony FSE (`wp/v2/templates`, `template-parts`) — nagłówek/stopka to template parts motywu |
-| Skąd bierze się H1 | landingi: shortcode `[snm_naglowek]` w opisie produktu (tekst z `okazje.json` wtyczki); szablon produktu nie ma post-title |
-| ID kluczowych stron | landingi = produkty WC **17** magnes, **18** statuetka, **19** LED (`/product/<slug>/`, opublikowane); strona główna **32** (`page_on_front`; **zwykłe bloki z blokadą „tylko treść”** do edycji kliknięciem, źródło `strona/landing/glowna_bloki.py`, style `sg-*` w Dodatkowym CSS motywu = global-styles 48, fragment po znaczniku `/* sg: … */`; obrazy 49–52), podstrony: FAQ 34, Kontakt 36, Dostawa i płatności 38, Reklamacje i zwroty 14, Regulamin 41, Polityka prywatności 43 (dwie ostatnie: szkielety do uzupełnienia przez właściciela). Szablony custom: `single-product`, `page`, `front-page` (backupy w `backups/szablon-*`). Wizualizacje produktów (CSS/SVG) zamiast zdjęć do czasu sesji zdjęciowej. Źródło prawdy: `strona/landing/` → `python strona/landing/build.py [--wyslij szablon|17|18|19]` |
-| Archiwum starej strony | `archiwum-strona-glowna/` (9 sekcji HTML + media), `backups/` (strony, produkty, menu, lista wtyczek), `wtyczki autorskie/` (3 ZIP-y + `WNIOSKI.md`) |
-| **Czego NIE da się przez REST** | upload wtyczek z ZIP (tylko wp-admin) |
-| Znane pułapki (z poprzedniej instalacji) | Elementor 4 wypisywał `<style>` przed JSON-em przy `content.rendered` — `wp.py` omija to przez `POLA_EDIT` (zostawić) |
-
-<!-- ===== KONIEC BLOKU ===== -->
