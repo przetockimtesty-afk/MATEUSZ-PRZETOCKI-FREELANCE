@@ -43,6 +43,20 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
+## Stan zapisu (19.10.2026)
+
+| Co | GitHub | claude.ai | Dysk Google |
+|---|---|---|---|
+| Drogowskaz PDF | tak | — | nie (wgrywam na prośbę) |
+| Workflow A i B PDF | tak | — | nie (wgrywam na prośbę) |
+| PROFIL.md, Kod.gs, INSTRUKCJA.md | tak | — | — |
+| Plan strony | kopia z 19.10 | wersja robocza | — |
+| System marki | tak | tak | — |
+| Projekt strony w Claude Design | tak | tak | — |
+| Prezentacje A i B | źródła | tak | — |
+
+Folder na Dysku: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw
+
 ## Generowanie plików
 
 - PDF drogowskazu: `node firma/drogowskaz/build.js` (wymaga Playwright i pypdf).
