@@ -21,6 +21,8 @@ strona/                     moja strona mateuszprzetocki.pl
   makieta/                  wcześniejsza makieta HTML strony głównej
   narzedzia/                skrypty do systemu marki (ds_gen.py generuje bundle.js i podglądy)
 klienci/                    projekty klientów, każdy w osobnym folderze
+wp.py                       klient WordPress REST API (zapisy z backupem i weryfikacją)
+WP-REST.md                  zasady pracy z WordPressem, wczytywane przez CLAUDE.md
 ```
 
 W źródłach prezentacji adres e-mail jest zastąpiony znacznikiem `{{EMAIL_KONTAKT}}`.

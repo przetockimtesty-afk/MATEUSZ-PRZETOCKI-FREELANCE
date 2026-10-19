@@ -21,3 +21,9 @@ Po każdym większym zadaniu i na początku nowej sesji krótko przypomnij, co j
 - **Tymczasowe pliki sesji**: co zniknie po jej zamknięciu, jeśli się tego nie zapisze.
 
 Aktualny stan prowadź w tabeli „Stan zapisu” w `README.md`.
+
+## WordPress (mateuszprzetocki.pl)
+
+Przy każdej pracy z WordPressem obowiązują zasady z `WP-REST.md`, a zapisy idą przez `wp.py`. Dane dostępu są w zmiennych środowiska sesji (`WP_URL`, `WP_USER`, `WP_APP_PASS`), nigdy w plikach repozytorium.
+
+@WP-REST.md
