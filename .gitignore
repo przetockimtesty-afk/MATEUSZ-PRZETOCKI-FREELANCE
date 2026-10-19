@@ -3,3 +3,5 @@ __pycache__/
 _cover.pdf
 _body.pdf
 .DS_Store
+.env
+.env.*

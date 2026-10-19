@@ -27,3 +27,5 @@
 - [ ] Usunąć folder `plan-freelancer/` ze starego repozytorium `oneproductstore`, jeśli wszystko jest skopiowane tutaj (Mateusz się zgodził). Zablokowane: sesja nie dostała dostępu do `oneproductstore`.
 - [ ] Zdjęcie Mateusza na stronę: dostarczy później; nie trafia do repozytorium. Przypominać przy kolejnych rozmowach.
 - [ ] Przed zakupem hostingu LH.pl sprawdzić, czy domena `mateuszprzetocki.pl` jest wolna.
+- [ ] Unieważnić hasło aplikacji WordPress, które 19.10 trafiło do repozytorium w `.env` (plik usunięty, ale zostaje w historii Gita). Nowe hasło trzymać tylko w sekretach środowiska sesji, nigdy w repozytorium.
+- [ ] Dostęp do WordPressa przez REST API: domena strony musi być dodana w ustawieniach sieci środowiska (Allowed domains). SSH i MySQL na razie niepotrzebne.
