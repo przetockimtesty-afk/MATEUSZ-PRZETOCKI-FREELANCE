@@ -28,4 +28,9 @@
 - [ ] Zdjęcie Mateusza na stronę: dostarczy później; nie trafia do repozytorium. Przypominać przy kolejnych rozmowach.
 - [ ] Przed zakupem hostingu LH.pl sprawdzić, czy domena `mateuszprzetocki.pl` jest wolna.
 - [ ] Unieważnić hasło aplikacji WordPress, które 19.10 trafiło do repozytorium w `.env` (plik usunięty, ale zostaje w historii Gita). Nowe hasło trzymać tylko w sekretach środowiska sesji, nigdy w repozytorium.
-- [ ] Dostęp do WordPressa przez REST API: domena strony musi być dodana w ustawieniach sieci środowiska (Allowed domains). SSH i MySQL na razie niepotrzebne.
+- [ ] Dostęp do WordPressa: Mateusz zakłada użytkownika `claude` (Redaktor) z hasłem aplikacji, dodaje `mateuszprzetocki.pl` w Allowed domains i zmienne `WP_URL`, `WP_USER`, `WP_APP_PASS` w ustawieniach środowiska. W nowej sesji: `python3 wp.py me` (tylko odczyt), potem uzupełnić tabelę „Ta instalacja” w `WP-REST.md`. SSH i MySQL na razie niepotrzebne.
+
+## Ustalenia o WordPressie (19.10.2026)
+
+- Zasady pracy: `WP-REST.md` (wczytywany przez `CLAUDE.md`), zapisy tylko przez `wp.py`: backup → zapis → weryfikacja frontu.
+- Dane dostępu tylko w ustawieniach środowiska, nigdy w repozytorium (`.env` jest w `.gitignore`).
