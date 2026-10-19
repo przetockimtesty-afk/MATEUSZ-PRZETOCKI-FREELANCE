@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Strona dla psychologa i terapeuty · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.8vw, 40px) clamp(56px, 6.7vw, 96px);">
+<x-import component-from-global-scope="MP.Breadcrumbs" items="{{okruszki}}"></x-import>
+<div style="margin-top: clamp(32px, 3.9vw, 56px); max-width: 880px;">
+<x-import component-from-global-scope="MP.Eyebrow">03 · Terapia</x-import>
+<h1 style="margin: 22px 0 24px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Strona dla psychologa i&nbsp;terapeuty: wizyta bez <x-import component-from-global-scope="MP.Accent">telefonu</x-import></h1>
+<p style="margin: 0 0 22px; max-width: 640px; font-size: clamp(17px, 1.32vw, 19px);">Pierwszy telefon do terapeuty bywa dla klienta trudny. Spokojna strona z&nbsp;Twoim podejściem i&nbsp;kalendarzem pozwala umówić się bez rozmowy.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 32px;">
+<x-import component-from-global-scope="MP.Tag">podejście i&nbsp;specjalizacje</x-import>
+<x-import component-from-global-scope="MP.Tag">wizyty online</x-import>
+<x-import component-from-global-scope="MP.Tag">kalendarz</x-import>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<x-import component-from-global-scope="MP.Button" arrow="{{yes}}" href="#ankieta" style="flex: 0 1 calc((560px - 100%) * 999); max-width: 100%; display: grid;">Wyceń stronę w&nbsp;5&nbsp;minut</x-import>
+<x-import component-from-global-scope="MP.Button" variant="outline" href="#demo" style="flex: 0 1 calc((560px - 100%) * 999); max-width: 100%; display: grid;">Zobacz demo</x-import>
+</div>
+<p style="margin: 14px 0 0; font-size: 14px; line-height: 1.5; color: var(--grafit);">Bez zobowiązań · propozycja w&nbsp;48&nbsp;h</p>
+</div>
+</section>
+
+<section id="problem" style="background: var(--piasek); padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: clamp(28px, 5.6vw, 80px);">
+<div style="flex: 0.8 1 300px; min-width: 0;">
+<x-import component-from-global-scope="MP.Eyebrow">Problem</x-import>
+<h2 style="margin: 22px 0 0; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Najtrudniejszy jest <x-import component-from-global-scope="MP.Accent">pierwszy</x-import> telefon</h2>
+</div>
+<div style="flex: 1.2 1 480px; min-width: 0; padding-top: 6px;">
+<p style="margin: 0; max-width: 640px;">Dla wielu osób zadzwonienie do terapeuty to najtrudniejszy krok. W&nbsp;trakcie sesji nie odbierasz, a&nbsp;ktoś, kto zebrał się na odwagę, nie zawsze zadzwoni drugi raz.</p>
+<p style="margin: 16px 0 0; max-width: 640px;">Na stronie może spokojnie przeczytać o&nbsp;Twoim podejściu i&nbsp;wybrać termin, kiedy jest gotowy.</p>
+</div>
+</div>
+</section>
+
+<section id="co-dostajesz" style="padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="margin-bottom: clamp(36px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Co dostajesz</x-import>
+<h2 style="margin: 22px 0 0; max-width: 860px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Klient umawia się, kiedy jest <x-import component-from-global-scope="MP.Accent">gotowy</x-import></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="user"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Klient czyta o&nbsp;Twoim podejściu i&nbsp;umawia się bez telefonu</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">Podejście, kwalifikacje i&nbsp;przebieg pierwszej sesji, Twoimi słowami.</p>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="calendar-check"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Wizyty w&nbsp;gabinecie i&nbsp;online w&nbsp;jednym kalendarzu</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">Klient wybiera formę wizyty i&nbsp;wolny termin.</p>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="message-circle-question"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Odpowiedzi na pytania o&nbsp;pierwszą sesję, cenę i&nbsp;odwoływanie wizyt</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">Zanim przyjdzie, wie, czego się spodziewać.</p>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="circle-check"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Spokojny wygląd bez natłoku informacji</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">Dużo powietrza, krótkie zdania i&nbsp;jeden przycisk do rezerwacji.</p>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="globe"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Własny kalendarz zamiast płatnych platform</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">Rezerwacje są na Twojej stronie, nie w&nbsp;serwisie z&nbsp;abonamentem.</p>
+</x-import>
+</div>
+</div>
+</section>
+
+<section id="jak-wyglada" style="padding-top: 0; padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="max-width: 760px; margin: 0 auto clamp(36px, 3.9vw, 56px); text-align: center;">
+<div style="display: flex; justify-content: center;"><x-import component-from-global-scope="MP.Eyebrow">Jak to wygląda</x-import></div>
+<h2 style="margin: 22px 0 0; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Trzy ekrany, <x-import component-from-global-scope="MP.Accent">żadnej</x-import> rozmowy</h2>
+</div>
+<div style="display: flex; gap: 32px; overflow-x: auto; justify-content: safe center; scroll-snap-type: x mandatory; padding-bottom: 8px;">
+<figure style="margin: 0; flex: 0 0 280px; display: flex; flex-direction: column; align-items: center; text-align: center; scroll-snap-align: center;">
+<div role="img" aria-label="Opis podejścia i specjalizacji terapeuty">
+<x-import component-from-global-scope="MP.PhoneFrame" width="236" height="480">
+<div style="padding: 14px 14px 0; text-align: left;">
+<div style="display: flex; justify-content: center; margin: 4px 0 12px;"><span style="width: 64px; height: 64px; border-radius: 9999px; background: var(--piasek-ciemny); color: var(--grafit); display: grid; place-items: center;"><x-import component-from-global-scope="MP.Icon" name="user" size="26"></x-import></span></div>
+<div style="text-align: center; font: 600 16px/1.25 var(--font-naglowki);">Gabinet psychologiczny</div>
+<p style="margin: 2px 0 14px; text-align: center; font-size: 11px; color: var(--grafit);">Psychoterapia indywidualna, Kraków i&nbsp;online</p>
+<div style="margin-bottom: 6px; font-size: 11px; font-weight: 600;">Jak pracuję</div>
+<div style="width: 95%; height: 7px; margin: 6px 0; border-radius: 4px; background: var(--piasek);"></div>
+<div style="width: 85%; height: 7px; margin: 6px 0; border-radius: 4px; background: var(--piasek);"></div>
+<div style="width: 60%; height: 7px; margin: 6px 0 14px; border-radius: 4px; background: var(--piasek);"></div>
+<div style="margin-bottom: 6px; font-size: 11px; font-weight: 600;">W&nbsp;czym pomagam</div>
+<div style="display: flex; flex-wrap: wrap; gap: 4px;">
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 9999px; background: var(--blekit-jasny); font-size: 10px;">stres</span>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 9999px; background: var(--blekit-jasny); font-size: 10px;">relacje</span>
+<span style="display: inline-flex; align-items: center; height: 22px; padding: 0 9px; border-radius: 9999px; background: var(--blekit-jasny); font-size: 10px;">zmiany w&nbsp;życiu</span>
+</div>
+</div>
+</x-import>
+</div>
+<figcaption style="margin-top: 22px; max-width: 280px; font: 600 17px/1.4 var(--font-tekst);">Czyta o&nbsp;Twoim podejściu</figcaption>
+</figure>
+<figure style="margin: 0; flex: 0 0 280px; display: flex; flex-direction: column; align-items: center; text-align: center; scroll-snap-align: center;">
+<div role="img" aria-label="Wybór formy wizyty i terminu">
+<x-import component-from-global-scope="MP.PhoneFrame" width="236" height="480">
+<div style="padding: 14px 14px 0; text-align: left;">
+<div style="margin-bottom: 4px; font: 600 16px/1.25 var(--font-naglowki);">Umów pierwszą sesję</div>
+<p style="margin: 0 0 12px; font-size: 11px; color: var(--grafit);">50&nbsp;minut</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; margin-bottom: 14px; padding: 4px; border: 1px solid var(--linia); border-radius: 9999px;">
+<div style="border-radius: 9999px; padding: 6px 0; text-align: center; font-size: 11px; font-weight: 600; background: var(--czern); color: var(--krem);">W&nbsp;gabinecie</div>
+<div style="border-radius: 9999px; padding: 6px 0; text-align: center; font-size: 11px;">Online</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin-bottom: 12px;">
+<div style="border: 1px solid var(--linia); border-radius: 12px; text-align: center; padding: 8px 0; font-size: 11px; color: var(--grafit);">pn<b style="display: block; font: 600 16px/1.2 var(--font-tekst); color: var(--czern);">26</b></div>
+<div style="border: 1px solid var(--czern); background: var(--czern); border-radius: 12px; text-align: center; padding: 8px 0; font-size: 11px; color: var(--szary-na-czerni);">śr<b style="display: block; font: 600 16px/1.2 var(--font-tekst); color: var(--krem);">28</b></div>
+<div style="border: 1px solid var(--linia); border-radius: 12px; text-align: center; padding: 8px 0; font-size: 11px; color: var(--grafit);">czw<b style="display: block; font: 600 16px/1.2 var(--font-tekst); color: var(--czern);">29</b></div>
+<div style="border: 1px solid var(--linia); border-radius: 12px; text-align: center; padding: 8px 0; font-size: 11px; color: var(--grafit);">pt<b style="display: block; font: 600 16px/1.2 var(--font-tekst); color: var(--czern);">30</b></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-bottom: 14px;">
+<div style="border: 1px solid var(--linia); border-radius: 9999px; text-align: center; padding: 8px 0; font: 500 12px/1 var(--font-tekst);">16:00</div>
+<div style="border: 1px solid var(--czern); background: var(--blekit-jasny); border-radius: 9999px; text-align: center; padding: 8px 0; font: 600 12px/1 var(--font-tekst);">18:00</div>
+<div style="border: 1px solid var(--linia); border-radius: 9999px; text-align: center; padding: 8px 0; font: 500 12px/1 var(--font-tekst);">19:00</div>
+</div>
+<span class="mp-btn mp-btn-primary mp-btn-sm mp-btn-full">Zarezerwuj termin</span>
+</div>
+</x-import>
+</div>
+<figcaption style="margin-top: 22px; max-width: 280px; font: 600 17px/1.4 var(--font-tekst);">Wybiera gabinet albo online i&nbsp;wolny termin</figcaption>
+</figure>
+<figure style="margin: 0; flex: 0 0 280px; display: flex; flex-direction: column; align-items: center; text-align: center; scroll-snap-align: center;">
+<div role="img" aria-label="Potwierdzenie pierwszej sesji">
+<x-import component-from-global-scope="MP.PhoneFrame" width="236" height="480">
+<div style="padding: 40px 18px 0; text-align: center;">
+<div style="display: flex; justify-content: center; margin-bottom: 16px;"><x-import component-from-global-scope="MP.IconCircle" name="circle-check"></x-import></div>
+<div style="margin-bottom: 8px; font: 600 17px/1.25 var(--font-naglowki);">Do zobaczenia w&nbsp;środę o&nbsp;18:00</div>
+<p style="margin: 0 0 14px; font-size: 12px; color: var(--grafit);">Adres gabinetu i&nbsp;zasady odwoływania wizyt są w&nbsp;e-mailu.</p>
+<div style="padding: 12px; border-radius: 14px; background: var(--piasek); font-size: 12px; line-height: 1.45; text-align: left;">Przed wizytą nie musisz niczego wypełniać.</div>
+</div>
+</x-import>
+</div>
+<figcaption style="margin-top: 22px; max-width: 280px; font: 600 17px/1.4 var(--font-tekst);">Dostaje potwierdzenie bez pytań o&nbsp;zdrowie</figcaption>
+</figure>
+</div>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 16px 28px; margin-top: 48px;">
+<x-import component-from-global-scope="MP.Button" variant="outline" arrow="{{yes}}" href="#demo">Zobacz demo na żywo</x-import>
+</div>
+</div>
+</section>
+
+<section id="przepisy" style="background: var(--piasek); padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: clamp(28px, 5.6vw, 80px);">
+<div style="flex: 0.8 1 300px; min-width: 0;">
+<x-import component-from-global-scope="MP.Eyebrow">Przepisy i&nbsp;zasady</x-import>
+<h2 style="margin: 22px 0 20px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">O&nbsp;co dbam na stronie <x-import component-from-global-scope="MP.Accent">terapeuty</x-import></h2>
+<p style="margin: 0; max-width: 460px; color: var(--grafit);">Strona informuje o&nbsp;Twojej pracy i&nbsp;chroni prywatność klientów.</p>
+</div>
+<ul style="flex: 1.2 1 480px; min-width: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linia);">
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="shield-check" size="22"></x-import><span>Formularz bez pytań o&nbsp;zdrowie: to dane szczególnej kategorii w&nbsp;RODO, a&nbsp;już sama rezerwacja może je ujawniać.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="shield-check" size="22"></x-import><span>Bez obietnic efektów terapii.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="shield-check" size="22"></x-import><span>Opinie klientów tylko wtedy, gdy pozwala na to kodeks etyki Twojego towarzystwa.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="shield-check" size="22"></x-import><span>Gabinet wpisany do rejestru podmiotów leczniczych informuje bez cech reklamy (art.&nbsp;14 ustawy o&nbsp;działalności leczniczej).</span></li>
+</ul>
+</div>
+</section>
+
+<section id="pakiet" style="padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box; display: flex; flex-wrap: wrap; align-items: center; gap: clamp(36px, 5.6vw, 80px);">
+<div style="flex: 1 1 400px; min-width: 0;">
+<x-import component-from-global-scope="MP.Eyebrow">Polecany pakiet</x-import>
+<h2 style="margin: 22px 0 20px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Dla terapeuty: wizytówka, która <x-import component-from-global-scope="MP.Accent">umawia</x-import></h2>
+<p style="margin: 0 0 24px; max-width: 520px;">Kalendarz wizyt w&nbsp;gabinecie i&nbsp;online jest w&nbsp;nim od razu, a&nbsp;odpowiedzi na pytania o&nbsp;pierwszą sesję zastępują pierwszy telefon.</p>
+<x-import component-from-global-scope="MP.ArrowLink" href="Oferta.dc.html">Zobacz wszystkie pakiety</x-import>
+</div>
+<div style="flex: 0 1 400px; min-width: 0; display: grid;">
+<x-import component-from-global-scope="MP.PackageCard" style="display: grid;" name="Wizytówka, która umawia" price="1&nbsp;800" for-whom="Gdy chcesz mniej telefonów i&nbsp;krótsze pierwsze rozmowy." items="{{pakiet}}" recommended="{{yes}}" href="#ankieta"></x-import>
+</div>
+</div>
+</section>
+
+<section id="pytania" style="padding-top: 0; padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: clamp(36px, 5.6vw, 80px);">
+<div style="flex: 0.8 1 300px; min-width: 0;">
+<x-import component-from-global-scope="MP.Eyebrow">Pytania terapeutów</x-import>
+<h2 style="margin: 22px 0 20px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Zanim <x-import component-from-global-scope="MP.Accent">zapytasz</x-import></h2>
+<div style="margin-top: 24px;"><x-import component-from-global-scope="MP.ArrowLink" href="Pytania.dc.html">Wszystkie pytania</x-import></div>
+</div>
+<div style="flex: 1.2 1 480px; min-width: 0; border-top: 1px solid var(--linia);">
+<x-import component-from-global-scope="MP.FaqItem" question="Czy klient musi napisać, z&nbsp;czym przychodzi?" open="{{yes}}">Nie. Formularz nie pyta o&nbsp;zdrowie ani o&nbsp;powód wizyty. Klient wybiera termin i&nbsp;formę wizyty, a&nbsp;resztę mówi na pierwszej sesji.</x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Czy mogę mieć wizyty online i&nbsp;w&nbsp;gabinecie?">Tak. Oba rodzaje wizyt są w&nbsp;jednym kalendarzu, a&nbsp;klient wybiera, który mu pasuje.</x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Czy muszę płacić za platformę rezerwacji?">Nie musisz. Kalendarz jest na Twojej stronie, a&nbsp;nie w&nbsp;serwisie z&nbsp;abonamentem.</x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Czy na stronie mogą być opinie klientów?">Tylko jeśli pozwala na to kodeks etyki Twojego towarzystwa. Bez tego zaufanie buduje opis podejścia i&nbsp;kwalifikacji.</x-import>
+</div>
+</div>
+</section>
+
+<section id="nastepny-krok" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px);">
+<div style="margin-bottom: 22px;"><x-import component-from-global-scope="MP.Eyebrow">Następny krok</x-import></div>
+<x-import component-from-global-scope="MP.CtaBand" text="5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Wypełnienie do niczego nie zobowiązuje." primary-label="Wyceń stronę w&nbsp;5&nbsp;minut" primary-href="#ankieta" secondary-label="Wolisz porozmawiać? Umów 30&nbsp;minut" secondary-href="#rozmowa">Sprawdź, ile kosztowałaby <x-import component-from-global-scope="MP.Accent">Twoja</x-import> strona</x-import>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px; margin-top: 32px;">
+<span style="font-size: 15px; color: var(--grafit);">Zobacz też:</span>
+<x-import component-from-global-scope="MP.ArrowLink" href="Doradcy.dc.html">Doradcy kredytowi</x-import>
+<x-import component-from-global-scope="MP.ArrowLink" href="Biura.dc.html">Biura rachunkowe</x-import>
+</div>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+<x-import component-from-global-scope="MP.MobileCtaBar" href="#ankieta" style="position: sticky; bottom: 0; z-index: 10; display: block;"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":6600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      yes: true,
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html', current: true },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html' },
+        { label: 'Realizacje', href: 'Realizacje.dc.html' },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      okruszki: [
+        { label: 'Strona główna', href: 'Main.dc.html' },
+        { label: 'Dla kogo', href: 'Dla-kogo.dc.html' },
+        'Psycholodzy i' + n + 'terapeuci'
+      ],
+      pakiet: ['Jedna strona, 6' + n + 'sekcji, wersja na telefon', 'Kalendarz wizyt w' + n + 'gabinecie i' + n + 'online', 'Odpowiedzi na pytania o' + n + 'pierwszą sesję i' + n + 'cenę', 'Profil Firmy w' + n + 'Google, gdy firma spełnia wytyczne'],
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

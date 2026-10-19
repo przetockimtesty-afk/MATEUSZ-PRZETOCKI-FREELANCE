@@ -1,0 +1,15 @@
+<!-- @dsCard group="Strona" height=170 width=1280 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+    h(M.SiteHeader, null),
+    h('div', { style: { height: '24px' } }),
+    h('div', { style: { width: '390px', border: '1px solid var(--linia)' } }, h(M.SiteHeader, { compact: true }))));
+</script>
+</body>
+</html>

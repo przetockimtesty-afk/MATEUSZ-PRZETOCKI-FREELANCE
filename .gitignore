@@ -1,0 +1,5 @@
+node_modules/
+__pycache__/
+_cover.pdf
+_body.pdf
+.DS_Store

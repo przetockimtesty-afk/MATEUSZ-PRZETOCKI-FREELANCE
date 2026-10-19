@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Regulamin · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.8vw, 40px) clamp(40px, 4.5vw, 64px);">
+<x-import component-from-global-scope="MP.Breadcrumbs" items="{{okruszki}}"></x-import>
+<div style="margin-top: clamp(32px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Tag" tone="sand">Szkic do sprawdzenia przez radcę</x-import>
+<h1 style="margin: 22px 0 24px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Regulamin</h1>
+<p style="margin: 0; max-width: 680px; font-size: clamp(17px, 1.32vw, 19px);">Zasady korzystania z&nbsp;ankiety wyceny, rezerwacji rozmowy i&nbsp;kontaktu e-mail na tej stronie.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px); display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(32px, 5.6vw, 80px);">
+<nav aria-label="Spis treści" style="flex: 1 1 260px; min-width: 0; padding-top: 22px; border-top: 1px solid var(--linia);">
+<div style="margin-bottom: 14px; font: 600 12px/1.2 var(--font-tekst); letter-spacing: 0.14em; text-transform: uppercase; color: var(--grafit);">Spis treści</div>
+<ol style="margin: 0; padding: 0 0 0 20px; display: grid; gap: 10px; font-size: 15px; line-height: 1.45;">
+<li><a href="#uslugodawca" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Usługodawca</a></li>
+<li><a href="#uslugi" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Jakie usługi obejmuje</a></li>
+<li><a href="#wymagania" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Wymagania techniczne</a></li>
+<li><a href="#zasady" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Zasady korzystania</a></li>
+<li><a href="#reklamacje" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Reklamacje</a></li>
+<li><a href="#odstapienie" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Odstąpienie od umowy o&nbsp;stronę</a></li>
+<li><a href="#koncowe" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Postanowienia końcowe</a></li>
+</ol>
+</nav>
+<article style="flex: 999 1 560px; min-width: 0; max-width: 720px; font-size: 17px; line-height: 1.7;">
+<h2 id="uslugodawca" style="margin: 0 0 12px; padding-top: 22px; border-top: 1px solid var(--linia); font: 600 24px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">1. Usługodawca</h2>
+<p style="margin: 0 0 36px;">Usługi na stronie mateuszprzetocki.pl świadczy Mateusz Przetocki, [adres zamieszkania albo do korespondencji], e-mail: kontakt@….</p>
+
+<h2 id="uslugi" style="margin: 0 0 12px; padding-top: 22px; border-top: 1px solid var(--linia); font: 600 24px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">2. Jakie usługi obejmuje</h2>
+<ul style="margin: 0 0 16px; padding-left: 22px; display: grid; gap: 8px;">
+<li><strong>Ankieta wyceny:</strong> formularz, po którego wysłaniu w&nbsp;48 godzin dostajesz propozycję na piśmie.</li>
+<li><strong>Rezerwacja rozmowy:</strong> wybór terminu 30-minutowej rozmowy na Google Meet.</li>
+<li><strong>Kontakt e-mail:</strong> odpowiedź na pytanie wysłane na kontakt@….</li>
+</ul>
+<p style="margin: 0 0 36px;">Korzystanie z&nbsp;tych usług jest bezpłatne i&nbsp;do niczego nie zobowiązuje. Umowę o&nbsp;wykonanie strony zawieramy osobno, na piśmie, po akceptacji propozycji.</p>
+
+<h2 id="wymagania" style="margin: 0 0 12px; padding-top: 22px; border-top: 1px solid var(--linia); font: 600 24px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">3. Wymagania techniczne</h2>
+<p style="margin: 0 0 36px;">Wystarczy urządzenie z&nbsp;dostępem do internetu, aktualna przeglądarka i&nbsp;adres e-mail. Do rozmowy na Google Meet potrzebujesz też mikrofonu.</p>
+
+<h2 id="zasady" style="margin: 0 0 12px; padding-top: 22px; border-top: 1px solid var(--linia); font: 600 24px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">4. Zasady korzystania</h2>
+<ul style="margin: 0 0 36px; padding-left: 22px; display: grid; gap: 8px;">
+<li>Podajesz prawdziwe dane kontaktowe, żebym mógł odpowiedzieć.</li>
+<li>W&nbsp;formularzach nie podajesz danych wrażliwych, np. o&nbsp;zdrowiu.</li>
+<li>Nie przesyłasz treści sprzecznych z&nbsp;prawem.</li>
+<li>Rezerwację rozmowy możesz odwołać lub przenieść z&nbsp;linku w&nbsp;potwierdzeniu.</li>
+</ul>
+
+<h2 id="reklamacje" style="margin: 0 0 12px; padding-top: 22px; border-top: 1px solid var(--linia); font: 600 24px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">5. Reklamacje</h2>
+<p style="margin: 0 0 36px;">Reklamację dotyczącą działania ankiety albo rezerwacji wysyłasz na kontakt@…. Odpowiadam w&nbsp;ciągu [14]&nbsp;dni.</p>
+
+<h2 id="odstapienie" style="margin: 0 0 12px; padding-top: 22px; border-top: 1px solid var(--linia); font: 600 24px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">6. Odstąpienie od umowy o&nbsp;stronę</h2>
+<p style="margin: 0 0 12px;">Umowę o&nbsp;wykonanie strony zawieramy na odległość, więc konsument i&nbsp;jednoosobowa firma mają 14&nbsp;dni na odstąpienie od niej.</p>
+<p style="margin: 0 0 36px; color: var(--grafit);">[Zasady odstąpienia, w&nbsp;tym przy pracach rozpoczętych na Twoją prośbę: do ustalenia z&nbsp;radcą.]</p>
+
+<h2 id="koncowe" style="margin: 0 0 12px; padding-top: 22px; border-top: 1px solid var(--linia); font: 600 24px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">7. Postanowienia końcowe</h2>
+<p style="margin: 0 0 12px;">Zasady przetwarzania danych opisuje <a href="Polityka.dc.html" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">polityka prywatności</a>. O&nbsp;zmianach regulaminu informuję na tej stronie.</p>
+<p style="margin: 0; font-size: 14px; line-height: 1.5; color: var(--grafit);">Obowiązuje od: [data publikacji]</p>
+</article>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html' },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html' },
+        { label: 'Realizacje', href: 'Realizacje.dc.html' },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      okruszki: [
+        { label: 'Strona główna', href: 'Main.dc.html' },
+        'Regulamin'
+      ],
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!-- @dsCard group="Strona" height=530 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '24px', display: 'flex', gap: '28px', alignItems: 'flex-end' } },
+    h(M.PhoneFrame, { width: 236 }, h('div', { style: { padding: '14px' } }, h('div', { style: { font: '600 18px/1.2 var(--font-naglowki)', marginBottom: '6px' } }, 'Umów konsultację'), h('div', { style: { color: 'var(--grafit)', fontSize: '12px', marginBottom: '14px' } }, '30 minut · online albo w biurze'), h(M.Button, { size: 'sm', full: true }, 'Wybierz termin'))),
+    h(M.PhoneFrame, { width: 150, height: 300 }, h('div', { style: { padding: '10px', fontSize: '11px' } }, h('div', { style: { font: '600 13px/1.15 var(--font-naglowki)' } }, 'Kredyt bez stresu, z jednym doradcą'))),
+    h(M.PhoneFrame, { width: 150, height: 300, demo: false }, h('div', { style: { padding: '40px 12px 0', color: 'var(--grafit)', fontSize: '11px' } }, 'Bez paska demo: strona prawdziwej klientki.'))));
+</script>
+</body>
+</html>

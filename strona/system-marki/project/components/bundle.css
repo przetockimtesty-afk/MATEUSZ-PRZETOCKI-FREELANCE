@@ -1,0 +1,167 @@
+body { margin: 0; background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.mp-dark { background: var(--czern); color: var(--krem); }
+
+/* przyciski */
+.mp-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--odstep-8); height: 52px; padding: 0 26px; border-radius: var(--pigulka); border: 1.5px solid transparent; font: 600 16px/1 var(--font-tekst); white-space: nowrap; text-decoration: none; cursor: pointer; transition: background-color 150ms, border-color 150ms; }
+.mp-btn-sm { height: 44px; padding: 0 20px; font-size: 15px; }
+.mp-btn-full { width: 100%; }
+.mp-btn-primary { background: var(--czern); color: var(--krem); }
+.mp-btn-primary:hover { background: var(--czern-hover); }
+.mp-btn-outline { background: transparent; border-color: var(--czern); color: var(--czern); }
+.mp-btn-outline:hover { background: var(--biel); }
+.mp-btn-accent { background: var(--blekit); color: var(--czern); }
+.mp-btn-accent:hover { background: var(--blekit-hover); }
+.mp-btn-outline-light { background: transparent; border-color: var(--krem); color: var(--krem); }
+.mp-btn-arrow { transition: transform 150ms; }
+.mp-btn:hover .mp-btn-arrow { transform: translateX(4px); }
+.mp-btn:focus-visible, .mp-link:focus-visible, .mp-faq summary:focus-visible, .mp-nav a:focus-visible, .mp-logo:focus-visible, .mp-menu-btn:focus-visible { outline: 2px solid transparent; box-shadow: var(--obrys-fokus); }
+.mp-dark .mp-btn:focus-visible, .mp-dark .mp-link:focus-visible, .mp-dark a:focus-visible { box-shadow: var(--obrys-fokus-na-czerni); }
+.mp-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.mp-actions-center { justify-content: center; }
+
+/* link ze strzałką */
+.mp-link { display: inline-flex; align-items: center; gap: var(--odstep-8); font: 600 16px/1.3 var(--font-tekst); color: var(--czern); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.mp-link .mp-icon { transition: transform 150ms; }
+.mp-link:hover .mp-icon { transform: translateX(4px); }
+.mp-dark .mp-link { color: var(--blekit); }
+
+/* tekst */
+.mp-eyebrow { display: flex; align-items: center; gap: 10px; font: 600 12px/1.2 var(--font-tekst); letter-spacing: 0.14em; text-transform: uppercase; color: var(--grafit); }
+.mp-eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: var(--pigulka); background: var(--blekit); flex: none; }
+.mp-eyebrow-bez-kropki::before { display: none; }
+.mp-dark .mp-eyebrow { color: var(--szary-na-czerni); }
+.mp-accent { font-family: var(--font-akcent); font-style: italic; font-weight: 400; font-size: 1.08em; letter-spacing: 0; line-height: 0.9; }
+.mp-dark .mp-accent { color: var(--blekit); }
+
+/* etykiety */
+.mp-tag { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--pigulka); font: 500 13px/1 var(--font-tekst); white-space: nowrap; color: var(--czern); }
+.mp-tag-blue { background: var(--blekit-jasny); }
+.mp-tag-sand { background: var(--piasek); }
+.mp-tag-black { background: var(--czern); color: var(--krem); }
+.mp-tag-outline { background: var(--krem); border: 1px solid var(--linia); }
+.mp-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ikony */
+.mp-icon { display: block; flex: none; }
+.mp-dark .mp-icon { color: var(--blekit); }
+.mp-btn .mp-icon, .mp-dark .mp-btn .mp-icon { color: inherit; }
+.mp-icon-circle { width: 48px; height: 48px; border-radius: var(--pigulka); background: var(--blekit-jasny); display: inline-grid; place-items: center; color: var(--czern); flex: none; }
+
+/* karty */
+.mp-card { background: var(--biel); border: 1px solid var(--linia); border-radius: var(--zaokraglenie-karta); padding: var(--odstep-32); color: var(--czern); }
+.mp-card-sand { background: var(--piasek); }
+.mp-card-dashed { background: transparent; border: 1.5px dashed var(--grafit); }
+.mp-card-title { margin: 0 0 12px; font: 600 22px/1.3 var(--font-naglowki); letter-spacing: -0.01em; }
+.mp-card-text { margin: 0 0 20px; font-size: 16px; line-height: 1.55; color: var(--grafit); }
+
+.mp-branch { display: flex; flex-direction: column; padding: 28px; }
+.mp-branch-nr { font: 600 12px/1.2 var(--font-tekst); letter-spacing: 0.14em; text-transform: uppercase; color: var(--grafit); margin-bottom: 18px; }
+.mp-branch .mp-card-text { font-size: 15px; }
+.mp-branch .mp-tags { margin-top: auto; margin-bottom: 22px; }
+.mp-branch .mp-link { align-self: flex-start; font-size: 15px; }
+
+.mp-package { position: relative; display: flex; flex-direction: column; padding: 36px 32px; }
+.mp-package-recommended { background: var(--blekit-jasny); border: 1.5px solid var(--czern); }
+.mp-package-badge { position: absolute; top: -15px; left: 32px; }
+.mp-price { font: 600 46px/1 var(--font-naglowki); letter-spacing: -0.03em; margin: 10px 0 14px; }
+.mp-price small { font: 500 16px/1 var(--font-tekst); letter-spacing: 0; color: var(--grafit); }
+.mp-package-for { margin: 0; font-size: 15px; line-height: 1.5; color: var(--grafit); }
+.mp-package-list { list-style: none; margin: 24px 0 30px; padding: 0; border-top: 1px solid var(--linia); }
+.mp-package-list li { display: flex; gap: 10px; align-items: flex-start; padding: 11px 0; border-bottom: 1px solid var(--linia); font-size: 15px; line-height: 1.45; }
+.mp-package-list li .mp-icon { margin-top: 2px; }
+.mp-package-plus { font-weight: 600; }
+.mp-package-recommended .mp-package-list, .mp-package-recommended .mp-package-list li { border-color: var(--blekit-linia); }
+.mp-package .mp-btn { margin-top: auto; }
+
+/* pasek zaufania */
+.mp-trust { padding: 30px var(--margines-komputer); }
+.mp-trust-list { list-style: none; margin: 0 auto; padding: 0; max-width: 1120px; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.mp-trust-list li { display: flex; align-items: center; gap: 12px; font: 500 16px/1.35 var(--font-tekst); }
+
+/* kroki */
+.mp-step { padding-top: 34px; }
+.mp-step-nr { display: block; font: 400 88px/0.9 var(--font-akcent); color: var(--blekit); margin-bottom: 22px; }
+.mp-step-title { margin: 0 0 10px; font: 600 21px/1.3 var(--font-naglowki); letter-spacing: -0.01em; color: var(--krem); }
+.mp-step-text { margin: 0; font-size: 16px; line-height: 1.55; color: var(--szary-na-czerni); }
+
+/* pytania */
+.mp-faq { border-bottom: 1px solid var(--linia); padding: 24px 0; }
+.mp-faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; font: 600 19px/1.35 var(--font-tekst); cursor: pointer; }
+.mp-faq summary::-webkit-details-marker { display: none; }
+.mp-faq .mp-faq-minus { display: none; }
+.mp-faq[open] .mp-faq-minus { display: block; }
+.mp-faq[open] .mp-faq-plus { display: none; }
+.mp-faq-answer { margin-top: 12px; font-size: 17px; line-height: 1.6; color: var(--grafit); max-width: 600px; }
+
+/* końcowa karta */
+.mp-cta { border-radius: var(--zaokraglenie-cta); padding: 88px 64px; text-align: center; }
+.mp-cta-title { margin: 0 auto 20px; max-width: 900px; font: 600 52px/1.1 var(--font-naglowki); letter-spacing: -0.02em; color: var(--krem); text-wrap: balance; }
+.mp-cta-text { margin: 0 auto 36px; max-width: 560px; color: var(--szary-na-czerni); }
+
+/* menu */
+.mp-logo { display: inline-flex; align-items: baseline; font: 600 20px/1 var(--font-naglowki); letter-spacing: -0.01em; color: inherit; text-decoration: none; }
+.mp-logo b { width: 7px; height: 7px; border-radius: var(--pigulka); background: var(--blekit); display: inline-block; margin-left: 3px; }
+.mp-header { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: var(--odstep-32); padding: 0 var(--margines-komputer); background: var(--krem); }
+.mp-header-compact { height: 64px; padding: 0 var(--margines-telefon); }
+.mp-nav { display: flex; align-items: center; gap: 30px; }
+.mp-nav a { display: inline-flex; align-items: center; gap: 4px; font: 500 15px/1 var(--font-tekst); color: var(--czern); text-decoration: none; }
+.mp-nav-current { text-decoration: underline; text-underline-offset: 6px; }
+.mp-menu-btn { width: 44px; height: 44px; border-radius: var(--pigulka); border: 1px solid var(--linia); background: transparent; color: var(--czern); display: grid; place-items: center; cursor: pointer; }
+.mp-header:not(.mp-header-compact) .mp-menu-btn { display: none; }
+
+/* okruszki */
+.mp-crumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; font: 500 14px/1.5 var(--font-tekst); color: var(--grafit); }
+.mp-crumbs li + li::before { content: "›"; margin-right: 6px; color: var(--grafit); }
+.mp-crumbs a { color: var(--czern); text-decoration: underline; text-underline-offset: 3px; }
+.mp-crumbs a:focus-visible { outline: 2px solid transparent; box-shadow: var(--obrys-fokus); border-radius: 4px; }
+.mp-crumbs [aria-current] { color: var(--grafit); }
+
+/* stopka */
+.mp-footer { padding: 80px var(--margines-komputer) 40px; font-size: 15px; color: var(--szary-na-czerni); }
+.mp-footer-grid { max-width: 1120px; margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 40px; padding-bottom: 56px; }
+.mp-footer .mp-logo { color: var(--krem); margin-bottom: 18px; }
+.mp-footer-intro p { margin: 0 0 22px; max-width: 300px; }
+.mp-footer h4 { margin: 0 0 20px; color: var(--krem); font: 600 13px/1 var(--font-tekst); letter-spacing: 0.14em; text-transform: uppercase; }
+.mp-footer ul { list-style: none; margin: 0; padding: 0; }
+.mp-footer li { margin-bottom: 12px; }
+.mp-footer a { color: var(--szary-na-czerni); text-decoration: none; }
+.mp-footer-bottom { max-width: 1120px; margin: 0 auto; border-top: 1px solid var(--linia-ciemna); padding-top: 26px; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 13px; }
+.mp-footer-bottom span + span, .mp-footer-bottom a + a { margin-left: 18px; }
+
+/* pasek z przyciskiem na telefonie */
+.mp-mobile-cta { display: none; }
+
+/* ramka telefonu */
+.mp-phone { box-sizing: border-box; border-radius: 46px; background: var(--czern); padding: 12px; position: relative; flex: none; }
+.mp-phone-notch { position: absolute; left: 50%; top: 22px; width: 84px; height: 24px; margin-left: -42px; border-radius: var(--pigulka); background: var(--czern); z-index: 2; }
+.mp-phone-screen { background: var(--biel); border-radius: 35px; height: 100%; overflow: hidden; position: relative; font-size: 13px; line-height: 1.4; color: var(--czern); }
+.mp-phone-demo { background: var(--piasek); color: var(--grafit); font: 600 10px/1 var(--font-tekst); letter-spacing: 0.12em; text-transform: uppercase; text-align: center; padding: 44px 0 9px; }
+
+/* ramka laptopa */
+.mp-laptop { box-sizing: border-box; width: 100%; background: var(--czern); border-radius: var(--zaokraglenie-maly); padding: 10px; }
+.mp-laptop-screen { background: var(--biel); border-radius: 8px; overflow: hidden; font-size: 13px; line-height: 1.4; color: var(--czern); }
+.mp-laptop-demo { background: var(--piasek); color: var(--grafit); font: 600 9px/1 var(--font-tekst); letter-spacing: 0.12em; text-transform: uppercase; text-align: center; padding: 7px 0; }
+
+@media (max-width: 640px) {
+  .mp-trust { padding: 24px var(--margines-telefon); }
+  .mp-trust-list { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .mp-trust-list li { font-size: 14px; }
+  .mp-cta { padding: 56px 24px; border-radius: 26px; }
+  .mp-cta-title { font-size: 32px; }
+  .mp-footer { padding: 64px var(--margines-telefon) 32px; }
+  .mp-footer-grid { grid-template-columns: 1fr 1fr; }
+  .mp-step-nr { font-size: 64px; }
+  .mp-header { height: 64px; padding: 0 var(--margines-telefon); }
+  .mp-header .mp-nav, .mp-header .mp-header-btn { display: none; }
+  .mp-header:not(.mp-header-compact) .mp-menu-btn { display: grid; }
+  .mp-header .mp-logo { font-size: 18px; }
+  .mp-package-recommended, :has(> .mp-package-recommended) { order: -1; }
+  .mp-btn { white-space: normal; height: auto; min-height: 52px; padding-top: 12px; padding-bottom: 12px; line-height: 1.25; text-align: center; }
+  .mp-btn-sm { min-height: 44px; padding-top: 10px; padding-bottom: 10px; }
+  .mp-cta .mp-actions .mp-btn { flex: 1 1 100%; }
+  .mp-mobile-cta { display: block; position: sticky; bottom: 0; z-index: 10; padding: 12px var(--margines-telefon); border-top: 1px solid var(--linia-ciemna); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mp-btn, .mp-btn-arrow, .mp-link .mp-icon { transition: none; }
+}

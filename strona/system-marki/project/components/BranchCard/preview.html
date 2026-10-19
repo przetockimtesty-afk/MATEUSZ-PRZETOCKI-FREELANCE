@@ -1,0 +1,15 @@
+<!-- @dsCard group="Karty" height=380 width=1120 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '24px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', background: 'var(--piasek)' } },
+    h(M.BranchCard, { number: '01', category: 'Finanse', title: 'Doradcy kredytowi', text: 'Klient z polecenia szuka Cię wieczorem. Formularz wstępnej analizy i kalendarz sprawiają, że umawia się od razu.', tags: ['formularz analizy', 'kalendarz', 'informacje KNF'], linkLabel: 'Strona dla doradców kredytowych' }),
+    h(M.BranchCard, { number: '02', category: 'Księgowość', title: 'Biura rachunkowe', text: 'W sezonie PIT telefon dzwoni bez przerwy. Strona odpowiada na stałe pytania, a nowy klient sam umawia rozmowę.', tags: ['pytania o KSeF', 'umawianie rozmów'], linkLabel: 'Strona dla biur rachunkowych' }),
+    h(M.BranchCard, { number: '03', category: 'Terapia', title: 'Psycholodzy i terapeuci', text: 'Pierwszy telefon do terapeuty bywa trudny. Spokojna strona z kalendarzem pozwala umówić się bez rozmowy.', tags: ['podejście', 'wizyty online', 'kalendarz'], linkLabel: 'Strona dla psychologów' })));
+</script>
+</body>
+</html>

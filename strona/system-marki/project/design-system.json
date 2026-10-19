@@ -1,0 +1,66 @@
+{
+  "v": 3,
+  "layout": "files",
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-19T07:39:20Z"
+  },
+  "title": "Mateusz Przetocki",
+  "namespace": "MP",
+  "libraries": [
+    {
+      "name": "react",
+      "version": "18"
+    },
+    {
+      "name": "react-dom",
+      "version": "18"
+    }
+  ],
+  "sections": {},
+  "groups": [
+    "Logo"
+  ],
+  "assetGroups": {
+    "Logo": {
+      "name": "Logo",
+      "tile": "l",
+      "order": [
+        "logo-mateusz-przetocki.svg",
+        "logo-mateusz-przetocki-na-czerni.svg",
+        "monogram-mp.svg"
+      ],
+      "files": {
+        "logo-mateusz-przetocki.svg": {
+          "name": "logo-mateusz-przetocki.svg",
+          "blob": "e413751040eccd11935295430680abcb",
+          "size": 12145,
+          "type": "image/svg+xml"
+        },
+        "logo-mateusz-przetocki-na-czerni.svg": {
+          "name": "logo-mateusz-przetocki-na-czerni.svg",
+          "blob": "c6f867e0e9c55b68bf77427594ded36d",
+          "size": 12145,
+          "type": "image/svg+xml"
+        },
+        "monogram-mp.svg": {
+          "name": "monogram-mp.svg",
+          "blob": "97b3de9aefe6c667122aa1e30a5fe5f2",
+          "size": 1253,
+          "type": "image/svg+xml"
+        }
+      }
+    }
+  },
+  "blobs": {},
+  "docs": {
+    "readme": "project/README.md",
+    "sections": []
+  },
+  "lastChange": {
+    "by": "Mateusz",
+    "via": "Claude Code",
+    "at": "2026-10-19T07:58:55Z",
+    "note": "Na telefonie: polecany pakiet pierwszy, długie przyciski zawijają się, przyciski w karcie z wezwaniem na całą szerokość."
+  }
+}

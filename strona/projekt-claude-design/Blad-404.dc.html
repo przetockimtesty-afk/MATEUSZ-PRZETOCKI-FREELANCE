@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Tej strony tu nie ma · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(56px, 6.7vw, 96px) clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(28px, 5.6vw, 80px);">
+<div style="flex: 0 1 360px; min-width: 0;" aria-hidden="true">
+<div style="font: 400 clamp(120px, 16vw, 230px)/0.85 var(--font-akcent); letter-spacing: -0.03em;">404</div>
+</div>
+<div style="flex: 1 1 480px; min-width: 0;">
+<x-import component-from-global-scope="MP.Eyebrow">Błąd 404</x-import>
+<h1 style="margin: 22px 0 22px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Tej strony tu nie ma</h1>
+<p style="margin: 0 0 28px; max-width: 560px;">Link mógł być stary albo w&nbsp;adresie jest literówka. Zacznij od jednej z&nbsp;tych stron:</p>
+<ul style="list-style: none; margin: 0 0 36px; padding: 0; border-top: 1px solid var(--linia); max-width: 560px;">
+<li style="padding: 16px 0; border-bottom: 1px solid var(--linia);"><x-import component-from-global-scope="MP.ArrowLink" href="Main.dc.html">Strona główna</x-import></li>
+<li style="padding: 16px 0; border-bottom: 1px solid var(--linia);"><x-import component-from-global-scope="MP.ArrowLink" href="Oferta.dc.html">Pakiety i&nbsp;ceny</x-import></li>
+<li style="padding: 16px 0; border-bottom: 1px solid var(--linia);"><x-import component-from-global-scope="MP.ArrowLink" href="Dla-kogo.dc.html">Strony dla Twojej branży</x-import></li>
+</ul>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;">
+<x-import component-from-global-scope="MP.Button" arrow="{{yes}}" href="#ankieta" style="flex: 0 1 calc((560px - 100%) * 999); max-width: 100%; display: grid;">Wyceń stronę w&nbsp;5&nbsp;minut</x-import>
+<span style="font-size: 14px; line-height: 1.5; color: var(--grafit);">Bez zobowiązań · propozycja w&nbsp;48&nbsp;h</span>
+</div>
+</div>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      yes: true,
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html' },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html' },
+        { label: 'Realizacje', href: 'Realizacje.dc.html' },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

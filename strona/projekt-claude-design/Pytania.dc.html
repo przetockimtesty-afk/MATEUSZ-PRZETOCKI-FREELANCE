@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Pytania i odpowiedzi · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.8vw, 40px) clamp(40px, 4.5vw, 64px);">
+<x-import component-from-global-scope="MP.Breadcrumbs" items="{{okruszki}}"></x-import>
+<div style="margin-top: clamp(32px, 3.9vw, 56px); max-width: 880px;">
+<x-import component-from-global-scope="MP.Eyebrow">Pytania</x-import>
+<h1 style="margin: 22px 0 24px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Zanim <x-import component-from-global-scope="MP.Accent">zapytasz</x-import></h1>
+<p style="margin: 0; max-width: 640px; font-size: clamp(17px, 1.32vw, 19px);">Dwanaście odpowiedzi na pytania, które specjaliści zadają przed zamówieniem strony. Nie ma tu Twojego? Napisz albo umów 30&nbsp;minut na Google Meet.</p>
+</div>
+</section>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px); display: flex; flex-wrap: wrap; align-items: flex-start; gap: clamp(32px, 5.6vw, 80px);">
+<nav aria-label="Grupy pytań" style="flex: 1 1 260px; min-width: 0; padding-top: 22px; border-top: 1px solid var(--linia);">
+<div style="margin-bottom: 14px; font: 600 12px/1.2 var(--font-tekst); letter-spacing: 0.14em; text-transform: uppercase; color: var(--grafit);">Tematy</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 15px; line-height: 1.45;">
+<li><a href="#cena" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Cena i&nbsp;warunki</a></li>
+<li><a href="#wspolpraca" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Współpraca</a></li>
+<li><a href="#wlasnosc" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Własność i&nbsp;technika</a></li>
+<li><a href="#doswiadczenie" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">Doświadczenie</a></li>
+</ul>
+</nav>
+<div style="flex: 999 1 560px; min-width: 0; max-width: 760px; display: grid; gap: clamp(48px, 5vw, 72px);">
+
+<div id="cena">
+<x-import component-from-global-scope="MP.Eyebrow">01 · Cena i&nbsp;warunki</x-import>
+<div style="margin-top: 18px; border-top: 1px solid var(--linia);">
+<x-import component-from-global-scope="MP.FaqItem" question="Ile to kosztuje?" open="{{yes}}">Pakiety kosztują 1&nbsp;200, 1&nbsp;800 albo 2&nbsp;500&nbsp;zł. Łączną kwotę z&nbsp;ewentualnymi dodatkami dostajesz na piśmie w&nbsp;48 godzin od ankiety. <a href="Oferta.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Cennik pakietów</a></x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Co jest w&nbsp;cenie?">Strona z&nbsp;wersją na telefon, teksty z&nbsp;Twojej ankiety, formularz, podstawy SEO, polityka prywatności, 2&nbsp;rundy poprawek i&nbsp;30&nbsp;dni wsparcia. Resztę wyznacza pakiet. <a href="Oferta.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Co jest w&nbsp;każdym pakiecie</a></x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Czy wystawiasz fakturę?">Tak: fakturę bez VAT, bo prowadzę działalność nierejestrowaną, albo fakturę VAT przez Useme. Wtedy do ceny dochodzi 23% VAT. <a href="Oferta.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Warunki współpracy</a></x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Ile kosztuje utrzymanie strony?">Domenę i&nbsp;hosting opłacasz u&nbsp;dostawcy, na swoje dane: pierwszy rok ok.&nbsp;55–75&nbsp;zł netto, potem ok.&nbsp;320–370&nbsp;zł netto rocznie. Drobne zmiany po 30&nbsp;dniach wsparcia wyceniam przed pracą. <a href="Oferta.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Koszty w&nbsp;kolejnych latach</a></x-import>
+</div>
+</div>
+
+<div id="wspolpraca">
+<x-import component-from-global-scope="MP.Eyebrow">02 · Współpraca</x-import>
+<div style="margin-top: 18px; border-top: 1px solid var(--linia);">
+<x-import component-from-global-scope="MP.FaqItem" question="Czy muszę rozmawiać przez telefon?">Nie. Wszystko ustalamy na piśmie. Jeśli wolisz porozmawiać, umów 30&nbsp;minut na Google Meet. <a href="Kontakt.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Kontakt</a></x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Ile to trwa?">Zwykle 2&nbsp;tygodnie od dnia, w&nbsp;którym dostanę materiały. <a href="Jak-pracuje.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Kroki i&nbsp;terminy</a></x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Kto pisze teksty?">Ja, na podstawie Twojej ankiety i&nbsp;Twoimi słowami. Sprawdzasz je w&nbsp;szkicu i&nbsp;masz 2&nbsp;rundy poprawek. <a href="Jak-pracuje.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Jak pracuję</a></x-import>
+</div>
+</div>
+
+<div id="wlasnosc">
+<x-import component-from-global-scope="MP.Eyebrow">03 · Własność i&nbsp;technika</x-import>
+<div style="margin-top: 18px; border-top: 1px solid var(--linia);">
+<x-import component-from-global-scope="MP.FaqItem" question="Kto jest właścicielem domeny i&nbsp;strony?">Ty. Domena i&nbsp;hosting są na Ciebie, a&nbsp;ja dostaję dostęp na czas pracy. <a href="Jak-pracuje.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Co jest Twoje</a></x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Mam już stronę. Co wtedy?">Kalendarz konsultacji i&nbsp;formularz wstępnych pytań dodam do Twojej obecnej strony, w&nbsp;jej stylu. Od 800&nbsp;zł. <a href="Oferta.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Szczegóły w&nbsp;ofercie</a></x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Czy zmienię tekst albo godziny bez Twojej pomocy?">Tak. Strona jest na WordPressie, a&nbsp;po starcie dostajesz instrukcję i&nbsp;nagranie: jak zmienić tekst, zdjęcie albo godziny w&nbsp;kalendarzu.</x-import>
+<x-import component-from-global-scope="MP.FaqItem" question="Czy strona będzie w&nbsp;Google?">Dbam o&nbsp;to, co od tego zależy: szybką stronę, podstawy SEO, a&nbsp;w&nbsp;pakiecie „Wizytówka, która umawia” także Profil Firmy w&nbsp;Google, gdy firma spełnia wytyczne. Nie obiecuję konkretnego miejsca w&nbsp;wynikach.</x-import>
+</div>
+</div>
+
+<div id="doswiadczenie">
+<x-import component-from-global-scope="MP.Eyebrow">04 · Doświadczenie</x-import>
+<div style="margin-top: 18px; border-top: 1px solid var(--linia);">
+<x-import component-from-global-scope="MP.FaqItem" question="Czy robiłeś już takie projekty?">Ten system pokazuję na projekcie demonstracyjnym strony ekspertki kredytowej. Od listopada wdrażam go u&nbsp;pierwszych klientów, a&nbsp;ich strony dodaję tutaj za ich zgodą. Wcześniej budowałem własne sklepy internetowe i&nbsp;wtyczki do WordPressa. <a href="Realizacje.dc.html" style="color: var(--czern); font-weight: 600; text-decoration: underline; text-underline-offset: 3px;">Realizacje</a></x-import>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="nastepny-krok" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 0 clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px);">
+<div style="margin-bottom: 22px;"><x-import component-from-global-scope="MP.Eyebrow">Następny krok</x-import></div>
+<x-import component-from-global-scope="MP.CtaBand" text="5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Wypełnienie do niczego nie zobowiązuje." primary-label="Wyceń stronę w&nbsp;5&nbsp;minut" primary-href="#ankieta" secondary-label="Wolisz porozmawiać? Umów 30&nbsp;minut" secondary-href="#rozmowa">Sprawdź, ile kosztowałaby <x-import component-from-global-scope="MP.Accent">Twoja</x-import> strona</x-import>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px; margin-top: 32px;">
+<span style="font-size: 15px; color: var(--grafit);">Zobacz też:</span>
+<x-import component-from-global-scope="MP.ArrowLink" href="Oferta.dc.html">Pakiety i&nbsp;ceny</x-import>
+<x-import component-from-global-scope="MP.ArrowLink" href="Jak-pracuje.dc.html">Jak pracuję</x-import>
+</div>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+<x-import component-from-global-scope="MP.MobileCtaBar" href="#ankieta" style="position: sticky; bottom: 0; z-index: 10; display: block;"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      yes: true,
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html' },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html', current: true },
+        { label: 'Realizacje', href: 'Realizacje.dc.html' },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      okruszki: [
+        { label: 'Strona główna', href: 'Main.dc.html' },
+        'Pytania'
+      ],
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

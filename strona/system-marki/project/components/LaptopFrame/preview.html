@@ -1,0 +1,12 @@
+<!-- @dsCard group="Strona" height=250 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '24px', maxWidth: '560px' } }, h(M.LaptopFrame, null, h('div', { style: { padding: '22px', display: 'grid', gap: '10px' } }, h('div', { style: { font: '600 22px/1.1 var(--font-naglowki)', letterSpacing: '-0.02em' } }, 'Kredyt bez stresu, z jednym doradcą'), h('div', { style: { height: '8px', width: '80%', borderRadius: '4px', background: 'var(--piasek)' } }), h('div', { style: { height: '8px', width: '60%', borderRadius: '4px', background: 'var(--piasek)' } }), h('div', null, h(M.Button, { size: 'sm' }, 'Umów konsultację'))))));
+</script>
+</body>
+</html>

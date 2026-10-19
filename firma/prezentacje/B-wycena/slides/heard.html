@@ -1,0 +1,31 @@
+<section id="heard" data-transition="fade" style="background:#f6f7fb;color:#14213d;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:56px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p style="font-size:24px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#b4501c">Podsumowanie</p>
+<h2 style="font-family:'Inter Tight', Arial, sans-serif;font-size:64px;font-weight:800;line-height:1.1;color:#14213d">Co usłyszałem. Czy dobrze rozumiem?</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:32px">
+<div style="background:#fcfcfe;border:2px solid #e3e7ef;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:12px;min-height:270px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5d6782">Skąd przychodzą zapytania</p>
+<p style="font-size:32px;font-weight:600;line-height:1.4;color:#b4501c">{{SKAD}}</p>
+</div>
+<div style="background:#fcfcfe;border:2px solid #e3e7ef;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:12px;min-height:270px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5d6782">Ile zapytań, ile przepada</p>
+<p style="font-size:32px;font-weight:600;line-height:1.4;color:#14213d">Zapytań tygodniowo: <span style="color:#b4501c">{{ZAPYTANIA}}</span>, bez odpowiedzi: <span style="color:#b4501c">{{PRZEPADA}}</span></p>
+</div>
+<div style="background:#fcfcfe;border:2px solid #e3e7ef;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:12px;min-height:270px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5d6782">Z czego składa się cena</p>
+<p style="font-size:32px;font-weight:600;line-height:1.4;color:#b4501c">{{ELEMENTY}}</p>
+</div>
+<div style="background:#fdf0e8;border:2px solid #e8743b;border-radius:24px;padding:40px;display:flex;flex-direction:column;gap:12px;min-height:270px">
+<p style="font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#5d6782">Cel</p>
+<p style="font-size:32px;font-weight:600;line-height:1.4;color:#b4501c">{{CEL}}</p>
+</div>
+</div>
+<div style="position:absolute;left:128px;right:128px;bottom:64px;display:flex;justify-content:space-between">
+<p style="font-size:24px;color:#5d6782">Mateusz Przetocki</p>
+<p style="font-size:24px;color:#5d6782">mateuszprzetocki.pl</p>
+</div>
+<aside>Pola w podwójnych nawiasach wypełnia automat z ankiety Google. Bez ankiety wpisujesz je w trakcie pytań, gdy ekran nie jest udostępniony: skąd ← pytanie 1, ile ← 2, z czego cena ← 6, cel ← 9. Piszesz słowami klienta, nie swoimi. Pole „Z czego składa się cena” to gotowe reguły kalkulatora: zapisz je dokładnie. Jeśli nie zdążysz, podsumuj na głos i pomiń ten slajd. Zapytaj: „Czy dobrze rozumiem? Coś bym poprawił?”
+
+Z ankiety, tylko dla Ciebie: co przeszkadza: {{PRZESZKADZA_PELNE}} · cel (pełna odpowiedź): {{CEL_PELNY}} · ostatnie zapytanie, które przepadło: {{HISTORIA}} · zleceń tygodniowo: {{ZLECENIA}} · cennik: {{CENNIK}} · minimum, dopłaty, rabaty: {{DOPLATY}} · terminy i zgłoszenia: {{TERMINY}} · opinie: {{OPINIE}} · gotowe: {{GOTOWE}} · strona: {{STRONA}} · na kiedy: {{KIEDY}} · budżet: {{BUDZET}} · e-mail: {{EMAIL}}</aside>
+</section>

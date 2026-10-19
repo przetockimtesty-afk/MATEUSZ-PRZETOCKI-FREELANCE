@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Dla kogo robię strony · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.8vw, 40px) clamp(40px, 4.5vw, 64px);">
+<x-import component-from-global-scope="MP.Breadcrumbs" items="{{okruszki}}"></x-import>
+<div style="margin-top: clamp(32px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Dla kogo</x-import>
+<h1 style="margin: 22px 0 24px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Dla kogo robię <x-import component-from-global-scope="MP.Accent">strony</x-import></h1>
+<p style="margin: 0; max-width: 640px; font-size: clamp(17px, 1.32vw, 19px);">Dla specjalistów i&nbsp;małych firm, u&nbsp;których sprzedaż zaczyna się od rozmowy, wizyty albo oględzin, a&nbsp;telefon dzwoni w&nbsp;trakcie pracy.</p>
+</div>
+</section>
+
+<section id="branze" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 16px clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px);">
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px;">
+<x-import component-from-global-scope="MP.BranchCard" style="display: grid;" number="01" category="Finanse" title="Doradcy kredytowi" text="Klient z&nbsp;polecenia szuka Cię wieczorem. Formularz wstępnej analizy i&nbsp;kalendarz sprawiają, że umawia się od razu, a&nbsp;nie rano u&nbsp;kogoś innego." tags="{{tagi.kredyt}}" link-label="Strona dla doradców kredytowych" href="Doradcy.dc.html"></x-import>
+<x-import component-from-global-scope="MP.BranchCard" style="display: grid;" number="02" category="Księgowość" title="Biura rachunkowe" text="W&nbsp;sezonie PIT i&nbsp;przy zmianach przepisów telefon dzwoni bez przerwy. Strona odpowiada na stałe pytania, a&nbsp;nowy klient sam umawia rozmowę." tags="{{tagi.biuro}}" link-label="Strona dla biur rachunkowych" href="Biura.dc.html"></x-import>
+<x-import component-from-global-scope="MP.BranchCard" style="display: grid;" number="03" category="Terapia" title="Psycholodzy i&nbsp;terapeuci" text="Pierwszy telefon do terapeuty bywa dla klienta trudny. Spokojna strona z&nbsp;Twoim podejściem i&nbsp;kalendarzem pozwala umówić się bez rozmowy." tags="{{tagi.terapia}}" link-label="Strona dla psychologów" href="Terapeuci.dc.html"></x-import>
+<x-import component-from-global-scope="MP.BranchCard" style="display: grid;" number="04" category="Ubezpieczenia" title="Agenci ubezpieczeniowi" text="Klient porównuje polisy wieczorem, a&nbsp;Ty jesteś w&nbsp;terenie. Formularz potrzeb i&nbsp;kalendarz spotkań pozwalają mu umówić się od razu." tags="{{tagi.agent}}" link-label="Wyceń stronę dla agenta" href="#ankieta"></x-import>
+<x-import component-from-global-scope="MP.BranchCard" style="display: grid;" number="05" category="Fizjoterapia" title="Fizjoterapeuci" text="Pacjent dzwoni, gdy jesteś w&nbsp;trakcie zabiegu. Kalendarz wizyt i&nbsp;odpowiedzi o&nbsp;pierwszą wizytę sprawiają, że umawia się sam, bez czekania na oddzwonienie." tags="{{tagi.fizjo}}" link-label="Wyceń stronę dla gabinetu" href="#ankieta"></x-import>
+<x-import component-from-global-scope="MP.BranchCard" style="display: grid;" number="06" category="Prawo" title="Kancelarie prawne" text="Klient z&nbsp;poważną sprawą szuka kancelarii wieczorem. Zakres praktyki i&nbsp;kalendarz pierwszej konsultacji pozwalają mu umówić się, zanim zadzwoni gdzie indziej." tags="{{tagi.prawo}}" link-label="Wyceń stronę dla kancelarii" href="#ankieta"></x-import>
+<x-import component-from-global-scope="MP.BranchCard" style="display: grid;" number="07" category="Remonty" title="Firmy remontowe i&nbsp;wykończeniowe" text="Jesteś na budowie, a&nbsp;telefon dzwoni z&nbsp;prośbą o&nbsp;wycenę. Formularz z&nbsp;zakresem prac, metrażem i&nbsp;zdjęciami oraz kalendarz oględzin oszczędzają Ci jazd na próżno." tags="{{tagi.remont}}" link-label="Wyceń stronę dla firmy" href="#ankieta"></x-import>
+<div style="display: grid;">
+<x-import component-from-global-scope="MP.Card" tone="dashed" style="display: grid;">
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px;">
+<h3 style="margin: 0; font: 600 22px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Nie widzisz swojej branży?</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--grafit);">Niżej kolejne branże w&nbsp;czterech grupach. Jeśli Twojej tam nie ma, napisz, sprawdzę, czy to dla Ciebie.</p>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 8px;">
+<x-import component-from-global-scope="MP.ArrowLink" href="#pozostale">Pozostałe branże</x-import>
+<x-import component-from-global-scope="MP.ArrowLink" href="Kontakt.dc.html">Napisz do mnie</x-import>
+</div>
+</div>
+</x-import>
+</div>
+</div>
+</section>
+
+<section id="pozostale" style="background: var(--piasek); padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="margin-bottom: clamp(36px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Pozostałe branże</x-import>
+<h2 style="margin: 22px 0 20px; max-width: 860px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Tu też klient <x-import component-from-global-scope="MP.Accent">umawia się</x-import> sam</h2>
+<p style="margin: 0; max-width: 640px; color: var(--grafit);">Te branże nie mają jeszcze osobnej strony, ale dostają ten sam zestaw: kalendarz, formularz z&nbsp;pytaniami ich zawodu i&nbsp;zasady, o&nbsp;które trzeba zadbać.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px 32px;">
+<div>
+<h3 style="margin: 0 0 14px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Finanse i&nbsp;prawo</h3>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linia);">
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Doradcy podatkowi</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Formularz sprawy i&nbsp;kalendarz pierwszej konsultacji.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Mediatorzy</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Spokojny opis mediacji i&nbsp;termin pierwszego spotkania.</span></li>
+</ul>
+</div>
+<div>
+<h3 style="margin: 0 0 14px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Zdrowie</h3>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linia);">
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Dietetycy</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Wizyty w&nbsp;gabinecie i&nbsp;online w&nbsp;jednym kalendarzu.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Gabinety stomatologiczne i&nbsp;lekarskie</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Zakres świadczeń bez cech reklamy i&nbsp;rejestracja online.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Weterynarze</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Szczepienia i&nbsp;kontrole w&nbsp;kalendarzu, telefon zostaje dla pilnych.</span></li>
+</ul>
+</div>
+<div>
+<h3 style="margin: 0 0 14px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Dom i&nbsp;nieruchomości</h3>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linia);">
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Instalatorzy klimatyzacji, pomp ciepła i&nbsp;fotowoltaiki</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Formularz z&nbsp;danymi domu i&nbsp;termin oględzin.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Architekci wnętrz</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Portfolio, etapy projektu i&nbsp;pierwsza konsultacja.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Pośrednicy nieruchomości</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Formularz o&nbsp;mieszkaniu i&nbsp;termin spotkania.</span></li>
+</ul>
+</div>
+<div>
+<h3 style="margin: 0 0 14px; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Rozwój i&nbsp;usługi</h3>
+<ul style="list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linia);">
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Coachowie i&nbsp;doradcy zawodowi</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Opis sesji i&nbsp;kalendarz pierwszej rozmowy.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Trenerzy personalni</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Pakiety treningów i&nbsp;termin pierwszego spotkania.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Fotografowie</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Portfolio, pakiety i&nbsp;wolne terminy sesji.</span></li>
+<li style="padding: 14px 0; border-bottom: 1px solid var(--linia);"><span style="display: block; font-weight: 500;">Mechanicy samochodowi</span><span style="display: block; margin-top: 4px; font-size: 15px; line-height: 1.5; color: var(--grafit);">Opis usterki w&nbsp;formularzu i&nbsp;terminy przyjęć.</span></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+
+<section id="wspolne" style="padding-top: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="margin-bottom: clamp(36px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Co łączy te branże</x-import>
+<h2 style="margin: 22px 0 0; max-width: 860px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Ten sam problem, <x-import component-from-global-scope="MP.Accent">inne</x-import> słowa</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="clock"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 21px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Telefon dzwoni w&nbsp;trakcie pracy</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">Prowadzisz konsultację, więc nie odbierasz. Klient nie czeka na oddzwonienie.</p>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="message-circle-question"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 21px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Ciągle te same pytania</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">O&nbsp;cenę, dokumenty i&nbsp;pierwsze spotkanie. Strona odpowiada na nie za Ciebie.</p>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<x-import component-from-global-scope="MP.IconCircle" name="calendar-check"></x-import>
+<h3 style="margin: 26px 0 10px; font: 600 21px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Klient chce umówić się od razu</h3>
+<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--grafit);">Także wieczorem. Kalendarz pokazuje wolne terminy, a&nbsp;Ty rano wiesz, z&nbsp;czym przyjdzie.</p>
+</x-import>
+</div>
+</div>
+</section>
+
+<section id="nastepny-krok" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(72px, 8.4vw, 120px) clamp(20px, 2.8vw, 40px);">
+<div style="margin-bottom: 22px;"><x-import component-from-global-scope="MP.Eyebrow">Następny krok</x-import></div>
+<x-import component-from-global-scope="MP.CtaBand" text="5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Wypełnienie do niczego nie zobowiązuje." primary-label="Wyceń stronę w&nbsp;5&nbsp;minut" primary-href="#ankieta" secondary-label="Wolisz porozmawiać? Umów 30&nbsp;minut" secondary-href="#rozmowa">Sprawdź, ile kosztowałaby <x-import component-from-global-scope="MP.Accent">Twoja</x-import> strona</x-import>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px; margin-top: 32px;">
+<span style="font-size: 15px; color: var(--grafit);">Zobacz też:</span>
+<x-import component-from-global-scope="MP.ArrowLink" href="Oferta.dc.html">Pakiety i&nbsp;ceny</x-import>
+<x-import component-from-global-scope="MP.ArrowLink" href="Realizacje.dc.html">Realizacje</x-import>
+</div>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+<x-import component-from-global-scope="MP.MobileCtaBar" href="#ankieta" style="position: sticky; bottom: 0; z-index: 10; display: block;"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":4400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html', current: true },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html' },
+        { label: 'Realizacje', href: 'Realizacje.dc.html' },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      okruszki: [
+        { label: 'Strona główna', href: 'Main.dc.html' },
+        'Dla kogo'
+      ],
+      tagi: {
+        kredyt: ['formularz analizy', 'kalendarz', 'informacje KNF'],
+        biuro: ['pytania o' + n + 'KSeF', 'ceny „od”', 'umawianie rozmów'],
+        terapia: ['podejście', 'wizyty online', 'kalendarz'],
+        agent: ['formularz potrzeb', 'kalendarz spotkań', 'rejestr agentów'],
+        fizjo: ['kalendarz wizyt', 'pierwsza wizyta', 'informacja, nie reklama'],
+        prawo: ['zakres praktyki', 'pierwsza konsultacja', 'zasady samorządu'],
+        remont: ['realizacje przed i' + n + 'po', 'formularz wyceny', 'termin oględzin']
+      },
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

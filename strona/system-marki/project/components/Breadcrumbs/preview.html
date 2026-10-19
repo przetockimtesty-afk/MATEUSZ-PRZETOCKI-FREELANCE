@@ -1,0 +1,12 @@
+<!-- @dsCard group="Strona" height=72 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '24px' } }, h(M.Breadcrumbs, { items: [{ label: 'Strona główna', href: '#' }, { label: 'Dla kogo', href: '#' }, 'Doradcy kredytowi'] })));
+</script>
+</body>
+</html>

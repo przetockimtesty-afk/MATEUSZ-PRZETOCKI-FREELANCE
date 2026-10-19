@@ -1,0 +1,15 @@
+<!-- @dsCard group="Karty" height=668 width=1120 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '40px 24px 24px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '20px', alignItems: 'stretch' } },
+    h(M.PackageCard, { name: 'Wizytówka', price: '1\u00a0200', forWhom: 'Gdy wystarczy, że klient Cię znajdzie i napisze.', items: ['Jedna strona, 6 sekcji, wersja na telefon', 'Formularz z potwierdzeniem dla klienta', 'Podstawy SEO, polityka prywatności, informacje formalne'] }),
+    h(M.PackageCard, { name: 'Wizytówka, która umawia', price: '1\u00a0800', recommended: true, forWhom: 'Gdy chcesz mniej telefonów i krótsze pierwsze rozmowy.', includesPrevious: true, items: ['Formularz wstępnych pytań i kalendarz konsultacji', 'Odpowiedzi na najczęstsze pytania i miejsce na opinie', 'Profil Firmy w Google, gdy firma spełnia wytyczne'] }),
+    h(M.PackageCard, { name: 'Pełny start', price: '2\u00a0500', forWhom: 'Gdy chcesz od razu zbierać opinie i kontakty.', includesPrevious: true, items: ['Film powitalny 60 s i poradnik PDF dla klientów', 'System próśb o opinie: karta z kodem QR, SMS, e-mail'] })));
+</script>
+</body>
+</html>

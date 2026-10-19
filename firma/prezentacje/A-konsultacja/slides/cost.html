@@ -1,0 +1,33 @@
+<section id="cost" data-transition="fade" style="display:flex; flex-direction:column; justify-content:space-between; padding:128px 128px 160px; background:#14213d">
+  <div style="display:flex; flex-direction:column; gap:16px">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#e8743b">Koszt problemu</p>
+    <h2 style="font-family:'Inter Tight', Arial, sans-serif; font-size:64px; font-weight:800; line-height:1.1; color:#f6f7fb">Ile kosztuje klient, który się nie umówił</h2>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:32px; align-items:start">
+    <div style="display:flex; flex-direction:column; gap:12px; flex:1">
+      <p style="font-family:'Inter Tight', Arial, sans-serif; font-size:96px; font-weight:800; line-height:1.05; color:#e8743b">{{STRATY}}</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c3cbe0">tyle osób w roku pyta i się nie umawia</p>
+    </div>
+    <p style="font-family:'Inter Tight', Arial, sans-serif; font-size:96px; font-weight:800; line-height:1.05; color:#9aa5bf">×</p>
+    <div style="display:flex; flex-direction:column; gap:12px; flex:1">
+      <p style="font-family:'Inter Tight', Arial, sans-serif; font-size:96px; font-weight:800; line-height:1.05; color:#e8743b">{{SZANSA}}</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c3cbe0">szansa, że zostanie klientem: strona umówi co trzecią osobę, a klientami zostaje {{SKUTECZNOSC}} umówionych</p>
+    </div>
+    <p style="font-family:'Inter Tight', Arial, sans-serif; font-size:96px; font-weight:800; line-height:1.05; color:#9aa5bf">=</p>
+    <div style="display:flex; flex-direction:column; gap:12px; flex:1">
+      <p style="font-family:'Inter Tight', Arial, sans-serif; font-size:96px; font-weight:800; line-height:1.05; color:#e8743b">{{NOWI}}</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; line-height:1.4; color:#c3cbe0">tylu nowych klientów rocznie, czyli <span style="color:#e8743b">{{ROK}}</span> przy {{KWOTA}} z jednego klienta</p>
+    </div>
+  </div>
+  <div style="display:flex; flex-direction:row; gap:24px; align-items:center; padding:40px 48px; background:#1d2c4f; border-radius:24px">
+    <x-icon name="Clock" style="width:48px; height:48px; color:#e8743b"></x-icon>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:32px; line-height:1.4; color:#f6f7fb">Do tego <span style="color:#e8743b">{{GODZ}}</span> tygodniowo na pierwsze rozmowy, które tylko zbierają podstawy.</p>
+  </div>
+  <div style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#9aa5bf">Mateusz Przetocki</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#9aa5bf">mateuszprzetocki.pl</p>
+  </div>
+  <aside>Liczby liczy automat z ankiety, ostrożnie: osoby, które pytają i się nie umawiają (pytania 2–3 ankiety), razy 12 miesięcy, razy szansa, że zostaną klientami. Strona umówi co trzecią z nich (w badaniach 30–45% rezerwacji przypada poza godzinami pracy: Mayo Clinic 2021, Booksy), a klientami zostaje tyle, ile dziś z umówionych. Gdy klient tego nie podał, automat przyjmuje 25% i dopisuje „założenie”. Gdy nie podał kwoty, automat pomija ten slajd.
+
+Bez ankiety liczysz na głos, razem z klientem: „Ile średnio daje Pani jeden klient? Ilu umówionych zostaje klientami?” Nie zawyżaj: mniejsza liczba, ale wiarygodna, przekonuje bardziej. Ten slajd daje tło cenie: wariant 2 zwraca się po 1 dodatkowym kliencie (sekcje 5–6 drogowskazu).</aside>
+</section>

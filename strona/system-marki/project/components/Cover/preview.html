@@ -1,0 +1,51 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Mateusz Przetocki</title>
+<style>
+  html, body { margin: 0; height: 100%; }
+  body { background: var(--krem); color: var(--czern); font-family: var(--font-tekst); overflow: hidden; }
+  .cover { position: relative; height: 288px; overflow: hidden; }
+  /* kompozycja: pole 480 px w prawej połowie układu 960, z dala od nazwy */
+  .art { position: absolute; top: 0; left: 480px; width: 480px; height: 288px; overflow: hidden; }
+  .art svg { display: block; width: 480px; height: 288px; }
+  .czern { fill: var(--czern); }
+  .blekit { fill: var(--blekit); }
+  .piasek { fill: var(--piasek-ciemny); }
+  .cta { rx: var(--zaokraglenie-cta); }
+  .karta { rx: var(--zaokraglenie-karta); }
+  /* pigułka 48 px: rx to połowa krótszego boku, czyli zaokraglenie-karta */
+  .pill { rx: var(--zaokraglenie-karta); }
+  .cyfra { fill: var(--blekit); font-family: var(--font-akcent); font-size: 352px; }
+  /* nazwa i podpis przypięte do dolnego marginesu */
+  .words { position: absolute; left: var(--margines-komputer); bottom: var(--margines-komputer); max-width: 440px; }
+  .name { margin: 0; font-family: var(--font-naglowki); font-size: 80px; line-height: .95; font-weight: 600; letter-spacing: -0.02em; color: var(--czern); }
+  .tag { margin: var(--odstep-16) 0 0 2px; font-size: 14px; line-height: 20px; color: var(--grafit); }
+</style>
+</head>
+<body>
+<div class="cover">
+<div class="art" aria-hidden="true">
+<svg viewBox="0 0 480 288" width="480" height="288">
+<!--
+  bloki       czern 288×248 (widoczna część) wyciągnięta za górną i prawą krawędź, jak karta z wezwaniem · piasek-ciemny 144×176, karta zdjęcia z pierwszego ekranu · blekit 112×48 w płycie, przycisk na czerni; razem ok. 37% okładki 960×288
+  układ       jedna wysoka płyta z satelitą, jak karta z wezwaniem obok karty zdjęcia; dolne krawędzie na jednej linii margines-komputer nad brzegiem, odstep-16 między blokami, przycisk odstep-24 od rogu płyty
+  wzór        jedna duża cyfra, bo README mówi „Duże cyfry kroków cyfra w blekit na czerni”: „3” z trzech kroków w rodzinie akcent, cztery razy większa niż styl cyfra, ucięta dolną krawędzią płyty
+  skale       boki z wielokrotności odstep-8 i odstep-16; odstępy odstep-16 i odstep-24; marginesy margines-komputer; rogi zaokraglenie-cta (płyta) i zaokraglenie-karta (karta, pigułka 48 px: rx to połowa wysokości)
+-->
+<defs><clipPath id="plyta"><rect x="192" y="-32" width="320" height="280" rx="32"/></clipPath></defs>
+<rect class="piasek karta" x="32" y="72" width="144" height="176" rx="24"/>
+<rect class="czern cta" x="192" y="-32" width="320" height="280" rx="32"/>
+<text class="cyfra" clip-path="url(#plyta)" x="344" y="300">3</text>
+<rect class="blekit pill" x="216" y="176" width="112" height="48" rx="24"/>
+</svg>
+</div>
+<div class="words">
+<h1 class="name">Mateusz<br>Przetocki</h1>
+<p class="tag">Strony, które umawiają klientów na konsultację.</p>
+</div>
+</div>
+</body>
+</html>

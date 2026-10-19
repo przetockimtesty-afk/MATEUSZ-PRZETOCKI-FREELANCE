@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>O mnie · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px);">
+<x-import component-from-global-scope="MP.Breadcrumbs" items="{{okruszki}}"></x-import>
+<div style="margin-top: clamp(32px, 3.9vw, 56px); display: flex; flex-wrap: wrap; align-items: center; gap: clamp(36px, 5.6vw, 80px);">
+<div style="flex: 1 1 400px; min-width: 0; position: relative; height: clamp(420px, 44vw, 640px);">
+<div style="position: absolute; left: 0; top: 0; width: 78%; height: 86%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border-radius: 24px; background: var(--piasek-ciemny); color: var(--grafit); font-size: 14px; text-align: center;"><x-import component-from-global-scope="MP.Icon" name="image" size="42" stroke-width="1.2"></x-import>Twoje zdjęcie: portret do pasa</div>
+<div style="position: absolute; right: 0; bottom: 0; width: 44%; height: 42%; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; border: 8px solid var(--krem); border-radius: 30px; background: var(--piasek-ciemny); color: var(--grafit); font-size: 14px; text-align: center;"><x-import component-from-global-scope="MP.Icon" name="laptop" size="32" stroke-width="1.2"></x-import>Przy pracy</div>
+</div>
+<div style="flex: 1 1 440px; min-width: 0;">
+<x-import component-from-global-scope="MP.Eyebrow">O&nbsp;mnie</x-import>
+<h1 style="margin: 22px 0 26px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Strony robię <x-import component-from-global-scope="MP.Accent">sam</x-import>, od ankiety do startu</h1>
+<p style="margin: 0; max-width: 560px;">Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat obsługiwałem klientów w&nbsp;Castoramie, więc wiem, o&nbsp;co ludzie pytają, zanim się zdecydują.</p>
+<p style="margin: 16px 0 0; max-width: 560px;">Wcześniej budowałem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. Dziś robię strony na WordPressie i&nbsp;każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.</p>
+<p style="margin: 16px 0 0; max-width: 560px;">Pracuję z&nbsp;Krakowa i&nbsp;wszystko ustalam na piśmie, z&nbsp;terminem na każdy krok: propozycja w&nbsp;48 godzin, szkic w&nbsp;5&nbsp;dni roboczych, publikacja po Twojej akceptacji.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px;">
+<x-import component-from-global-scope="MP.Button" arrow="{{yes}}" href="#ankieta" style="flex: 0 1 calc((560px - 100%) * 999); max-width: 100%; display: grid;">Wyceń stronę w&nbsp;5&nbsp;minut</x-import>
+<x-import component-from-global-scope="MP.Button" variant="outline" href="#rozmowa" style="flex: 0 1 calc((560px - 100%) * 999); max-width: 100%; display: grid;">Umów 30&nbsp;minut na Google Meet</x-import>
+</div>
+</div>
+</div>
+</section>
+
+<section id="zasady" class="mp-dark" style="background: var(--czern); color: var(--krem); padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="margin-bottom: clamp(36px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Dlaczego ja</x-import>
+<h2 style="margin: 22px 0 0; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Trzy zasady, których się <x-import component-from-global-scope="MP.Accent">trzymam</x-import></h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 28px;">
+<div style="padding-bottom: 26px; border-top: 1px solid var(--linia-ciemna);"><x-import component-from-global-scope="MP.ProcessStep" number="1" title="Demo zawsze podpisuję jako demo" text="Projekty demonstracyjne mają pasek „Projekt demonstracyjny”, a&nbsp;ich dane są fikcyjne."></x-import></div>
+<div style="padding-bottom: 26px; border-top: 1px solid var(--linia-ciemna);"><x-import component-from-global-scope="MP.ProcessStep" number="2" title="Domena i&nbsp;dane są Twoje" text="Domena, hosting i&nbsp;strona są na Ciebie. Dostaję osobne konto, nigdy Twoich haseł."></x-import></div>
+<div style="padding-bottom: 26px; border-top: 1px solid var(--linia-ciemna);"><x-import component-from-global-scope="MP.ProcessStep" number="3" title="Propozycja w&nbsp;48 godzin" text="Po ankiecie dostajesz na piśmie pakiet, łączną kwotę i&nbsp;termin."></x-import></div>
+</div>
+</div>
+</section>
+
+<section id="nastepny-krok" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(72px, 8.4vw, 120px) clamp(20px, 2.8vw, 40px);">
+<div style="margin-bottom: 22px;"><x-import component-from-global-scope="MP.Eyebrow">Następny krok</x-import></div>
+<x-import component-from-global-scope="MP.CtaBand" text="5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Odpowiadam osobiście." primary-label="Wyceń stronę w&nbsp;5&nbsp;minut" primary-href="#ankieta" secondary-label="Umów 30&nbsp;minut na Google Meet" secondary-href="#rozmowa">Porozmawiajmy o&nbsp;<x-import component-from-global-scope="MP.Accent">Twojej</x-import> stronie</x-import>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px; margin-top: 32px;">
+<span style="font-size: 15px; color: var(--grafit);">Zobacz też:</span>
+<x-import component-from-global-scope="MP.ArrowLink" href="Realizacje.dc.html">Realizacje</x-import>
+<x-import component-from-global-scope="MP.ArrowLink" href="Jak-pracuje.dc.html">Jak pracuję</x-import>
+</div>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+<x-import component-from-global-scope="MP.MobileCtaBar" href="#ankieta" style="position: sticky; bottom: 0; z-index: 10; display: block;"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      yes: true,
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html' },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html' },
+        { label: 'Realizacje', href: 'Realizacje.dc.html' },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html', current: true },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      okruszki: [
+        { label: 'Strona główna', href: 'Main.dc.html' },
+        'O' + n + 'mnie'
+      ],
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

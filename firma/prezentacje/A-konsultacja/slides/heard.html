@@ -1,0 +1,31 @@
+<section id="heard" data-transition="fade" style="display:flex; flex-direction:column; gap:56px; padding:128px 128px 160px; background:#f6f7fb">
+  <div style="display:flex; flex-direction:column; gap:16px">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#b4501c">Podsumowanie</p>
+    <h2 style="font-family:'Inter Tight', Arial, sans-serif; font-size:64px; font-weight:800; line-height:1.1; color:#14213d">Co usłyszałem. Czy dobrze rozumiem?</h2>
+  </div>
+  <div style="display:grid; gap:32px; grid-template-columns:1fr 1fr">
+    <div style="display:flex; flex-direction:column; gap:12px; padding:40px; background:#fcfcfe; border:2px solid #e3e7ef; border-radius:24px; min-height:270px">
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#5d6782">Skąd przychodzą klienci</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.4; color:#b4501c">{{SKAD}}</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; padding:40px; background:#fcfcfe; border:2px solid #e3e7ef; border-radius:24px; min-height:270px">
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#5d6782">Ile osób pyta, ile się umawia</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.4; color:#14213d">Miesięcznie pyta: <span style="color:#b4501c">{{PYTA}}</span>, umawia się: <span style="color:#b4501c">{{UMAWIA}}</span></p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; padding:40px; background:#fcfcfe; border:2px solid #e3e7ef; border-radius:24px; min-height:270px">
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#5d6782">Co przeszkadza najbardziej</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.4; color:#b4501c">{{PRZESZKADZA}}</p>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:12px; padding:40px; background:#fdf0e8; border:2px solid #e8743b; border-radius:24px; min-height:270px">
+      <p style="font-family:Inter, Arial, sans-serif; font-size:24px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#5d6782">Cel</p>
+      <p style="font-family:Inter, Arial, sans-serif; font-size:32px; font-weight:600; line-height:1.4; color:#b4501c">{{CEL}}</p>
+    </div>
+  </div>
+  <div style="position:absolute; right:128px; bottom:64px; left:128px; display:flex; flex-direction:row; justify-content:space-between">
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#5d6782">Mateusz Przetocki</p>
+    <p style="font-family:Inter, Arial, sans-serif; font-size:24px; color:#5d6782">mateuszprzetocki.pl</p>
+  </div>
+  <aside>Pola w podwójnych nawiasach wypełnia automat z ankiety Google. Bez ankiety wpisujesz je w trakcie pytań, gdy ekran nie jest udostępniony: skąd ← pytanie 1, ile ← 2, co przeszkadza ← 4 (pomocniczo 3 i 5), cel ← 9. Piszesz słowami klienta, nie swoimi. Jeśli nie zdążysz, podsumuj na głos i pomiń ten slajd. Zapytaj: „Czy dobrze rozumiem? Coś bym poprawił?” Poprawki wpisz od razu: to sygnał, że słuchasz.
+
+Z ankiety, tylko dla Ciebie: co przeszkadza (pełna odpowiedź): {{PRZESZKADZA_PELNE}} · cel (pełna odpowiedź): {{CEL_PELNY}} · ostatnia osoba, która się nie umówiła: {{HISTORIA}} · najczęstsze pytania klientów: {{FAQ}} · co trzeba zebrać przed oceną: {{INFO}} · sieć: {{SIEC}} · gotowe: {{GOTOWE}} · strona: {{STRONA}} · na kiedy: {{KIEDY}} · budżet: {{BUDZET}} · e-mail: {{EMAIL}}</aside>
+</section>

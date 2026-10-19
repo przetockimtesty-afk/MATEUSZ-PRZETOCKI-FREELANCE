@@ -1,0 +1,14 @@
+<!-- @dsCard group="Akcje" height=200 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+    h('div', { className: 'mp-actions', style: { padding: '24px' } }, h(M.Button, { arrow: true }, 'Wyceń stronę w 5\u00a0minut'), h(M.Button, { variant: 'outline' }, 'Zobacz demo'), h(M.Button, { size: 'sm' }, 'Wyceń stronę')),
+    h('div', { className: 'mp-dark mp-actions', style: { padding: '24px' } }, h(M.Button, { variant: 'accent', arrow: true }, 'Wyceń stronę w 5\u00a0minut'), h(M.Button, { variant: 'outline-light' }, 'Wolisz porozmawiać? Umów 30\u00a0minut'))));
+</script>
+</body>
+</html>

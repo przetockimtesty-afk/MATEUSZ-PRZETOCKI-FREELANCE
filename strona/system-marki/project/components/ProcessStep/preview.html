@@ -1,0 +1,16 @@
+<!-- @dsCard group="Sekcje" height=272 width=1120 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { className: 'mp-dark', style: { padding: '8px 40px 40px', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '28px' } },
+    h(M.ProcessStep, { number: '1', title: 'Ankieta, 5\u00a0minut', text: 'Pytania o Twoją firmę i klientów. Bez telefonu.' }),
+    h(M.ProcessStep, { number: '2', title: 'Propozycja w 48\u00a0h', text: 'Jednostronicowa, na piśmie: pakiet, cena i termin.' }),
+    h(M.ProcessStep, { number: '3', title: 'Szkic w 5 dni roboczych', text: 'Z krótkim filmem i 2 rundami poprawek.' }),
+    h(M.ProcessStep, { number: '4', title: 'Start i 30 dni wsparcia', text: 'Publikacja, instrukcja i nagranie dla Ciebie.' })));
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- @dsCard group="Strona" height=154 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+    h('div', { style: { padding: '24px' } }, h(M.Logo, null)),
+    h('div', { className: 'mp-dark', style: { padding: '24px' } }, h(M.Logo, null))));
+</script>
+</body>
+</html>

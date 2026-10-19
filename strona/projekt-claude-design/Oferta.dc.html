@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Pakiety i ceny · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.8vw, 40px) clamp(40px, 4.5vw, 64px);">
+<x-import component-from-global-scope="MP.Breadcrumbs" items="{{okruszki}}"></x-import>
+<div style="margin-top: clamp(32px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Oferta</x-import>
+<h1 style="margin: 22px 0 24px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Pakiety i&nbsp;<x-import component-from-global-scope="MP.Accent">ceny</x-import></h1>
+<p style="margin: 0; max-width: 640px; font-size: clamp(17px, 1.32vw, 19px);">Trzy pakiety ze stałą ceną. W&nbsp;48 godzin od ankiety dostajesz na piśmie propozycję: pakiet, ewentualne dodatki, łączną kwotę i&nbsp;termin.</p>
+</div>
+</section>
+
+<section id="pakiety" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 16px clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px);">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; align-items: stretch;">
+<x-import component-from-global-scope="MP.PackageCard" style="display: grid;" name="Wizytówka" price="1&nbsp;200" for-whom="Gdy wystarczy, że klient Cię znajdzie i&nbsp;napisze." items="{{pakiety.p1}}" href="#ankieta"></x-import>
+<x-import component-from-global-scope="MP.PackageCard" style="display: grid;" name="Wizytówka, która umawia" price="1&nbsp;800" for-whom="Gdy chcesz mniej telefonów i&nbsp;krótsze pierwsze rozmowy." includes-previous="{{yes}}" items="{{pakiety.p2}}" recommended="{{yes}}" href="#ankieta"></x-import>
+<x-import component-from-global-scope="MP.PackageCard" style="display: grid;" name="Pełny start" price="2&nbsp;500" for-whom="Gdy chcesz od razu zbierać opinie i&nbsp;kontakty." includes-previous="{{yes}}" items="{{pakiety.p3}}" href="#ankieta"></x-import>
+</div>
+<p style="margin: 30px 0 0; padding-top: 22px; border-top: 1px solid var(--linia); font-size: 15px; color: var(--grafit);">Domena i&nbsp;hosting na Ciebie: pierwszy rok ok.&nbsp;55–75&nbsp;zł netto, potem ok.&nbsp;320–370&nbsp;zł netto rocznie. Ceny pakietów są stałe, a&nbsp;łączną kwotę z&nbsp;dodatkami podaję w&nbsp;propozycji.</p>
+</section>
+
+<section id="porownanie" style="background: var(--piasek); padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="margin-bottom: clamp(36px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Porównanie</x-import>
+<h2 style="margin: 22px 0 0; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Co jest w&nbsp;<x-import component-from-global-scope="MP.Accent">każdym</x-import> pakiecie</h2>
+</div>
+<div style="overflow-x: auto; border-radius: 24px; border: 1px solid var(--linia); background: var(--biel);">
+<table style="width: 100%; min-width: 760px; border-collapse: collapse; font-size: 15px; line-height: 1.5; text-align: left;">
+<caption style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;">Porównanie trzech pakietów</caption>
+<thead>
+<tr>
+<th scope="col" style="width: 18%; padding: 24px 24px 20px; border-bottom: 1px solid var(--linia); font: 600 12px/1.2 var(--font-tekst); letter-spacing: 0.14em; text-transform: uppercase; color: var(--grafit); vertical-align: bottom;">Pakiet</th>
+<th scope="col" style="width: 27%; padding: 24px 24px 20px; border-bottom: 1px solid var(--linia); font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em; vertical-align: bottom;">Wizytówka</th>
+<th scope="col" style="width: 28%; padding: 24px 24px 20px; border-bottom: 1px solid var(--blekit-linia); background: var(--blekit-jasny); font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em; vertical-align: bottom;"><span style="display: block; margin-bottom: 10px;"><x-import component-from-global-scope="MP.Tag" tone="black">Polecam</x-import></span>Wizytówka, która umawia</th>
+<th scope="col" style="width: 27%; padding: 24px 24px 20px; border-bottom: 1px solid var(--linia); font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em; vertical-align: bottom;">Pełny start</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th scope="row" style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font-weight: 600; vertical-align: top;">Cena</th>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font: 600 22px/1.2 var(--font-naglowki); vertical-align: top;">1&nbsp;200&nbsp;zł</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--blekit-linia); background: var(--blekit-jasny); font: 600 22px/1.2 var(--font-naglowki); vertical-align: top;">1&nbsp;800&nbsp;zł</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font: 600 22px/1.2 var(--font-naglowki); vertical-align: top;">2&nbsp;500&nbsp;zł</td>
+</tr>
+<tr>
+<th scope="row" style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font-weight: 600; vertical-align: top;">Dla kogo</th>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Gdy wystarczy, że klient Cię znajdzie i&nbsp;napisze</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--blekit-linia); background: var(--blekit-jasny); vertical-align: top;">Gdy chcesz mniej telefonów i&nbsp;krótsze pierwsze rozmowy</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Gdy chcesz od razu zbierać opinie i&nbsp;kontakty</td>
+</tr>
+<tr>
+<th scope="row" style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font-weight: 600; vertical-align: top;">Strona</th>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Jedna strona, 6&nbsp;sekcji, wersja na telefon</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--blekit-linia); background: var(--blekit-jasny); vertical-align: top;">To samo</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">To samo</td>
+</tr>
+<tr>
+<th scope="row" style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font-weight: 600; vertical-align: top;">Kontakt</th>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Formularz z&nbsp;potwierdzeniem dla klienta</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--blekit-linia); background: var(--blekit-jasny); vertical-align: top;">Formularz wstępnych pytań i&nbsp;kalendarz konsultacji</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">To samo</td>
+</tr>
+<tr>
+<th scope="row" style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font-weight: 600; vertical-align: top;">Treści</th>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Napisane na podstawie ankiety</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--blekit-linia); background: var(--blekit-jasny); vertical-align: top;">Plus odpowiedzi na najczęstsze pytania i&nbsp;miejsce na opinie</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Plus film powitalny 60&nbsp;s i&nbsp;poradnik PDF dla klientów</td>
+</tr>
+<tr>
+<th scope="row" style="padding: 18px 24px; border-bottom: 1px solid var(--linia); font-weight: 600; vertical-align: top;">Google</th>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Podstawy SEO, polityka prywatności, informacje formalne</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--blekit-linia); background: var(--blekit-jasny); vertical-align: top;">Plus Profil Firmy w&nbsp;Google, gdy firma spełnia wytyczne</td>
+<td style="padding: 18px 24px; border-bottom: 1px solid var(--linia); vertical-align: top;">Plus system próśb o&nbsp;opinie (karta z&nbsp;kodem QR, SMS, e-mail)</td>
+</tr>
+<tr>
+<th scope="row" style="padding: 18px 24px; font-weight: 600; vertical-align: top;">Termin</th>
+<td style="padding: 18px 24px; vertical-align: top;">Ok.&nbsp;2&nbsp;tygodnie od otrzymania materiałów</td>
+<td style="padding: 18px 24px; background: var(--blekit-jasny); vertical-align: top;">To samo</td>
+<td style="padding: 18px 24px; vertical-align: top;">To samo</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p style="margin: 14px 0 0; font-size: 14px; line-height: 1.5; color: var(--grafit);">Na telefonie tabelę przesuwasz palcem w&nbsp;bok.</p>
+</div>
+</section>
+
+<section id="masz-strone" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(72px, 8.4vw, 120px) clamp(20px, 2.8vw, 40px) 0;">
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px 48px; padding: clamp(0px, 1.1vw, 16px);">
+<x-import component-from-global-scope="MP.IconCircle" name="calendar-check"></x-import>
+<div style="flex: 1 1 420px; min-width: 0;">
+<h2 style="margin: 0 0 8px; font: 600 26px/1.25 var(--font-naglowki); letter-spacing: -0.01em;">Masz już stronę?</h2>
+<p style="margin: 0; max-width: 620px; color: var(--grafit);">Kalendarz konsultacji i&nbsp;formularz wstępnych pytań dodam do Twojej obecnej strony, w&nbsp;jej stylu.</p>
+</div>
+<div style="display: flex; flex-direction: column; align-items: flex-start; gap: 12px;">
+<div style="font: 600 30px/1 var(--font-naglowki); letter-spacing: -0.02em;"><span style="font: 500 16px/1 var(--font-tekst); letter-spacing: 0; color: var(--grafit);">od </span>800&nbsp;<span style="font: 500 16px/1 var(--font-tekst); letter-spacing: 0; color: var(--grafit);">zł</span></div>
+<x-import component-from-global-scope="MP.ArrowLink" href="Kontakt.dc.html">Napisz, jaką masz stronę</x-import>
+</div>
+</div>
+</x-import>
+</section>
+
+<section id="dodatki" style="padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box; display: flex; flex-wrap: wrap; gap: clamp(36px, 5.6vw, 80px);">
+<div style="flex: 0.8 1 300px; min-width: 0;">
+<x-import component-from-global-scope="MP.Eyebrow">Dodatki</x-import>
+<h2 style="margin: 22px 0 20px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Dodatki, gdy ich <x-import component-from-global-scope="MP.Accent">potrzebujesz</x-import></h2>
+<p style="margin: 0; max-width: 460px; color: var(--grafit);">Do każdego pakietu. Podaję ceny „od”, a&nbsp;dokładną kwotę dostajesz w&nbsp;propozycji po ankiecie.</p>
+</div>
+<ul style="flex: 1.2 1 480px; min-width: 0; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linia);">
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--linia);"><span style="flex: 1 1 280px; font-weight: 500;">Profil Firmy w&nbsp;Google: założenie albo porządki</span><span style="font: 600 20px/1.2 var(--font-naglowki); white-space: nowrap;"><span style="font: 500 14px/1 var(--font-tekst); color: var(--grafit);">od </span>300&nbsp;zł</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--linia);"><span style="flex: 1 1 280px; font-weight: 500;">System próśb o&nbsp;opinie: karta z&nbsp;kodem QR, SMS i&nbsp;e-mail</span><span style="font: 600 20px/1.2 var(--font-naglowki); white-space: nowrap;"><span style="font: 500 14px/1 var(--font-tekst); color: var(--grafit);">od </span>250&nbsp;zł</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--linia);"><span style="flex: 1 1 280px; font-weight: 500;">Film powitalny 60&nbsp;s: scenariusz, nagranie, montaż</span><span style="font: 600 20px/1.2 var(--font-naglowki); white-space: nowrap;"><span style="font: 500 14px/1 var(--font-tekst); color: var(--grafit);">od </span>400&nbsp;zł</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--linia);"><span style="flex: 1 1 280px; font-weight: 500;">Poradnik PDF dla Twoich klientów (treść merytoryczna od Ciebie)</span><span style="font: 600 20px/1.2 var(--font-naglowki); white-space: nowrap;"><span style="font: 500 14px/1 var(--font-tekst); color: var(--grafit);">od </span>300&nbsp;zł</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--linia);"><span style="flex: 1 1 280px; font-weight: 500;">Proste logo, tylko razem ze stroną</span><span style="font: 600 20px/1.2 var(--font-naglowki); white-space: nowrap;"><span style="font: 500 14px/1 var(--font-tekst); color: var(--grafit);">od </span>400&nbsp;zł</span></li>
+<li style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; padding: 20px 0; border-bottom: 1px solid var(--linia);"><span style="flex: 1 1 280px; font-weight: 500;">Statystyki odwiedzin z&nbsp;oknem zgód na cookies</span><span style="font: 600 20px/1.2 var(--font-naglowki); white-space: nowrap;"><span style="font: 500 14px/1 var(--font-tekst); color: var(--grafit);">od </span>600&nbsp;zł</span></li>
+</ul>
+</div>
+</section>
+
+<section id="warunki" style="background: var(--piasek); padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="margin-bottom: clamp(36px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Warunki</x-import>
+<h2 style="margin: 22px 0 0; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Wszystko jest na <x-import component-from-global-scope="MP.Accent">piśmie</x-import></h2>
+</div>
+<ul style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 0 48px;">
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="check" size="22"></x-import><span>Zadatek 40%, reszta przed publikacją. Dwie rundy poprawek.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="check" size="22"></x-import><span>Prawa autorskie do treści i&nbsp;grafik, które dla Ciebie tworzę, przechodzą na Ciebie po pełnej zapłacie, na podstawie umowy na piśmie. Zdjęcia z&nbsp;banków zdjęć, czcionki i&nbsp;wtyczki mają własne licencje.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="check" size="22"></x-import><span>30&nbsp;dni wsparcia po starcie. Potem drobne zmiany na zlecenie, wyceniane przed pracą.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="check" size="22"></x-import><span>Faktura bez VAT (działalność nierejestrowana) albo faktura VAT przez Useme, wtedy cena +&nbsp;23% VAT.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="check" size="22"></x-import><span>Domena i&nbsp;hosting na Ciebie, płatne u&nbsp;dostawcy: pierwszy rok ok.&nbsp;55–75&nbsp;zł netto, potem ok.&nbsp;320–370&nbsp;zł netto rocznie (z&nbsp;VAT ok.&nbsp;68–92&nbsp;zł i&nbsp;ok.&nbsp;394–455&nbsp;zł).</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="check" size="22"></x-import><span>Propozycja jest ważna 14&nbsp;dni.</span></li>
+<li style="display: flex; gap: 14px; align-items: flex-start; padding: 20px 0; border-top: 1px solid var(--linia);"><x-import component-from-global-scope="MP.Icon" name="check" size="22"></x-import><span>Umowę zawieramy na odległość, więc konsument i&nbsp;jednoosobowa firma mają 14&nbsp;dni na odstąpienie; zasady są w&nbsp;<a href="Regulamin.dc.html" style="color: var(--czern); text-decoration: underline; text-underline-offset: 3px;">regulaminie</a>.</span></li>
+</ul>
+</div>
+</section>
+
+<section id="nastepny-krok" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(72px, 8.4vw, 120px) clamp(20px, 2.8vw, 40px);">
+<div style="margin-bottom: 22px;"><x-import component-from-global-scope="MP.Eyebrow">Następny krok</x-import></div>
+<x-import component-from-global-scope="MP.CtaBand" text="5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Wypełnienie do niczego nie zobowiązuje." primary-label="Wyceń stronę w&nbsp;5&nbsp;minut" primary-href="#ankieta" secondary-label="Wolisz porozmawiać? Umów 30&nbsp;minut" secondary-href="#rozmowa">Sprawdź, ile kosztowałaby <x-import component-from-global-scope="MP.Accent">Twoja</x-import> strona</x-import>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px; margin-top: 32px;">
+<span style="font-size: 15px; color: var(--grafit);">Zobacz też:</span>
+<x-import component-from-global-scope="MP.ArrowLink" href="Jak-pracuje.dc.html">Jak pracuję</x-import>
+<x-import component-from-global-scope="MP.ArrowLink" href="Pytania.dc.html">Pytania o&nbsp;cenę i&nbsp;warunki</x-import>
+</div>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+<x-import component-from-global-scope="MP.MobileCtaBar" href="#ankieta" style="position: sticky; bottom: 0; z-index: 10; display: block;"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":5200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      yes: true,
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html' },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html', current: true },
+        { label: 'Realizacje', href: 'Realizacje.dc.html' },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      okruszki: [
+        { label: 'Strona główna', href: 'Main.dc.html' },
+        'Oferta'
+      ],
+      pakiety: {
+        p1: ['Jedna strona, 6' + n + 'sekcji, wersja na telefon', 'Formularz z' + n + 'potwierdzeniem dla klienta', 'Treści napisane na podstawie ankiety', 'Podstawy SEO, polityka prywatności, informacje formalne', 'Gotowa w' + n + 'ok.' + n + '2' + n + 'tygodnie od otrzymania materiałów'],
+        p2: ['Formularz wstępnych pytań i' + n + 'kalendarz konsultacji', 'Odpowiedzi na najczęstsze pytania i' + n + 'miejsce na opinie', 'Profil Firmy w' + n + 'Google, gdy firma spełnia wytyczne'],
+        p3: ['Film powitalny 60' + n + 's i' + n + 'poradnik PDF dla klientów', 'System próśb o' + n + 'opinie: karta z' + n + 'kodem QR, SMS, e-mail']
+      },
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

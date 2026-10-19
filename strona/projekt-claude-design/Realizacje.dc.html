@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Realizacje · Mateusz Przetocki</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="ds/mp/tokens.css">
+<link rel="stylesheet" href="ds/mp/components/bundle.css">
+<script src="ds/mp/components/bundle.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+body{margin:0}
+</style>
+</helmet>
+<div style="background: var(--krem); color: var(--czern); font-family: var(--font-tekst); font-size: clamp(17px, 1.25vw, 18px); line-height: 1.6;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: var(--krem);">
+<div style="max-width: 1280px; margin: 0 auto;">
+<x-import component-from-global-scope="MP.SiteHeader" items="{{nav}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+</div>
+</div>
+
+<section style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(24px, 2.8vw, 40px) clamp(20px, 2.8vw, 40px) clamp(40px, 4.5vw, 64px);">
+<x-import component-from-global-scope="MP.Breadcrumbs" items="{{okruszki}}"></x-import>
+<div style="margin-top: clamp(32px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Realizacje</x-import>
+<h1 style="margin: 22px 0 24px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(40px, 4.45vw, 64px); line-height: 1.05; letter-spacing: -0.02em; text-wrap: balance;">Realizacje</h1>
+<p style="margin: 0; max-width: 640px; font-size: clamp(17px, 1.32vw, 19px);">Strony z&nbsp;umawianiem konsultacji, które możesz kliknąć. Demo zawsze podpisuję jako demo.</p>
+</div>
+</section>
+
+<section id="demo-a" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 16px clamp(20px, 2.8vw, 40px) 0;">
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 48px; padding: clamp(0px, 1.1vw, 16px);">
+<div style="flex: 0.85 1 340px; min-width: 0;">
+<x-import component-from-global-scope="MP.Tag" tone="sand">Projekt demonstracyjny</x-import>
+<h2 style="margin: 18px 0 14px; font: 600 30px/1.2 var(--font-naglowki); letter-spacing: -0.02em;">Strona ekspertki kredytowej</h2>
+<p style="margin: 0 0 22px; font-size: 17px; color: var(--grafit);">Klient z&nbsp;polecenia szuka doradczyni wieczorem i&nbsp;widzi tylko numer telefonu. Na tej stronie czyta odpowiedzi, wypełnia krótki formularz wstępnej analizy i&nbsp;sam wybiera termin konsultacji.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 30px;">
+<x-import component-from-global-scope="MP.Tag">formularz analizy</x-import>
+<x-import component-from-global-scope="MP.Tag">kalendarz</x-import>
+<x-import component-from-global-scope="MP.Tag">pytania i&nbsp;odpowiedzi</x-import>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 12px;">
+<x-import component-from-global-scope="MP.Button" arrow="{{yes}}" href="#demo" style="flex: 0 1 calc((560px - 100%) * 999); max-width: 100%; display: grid;">Zobacz na żywo</x-import>
+<x-import component-from-global-scope="MP.Button" variant="outline" href="Demo-doradca.dc.html" style="flex: 0 1 calc((560px - 100%) * 999); max-width: 100%; display: grid;">Opis przykładu</x-import>
+</div>
+</div>
+<div style="flex: 1.15 1 420px; min-width: 0; position: relative; box-sizing: border-box; padding: 0 60px 40px 0;" role="img" aria-label="Strona ekspertki kredytowej z dema na komputerze i na telefonie">
+<x-import component-from-global-scope="MP.LaptopFrame">
+<div style="font-size: 10px;">
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 22px; border-bottom: 1px solid var(--linia);"><b style="font: 600 12px/1 var(--font-naglowki);">Anna Nowak</b><span style="display: flex; gap: 12px; color: var(--grafit);"><span>Oferta</span><span>Pytania</span><span>Kontakt</span></span></div>
+<div style="display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 18px; align-items: center; padding: 26px 22px 30px;">
+<div>
+<div style="margin-bottom: 10px; font: 600 22px/1.1 var(--font-naglowki); letter-spacing: -0.02em;">Kredyt bez stresu, z&nbsp;jednym doradcą</div>
+<div style="width: 95%; height: 8px; margin: 8px 0; border-radius: 4px; background: var(--piasek);"></div>
+<div style="width: 75%; height: 8px; margin: 8px 0; border-radius: 4px; background: var(--piasek);"></div>
+<span style="display: inline-flex; align-items: center; height: 26px; margin-top: 12px; padding: 0 12px; border-radius: 9999px; background: var(--czern); color: var(--krem); font: 600 9px/1 var(--font-tekst);">Umów konsultację</span>
+</div>
+<div style="padding: 10px; border: 1px solid var(--linia); border-radius: 12px;">
+<b style="font-size: 9px;">Wybierz termin</b>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 4px; margin: 6px 0 8px;">
+<div style="border: 1px solid var(--linia); border-radius: 7px; text-align: center; padding: 4px 0; font-size: 7px; color: var(--grafit);">wt<b style="display: block; font: 600 10px/1.2 var(--font-tekst); color: var(--czern);">27</b></div>
+<div style="border: 1px solid var(--linia); border-radius: 7px; text-align: center; padding: 4px 0; font-size: 7px; color: var(--grafit);">śr<b style="display: block; font: 600 10px/1.2 var(--font-tekst); color: var(--czern);">28</b></div>
+<div style="border: 1px solid var(--czern); background: var(--czern); border-radius: 7px; text-align: center; padding: 4px 0; font-size: 7px; color: var(--szary-na-czerni);">czw<b style="display: block; font: 600 10px/1.2 var(--font-tekst); color: var(--krem);">29</b></div>
+<div style="border: 1px solid var(--linia); border-radius: 7px; text-align: center; padding: 4px 0; font-size: 7px; color: var(--grafit);">pt<b style="display: block; font: 600 10px/1.2 var(--font-tekst); color: var(--czern);">30</b></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px;">
+<div style="border: 1px solid var(--linia); border-radius: 9999px; text-align: center; padding: 4px 0; font: 500 8px/1 var(--font-tekst);">18:00</div>
+<div style="border: 1px solid var(--czern); background: var(--blekit-jasny); border-radius: 9999px; text-align: center; padding: 4px 0; font: 600 8px/1 var(--font-tekst);">19:30</div>
+<div style="border: 1px solid var(--linia); border-radius: 9999px; text-align: center; padding: 4px 0; font: 500 8px/1 var(--font-tekst);">20:00</div>
+</div>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding: 0 22px 22px;">
+<div style="height: 54px; box-sizing: border-box; padding: 9px; border: 1px solid var(--linia); border-radius: 10px;"><div style="width: 60%; height: 5px; margin: 0 0 6px; border-radius: 4px; background: var(--piasek);"></div><div style="width: 90%; height: 5px; border-radius: 4px; background: var(--piasek);"></div></div>
+<div style="height: 54px; box-sizing: border-box; padding: 9px; border: 1px solid var(--linia); border-radius: 10px;"><div style="width: 50%; height: 5px; margin: 0 0 6px; border-radius: 4px; background: var(--piasek);"></div><div style="width: 85%; height: 5px; border-radius: 4px; background: var(--piasek);"></div></div>
+<div style="height: 54px; box-sizing: border-box; padding: 9px; border: 1px solid var(--linia); border-radius: 10px;"><div style="width: 65%; height: 5px; margin: 0 0 6px; border-radius: 4px; background: var(--piasek);"></div><div style="width: 80%; height: 5px; border-radius: 4px; background: var(--piasek);"></div></div>
+</div>
+</div>
+</x-import>
+<div style="position: absolute; right: 0; bottom: 0;">
+<x-import component-from-global-scope="MP.PhoneFrame" width="150" height="300">
+<div style="padding: 10px; text-align: left;">
+<div style="margin-bottom: 8px; font: 600 14px/1.15 var(--font-naglowki);">Kredyt bez stresu, z&nbsp;jednym doradcą</div>
+<div style="height: 8px; margin: 8px 0; border-radius: 4px; background: var(--piasek);"></div>
+<div style="width: 70%; height: 8px; margin: 8px 0; border-radius: 4px; background: var(--piasek);"></div>
+<span style="display: inline-flex; align-items: center; height: 24px; margin-top: 8px; padding: 0 10px; border-radius: 9999px; background: var(--czern); color: var(--krem); font: 600 8px/1 var(--font-tekst);">Umów konsultację</span>
+<div style="margin-top: 12px; padding: 8px; border: 1px solid var(--linia); border-radius: 12px;">
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; margin-bottom: 6px;">
+<div style="border: 1px solid var(--linia); border-radius: 7px; text-align: center; padding: 3px 0; font-size: 6px; color: var(--grafit);">śr<b style="display: block; font: 600 9px/1.2 var(--font-tekst); color: var(--czern);">28</b></div>
+<div style="border: 1px solid var(--czern); background: var(--czern); border-radius: 7px; text-align: center; padding: 3px 0; font-size: 6px; color: var(--szary-na-czerni);">czw<b style="display: block; font: 600 9px/1.2 var(--font-tekst); color: var(--krem);">29</b></div>
+<div style="border: 1px solid var(--linia); border-radius: 7px; text-align: center; padding: 3px 0; font-size: 6px; color: var(--grafit);">pt<b style="display: block; font: 600 9px/1.2 var(--font-tekst); color: var(--czern);">30</b></div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3px;">
+<div style="border: 1px solid var(--czern); background: var(--blekit-jasny); border-radius: 9999px; text-align: center; padding: 3px 0; font: 600 7px/1 var(--font-tekst);">19:30</div>
+<div style="border: 1px solid var(--linia); border-radius: 9999px; text-align: center; padding: 3px 0; font: 500 7px/1 var(--font-tekst);">20:00</div>
+</div>
+</div>
+</div>
+</x-import>
+</div>
+</div>
+</div>
+</x-import>
+</section>
+
+<section id="klientka" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: 20px clamp(20px, 2.8vw, 40px) clamp(72px, 8.4vw, 120px);">
+<x-import component-from-global-scope="MP.Card" tone="dashed" style="display: grid;">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px;">
+<x-import component-from-global-scope="MP.Tag" tone="outline">Strona klientki</x-import>
+<p style="margin: 0; flex: 1 1 420px; font-size: 16px; line-height: 1.55; color: var(--grafit);">W&nbsp;listopadzie powstaje pierwsza strona dla doradczyni kredytowej. Pokażę ją tutaj za jej zgodą, a&nbsp;po 30&nbsp;dniach dodam liczby i&nbsp;jej opinię.</p>
+</div>
+</x-import>
+</section>
+
+<section id="wczesniej" style="background: var(--piasek); padding-top: clamp(72px, 8.4vw, 120px); padding-bottom: clamp(72px, 8.4vw, 120px);">
+<div style="max-width: 1200px; margin: 0 auto; padding-left: clamp(20px, 2.8vw, 40px); padding-right: clamp(20px, 2.8vw, 40px); box-sizing: border-box;">
+<div style="margin-bottom: clamp(36px, 3.9vw, 56px);">
+<x-import component-from-global-scope="MP.Eyebrow">Wcześniejsze projekty</x-import>
+<h2 style="margin: 22px 0 20px; font-family: var(--font-naglowki); font-weight: 600; font-size: clamp(30px, 3.1vw, 44px); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance;">Sklepy i&nbsp;wtyczki, które zbudowałem <x-import component-from-global-scope="MP.Accent">dla siebie</x-import></h2>
+<p style="margin: 0; max-width: 640px; color: var(--grafit);">Zanim zacząłem robić strony dla specjalistów, prowadziłem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. To projekty własne, nie realizacje dla klientów.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; background: var(--piasek-ciemny); color: var(--grafit); font-size: 13px;"><x-import component-from-global-scope="MP.Icon" name="image" size="28" stroke-width="1.2"></x-import>Miejsce na zrzut ekranu</div>
+<div><x-import component-from-global-scope="MP.Tag" tone="sand">Projekt własny</x-import></div>
+<h3 style="margin: 0; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Konfigurator statuetki z&nbsp;podglądem</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--grafit);">Wtyczka do własnego sklepu na WooCommerce.</p>
+</div>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; background: var(--piasek-ciemny); color: var(--grafit); font-size: 13px;"><x-import component-from-global-scope="MP.Icon" name="image" size="28" stroke-width="1.2"></x-import>Miejsce na zrzut ekranu</div>
+<div><x-import component-from-global-scope="MP.Tag" tone="sand">Projekt własny</x-import></div>
+<h3 style="margin: 0; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Zestawy produktów</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--grafit);">Wtyczka do własnego sklepu na WooCommerce.</p>
+</div>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; background: var(--piasek-ciemny); color: var(--grafit); font-size: 13px;"><x-import component-from-global-scope="MP.Icon" name="image" size="28" stroke-width="1.2"></x-import>Miejsce na zrzut ekranu</div>
+<div><x-import component-from-global-scope="MP.Tag" tone="sand">Projekt własny</x-import></div>
+<h3 style="margin: 0; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Stały pasek z&nbsp;przyciskiem zakupu</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--grafit);">Wtyczka do własnego sklepu na WooCommerce.</p>
+</div>
+</x-import>
+<x-import component-from-global-scope="MP.Card" style="display: grid;">
+<div style="display: flex; flex-direction: column; gap: 16px;">
+<div style="aspect-ratio: 16 / 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; border-radius: 16px; background: var(--piasek-ciemny); color: var(--grafit); font-size: 13px;"><x-import component-from-global-scope="MP.Icon" name="image" size="28" stroke-width="1.2"></x-import>Miejsce na zrzut ekranu</div>
+<div><x-import component-from-global-scope="MP.Tag" tone="sand">Projekt własny</x-import></div>
+<h3 style="margin: 0; font: 600 20px/1.3 var(--font-naglowki); letter-spacing: -0.01em;">Pomiar skuteczności reklam</h3>
+<p style="margin: 0; font-size: 15px; line-height: 1.55; color: var(--grafit);">Piksel Meta we własnym sklepie na WooCommerce.</p>
+</div>
+</x-import>
+</div>
+</div>
+</section>
+
+<section id="nastepny-krok" style="max-width: 1200px; margin: 0 auto; box-sizing: border-box; padding: clamp(72px, 8.4vw, 120px) clamp(20px, 2.8vw, 40px);">
+<div style="margin-bottom: 22px;"><x-import component-from-global-scope="MP.Eyebrow">Następny krok</x-import></div>
+<x-import component-from-global-scope="MP.CtaBand" text="5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Wypełnienie do niczego nie zobowiązuje." primary-label="Wyceń stronę w&nbsp;5&nbsp;minut" primary-href="#ankieta" secondary-label="Wolisz porozmawiać? Umów 30&nbsp;minut" secondary-href="#rozmowa">Sprawdź, ile kosztowałaby <x-import component-from-global-scope="MP.Accent">Twoja</x-import> strona</x-import>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 14px 32px; margin-top: 32px;">
+<span style="font-size: 15px; color: var(--grafit);">Zobacz też:</span>
+<x-import component-from-global-scope="MP.ArrowLink" href="Demo-doradca.dc.html">Jak działa strona ekspertki kredytowej</x-import>
+<x-import component-from-global-scope="MP.ArrowLink" href="Dla-kogo.dc.html">Strony dla Twojej branży</x-import>
+</div>
+</section>
+
+<x-import component-from-global-scope="MP.SiteFooter" columns="{{stopka}}" links="{{prawne}}" button-href="#ankieta" logo-href="Main.dc.html"></x-import>
+
+<x-import component-from-global-scope="MP.MobileCtaBar" href="#ankieta" style="position: sticky; bottom: 0; z-index: 10; display: block;"></x-import>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    var n = ' ';
+    return {
+      yes: true,
+      nav: [
+        { label: 'Dla kogo', menu: true, href: 'Dla-kogo.dc.html' },
+        { label: 'Oferta', menu: true, href: 'Oferta.dc.html' },
+        { label: 'Realizacje', href: 'Realizacje.dc.html', current: true },
+        { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+        { label: 'Kontakt', href: 'Kontakt.dc.html' }
+      ],
+      okruszki: [
+        { label: 'Strona główna', href: 'Main.dc.html' },
+        'Realizacje'
+      ],
+      stopka: [
+        { title: 'Pakiety', items: [
+          { label: 'Wizytówka · 1' + n + '200' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Wizytówka, która umawia · 1' + n + '800' + n + 'zł', href: 'Oferta.dc.html' },
+          { label: 'Pełny start · 2' + n + '500' + n + 'zł', href: 'Oferta.dc.html' }
+        ] },
+        { title: 'Branże', items: [
+          { label: 'Doradcy kredytowi', href: 'Doradcy.dc.html' },
+          { label: 'Biura rachunkowe', href: 'Biura.dc.html' },
+          { label: 'Psycholodzy i' + n + 'terapeuci', href: 'Terapeuci.dc.html' }
+        ] },
+        { title: 'Na skróty', items: [
+          { label: 'Realizacje', href: 'Realizacje.dc.html' },
+          { label: 'Jak pracuję', href: 'Jak-pracuje.dc.html' },
+          { label: 'O' + n + 'mnie', href: 'O-mnie.dc.html' },
+          { label: 'Pytania', href: 'Pytania.dc.html' },
+          { label: 'Kontakt', href: 'Kontakt.dc.html' }
+        ] }
+      ],
+      prawne: [
+        { label: 'Polityka prywatności', href: 'Polityka.dc.html' },
+        { label: 'Regulamin', href: 'Regulamin.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

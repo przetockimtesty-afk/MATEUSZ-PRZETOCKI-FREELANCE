@@ -1,0 +1,14 @@
+<!-- @dsCard group="Karty" height=280 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '24px', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' } },
+    h(M.Card, null, h(M.IconCircle, { name: 'calendar-check' }), h('h3', { className: 'mp-card-title', style: { marginTop: '26px' } }, 'Klient umawia się sam'), h('p', { className: 'mp-card-text', style: { margin: 0 } }, 'Kalendarz konsultacji w 2 kliknięciach i potwierdzenie e-mailem.')),
+    h(M.Card, { tone: 'dashed' }, h('h3', { className: 'mp-card-title' }, 'Nie widzisz swojej branży?'), h('p', { className: 'mp-card-text', style: { margin: 0 } }, 'Napisz, sprawdzę, czy to dla Ciebie.'))));
+</script>
+</body>
+</html>

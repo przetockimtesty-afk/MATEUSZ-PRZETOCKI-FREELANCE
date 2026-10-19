@@ -1,0 +1,15 @@
+<!-- @dsCard group="Sekcje" height=324 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '8px 24px 24px', borderTop: '0' } },
+    h(M.FaqItem, { open: true, question: 'Ile to kosztuje?', answer: 'Pakiety kosztują 1\u00a0200, 1\u00a0800 albo 2\u00a0500 zł. Łączną kwotę z ewentualnymi dodatkami dostajesz na piśmie w 48 godzin od ankiety.' }),
+    h(M.FaqItem, { question: 'Czy muszę rozmawiać przez telefon?' }),
+    h(M.FaqItem, { question: 'Kto jest właścicielem domeny i strony?' })));
+</script>
+</body>
+</html>

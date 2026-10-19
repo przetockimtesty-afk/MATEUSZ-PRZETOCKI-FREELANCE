@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Plansza: kolory, kroje, elementy</title>
+<link rel="stylesheet" href="makieta.css">
+<style>
+  body { width: 1200px; padding: 56px; }
+  svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .tytul { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px; }
+  .tytul h2 { font-size: 40px; }
+  .tytul p { color: var(--grafit); font-size: 15px; max-width: 360px; text-align: right; }
+  .kolory { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-bottom: 14px; }
+  .kolory2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 48px; }
+  .kolor { background: var(--biel); border: 1px solid var(--linia); border-radius: 20px; padding: 10px 10px 16px; }
+  .probka { height: 108px; border-radius: 13px; margin-bottom: 14px; border: 1px solid rgba(22,21,20,.08); display: flex; align-items: flex-end; padding: 10px 12px; font: 600 13px/1 var(--font-tekst); }
+  .kolory2 .probka { height: 64px; }
+  .kolor strong { display: block; font: 600 15px/1.2 var(--font-tekst); padding: 0 6px; }
+  .kolor code { display: block; font: 500 13px/1.3 ui-monospace, "DejaVu Sans Mono", monospace; color: var(--grafit); padding: 4px 6px 0; }
+  .kolor span { display: block; font-size: 12.5px; line-height: 1.4; color: var(--grafit); padding: 6px 6px 0; }
+  .dwie { display: grid; grid-template-columns: 1.25fr .75fr; gap: 14px; margin-bottom: 14px; }
+  .pole { border-radius: 24px; padding: 32px; }
+  .pole.jasne { background: var(--biel); border: 1px solid var(--linia); }
+  .pole.ciemne { background: var(--czern); color: var(--krem); }
+  .etyk { font: 600 11px/1 var(--font-tekst); letter-spacing: .14em; text-transform: uppercase; color: var(--grafit); margin-bottom: 18px; display: block; }
+  .ciemne .etyk { color: var(--szary); }
+  .kroje h1 { font-size: 58px; margin-bottom: 16px; }
+  .kroje h2 { font-size: 34px; margin-bottom: 14px; }
+  .kroje p { font-size: 17px; max-width: 560px; }
+  .kroje .nadtytul { margin: 22px 0 0; }
+  .opis-krojow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--linia); font-size: 13px; color: var(--grafit); line-height: 1.45; }
+  .opis-krojow b { display: block; color: var(--czern); font: 600 15px/1.3 var(--font-tekst); margin-bottom: 2px; }
+  .opis-krojow .s { font: 400 19px/1.2 var(--font-akcent); font-style: italic; color: var(--czern); }
+  .opis-krojow .t { font-family: var(--font-naglowki); }
+  .cyfry { display: flex; gap: 26px; font: 400 76px/0.9 var(--font-akcent); color: var(--blekit); margin: 8px 0 22px; }
+  .ciemne h3 { color: var(--krem); font-size: 26px; margin-bottom: 8px; }
+  .ciemne p { color: var(--szary); font-size: 15px; margin-bottom: 22px; }
+  .ciemne .rzad { display: flex; gap: 10px; flex-wrap: wrap; }
+  .elementy { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; }
+  .rzad { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .rzad + .rzad { margin-top: 14px; }
+  .mini-pakiet { position: relative; background: var(--blekit-jasny); border: 1.5px solid var(--czern); border-radius: 20px; padding: 26px 22px 20px; margin-top: 12px; }
+  .mini-pakiet .etykieta-czarna { position: absolute; top: -15px; left: 22px; }
+  .mini-pakiet b { font: 600 17px/1.2 var(--font-naglowki); display: block; }
+  .mini-pakiet .c { font: 600 34px/1 var(--font-naglowki); letter-spacing: -0.03em; margin: 8px 0 4px; display: block; }
+  .mini-pakiet small { color: var(--grafit); font-size: 13px; }
+  .faq { border-top: 1px solid var(--linia); }
+  .faq div { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--linia); font: 600 15px/1.3 var(--font-tekst); }
+  .karta-branzy { background: var(--biel); border: 1px solid var(--linia); border-radius: 20px; padding: 20px; margin-top: 16px; }
+  .karta-branzy .nadtytul { font-size: 10px; margin-bottom: 10px; }
+  .karta-branzy .nadtytul::before { display: none; }
+  .karta-branzy b { font: 600 18px/1.2 var(--font-naglowki); display: block; margin-bottom: 12px; }
+</style>
+</head>
+<body>
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <symbol id="i-strzalka" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+  <symbol id="i-kalendarz" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="m9 16 2 2 4-4"/></symbol>
+</svg>
+
+<div class="tytul">
+  <div><div class="nadtytul">Plansza wyglądu</div><h2>Krem, czerń i jasny <span class="akcent">błękit</span></h2></div>
+  <p>Kontrasty liczone według WCAG. Błękit na jasnym tle tylko jako ozdoba, nigdy jako kolor tekstu.</p>
+</div>
+
+<div class="kolory">
+  <div class="kolor"><div class="probka" style="background:#F5F2EC">Aa</div><strong>Krem</strong><code>#F5F2EC</code><span>tło strony · czerń na nim 16,3:1</span></div>
+  <div class="kolor"><div class="probka" style="background:#E8E0D4">Aa</div><strong>Piasek</strong><code>#E8E0D4</code><span>co druga sekcja · czerń 13,9:1</span></div>
+  <div class="kolor"><div class="probka" style="background:#FFFFFF">Aa</div><strong>Biel</strong><code>#FFFFFF</code><span>karty i zrzuty · czerń 18,2:1</span></div>
+  <div class="kolor"><div class="probka" style="background:#161514;color:#F5F2EC">Aa</div><strong>Czerń</strong><code>#161514</code><span>tekst, przyciski, ciemne pasy</span></div>
+  <div class="kolor"><div class="probka" style="background:#A7C7E7">Aa</div><strong>Błękit</strong><code>#A7C7E7</code><span>akcent na czerni · 10,4:1</span></div>
+</div>
+<div class="kolory2">
+  <div class="kolor"><div class="probka" style="background:#5C574F;color:#F5F2EC">Aa</div><strong>Grafit</strong><code>#5C574F</code><span>tekst pomocniczy · 6,4:1 na kremie</span></div>
+  <div class="kolor"><div class="probka" style="background:#DCE8F3">Aa</div><strong>Błękit jasny</strong><code>#DCE8F3</code><span>polecany pakiet, etykiety · czerń 14,7:1</span></div>
+  <div class="kolor"><div class="probka" style="background:#161514;color:#C9C2B6">Aa</div><strong>Szary na czerni</strong><code>#C9C2B6</code><span>akapity w ciemnych pasach · 10,3:1</span></div>
+  <div class="kolor"><div class="probka" style="background:#D9D0C3"></div><strong>Linia</strong><code>#D9D0C3</code><span>linie i ramki kart, tylko ozdoba</span></div>
+</div>
+
+<div class="dwie">
+  <div class="pole jasne kroje">
+    <span class="etyk">Kroje i rozmiary</span>
+    <h1>Klienci umawiają się <span class="akcent">sami.</span></h1>
+    <h2>Nagłówek sekcji, 44&nbsp;px</h2>
+    <p>Tekst w Inter, 18&nbsp;px, interlinia 1,6. Wiersz ma najwyżej ok. 70 znaków, żeby czytało się go bez wysiłku.</p>
+    <div class="nadtytul">Nadtytuł, 12 px, wielkie litery</div>
+    <div class="opis-krojow">
+      <div><b class="t">Inter Tight 600</b>nagłówki, zawsze zwykłymi literami, odstęp liter −2%</div>
+      <div><b class="s">Instrument Serif</b>kursywa, jedno słowo akcentu w dużym nagłówku</div>
+      <div><b>Inter 400 i 600</b>tekst, przyciski, etykiety i nadtytuły</div>
+    </div>
+  </div>
+  <div class="pole ciemne">
+    <span class="etyk">Na czarnym pasie</span>
+    <div class="cyfry"><span>1</span><span>2</span><span>3</span><span>4</span></div>
+    <h3>Od ankiety do <span class="akcent">gotowej</span> strony</h3>
+    <p>Akapity w kolorze szarym na czerni, cyfry i słowo akcentu w błękicie.</p>
+    <div class="rzad"><span class="btn btn-blekit">Wyceń stronę w 5&nbsp;minut <svg class="i"><use href="#i-strzalka"/></svg></span></div>
+    <div class="rzad" style="margin-top:10px"><span class="btn btn-obrys-jasny">Umów 30&nbsp;minut</span></div>
+  </div>
+</div>
+
+<div class="elementy">
+  <div class="pole jasne">
+    <span class="etyk">Przyciski i etykiety</span>
+    <div class="rzad"><span class="btn btn-czarny">Wyceń stronę w 5&nbsp;minut <svg class="i"><use href="#i-strzalka"/></svg></span></div>
+    <div class="rzad"><span class="btn btn-obrys">Zobacz demo</span><span class="link">Opis przykładu <svg class="i"><use href="#i-strzalka"/></svg></span></div>
+    <div class="rzad"><span class="etykieta">formularz analizy</span><span class="etykieta">kalendarz</span><span class="etykieta etykieta-piasek">Projekt demonstracyjny</span></div>
+  </div>
+  <div class="pole jasne">
+    <span class="etyk">Karty</span>
+    <div class="mini-pakiet"><span class="etykieta etykieta-czarna">Polecam</span><b>Wizytówka, która umawia</b><span class="c">1&nbsp;800 <small>zł</small></span><small>czarna ramka na błękicie jasnym</small></div>
+    <div class="karta-branzy"><div class="nadtytul">01 · Finanse</div><b>Doradcy kredytowi</b><div class="rzad"><span class="etykieta">kalendarz</span><span class="etykieta">informacje KNF</span></div></div>
+  </div>
+  <div class="pole jasne">
+    <span class="etyk">Listy, ikony, ramki</span>
+    <div class="faq"><div>Ile to kosztuje? <svg class="i"><use href="#i-plus"/></svg></div><div>Ile to trwa? <svg class="i"><use href="#i-plus"/></svg></div></div>
+    <div class="rzad" style="margin-top:22px"><span class="ikona-kolko"><svg class="i"><use href="#i-kalendarz"/></svg></span><span style="font-size:14px;color:var(--grafit)">Ikony Lucide, kreska 1,5&nbsp;px; w kółku z błękitu jasnego</span></div>
+    <div class="rzad" style="margin-top:22px"><span style="width:56px;height:96px;border-radius:16px;background:var(--czern);padding:4px;display:block"><span style="display:block;height:100%;border-radius:12px;background:var(--biel)"></span></span><span style="font-size:14px;color:var(--grafit);max-width:200px">Zrzuty zawsze w tych samych ramkach: telefon 40&nbsp;px, laptop 16&nbsp;px</span></div>
+  </div>
+</div>
+</body>
+</html>

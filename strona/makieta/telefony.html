@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><link rel="stylesheet" href="makieta.css">
+<style>
+  body { background: var(--krem); padding: 56px 64px 48px; width: max-content; }
+  .rzad { display: flex; gap: 56px; align-items: flex-start; }
+  .tel { display: flex; flex-direction: column; align-items: center; }
+  .ramka { width: 414px; height: 868px; border-radius: 56px; background: var(--czern); padding: 12px; position: relative; }
+  .ramka::before { content: ""; position: absolute; top: 24px; left: 50%; width: 110px; height: 30px; margin-left: -55px; border-radius: 999px; background: var(--czern); z-index: 2; }
+  .status { height: 50px; border-radius: 44px 44px 0 0; background: var(--krem); display: flex; justify-content: space-between; align-items: center; padding: 6px 34px 0; font: 600 15px/1 var(--font-tekst); }
+  .status i { display: flex; gap: 5px; align-items: center; }
+  .status i b { display: block; width: 18px; height: 10px; border-radius: 3px; border: 1.5px solid var(--czern); }
+  .status i em { display: block; width: 4px; height: 10px; border-radius: 2px; background: var(--czern); }
+  .sand .status { background: var(--piasek); }
+  iframe { width: 390px; height: 794px; border: 0; border-radius: 0 0 44px 44px; background: var(--krem); display: block; }
+  .opis { margin-top: 22px; font: 600 18px/1.3 var(--font-tekst); }
+  .opis small { display: block; font: 400 15px/1.4 var(--font-tekst); color: var(--grafit); margin-top: 4px; text-align: center; }
+</style></head><body>
+<div class="rzad">
+  <div class="tel"><div class="ramka"><div class="status"><span>9:41</span><i><em></em><em></em><b></b></i></div><iframe src="strona.html?bar=0" scrolling="no"></iframe></div><div class="opis" style="text-align:center">Pierwszy ekran<small>logo, ikona menu, przyciski na całą szerokość</small></div></div>
+  <div class="tel sand"><div class="ramka"><div class="status"><span>9:41</span><i><em></em><em></em><b></b></i></div><iframe src="strona.html#dla-kogo" scrolling="no"></iframe></div><div class="opis" style="text-align:center">Dla kogo<small>karty jedna pod drugą, pasek z przyciskiem na dole</small></div></div>
+  <div class="tel"><div class="ramka"><div class="status"><span>9:41</span><i><em></em><em></em><b></b></i></div><iframe src="strona.html#pakiety" scrolling="no"></iframe></div><div class="opis" style="text-align:center">Pakiety i ceny<small>polecany pakiet idzie pierwszy</small></div></div>
+</div>
+</body></html>

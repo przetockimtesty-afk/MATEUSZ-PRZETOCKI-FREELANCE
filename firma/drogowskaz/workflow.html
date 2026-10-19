@@ -1,0 +1,930 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Workflow A i B: od pierwszego e-maila do opinii</title>
+<style>
+  @page { size: A4; margin: 16mm 16mm 18mm 16mm; }
+  @page :first { margin: 0; }
+  :root {
+    --ink: #14213d;
+    --ink-2: #3d4a66;
+    --muted: #6b7690;
+    --line: #e3e7ef;
+    --bg-soft: #f5f7fb;
+    --accent: #e8743b;
+    --accent-soft: #fdf0e8;
+    --green: #2f9e6e;
+    --green-soft: #e8f6ef;
+    --red: #c94a4a;
+    --red-soft: #fbeceb;
+    --blue: #3a6fd8;
+    --blue-soft: #eaf0fc;
+    --yellow: #a87500;
+    --yellow-soft: #fff6dd;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Inter", "DejaVu Sans", sans-serif;
+    color: var(--ink);
+    font-size: 9.2pt;
+    line-height: 1.45;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  h1, h2, h3, h4 { font-family: "Inter Display", "Inter", sans-serif; margin: 0; line-height: 1.2; }
+  h2.section { font-size: 20pt; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 3mm 0; }
+  .kicker { font-size: 8pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5mm; }
+  .lead { font-size: 10.4pt; color: var(--ink-2); margin: 0 0 4mm 0; line-height: 1.45; }
+  h3 { font-size: 12pt; font-weight: 700; margin: 4mm 0 1.6mm; break-after: avoid; }
+  h4 { font-size: 9.9pt; font-weight: 700; margin: 2.6mm 0 1mm; break-after: avoid; }
+  p { margin: 0 0 2mm; }
+  ul, ol { margin: 0 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: .8mm; }
+  strong { font-weight: 700; }
+  .muted { color: var(--muted); }
+  .small { font-size: 8.3pt; }
+  .page { page-break-before: always; }
+
+  /* Okładka */
+  .cover { height: 297mm; width: 210mm; position: relative; overflow: hidden; background: var(--ink); color: #fff; padding: 26mm 20mm; }
+  .cover .blob1 { position: absolute; right: -60mm; top: -50mm; width: 190mm; height: 190mm; border-radius: 50%; background: #1f3160; }
+  .cover .blob2 { position: absolute; right: 18mm; top: 22mm; width: 52mm; height: 52mm; border-radius: 50%; background: var(--accent); }
+  .cover .blob3 { position: absolute; left: -40mm; bottom: -70mm; width: 160mm; height: 160mm; border-radius: 50%; background: #1a2a52; }
+  .cover .inner { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; }
+  .cover .tag { font-size: 9pt; letter-spacing: .2em; text-transform: uppercase; color: #f6b38f; font-weight: 700; }
+  .cover h1 { font-size: 40pt; font-weight: 800; letter-spacing: -0.02em; margin-top: 64mm; line-height: 1.05; max-width: 160mm; }
+  .cover h1 span { color: var(--accent); }
+  .cover .sub { font-size: 13pt; color: #c9d2e6; margin-top: 7mm; max-width: 150mm; line-height: 1.45; }
+  .cover .meta { margin-top: auto; display: flex; gap: 9mm; font-size: 9pt; color: #c9d2e6; }
+  .cover .meta b { display: block; color: #fff; font-size: 10.5pt; margin-top: 1mm; white-space: nowrap; }
+  .cover .path { display: flex; gap: 3mm; margin-top: 14mm; align-items: center; }
+  .cover .step { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 3mm; padding: 3mm 4mm; font-size: 9pt; }
+  .cover .step b { display: block; font-size: 13pt; color: #fff; }
+  .cover .arrow { color: var(--accent); font-weight: 800; font-size: 14pt; }
+
+  /* Pudełka */
+  .box { border-radius: 3mm; padding: 3.2mm 4.2mm; margin: 2.6mm 0; break-inside: avoid; }
+  .box.soft { background: var(--bg-soft); }
+  .box.accent { background: var(--accent-soft); border-left: 1.4mm solid var(--accent); }
+  .box.green { background: var(--green-soft); border-left: 1.4mm solid var(--green); }
+  .box.red { background: var(--red-soft); border-left: 1.4mm solid var(--red); }
+  .box.blue { background: var(--blue-soft); border-left: 1.4mm solid var(--blue); }
+  .box.yellow { background: var(--yellow-soft); border-left: 1.4mm solid #e0a800; }
+  .box.dark { background: var(--ink); color: #fff; }
+  .box.dark .muted { color: #b8c2da; }
+  .box h4:first-child, .box h3:first-child { margin-top: 0; }
+  .box p:last-child, .box ul:last-child, .box ol:last-child { margin-bottom: 0; }
+  .quote { font-size: 13pt; font-weight: 700; line-height: 1.35; font-family: "Inter Display", sans-serif; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3.5mm; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; }
+  .card { border: 1px solid var(--line); border-radius: 3mm; padding: 3mm 3.5mm; break-inside: avoid; background: #fff; }
+  .card h4 { margin-top: 0; }
+  .card .num { font-size: 20pt; font-weight: 800; color: var(--accent); font-family: "Inter Display"; line-height: 1; }
+
+  table { width: 100%; border-collapse: collapse; margin: 2mm 0 3mm; font-size: 8.6pt; break-inside: avoid; }
+  th { text-align: left; background: var(--ink); color: #fff; font-weight: 600; padding: 1.9mm 2.4mm; font-size: 8.4pt; }
+  th:first-child { border-top-left-radius: 2mm; }
+  th:last-child { border-top-right-radius: 2mm; }
+  td { padding: 1.7mm 2.4mm; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:nth-child(even) td { background: #fafbfd; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  table.compact { font-size: 8.2pt; }
+  table.compact td { padding: 1.4mm 2.2mm; }
+
+  .pill { display: inline-block; font-size: 7.4pt; font-weight: 700; padding: .5mm 2mm; border-radius: 10mm; background: var(--accent-soft); color: var(--accent); letter-spacing: .02em; white-space: nowrap; }
+  .pill.g { background: var(--green-soft); color: var(--green); }
+  .pill.b { background: var(--blue-soft); color: var(--blue); }
+  .pill.r { background: var(--red-soft); color: var(--red); }
+  .pill.y { background: var(--yellow-soft); color: var(--yellow); }
+
+  .meter { display: inline-block; width: 15mm; height: 2.2mm; background: var(--line); border-radius: 2mm; position: relative; overflow: hidden; vertical-align: middle; }
+  .meter i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--accent); border-radius: 2mm; }
+
+  /* Checklisty */
+  ul.check { list-style: none; padding-left: 0; }
+  ul.check li { padding-left: 6.5mm; position: relative; break-inside: avoid; }
+  ul.check li::before { content: ""; position: absolute; left: 0; top: .9mm; width: 3.2mm; height: 3.2mm; border: 1.3px solid var(--ink-2); border-radius: .8mm; background: #fff; }
+  ul.check .done { display: block; color: var(--muted); font-size: 7.9pt; }
+  .cols2 { columns: 2; column-gap: 6mm; }
+  ul.check.big { font-size: 9pt; }
+  ul.check.big li { margin-bottom: 1.8mm; padding-left: 7mm; }
+  ul.check.big li::before { width: 3.8mm; height: 3.8mm; top: .5mm; }
+  ul.check.big .done { font-size: 8.2pt; margin-top: .3mm; }
+  .stage { display: flex; justify-content: space-between; align-items: baseline; background: var(--ink); color: #fff; border-radius: 2.5mm; padding: 2.2mm 4mm; margin: 3.2mm 0 2mm; break-after: avoid; }
+  .stage b { font-size: 11pt; font-family: "Inter Display"; }
+  .stage span { font-size: 8.4pt; color: #c9d2e6; }
+  .stage.a { background: var(--accent); }
+  .stage.a span { color: #fff; }
+
+  /* Tygodnie */
+  .week { display: grid; grid-template-columns: 27mm 1fr; gap: 4mm; border-top: 1px solid var(--line); padding: 2.4mm 0; break-inside: avoid; }
+  .week .wk { font-family: "Inter Display"; }
+  .week .wk b { display: block; font-size: 13pt; font-weight: 800; line-height: 1.15; }
+  .week .wk span { font-size: 8pt; color: var(--muted); }
+  .week .goal { font-weight: 700; margin-bottom: 1.2mm; }
+
+  /* Wiadomości */
+  .msg { background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 3mm 4mm; margin: 1.6mm 0 2.8mm; font-size: 8.9pt; break-inside: avoid; }
+  .msg .lbl { font-size: 7.6pt; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 1.5mm; }
+  .msg p { margin-bottom: 1.6mm; }
+
+  /* Lejek */
+  .funnel { display: flex; flex-direction: column; align-items: center; gap: 1.2mm; margin: 3mm 0; }
+  .funnel div { background: var(--ink); color: #fff; text-align: center; padding: 2.2mm 0; border-radius: 1.5mm; font-size: 9pt; }
+  .funnel div b { font-size: 11pt; }
+
+  /* Etapy */
+  .ladder { display: grid; grid-template-columns: repeat(4, 1fr); gap: 3mm; align-items: end; margin: 3mm 0 1mm; }
+  .ladder .bar { background: var(--ink); color: #fff; border-radius: 2mm 2mm 0 0; padding: 3mm; display: flex; flex-direction: column; justify-content: flex-start; }
+  .ladder .bar b { font-size: 14pt; font-family: "Inter Display"; }
+  .ladder .bar span { font-size: 8pt; color: #c9d2e6; }
+  .ladder .bar.a { background: var(--accent); }
+  .ladder .bar.a span { color: #fff; }
+  .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; margin: 2mm 0 3mm; }
+  .steps div { background: var(--bg-soft); border-radius: 2mm; padding: 2.4mm 2.6mm; font-size: 8.2pt; break-inside: avoid; }
+  .steps b { display: block; color: var(--accent); font-size: 8pt; letter-spacing: .04em; margin-bottom: .6mm; }
+  .path4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.4mm; margin: 2mm 0 3mm; }
+  .path4 div { border: 1px solid var(--line); border-top: 1.2mm solid var(--accent); border-radius: 2mm; padding: 2.4mm 3mm; font-size: 8.3pt; break-inside: avoid; }
+  .path4 b { display: block; font-size: 9.4pt; margin-bottom: .8mm; }
+
+  .toc { columns: 2; column-gap: 8mm; margin-top: 3mm; }
+  .toc div { break-inside: avoid; display: flex; gap: 3mm; padding: 1.7mm 0; border-bottom: 1px solid var(--line); }
+  .toc .n { font-weight: 800; color: var(--accent); width: 7mm; font-family: "Inter Display"; }
+
+  .footnote { font-size: 7.8pt; color: var(--muted); margin-top: 2mm; }
+  a { color: var(--blue); text-decoration: none; }
+  .src { columns: 2; column-gap: 7mm; }
+  .src h4 { break-after: avoid; margin-top: 2mm; }
+  .src ul { padding-left: 4mm; }
+  .src li { font-size: 7.7pt; margin-bottom: .6mm; break-inside: avoid; }
+
+  /* --- v3: dodatki --- */
+  body { font-size: 9.3pt; }
+  .part { font-size: 7.4pt; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2mm; }
+  .part b { color: var(--ink-2); }
+  .cover .leafline { margin-top: 6mm; display: inline-flex; align-items: center; gap: 2.5mm; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); border-radius: 10mm; padding: 1.6mm 4mm; font-size: 9.5pt; color: #e8eefb; }
+  .cover .leafline svg { width: 5mm; height: 5mm; }
+  .leaf { display: inline-block; width: 4mm; height: 4mm; vertical-align: -0.8mm; }
+  table.zones td:first-child { font-weight: 700; white-space: nowrap; }
+  tr.zg td:first-child { color: var(--green); }
+  tr.zy td:first-child { color: var(--yellow); }
+  tr.zr td:first-child { color: var(--red); }
+  table.chg td:nth-child(2) { color: var(--muted); }
+  .flow { display: grid; grid-template-columns: 1fr 7mm 1fr 7mm 1fr; align-items: stretch; gap: 0; margin: 2.5mm 0 3mm; }
+  .flow .st { border: 1px solid var(--line); border-top: 1.2mm solid var(--accent); border-radius: 2mm; padding: 2.6mm 3mm; font-size: 8.4pt; background: #fff; }
+  .flow .st b { display: block; font-size: 9.6pt; margin-bottom: .8mm; }
+  .flow .ar { display: flex; align-items: center; justify-content: center; color: var(--accent); font-weight: 800; font-size: 13pt; }
+  .tight li { margin-bottom: .4mm; }
+  .day { margin: 0 0 1mm; }
+  .day b { display: inline-block; min-width: 25mm; }
+  .wkhead { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1.2px solid var(--ink); padding-bottom: .8mm; margin: 3.2mm 0 1.6mm; break-after: avoid; }
+  .wkhead b { font-family: "Inter Display"; font-size: 11pt; }
+  .wkhead span { font-size: 8.2pt; color: var(--muted); }
+  .goalline { font-size: 8.4pt; color: var(--green); font-weight: 700; margin: .8mm 0 0; }
+  table.review th, table.review td { font-size: 7.8pt; padding: 1.4mm 1.4mm; text-align: center; }
+  table.review td { height: 6.2mm; }
+  table.review td:first-child, table.review th:first-child { text-align: left; }
+  .src { columns: 2; column-gap: 7mm; }
+  .src li { font-size: 7.6pt; }
+  .note { font-size: 7.9pt; color: var(--muted); }
+
+  .card td.num, .card th.num { font-size: 8.2pt; color: var(--ink); font-family: "Inter", sans-serif; font-weight: 600; line-height: 1.4; }
+
+  /* --- v4: drogowskaz --- */
+  .map { display: grid; grid-template-columns: 25mm repeat(4, 1fr); gap: 2mm 2.2mm; margin: 2.5mm 0 3mm; }
+  .map .ph { font-size: 7.4pt; font-weight: 800; letter-spacing: .07em; text-transform: uppercase; color: #fff; background: var(--ink); border-radius: 2mm; padding: 2mm 2.2mm; display: flex; flex-direction: column; justify-content: center; line-height: 1.25; }
+  .map .ph span { font-weight: 500; letter-spacing: 0; text-transform: none; font-size: 7.2pt; opacity: .85; margin-top: .6mm; }
+  .map .ph.a { background: var(--accent); }
+  .map .ph.g { background: var(--green); }
+  .map .ph.b { background: var(--blue); }
+  .map .ph.y { background: #b98200; }
+  .map .c { border: 1px solid var(--line); border-radius: 2mm; padding: 2mm 2.4mm 2mm; font-size: 7.8pt; line-height: 1.35; position: relative; background: #fff; break-inside: avoid; }
+  .map .c b { display: block; font-size: 8.7pt; margin-bottom: .6mm; padding-right: 6mm; line-height: 1.25; }
+  .map .c i { font-style: normal; color: var(--muted); font-size: 7.2pt; display: block; margin-top: .8mm; }
+  .map .c .n { position: absolute; top: 1.7mm; right: 2.2mm; font-weight: 800; color: var(--accent); font-family: "Inter Display", sans-serif; font-size: 9pt; }
+  .map .c.tel { border: 1.4px dashed var(--accent); background: var(--accent-soft); }
+
+  .anat { background: #fff; border: 1px solid var(--line); border-radius: 3mm; padding: 3mm 4mm; margin: 1.6mm 0 2.6mm; break-inside: avoid; font-size: 8.9pt; }
+  .anat .lbl { font-size: 7.6pt; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 1.8mm; }
+  .anat p { margin: 0 0 1.5mm; padding: .4mm 0 .4mm 3mm; border-left: 1.1mm solid var(--line); }
+  .anat p:last-child { margin-bottom: 0; }
+  .anat .t { display: block; font-size: 6.9pt; font-weight: 800; text-transform: uppercase; letter-spacing: .09em; margin-bottom: .3mm; }
+  .anat .k1 { border-color: #9aa3b8; } .anat .k1 .t { color: #6b7690; }
+  .anat .k2 { border-color: var(--red); } .anat .k2 .t { color: var(--red); }
+  .anat .k3 { border-color: var(--green); } .anat .k3 .t { color: var(--green); }
+  .anat .k4 { border-color: var(--blue); } .anat .k4 .t { color: var(--blue); }
+  .anat .k5 { border-color: var(--accent); } .anat .k5 .t { color: var(--accent); }
+
+  .doc { border: 1px solid #cfd6e4; border-radius: 2mm; background: #fff; padding: 4mm 5mm 3.5mm; margin: 2mm 0 2.5mm; box-shadow: 0 0 0 1.6mm var(--bg-soft); break-inside: avoid; }
+  .doc .dh { display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1.4px solid var(--ink); padding-bottom: 1.6mm; margin-bottom: 2mm; }
+  .doc .dh b { font-family: "Inter Display", sans-serif; font-size: 12pt; }
+  .doc .dh span { font-size: 7.8pt; color: var(--muted); }
+  .doc h5 { font-size: 7.6pt; margin: 2.4mm 0 .8mm; text-transform: uppercase; letter-spacing: .08em; color: var(--accent); font-family: "Inter", sans-serif; }
+  .doc p, .doc li { font-size: 8.3pt; }
+  .doc p { margin-bottom: 1.2mm; }
+  .doc ul { margin-bottom: 1mm; }
+  .doc table { margin: 1mm 0 1.5mm; }
+  td.rec { background: var(--accent-soft) !important; }
+
+  .phone { display: grid; grid-template-columns: 1fr 1fr; gap: 3mm; }
+  .tagline { display: inline-block; font-size: 7.2pt; font-weight: 700; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+  table.score td { vertical-align: middle; }
+  table.score .meter { width: 12mm; }
+  .sm { font-size: 7.9pt; }
+  .tick { color: var(--green); font-weight: 800; }
+  .cross { color: var(--red); font-weight: 800; }
+  .wire { counter-reset: w; list-style: none; padding-left: 0; }
+  .wire li { counter-increment: w; position: relative; padding-left: 7mm; margin-bottom: 1.1mm; }
+  .wire li::before { content: counter(w); position: absolute; left: 0; top: .1mm; width: 4.6mm; height: 4.6mm; border-radius: 50%; background: var(--ink); color: #fff; font-size: 7pt; font-weight: 800; text-align: center; line-height: 4.6mm; }
+  .wire.acc li::before { background: var(--accent); }
+  .cover .rule { margin-top: 5mm; font-size: 9.6pt; color: #e8eefb; }
+  .cover .rule b { color: #f6b38f; }
+  .box.dark table td { background: #fff !important; color: var(--ink); }
+  .box.dark table th { background: var(--accent); }
+  .persona h4 { margin-bottom: 1mm; }
+  .persona .sm b { color: var(--ink); }
+  .persona ul { margin-bottom: 1mm; }
+  .kv { display: grid; grid-template-columns: 28mm 1fr; gap: .8mm 3mm; font-size: 8.2pt; margin: 1.5mm 0; }
+  .kv b { color: var(--ink-2); }
+  .toc div { padding: 1.15mm 0; }
+  table.review td { height: 7.4mm; }
+  table.review td + td, table.review th + th { border-left: 1px solid var(--line); }
+  table.review th + th { border-left-color: #2c3a5c; }
+  em.code { white-space: nowrap; font-style: normal; font-family: "DejaVu Sans Mono", monospace; font-size: .9em; color: var(--ink-2); }
+
+  /* legenda */
+  .legend-list { list-style: none; padding: 0; margin: 0 0 1mm; }
+  .legend-list li { display: flex; gap: 2.4mm; align-items: flex-start; margin-bottom: 1.3mm; padding: 0; }
+  .legend-list li::before { content: none; }
+  .sw { flex: 0 0 8mm; height: 4.4mm; border-radius: 1mm; margin-top: .3mm; }
+  .sw.dark { background: var(--ink); }
+  .sw.accent { background: var(--accent-soft); border-left: 1.4mm solid var(--accent); }
+  .sw.green { background: var(--green-soft); border-left: 1.4mm solid var(--green); }
+  .sw.blue { background: var(--blue-soft); border-left: 1.4mm solid var(--blue); }
+  .sw.yellow { background: var(--yellow-soft); border-left: 1.4mm solid #e0a800; }
+  .sw.red { background: var(--red-soft); border-left: 1.4mm solid var(--red); }
+  .sw.soft { background: var(--bg-soft); border: 1px solid var(--line); }
+
+  .nw { white-space: nowrap; }
+
+  /* architektura strony (portfolio) */
+  .arch { display: grid; grid-template-columns: 1fr 6mm 1.25fr 6mm 1.25fr; gap: 1.8mm 0; align-items: stretch; margin: 2mm 0 2.5mm; }
+  .arch .n { border: 1px solid var(--line); border-radius: 2mm; padding: 1.8mm 2.4mm; font-size: 7.8pt; line-height: 1.3; background: #fff; }
+  .arch .n b { display: block; font-size: 8.6pt; margin-bottom: .4mm; }
+  .arch .n i { font-style: normal; color: var(--muted); font-size: 7.2pt; display: block; margin-top: .5mm; }
+  .arch .n.main { background: var(--ink); color: #fff; display: flex; flex-direction: column; justify-content: center; }
+  .arch .n.main i { color: #b8c2da; }
+  .arch .n.demo { border: 1.4px dashed var(--accent); background: var(--accent-soft); }
+  .arch .ar { display: flex; align-items: center; justify-content: center; color: var(--muted); font-weight: 800; }
+
+  /* workflow */
+  .flow { display: grid; grid-template-columns: repeat(7, 1fr); gap: 1.6mm; margin: 2.5mm 0 3mm; }
+  .flow .f { border-radius: 2mm; padding: 2mm 2mm 2.2mm; background: var(--bg-soft); border: 1px solid var(--line); font-size: 7.4pt; line-height: 1.3; position: relative; }
+  .flow .f b { display: block; font-size: 8.4pt; margin-bottom: .6mm; color: var(--ink); }
+  .flow .f .k { display: block; font-size: 6.8pt; font-weight: 800; letter-spacing: .08em; color: var(--accent); margin-bottom: .4mm; }
+  .flow .f.dark { background: var(--ink); color: #c9d2e6; border-color: var(--ink); }
+  .flow .f.dark b { color: #fff; }
+  .pill.a { background: var(--blue-soft); color: var(--blue); }
+  .pill.bb { background: var(--green-soft); color: var(--green); }
+  table.wsteps td:first-child { font-weight: 800; color: var(--accent); width: 7mm; }
+  table.wsteps td.t { white-space: nowrap; width: 17mm; }
+  table.wsteps td.ok { width: 44mm; color: var(--ink-2); }
+  table.wsteps td.tool { width: 30mm; color: var(--muted); }
+  .lane { font-size: 7.4pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: 2.4mm 0 1mm; }
+  .twocol { display: grid; grid-auto-flow: column; grid-template-columns: 1fr 1fr; column-gap: 6mm; }
+  .phase { font-size: 7.4pt; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); margin: 2.2mm 0 1mm; break-after: avoid; }
+</style>
+</head>
+<body>
+<!-- ================= OKŁADKA ================= -->
+<section class="cover">
+  <div class="blob1"></div><div class="blob2"></div><div class="blob3"></div>
+  <div class="inner">
+    <div class="tag">Workflow · wersja A&nbsp;i B · 15.10.2026</div>
+    <h1>Od pierwszego <span class="nw">e-maila</span> do <span>opinii klienta</span></h1>
+    <div class="sub">Każda czynność po kolei, dla obu wersji oferty: A&nbsp;„Konsultacja” (doradcy kredytowi i&nbsp;inni specjaliści) i&nbsp;B „Wycena” (pranie tapicerki, sprzątanie, mycie okien). Uzupełnia drogowskaz: tam jest „dlaczego”, tu jest „co i&nbsp;kiedy”.</div>
+    <div class="path">
+      <div class="step">Faza 1<b>Pozyskanie</b><span class="nw">e-mail</span> o&nbsp;zgodę</div><div class="arrow">→</div>
+      <div class="step">Faza 2<b>Sprzedaż</b>film, ankieta, propozycja</div><div class="arrow">→</div>
+      <div class="step">Fazy 3–5<b>Projekt</b>start, budowa, oddanie</div><div class="arrow">→</div>
+      <div class="step">Faza 6<b>Po oddaniu</b>opinia, polecenie</div>
+    </div>
+    <div class="meta">
+      <div>Przed „TAK”<b>ok. 10&nbsp;min na firmę</b></div>
+      <div>Po „TAK” do propozycji<b>ok. 2&nbsp;h</b></div>
+      <div>Projekt<b>ok. 15–30&nbsp;h</b></div>
+      <div>Telefon<b>tylko na prośbę klienta</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MAPA PROCESU ================= -->
+<section class="page">
+  <div class="kicker">Mapa procesu</div>
+  <h2 class="section">Siedem faz, jedna kolejność</h2>
+  <p class="lead">Proces jest ten sam w&nbsp;obu wersjach. Różni się tym, co budujesz w&nbsp;fazie 4, i&nbsp;kilkoma szczegółami po drodze. Przy każdej czynności masz czas, narzędzie albo szablon i&nbsp;warunek „gotowe, gdy”, czyli moment, w&nbsp;którym przechodzisz dalej.</p>
+
+  <div class="flow">
+    <div class="f dark"><span class="k">FAZA 0</span><b>Przygotowanie</b>raz, w&nbsp;tygodniach 0–1</div>
+    <div class="f"><span class="k">FAZA 1</span><b>Pozyskanie</b>filtr, <span class="nw">e-mail</span> o&nbsp;zgodę, przedstawienia</div>
+    <div class="f"><span class="k">FAZA 2</span><b>Sprzedaż na piśmie</b>film, ankieta, propozycja</div>
+    <div class="f"><span class="k">FAZA 3</span><b>Start</b>umowa, zadatek, materiały</div>
+    <div class="f"><span class="k">FAZA 4</span><b>Budowa</b>A: formularz i&nbsp;kalendarz · B: kalkulator</div>
+    <div class="f"><span class="k">FAZA 5</span><b>Oddanie</b>testy, odbiór, publikacja</div>
+    <div class="f"><span class="k">FAZA 6</span><b>Po oddaniu</b>opinia, polecenie, raport</div>
+  </div>
+
+  <table class="compact">
+    <tr><th style="width:26mm">Faza</th><th>Co się dzieje</th><th style="width:24mm">Twój czas</th><th style="width:48mm">Gotowe, gdy…</th></tr>
+    <tr><td><strong>0. Przygotowanie</strong></td><td>CRM, ankiety A&nbsp;i B, szablony propozycji i&nbsp;umowy, pakiet zgłoszeń, silnik wyceny, dema, portfolio</td><td>ok. 15&nbsp;h, raz</td><td>możesz wysłać pierwszy <span class="nw">e-mail</span> i&nbsp;obsłużyć pierwsze „TAK”</td></tr>
+    <tr><td><strong>1. Pozyskanie</strong></td><td>Kolejka firm, szybki filtr, <span class="nw">e-mail</span> z&nbsp;pytaniem o&nbsp;zgodę, prośby o&nbsp;przedstawienie, Useme</td><td>ok. 10&nbsp;min na firmę</td><td>masz „TAK”, przedstawienie albo zapytanie</td></tr>
+    <tr><td><strong>2. Sprzedaż na piśmie</strong></td><td>Mini-audyt, film i&nbsp;szkic, wiadomość z&nbsp;pomysłem, ankieta, propozycja w&nbsp;48&nbsp;h, przypomnienia</td><td>ok. 1,5&nbsp;h na firmę</td><td>klient wybiera wariant na piśmie</td></tr>
+    <tr><td><strong>3. Start</strong></td><td>Umowa, zadatek, ewidencja, materiały, dostępy, harmonogram</td><td>ok. 1&nbsp;h</td><td>zadatek jest na koncie, a&nbsp;materiały u&nbsp;Ciebie</td></tr>
+    <tr><td><strong>4. Budowa</strong></td><td>Treści, szkic, staging, A: formularz wstępnej analizy i&nbsp;kalendarz, B: silnik wyceny i&nbsp;zgłoszenie, pakiet zgłoszeń</td><td>ok. 11–26&nbsp;h</td><td>checklista startu przechodzi bez wyjątków</td></tr>
+    <tr><td><strong>5. Oddanie</strong></td><td>Runda 2, odbiór, płatność, publikacja, instrukcja, nagranie, prawa, dostępy</td><td>ok. 2–3&nbsp;h</td><td>strona działa, a&nbsp;klient ma klucze i&nbsp;faktury na siebie</td></tr>
+    <tr><td><strong>6. Po oddaniu</strong></td><td>Opinia, przedstawienia, raport po 30&nbsp;dniach, opis przykładu, decyzja o&nbsp;opiece</td><td>ok. 2&nbsp;h</td><td>masz opinię, 2 przedstawienia i&nbsp;liczby do portfolio</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box soft" style="margin-top:0">
+      <h4>Jak czytać</h4>
+      <ul class="small">
+        <li><span class="pill a">A</span> czynność tylko w&nbsp;wersji „Konsultacja”, <span class="pill bb">B</span> tylko w&nbsp;wersji „Wycena”. Bez znacznika: w&nbsp;obu.</li>
+        <li><strong>T1–T14</strong> to szablony wiadomości z&nbsp;drogowskazu (sekcje 19–20), a&nbsp;„sekcja N” to sekcja drogowskazu.</li>
+        <li><strong>Gotowe, gdy…</strong> to warunek przejścia dalej. Nie spełniony: nie idziesz dalej.</li>
+        <li>Czas to Twój czas pracy, a&nbsp;nie czas oczekiwania na klienta.</li>
+      </ul>
+    </div>
+    <div class="box accent" style="margin-top:0">
+      <h4>Trzy zasady całego procesu</h4>
+      <ul class="small">
+        <li>Wszystko na piśmie: akceptacje, zmiany, odbiór. Rozmowa tylko wtedy, gdy klient sam poprosi: 15 minut po propozycji albo 30 minut na Meet zamiast ankiety.</li>
+        <li>Odpowiedź w&nbsp;48&nbsp;h na każde „TAK” i&nbsp;każdą ankietę, w&nbsp;ciągu doby na każdą wiadomość klienta.</li>
+        <li>Każdy krok wpisujesz do CRM z&nbsp;datą i&nbsp;następnym krokiem. Bez tego proces się rozsypie przy trzecim kliencie.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= A I B W SKRÓCIE ================= -->
+<section class="page">
+  <div class="kicker">Mapa procesu (cd.)</div>
+  <h2 class="section">Wersja A&nbsp;i wersja B w&nbsp;skrócie</h2>
+  <p class="lead">Pod spodem ta sama maszyna: formularz → logika → kalendarz albo cena → powiadomienie. Różnią się klient, serce strony i&nbsp;przepisy, których pilnujesz.</p>
+
+  <table class="compact">
+    <tr><th style="width:30mm"></th><th><span class="pill a">A</span> „Konsultacja”</th><th><span class="pill bb">B</span> „Wycena”</th></tr>
+    <tr><td><strong>Klient</strong></td><td>Doradca kredytowy (start), agent ubezpieczeniowy, pośrednik nieruchomości, biuro rachunkowe (głównie od maja 2027)</td><td>Pranie tapicerki i&nbsp;dywanów (start), sprzątanie, mycie okien; firmy 1–5 osób</td></tr>
+    <tr><td><strong>Problem</strong></td><td>Polecony klient znajduje sam numer telefonu; pierwsza rozmowa to 20–30 minut zbierania podstaw</td><td>Nie odbierają, bo pracują w&nbsp;terenie; wieczory na wycenach w&nbsp;wiadomościach</td></tr>
+    <tr><td><strong>Serce strony</strong></td><td>Formularz wstępnej analizy (6–8 pól, przedziały) i&nbsp;kalendarz konsultacji</td><td>Kalkulator ceny na żywo według reguł firmy i&nbsp;zgłoszenie z&nbsp;terminem i&nbsp;zdjęciami</td></tr>
+    <tr><td><strong>Demo</strong></td><td>Demo A: fikcyjna „Anna, ekspertka kredytowa”</td><td>Demo B: puresofa.pl (pralnia tapicerki)</td></tr>
+    <tr><td><strong>Ankieta</strong></td><td>Ankieta A: liczby z&nbsp;pytań 2 i&nbsp;7, FAQ z&nbsp;pytania 4</td><td>Ankieta B: liczby z&nbsp;pytań 2 i&nbsp;4, reguły kalkulatora z&nbsp;pytań 1, 3 i&nbsp;6</td></tr>
+    <tr><td><strong>Pakiety i&nbsp;termin</strong></td><td>K1 wizytówka, która umawia (2 tyg.), K2 strona specjalisty (3–4 tyg.), moduł umawiania na obecnej stronie</td><td>W1 kalkulator i&nbsp;zgłoszenie na obecnej stronie (1–2 tyg.), W2 strona, która wycenia (2–3 tyg.)</td></tr>
+    <tr><td><strong>Ceny pierwszych projektów</strong></td><td>K1 1&nbsp;500–2&nbsp;200&nbsp;zł, K2 2&nbsp;500–3&nbsp;500&nbsp;zł; doradczyni: 1&nbsp;200 / 1&nbsp;800 / 2&nbsp;500&nbsp;zł</td><td>W1 1&nbsp;200–1&nbsp;600&nbsp;zł, W2 2&nbsp;500–3&nbsp;500&nbsp;zł</td></tr>
+    <tr><td><strong>Czego pilnujesz</strong></td><td>Informacje formalne (art. 17), słowa „doradca”, „doradztwo” (art. 25), zero stóp, rat i&nbsp;kalkulatora raty (art. 7), zasady sieci; dane finansowe w&nbsp;formularzu</td><td>Cena orientacyjna i&nbsp;liczona na serwerze, obniżki z&nbsp;najniższą ceną z&nbsp;30&nbsp;dni, opinie z&nbsp;informacją o&nbsp;weryfikacji, 14&nbsp;dni na odstąpienie dla konsumentów</td></tr>
+    <tr><td><strong>Treści prawne daje</strong></td><td>Klientka i&nbsp;jej sieć albo prawnik</td><td>Firma (prawnik albo sprawdzony generator)</td></tr>
+    <tr><td><strong>Sukces po 30&nbsp;dniach</strong></td><td>Konsultacje umówione przez stronę</td><td>Zgłoszenia z&nbsp;kalkulatora z&nbsp;pełną specyfikacją</td></tr>
+  </table>
+
+  <div class="box blue">
+    <h4>Gdzie co jest w&nbsp;tym pliku</h4>
+    <p class="small" style="margin-bottom:0">Faza 0 i&nbsp;1: strony 4–5 · Faza 2: strona 6 · Faza 3: strony 7–9 (dostępy, wizytówka, filmy instruktażowe) · Faza 4, wersja A: strona 10 · Faza 4, wersja B: strona 11 · Faza 5: strona 12 · Faza 6: strona 13 · Oś czasu A&nbsp;i B: strona 14 · Checklisty projektu A&nbsp;i B: strony 15–16 · Szablony i&nbsp;dokumenty w&nbsp;procesie: strona 17.</p>
+  </div>
+</section>
+<!-- ================= FAZA 0 ================= -->
+<section class="page">
+  <div class="kicker">Faza 0 · Przygotowanie</div>
+  <h2 class="section">Raz, zanim napiszesz do pierwszej firmy</h2>
+  <p class="lead">Te rzeczy robisz jeden raz i&nbsp;potem tylko podmieniasz dane. Większość jest już w&nbsp;planie 60&nbsp;dni (tygodnie 0–1). Dzięki nim każdy kolejny klient kosztuje Cię mniej godzin.</p>
+
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td>CRM: arkusz z&nbsp;kolumnami z&nbsp;sekcji 21 (źródło, wynik filtra, zgoda, etap, następny krok, „nie kontaktować”)</td><td class="tool">Google Sheets</td><td class="t">30&nbsp;min</td><td class="ok">każda firma ma wiersz i&nbsp;datę następnego kroku</td></tr>
+    <tr><td>2</td><td>Automat ankiet A&nbsp;i B: prezentacja i&nbsp;szkic propozycji z&nbsp;każdej odpowiedzi (folder „automatyzacja”)</td><td class="tool">Google Forms, Apps Script</td><td class="t">ok. 20&nbsp;min</td><td class="ok">test: po minucie mail z&nbsp;obu plikami</td></tr>
+    <tr><td>3</td><td>Szablon propozycji (sekcja 17): robi go automat, Ty wpisujesz ceny i&nbsp;podpis</td><td class="tool">Google Docs → PDF</td><td class="t">15&nbsp;min</td><td class="ok">ceny i&nbsp;podpis aktualne</td></tr>
+    <tr><td>4</td><td>Wzór umowy (z „zadatkiem”), umowy przeniesienia praw i&nbsp;umowy powierzenia danych; godzina u&nbsp;radcy</td><td class="tool">Docs, PDF</td><td class="t">1&nbsp;h + radca</td><td class="ok">jeden plik na każdy dokument, tylko dane do podmiany</td></tr>
+    <tr><td>5</td><td>Formularz „materiały” w&nbsp;dwóch wersjach (A i&nbsp;B, strona 7)</td><td class="tool">Tally</td><td class="t">30&nbsp;min</td><td class="ok">klient wie, co i&nbsp;w jakiej formie wysłać</td></tr>
+    <tr><td>6</td><td>Pakiet zgłoszeń jako gotowy moduł: formularz, wysyłka przez SMTP, potwierdzenie dla klienta, zapis do arkusza (Apps Script), znaczniki źródła</td><td class="tool">WordPress, Google Apps Script</td><td class="t">3–4&nbsp;h</td><td class="ok">3 zgłoszenia testowe dochodzą: Gmail, Outlook, telefon</td></tr>
+    <tr><td>7</td><td><span class="pill bb">B</span> Silnik wyceny jako Twoja wtyczka: reguły w&nbsp;panelu, kolejność liczenia, testy jednostkowe, shortcode</td><td class="tool">WordPress, PHP</td><td class="t">przy Demo B 2.0</td><td class="ok">przypadki testowe z&nbsp;sekcji 23 przechodzą</td></tr>
+    <tr><td>8</td><td>Dema: Demo A&nbsp;na subdomenie i&nbsp;puresofa.pl, oba z&nbsp;paskiem „projekt demonstracyjny” i&nbsp;wyłączonym indeksowaniem</td><td class="tool">WordPress</td><td class="t">plan: 16–22.10</td><td class="ok">oba działają na telefonie, formularze oznaczone [DEMO]</td></tr>
+    <tr><td>9</td><td>Strona z&nbsp;portfolio i&nbsp;skrzynka kontakt@ z&nbsp;SPF, DKIM i&nbsp;DMARC (drogowskaz, sekcja 3)</td><td class="tool">hosting, DNS</td><td class="t">plan: do 24.10</td><td class="ok">strona online, testowy <span class="nw">e-mail</span> nie trafia do spamu</td></tr>
+    <tr><td>10</td><td>Preset filmu w&nbsp;CapCut dla A&nbsp;i B: wstęp, miejsce na demo, zakończenie</td><td class="tool">CapCut, Loom albo OBS</td><td class="t">1&nbsp;h</td><td class="ok">nowy film robisz w&nbsp;ok. 15 minut</td></tr>
+    <tr><td>11</td><td>Szablony: instrukcja właściciela strony, protokół odbioru, raport w&nbsp;piątek, raport po 30&nbsp;dniach</td><td class="tool">Google Docs</td><td class="t">1&nbsp;h</td><td class="ok">gotowe do podmiany danych</td></tr>
+    <tr><td>12</td><td>Filmy instruktażowe F1–F4, F9 i&nbsp;F11 (lista na stronie 9); resztę przy pierwszym projekcie</td><td class="tool">nagranie ekranu</td><td class="t">ok. 2&nbsp;h</td><td class="ok">linki w&nbsp;jednym dokumencie</td></tr>
+    <tr><td>13</td><td>Biblioteka FAQ A&nbsp;i B (pytania z&nbsp;sekcji 5 i&nbsp;6). Odpowiedzi zawsze daje klient</td><td class="tool">Google Docs</td><td class="t">30&nbsp;min</td><td class="ok">masz gotowe pytania do każdej branży</td></tr>
+  </table>
+
+  <div class="box green">
+    <h4>Zasada modułów</h4>
+    <p class="small" style="margin-bottom:0">Pakiet zgłoszeń, silnik wyceny i&nbsp;preset filmu budujesz raz i&nbsp;dopracowujesz po każdym projekcie. Kolejny klient to nowa konfiguracja, a&nbsp;nie nowy program. Po każdym projekcie poprawiasz szablon, który sprawił kłopot, i&nbsp;zapisujesz realne godziny w&nbsp;CRM.</p>
+  </div>
+</section>
+
+<!-- ================= FAZA 1 ================= -->
+<section class="page">
+  <div class="kicker">Faza 1 · Pozyskanie</div>
+  <h2 class="section">Od kolejki firm do „TAK”</h2>
+  <p class="lead">Norma tygodnia: 20 <span class="nw">e-maili</span> z&nbsp;pytaniem o&nbsp;zgodę (5 dziennie pn–czw), 5 próśb o&nbsp;przedstawienie i&nbsp;2–3 oferty na Useme. Przed „TAK” firma kosztuje Cię ok. 10 minut.</p>
+
+  <div class="lane">Ścieżka zimna: <span class="nw">e-mail</span> z&nbsp;pytaniem o&nbsp;zgodę</div>
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie, szablon</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td>W sobotę uzupełniasz kolejkę do 20 firm. <span class="pill a">A</span> rejestr pośredników KNF i&nbsp;Mapy Google („ekspert kredytowy Kraków”). <span class="pill bb">B</span> Mapy Google („pranie tapicerki Kraków”), Oferteo, grupy lokalne</td><td class="tool">Mapy, rejestr KNF, CRM</td><td class="t">ok. 2&nbsp;h / tydz.</td><td class="ok">20 firm w&nbsp;CRM, z&nbsp;adresem <span class="nw">e-mail</span> ze strony albo profilu</td></tr>
+    <tr><td>2</td><td>Szybki filtr: czy da się umówić albo sprawdzić cenę bez telefonu? czy firma jest aktywna (świeże opinie)? jaki jeden fakt trafi do obserwacji?</td><td class="tool">Mapy, strona firmy</td><td class="t">5&nbsp;min</td><td class="ok">fakt w&nbsp;CRM albo firma odpada</td></tr>
+    <tr><td>3</td><td><span class="nw">E-mail</span> z&nbsp;pytaniem o&nbsp;zgodę (T5): 50–80 słów, bez linku, ceny i&nbsp;załącznika, stopka RODO, wysłany z&nbsp;kontakt@</td><td class="tool">poczta, T5</td><td class="t">5&nbsp;min</td><td class="ok">wysłany raz, data w&nbsp;CRM</td></tr>
+    <tr><td>4</td><td>Odpowiedź: „TAK” → zapisujesz zgodę (data, treść) i&nbsp;w 48&nbsp;h przechodzisz do fazy 2. „Nie” → usuwasz dane, adres na listę „nie kontaktować”. Cisza → to „nie”, bez przypomnienia</td><td class="tool">CRM</td><td class="t">2&nbsp;min</td><td class="ok">status w&nbsp;CRM zgodny z&nbsp;odpowiedzią</td></tr>
+  </table>
+
+  <div class="lane">Ścieżka ciepła: przedstawienia</div>
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie, szablon</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>5</td><td>Prośba o&nbsp;przedstawienie do znajomego (T3), 5 tygodniowo z&nbsp;listy 40 osób. Bez odpowiedzi: jedno przypomnienie po tygodniu</td><td class="tool">WhatsApp, Messenger, T3</td><td class="t">3&nbsp;min</td><td class="ok">znajomy zapytał firmę, czy możesz się odezwać</td></tr>
+    <tr><td>6</td><td>Pierwsza wiadomość po przedstawieniu (T4). Film możesz pominąć i&nbsp;od razu wysłać ankietę</td><td class="tool"><span class="nw">e-mail</span>, T4</td><td class="t">5&nbsp;min</td><td class="ok">ankieta wysłana albo film zaproponowany</td></tr>
+  </table>
+
+  <div class="lane">Ścieżka publiczna: ktoś sam szuka</div>
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie, szablon</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>7</td><td>Oferta na Useme albo wpzlecenia.pl (T14), odpowiedź na post „szukam kogoś do strony” (T8). Tylko zlecenia z&nbsp;zielonej listy (sekcja 20)</td><td class="tool">Useme, grupy, T14, T8</td><td class="t">15&nbsp;min</td><td class="ok">oferta wysłana, wpis w&nbsp;CRM</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box blue" style="margin-top:0">
+      <h4><span class="pill a">A</span> Na co patrzysz w&nbsp;filtrze</h4>
+      <p class="small" style="margin-bottom:0">Dobre opinie, ale umówić się można tylko telefonicznie. Brak własnej strony albo sam profil w&nbsp;wyszukiwarce sieci. Firma odpowiada na opinie, czyli jest aktywna. Odpadają sieci z&nbsp;centralnym marketingiem.</p>
+    </div>
+    <div class="box green" style="margin-top:0">
+      <h4><span class="pill bb">B</span> Na co patrzysz w&nbsp;filtrze</h4>
+      <p class="small" style="margin-bottom:0">Na stronie „zadzwoń po wycenę” albo brak strony. Profil Firmy z&nbsp;opiniami i&nbsp;zdjęciami przed i&nbsp;po. Brak gotowego kalkulatora i&nbsp;rezerwacji. Pamiętasz o&nbsp;sezonie: najlepiej przed wiosną i&nbsp;przed świętami.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAZA 2 ================= -->
+<section class="page">
+  <div class="kicker">Faza 2 · Sprzedaż na piśmie</div>
+  <h2 class="section">Od „TAK” do wybranego wariantu</h2>
+  <p class="lead">Pełną pracę robisz tylko dla firm, które chcą ją zobaczyć. Cel fazy: klient odpisuje „wybieram wariant 2”, bez telefonu.</p>
+
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie, szablon</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td>Mini-audyt w&nbsp;12 punktach (sekcja 13) i&nbsp;krok 0: na czym stoi strona (WordPress, kreator, pliki HTML, brak strony)</td><td class="tool">przeglądarka, Wappalyzer</td><td class="t">10–15&nbsp;min</td><td class="ok">jedno zdanie: co kosztuje ich klientów; system strony w&nbsp;CRM</td></tr>
+    <tr><td>2</td><td>Szkic jednego ekranu. <span class="pill a">A</span> pierwszy ekran z&nbsp;ich imieniem, przyciski „Umów konsultację” i&nbsp;„Wyślij wstępne pytania”. <span class="pill bb">B</span> kalkulator z&nbsp;ich usługami (ceny z&nbsp;ich strony albo przykładowe)</td><td class="tool">Demo A&nbsp;albo Demo B</td><td class="t">20–30&nbsp;min</td><td class="ok">zrzut gotowy do filmu</td></tr>
+    <tr><td>3</td><td>Film 60–90&nbsp;s z&nbsp;presetu: ich strona albo profil → problem → szkic → następny krok. Do CapCut tylko materiały publiczne</td><td class="tool">Loom albo OBS, CapCut</td><td class="t">ok. 15&nbsp;min</td><td class="ok">link do filmu działa</td></tr>
+    <tr><td>4</td><td>Wiadomość z&nbsp;pomysłem w&nbsp;48&nbsp;h od „TAK”: problem, rozwiązanie, film, następny krok. <span class="pill a">A</span> jak T2 bez zdania o&nbsp;koledze. <span class="pill bb">B</span> T6 (biuro rachunkowe: T7)</td><td class="tool"><span class="nw">e-mail</span></td><td class="t">5&nbsp;min</td><td class="ok">wysłana, w&nbsp;CRM data przypomnienia</td></tr>
+    <tr><td>5</td><td>Cisza po wiadomości: po 3–5&nbsp;dniach roboczych jedno przypomnienie (T10), potem koniec</td><td class="tool">T10</td><td class="t">5&nbsp;min</td><td class="ok">odpowiedź albo zamknięty wątek</td></tr>
+    <tr><td>6</td><td>Ankieta: <span class="pill a">A</span> ankieta A, <span class="pill bb">B</span> ankieta B, z&nbsp;linku ze źródłem (polecenie, <span class="nw">e-mail</span>, Useme). Można odpowiedzieć głosówką. Po 3&nbsp;dniach ciszy jedno przypomnienie. Klient woli rozmowę: 30 minut na Meet z&nbsp;prezentacją A&nbsp;albo B zamiast ankiety (sekcja 18)</td><td class="tool">ankieta Google albo Meet</td><td class="t">— / 30&nbsp;min</td><td class="ok">ankieta wypełniona albo rozmowa odbyta i&nbsp;podsumowana</td></tr>
+    <tr><td>7</td><td>Propozycja w&nbsp;48&nbsp;h od ankiety: sprawdzasz szkic z&nbsp;automatu (liczby, warianty, daty), poprawiasz zdania, PDF z&nbsp;wiadomością T11</td><td class="tool">Google Docs, T11</td><td class="t">15–20&nbsp;min</td><td class="ok">wysłana, data i&nbsp;warianty w&nbsp;CRM</td></tr>
+    <tr><td>8</td><td>Dzień 3: przypomnienie z&nbsp;nową wartością. Dzień 8–10: pytanie zamykające (T10, druga część)</td><td class="tool">T10</td><td class="t">5&nbsp;min</td><td class="ok">decyzja albo archiwum z&nbsp;notatką</td></tr>
+    <tr><td>9</td><td>Decyzja na piśmie: „wybieram wariant X”. Rozmowa 15 minut tylko na prośbę klienta, po przeczytaniu propozycji</td><td class="tool"><span class="nw">e-mail</span></td><td class="t">—</td><td class="ok">wariant wybrany → faza 3</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box blue" style="margin-top:0">
+      <h4><span class="pill a">A</span> Warianty w&nbsp;propozycji</h4>
+      <p class="small" style="margin-bottom:0">1. Wizytówka (kontakt bez umawiania), 2. Wizytówka, która umawia: formularz wstępnej analizy i&nbsp;kalendarz (polecasz), 3. Pełny start: wariant 2 + film powitalny 60&nbsp;s, system opinii, poradnik PDF. Doradczyni: 1&nbsp;200 / 1&nbsp;800 / 2&nbsp;500&nbsp;zł. Sprawdzian: wariant 2 zwraca się po 1–2 klientach w&nbsp;roku.</p>
+    </div>
+    <div class="box green" style="margin-top:0">
+      <h4><span class="pill bb">B</span> Warianty w&nbsp;propozycji</h4>
+      <p class="small" style="margin-bottom:0">1. Kalkulator i&nbsp;zgłoszenie na obecnej stronie (W1, np. 1&nbsp;600&nbsp;zł), 2. Strona, która wycenia, z&nbsp;terminem i&nbsp;opiniami (W2, np. 2&nbsp;500&nbsp;zł, polecasz), 3. W2 + 4 rolki „przed i&nbsp;po” i&nbsp;powiadomienia SMS (130–150% ceny wariantu 2). Sytuacja z&nbsp;kroku 0 zmienia cenę W1 (sekcja 23).</p>
+    </div>
+  </div>
+</section>
+<!-- ================= FAZA 3 ================= -->
+<section class="page">
+  <div class="kicker">Faza 3 · Start</div>
+  <h2 class="section">Od „wybieram wariant” do materiałów na biurku</h2>
+  <p class="lead">Ta faza trwa godzinę Twojej pracy, ale decyduje o&nbsp;spokoju całego projektu. Termin liczysz od dnia, w&nbsp;którym dostaniesz komplet materiałów, a&nbsp;nie od dnia zadatku.</p>
+
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie, szablon</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td>W ciągu doby: podziękowanie, umowa w&nbsp;PDF (zakres, rundy poprawek, harmonogram, „zadatek” nazwany wprost) i&nbsp;dane do zadatku</td><td class="tool">wzór umowy (sekcja 25)</td><td class="t">20&nbsp;min</td><td class="ok">umowa wysłana</td></tr>
+    <tr><td>2</td><td>Akceptacja umowy <span class="nw">e-mailem</span> („akceptuję umowę”). Umowa powierzenia danych, jeśli będziesz administrować stroną z&nbsp;danymi klientów</td><td class="tool"><span class="nw">e-mail</span></td><td class="t">—</td><td class="ok">akceptacja zapisana w&nbsp;CRM</td></tr>
+    <tr><td>3</td><td>Zadatek 30–50% (doradczyni: 40%). Bez wpłaty nie zaczynasz pracy</td><td class="tool">przelew</td><td class="t">—</td><td class="ok">wpłata na koncie</td></tr>
+    <tr><td>4</td><td>Wpis w&nbsp;ewidencji sprzedaży najpóźniej przed pierwszą sprzedażą następnego dnia; rachunek, jeśli klient chce. Pilnujesz limitu 10&nbsp;813,50&nbsp;zł na kwartał</td><td class="tool">ewidencja</td><td class="t">10&nbsp;min</td><td class="ok">wpis zrobiony</td></tr>
+    <tr><td>5</td><td>Link do formularza „materiały” (lista niżej)</td><td class="tool">Tally</td><td class="t">5&nbsp;min</td><td class="ok">materiały przyszły; od tego dnia liczysz termin</td></tr>
+    <tr><td>6</td><td>Domena i&nbsp;hosting na kliencie: link do dostawcy i&nbsp;film F1. Klient płaci sam i&nbsp;tworzy Ci osobny dostęp (SFTP albo panel), przesłany przez menedżer haseł</td><td class="tool">film, Bitwarden Send</td><td class="t">20&nbsp;min</td><td class="ok">masz dostęp, klient ma faktury na siebie</td></tr>
+    <tr><td>7</td><td>Konta: Twoje konto Administratora w&nbsp;WordPressie (dwuetapowe logowanie), rola menedżera w&nbsp;Profilu Firmy. Nigdy hasła klienta</td><td class="tool">WordPress, Profil Firmy</td><td class="t">10&nbsp;min</td><td class="ok">logujesz się na własne konta</td></tr>
+    <tr><td>8</td><td>Profil Firmy: klient zakłada go i&nbsp;weryfikuje sam według filmów F4–F5, teraz, bo weryfikacja trwa; potem dodaje Cię jako menedżera (strony 8–9)</td><td class="tool">Profil Firmy</td><td class="t">15&nbsp;min</td><td class="ok">wniosek wysłany</td></tr>
+    <tr><td>9</td><td>Wiadomość startowa: harmonogram (szkic do…, publikacja do…), jeden kanał kontaktu, raport w&nbsp;każdy piątek</td><td class="tool"><span class="nw">e-mail</span>, CRM</td><td class="t">10&nbsp;min</td><td class="ok">klient zna daty, a&nbsp;CRM ma przypomnienia</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box blue" style="margin-top:0">
+      <h4><span class="pill a">A</span> Formularz „materiały”</h4>
+      <ul class="small">
+        <li>Zdjęcie portretowe (dobre światło, poziome i&nbsp;pionowe)</li>
+        <li>Dane formalne od sieci: numer wpisu do rejestru KNF, status (agent albo pośrednik), informacja o&nbsp;wynagrodzeniu</li>
+        <li>Zasady sieci: logo, nazwa zawodu, czy wolno mieć własną stronę</li>
+        <li>Link do opinii w&nbsp;Google, 3–5 cytatów, które wolno pokazać</li>
+        <li>Dostępne terminy konsultacji i&nbsp;czas trwania; online czy w&nbsp;biurze</li>
+        <li>Gdzie jest domena i&nbsp;poczta; kto ma do nich dostęp</li>
+      </ul>
+    </div>
+    <div class="box green" style="margin-top:0">
+      <h4><span class="pill bb">B</span> Formularz „materiały”</h4>
+      <ul class="small">
+        <li>Roboczy cennik: elementy i&nbsp;jednostki (kanapa, fotel, narożnik, dywan w&nbsp;m², okno)</li>
+        <li>Dopłaty, rabaty, minimum zamówienia, strefy dojazdu</li>
+        <li>Czas jednego zlecenia, dni i&nbsp;pory pracy, obszar dojazdu</li>
+        <li>Zdjęcia przed i&nbsp;po (tylko prawdziwe zlecenia, bez twarzy klientów)</li>
+        <li>Adres <span class="nw">e-mail</span> do zgłoszeń (1–3 osoby) i&nbsp;czy chcą SMS</li>
+        <li>Gdzie jest strona, domena i&nbsp;poczta; kto ma do nich dostęp</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAZA 3 cd. DOSTĘPY I WIZYTÓWKA ================= -->
+<section class="page">
+  <div class="kicker">Faza 3 · Start (cd.)</div>
+  <h2 class="section">Dostępy, <span class="nw">e-mail</span> i&nbsp;wizytówka: kto co robi</h2>
+  <p class="lead">Wszystko zakłada i&nbsp;opłaca klient, na swoje dane i&nbsp;swój <span class="nw">e-mail</span>. Ty dostajesz własny dostęp na swoje konto, który klient może w&nbsp;każdej chwili odebrać. Nigdy nie pracujesz na jego haśle i&nbsp;nie zakładasz jego rzeczy na siebie.</p>
+
+  <table class="compact">
+    <tr><th style="width:30mm">Co</th><th>Zakłada, płaci, czyje dane</th><th style="width:44mm">Twój dostęp</th><th style="width:22mm">Film (s. 9)</th></tr>
+    <tr><td><strong><span class="nw">E-mail</span> klienta</strong></td><td>Jego, najlepiej firmowy na jego domenie; może być jego prywatny Gmail. Kody i&nbsp;linki weryfikacyjne klika on albo przepisuje Ci na bieżąco</td><td>Żaden: nie logujesz się do jego skrzynki</td><td>F9</td></tr>
+    <tr><td><strong>Domena</strong></td><td>Klient jako abonent, u&nbsp;wybranego rejestratora, faktura na niego</td><td>Zwykle żaden: wysyłasz mu rekordy DNS do wklejenia</td><td>F1, F8</td></tr>
+    <tr><td><strong>Hosting (serwer)</strong></td><td>Klient kupuje i&nbsp;płaci sam (karta, BLIK), dane do faktury jego</td><td>Osobny użytkownik panelu albo konto SFTP, przesłane przez menedżer haseł</td><td>F1, F2</td></tr>
+    <tr><td><strong>WordPress</strong></td><td>Ty instalujesz na jego hostingu; klient ma własne konto Administratora</td><td>Twoje konto Administratora z&nbsp;logowaniem dwuetapowym</td><td>F3</td></tr>
+    <tr><td><strong>Profil Firmy w&nbsp;Google</strong></td><td>Klient zakłada na swoim koncie Google, z&nbsp;prawdziwą nazwą, telefonem i&nbsp;adresem albo obszarem działania; weryfikuje go sam</td><td>Rola menedżera na Twoim koncie Google</td><td>F4, F5, F6</td></tr>
+    <tr><td><strong>Kreator (Wix i&nbsp;inne)</strong></td><td>Klient: konto i&nbsp;plan</td><td>Zaproszenie jako współpracownik z&nbsp;prawem edycji</td><td>F7</td></tr>
+    <tr><td><strong>Arkusz zgłoszeń</strong></td><td>Na koncie Google klienta, z&nbsp;Twojego szablonu</td><td>Udostępnienie do edycji na czas projektu</td><td>F10</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box green" style="margin-top:0">
+      <h4>Kto może mieć Profil Firmy w&nbsp;Google</h4>
+      <ul class="small">
+        <li><strong>Firma z&nbsp;lokalem</strong> (biuro, gabinet, salon): adres widoczny.</li>
+        <li><strong>Usługi z&nbsp;dojazdem do klienta</strong> (pranie tapicerki u&nbsp;klienta, sprzątanie, mycie okien, doradca jeżdżący na spotkania): lokal nie jest potrzebny. Ustawiasz obszar działania, a&nbsp;adres domowy jest ukryty.</li>
+        <li><strong>Usługi w&nbsp;domu</strong>, do którego przychodzą klienci (np. rzęsy): adres widoczny, bo klient musi trafić.</li>
+        <li><strong>Nie kwalifikuje się</strong> działalność tylko online, bez spotkań twarzą w&nbsp;twarz. Doradczyni w&nbsp;sieci: najpierw zasady sieci.</li>
+      </ul>
+    </div>
+    <div class="box yellow" style="margin-top:0">
+      <h4>Weryfikację robi klient, nie Ty</h4>
+      <ul class="small">
+        <li>Metodę wybiera Google. Najczęściej to krótki film nagrany w&nbsp;aplikacji Mapy Google na koncie, które zarządza profilem; czasem telefon, <span class="nw">e-mail</span> albo kartka z&nbsp;kodem.</li>
+        <li>Film pokazuje, że firma istnieje i&nbsp;należy do niego: szyld albo wejście, a&nbsp;przy dojeździe auto, sprzęt, narzędzia i&nbsp;dokument firmy.</li>
+        <li>Ty wysyłasz instrukcję (F5) i&nbsp;dajesz znać, co pokazać. Weryfikacja trwa zwykle od kilku dni do tygodnia, więc zaczynacie ją na starcie projektu.</li>
+        <li>Po weryfikacji klient dodaje Cię jako menedżera. Menedżer nie usunie profilu i&nbsp;nie doda innych osób.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="box soft">
+    <h4>Gdy klient mówi „zrób to za mnie”</h4>
+    <p class="small">Zakładasz konto na jego dane i&nbsp;jego <span class="nw">e-mail</span>, przy nim albo na jego kodach, a&nbsp;płatność klika on sam albo płaci z&nbsp;linku. Jeśli wyjątkowo płacisz Ty: faktura na niego, zwrot dokładnie tej kwoty, bez marży. Nigdy nie zakładasz jego kont na swój albo „nowy” <span class="nw">e-mail</span>: logowanie dwuetapowe i&nbsp;tak idzie na jego telefon, a&nbsp;przy rozstaniu straciłby domenę albo wizytówkę.</p>
+    <p class="small" style="margin-bottom:0"><strong>Zdanie do klienta:</strong> „Wszystko zakładamy na Pana dane i&nbsp;Pana <span class="nw">e-mail</span>, płaci Pan bezpośrednio dostawcy. Ja dostaję osobny dostęp na swoje konto, który może Pan w&nbsp;każdej chwili odebrać. Dzięki temu strona i&nbsp;wizytówka zawsze są Pana”.</p>
+  </div>
+</section>
+
+<!-- ================= FILMY INSTRUKTAŻOWE ================= -->
+<section class="page">
+  <div class="kicker">Faza 3 · Start (cd.)</div>
+  <h2 class="section">Filmy instruktażowe w&nbsp;zanadrzu</h2>
+  <p class="lead">Nagrywasz je raz, każdy 1–3 minuty, i&nbsp;wysyłasz linkiem zamiast tłumaczyć przez telefon. Klient robi wszystko sam, w&nbsp;swoim tempie, a&nbsp;Ty nie dotykasz jego haseł.</p>
+
+  <table class="compact">
+    <tr><th style="width:9mm">#</th><th>Film</th><th style="width:16mm">Długość</th><th style="width:32mm">Kiedy wysyłasz</th></tr>
+    <tr><td><strong>F1</strong></td><td>Jak kupić domenę i&nbsp;hosting na siebie: wybór nazwy, pakiet (np. LH.pl Orange albo Kiwi), dane do faktury, płatność</td><td>3&nbsp;min</td><td>start, gdy nie ma domeny</td></tr>
+    <tr><td><strong>F2</strong></td><td>Jak utworzyć mi osobny dostęp do hostingu i&nbsp;wysłać go przez Bitwarden Send</td><td>2&nbsp;min</td><td>start</td></tr>
+    <tr><td><strong>F3</strong></td><td>Jak dodać mnie jako Administratora w&nbsp;WordPressie (Użytkownicy → Dodaj nowego)</td><td>1&nbsp;min</td><td>start, gdy ma WordPressa</td></tr>
+    <tr><td><strong>F4</strong></td><td>Jak założyć Profil Firmy: nazwa, kategoria, telefon, godziny; lokal albo obszar działania z&nbsp;ukrytym adresem</td><td>3&nbsp;min</td><td>start, gdy nie ma profilu</td></tr>
+    <tr><td><strong>F5</strong></td><td>Jak zweryfikować Profil Firmy filmem w&nbsp;Mapach Google: co pokazać z&nbsp;lokalem i&nbsp;co przy dojeździe (auto, sprzęt, dokument)</td><td>2&nbsp;min</td><td>gdy Google poprosi o&nbsp;weryfikację</td></tr>
+    <tr><td><strong>F6</strong></td><td>Jak dodać mnie jako menedżera Profilu Firmy</td><td>1&nbsp;min</td><td>po weryfikacji</td></tr>
+    <tr><td><strong>F7</strong></td><td>Jak zaprosić mnie do Wixa albo innego kreatora jako współpracownika</td><td>1&nbsp;min</td><td>start, gdy ma kreator</td></tr>
+    <tr><td><strong>F8</strong></td><td>Jak wkleić rekordy DNS, które wyślę, bez ruszania rekordów poczty (MX)</td><td>2&nbsp;min</td><td>przed publikacją</td></tr>
+    <tr><td><strong>F9</strong></td><td>Jak założyć firmowy <span class="nw">e-mail</span> na swoim hostingu i&nbsp;dodać go do telefonu</td><td>2&nbsp;min</td><td>start, gdy nie ma firmowego <span class="nw">e-maila</span></td></tr>
+    <tr><td><strong>F10</strong></td><td>Jak zrobić kopię arkusza zgłoszeń z&nbsp;mojego szablonu i&nbsp;mi go udostępnić</td><td>1&nbsp;min</td><td>budowa</td></tr>
+    <tr><td><strong>F11</strong></td><td>Jak wysłać materiały (formularz i&nbsp;Dysk Google) i&nbsp;komentować treści w&nbsp;Google Docs</td><td>2&nbsp;min</td><td>start</td></tr>
+    <tr><td><strong>F12</strong></td><td>Jak czytać arkusz zgłoszeń i&nbsp;zmieniać status</td><td>1&nbsp;min</td><td>oddanie</td></tr>
+    <tr><td><strong>F13</strong></td><td><span class="pill a">A</span> jak zmienić godziny w&nbsp;kalendarzu · <span class="pill bb">B</span> jak zmienić ceny w&nbsp;kalkulatorze</td><td>2&nbsp;min</td><td>oddanie</td></tr>
+    <tr><td><strong>F14</strong></td><td>Jak prosić klientów o&nbsp;opinię (karta z&nbsp;QR, link) i&nbsp;jak na nie odpowiadać</td><td>2&nbsp;min</td><td>oddanie</td></tr>
+    <tr><td><strong>F15</strong></td><td>Jak usunąć mój dostęp i&nbsp;zmienić hasła po zakończeniu współpracy</td><td>1&nbsp;min</td><td>koniec wsparcia</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box blue" style="margin-top:0">
+      <h4>Jak nagrywać</h4>
+      <ul class="small">
+        <li>Nagranie ekranu z&nbsp;głosem, jeden temat na film, bez wstępów.</li>
+        <li>Na kontach testowych albo z&nbsp;zamazanymi danymi: zero cudzych danych osobowych i&nbsp;haseł w&nbsp;kadrze.</li>
+        <li>F5 nagrywasz z&nbsp;telefonu, na przykładzie własnego profilu albo profilu dziewczyny (za jej zgodą).</li>
+        <li>Publikujesz jako niepubliczne na YouTube (darmowy Loom ma limit 5 minut na film i&nbsp;25 filmów).</li>
+        <li>Lista linków w&nbsp;jednym dokumencie; co kwartał sprawdzasz, czy panele się nie zmieniły.</li>
+      </ul>
+    </div>
+    <div class="box accent" style="margin-top:0">
+      <h4>Kiedy nagrać</h4>
+      <p class="small">F1–F4, F9 i&nbsp;F11 przed startem pierwszego projektu, czyli do pt 30.10 (ok. 2&nbsp;h). F5–F8 i&nbsp;F10 przy budowie strony doradczyni. F12–F15 przy jej oddaniu (10.11). Każdy film dopracowujesz po pierwszym kliencie, który się na nim zgubi.</p>
+      <p class="small" style="margin-bottom:0">Instrukcja tekstowa (instrukcja właściciela strony) dalej obowiązuje: film pokazuje, jak, a&nbsp;instrukcja zapisuje, co gdzie jest.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAZA 4 A ================= -->
+<section class="page">
+  <div class="kicker">Faza 4 · Budowa · wersja A</div>
+  <h2 class="section"><span class="pill a" style="font-size:11pt; vertical-align:middle">A</span> Strona, która umawia konsultacje</h2>
+  <p class="lead">Kolejność ma znaczenie: najpierw treści i&nbsp;szkic do akceptacji, potem budowa. Akceptacja szkicu oszczędza najwięcej poprawek. K1 to ok. 2 tygodnie od materiałów.</p>
+
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td>Treści z&nbsp;ankiety A: pierwszy ekran (twarz, imię, specjalizacja, miasto, obietnica), „Dla kogo” (3 sytuacje), „Jak to działa” (3 kroki), FAQ 5–8 z&nbsp;pytania 4, „O mnie”. Klientka komentuje, a&nbsp;nie pisze od zera</td><td class="tool">Google Docs</td><td class="t">1–3&nbsp;h</td><td class="ok">treści zaakceptowane na piśmie</td></tr>
+    <tr><td>2</td><td>Szkic strony: układ sekcji, pierwszy ekran, formularz. Film 2–3&nbsp;min z&nbsp;omówieniem. Jedna lista uwag</td><td class="tool">WordPress, Loom</td><td class="t">2–4&nbsp;h</td><td class="ok">szkic zaakceptowany: runda 1 zamknięta</td></tr>
+    <tr><td>3</td><td>Staging na hostingu klientki, Git i&nbsp;kopia przed zmianami</td><td class="tool">WordPress, Git</td><td class="t">1&nbsp;h</td><td class="ok">podgląd działa pod roboczym adresem</td></tr>
+    <tr><td>4</td><td>Formularz wstępnej analizy: 6–8 pól, przedziały zamiast kwot, bez numeru PESEL i&nbsp;skanów, informacja RODO, automatyczne usuwanie zgłoszeń z&nbsp;WordPressa (np. po 90&nbsp;dniach)</td><td class="tool">Fluent Forms albo CF7</td><td class="t">1–2&nbsp;h</td><td class="ok">zgłoszenie testowe przychodzi kompletne</td></tr>
+    <tr><td>5</td><td>Kalendarz: strona rezerwacji w&nbsp;Kalendarzu Google albo Cal.com, termin w&nbsp;2 kliknięciach, potwierdzenie <span class="nw">e-mailem</span>, strefa czasowa, przyciski „Umów konsultację”</td><td class="tool">Google, Cal.com</td><td class="t">1&nbsp;h</td><td class="ok">rezerwacja testowa trafia do kalendarza klientki</td></tr>
+    <tr><td>6</td><td>Pakiet zgłoszeń: <span class="nw">e-mail</span> do klientki przez SMTP z&nbsp;jej domeny, potwierdzenie dla klienta (co dalej, link do kalendarza, lista dokumentów), wiersz w&nbsp;arkuszu tylko z&nbsp;kontaktem i&nbsp;statusem, znaczniki źródła</td><td class="tool">Twój moduł, Apps Script</td><td class="t">1&nbsp;h</td><td class="ok">3 zgłoszenia testowe: Gmail, Outlook, telefon</td></tr>
+    <tr><td>7</td><td>Opinie z&nbsp;Google z&nbsp;linkiem i&nbsp;informacją, czy i&nbsp;jak są weryfikowane</td><td class="tool">WordPress</td><td class="t">30&nbsp;min</td><td class="ok">cytaty mają źródło</td></tr>
+    <tr><td>8</td><td>Informacje formalne: rejestr, status, wynagrodzenie (art. 17), nazwa zawodu zgodna z&nbsp;art. 25 i&nbsp;zasadami sieci, zero stóp, rat i&nbsp;kalkulatora raty (art. 7). Treść daje klientka i&nbsp;jej sieć</td><td class="tool">WordPress</td><td class="t">30&nbsp;min</td><td class="ok">klientka zatwierdziła na piśmie</td></tr>
+    <tr><td>9</td><td>Polityka prywatności (treść od klientki), wersja na telefon, szybkość, Profil Firmy z&nbsp;linkiem do strony i&nbsp;do umawiania</td><td class="tool">PageSpeed, Profil Firmy</td><td class="t">1–2&nbsp;h</td><td class="ok">gotowe do checklisty startu (faza 5)</td></tr>
+    <tr><td>10</td><td>Raport w&nbsp;piątek: zrobione, następne, czego potrzebujesz, link do podglądu</td><td class="tool"><span class="nw">e-mail</span></td><td class="t">10&nbsp;min</td><td class="ok">wysłany w&nbsp;każdy piątek projektu</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box red" style="margin-top:0">
+      <h4>Czego nie robisz w&nbsp;A</h4>
+      <p class="small" style="margin-bottom:0">Kalkulatora raty i&nbsp;zdolności, porównań banków, „najtańszego kredytu”, pól na PESEL i&nbsp;skany, własnych nazw zawodu („niezależny doradca”). Nie kopiujesz zgłoszeń do siebie ani do narzędzi AI.</p>
+    </div>
+    <div class="box soft" style="margin-top:0">
+      <h4>K2 i&nbsp;dodatki</h4>
+      <p class="small" style="margin-bottom:0">K2 dokłada 3 poradniki pod lokalne wyszukiwania, magnes PDF i&nbsp;film powitalny 60&nbsp;s: ok. 1–2 tygodnie więcej. Moduł umawiania na obecnej stronie to kroki 4–7 bez budowy całej strony.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAZA 4 B ================= -->
+<section class="page">
+  <div class="kicker">Faza 4 · Budowa · wersja B</div>
+  <h2 class="section"><span class="pill bb" style="font-size:11pt; vertical-align:middle">B</span> Kalkulator i&nbsp;strona, która wycenia</h2>
+  <p class="lead">Błędna cena to błąd krytyczny, więc zaczynasz od reguł i&nbsp;testów, a&nbsp;dopiero potem budujesz wygląd. W1 to ok. 1–2 tygodnie, W2 ok. 2–3 tygodnie od materiałów.</p>
+
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td>Sposób wdrożenia według kroku 0: WordPress → Twoja wtyczka i&nbsp;shortcode; Wix i&nbsp;inne kreatory albo strona, której nie wolno ruszać → osobna strona na subdomenie; brak strony → mini-strona albo W2 (sekcja 23, 7 sytuacji)</td><td class="tool">sekcja 23</td><td class="t">15&nbsp;min</td><td class="ok">wiesz, gdzie i&nbsp;jak wstawisz kalkulator</td></tr>
+    <tr><td>2</td><td>Tabela reguł z&nbsp;ankiety B i&nbsp;materiałów: ceny elementów, dopłaty do elementów, rabat, dopłaty do zamówienia, dojazd, minimum, zaokrąglenie, kolejność liczenia</td><td class="tool">Google Docs</td><td class="t">1&nbsp;h</td><td class="ok">klient zatwierdził tabelę na piśmie</td></tr>
+    <tr><td>3</td><td>4–8 przypadków testowych policzonych ręcznie (np. jeden fotel poniżej minimum, narożnik z&nbsp;dopłatami) i&nbsp;zatwierdzonych przez klienta; potem testy jednostkowe</td><td class="tool">PHP, testy</td><td class="t">1&nbsp;h</td><td class="ok">wszystkie testy przechodzą</td></tr>
+    <tr><td>4</td><td>Konfiguracja silnika w&nbsp;panelu wtyczki: elementy, jednostki, dopłaty, strefy</td><td class="tool">Twoja wtyczka</td><td class="t">1–2&nbsp;h</td><td class="ok">kalkulator liczy jak tabela reguł</td></tr>
+    <tr><td>5</td><td>Zgłoszenie: elementy, termin (dzień i&nbsp;pora), adres albo dzielnica, zdjęcia z&nbsp;telefonu, informacja RODO; dla konsumentów żądanie startu przed upływem 14&nbsp;dni i&nbsp;informacja o&nbsp;utracie prawa odstąpienia</td><td class="tool">Fluent Forms albo CF7</td><td class="t">1–2&nbsp;h</td><td class="ok">zgłoszenie testowe ma pełną specyfikację</td></tr>
+    <tr><td>6</td><td>Pakiet zgłoszeń: cenę liczysz drugi raz na serwerze; <span class="nw">e-mail</span> do firmy przez SMTP z&nbsp;jej domeny, kopia dla klienta z&nbsp;ceną „orientacyjną, potwierdzimy po zdjęciach”, wiersz w&nbsp;arkuszu, znaczniki źródła, opcjonalnie SMS</td><td class="tool">Twój moduł, Apps Script</td><td class="t">1&nbsp;h</td><td class="ok">3 zgłoszenia testowe: Gmail, Outlook, telefon</td></tr>
+    <tr><td>7</td><td>Wpasowanie w&nbsp;styl: kolory, font, zaokrąglenia i&nbsp;przyciski z&nbsp;ich strony; prefiks klas; motywu nie edytujesz. Zrzuty z&nbsp;telefonu i&nbsp;komputera do akceptacji</td><td class="tool">narzędzia przeglądarki</td><td class="t">1&nbsp;h</td><td class="ok">zrzuty zaakceptowane: runda 1</td></tr>
+    <tr><td>8</td><td>Tylko W2: pierwszy ekran „Pranie narożnika od X zł. Sprawdź cenę w&nbsp;30 sekund”, przed i&nbsp;po, opinie z&nbsp;informacją o&nbsp;weryfikacji, obszar dojazdu, godziny, FAQ (schnięcie, plamy, zwierzęta)</td><td class="tool">WordPress</td><td class="t">4–8&nbsp;h</td><td class="ok">wszystkie sekcje na stagingu</td></tr>
+    <tr><td>9</td><td>System opinii (W2 albo dodatek): karta z&nbsp;kodem QR i&nbsp;prośba SMS albo <span class="nw">e-mail</span> do każdego klienta, bez selekcji</td><td class="tool">QR, SMS</td><td class="t">1&nbsp;h</td><td class="ok">firma ma kartę i&nbsp;gotową wiadomość</td></tr>
+    <tr><td>10</td><td>Profil Firmy: obszar działania (adres ukryty), zdjęcia, link do wyceny ze znacznikiem ?zrodlo=profil-google</td><td class="tool">Profil Firmy</td><td class="t">30&nbsp;min</td><td class="ok">link prowadzi do kalkulatora</td></tr>
+  </table>
+
+  <div class="box red">
+    <h4>Czego pilnujesz w&nbsp;B</h4>
+    <p class="small" style="margin-bottom:0">Cena na stronie jest zawsze „orientacyjna”. Przy każdej promocji obok obniżonej ceny stoi najniższa cena z&nbsp;30&nbsp;dni. Negatywnych opinii się nie ukrywa, a&nbsp;prośba o&nbsp;opinię idzie do wszystkich klientów. Treść regulaminu i&nbsp;klauzul daje firma. Zmiany cen po starcie: w&nbsp;opiece (po JDG) albo jako osobne zlecenie.</p>
+  </div>
+</section>
+<!-- ================= FAZA 5 ================= -->
+<section class="page">
+  <div class="kicker">Faza 5 · Oddanie</div>
+  <h2 class="section">Testy, odbiór i&nbsp;klucze dla klienta</h2>
+  <p class="lead">Ta sama kolejność w&nbsp;obu wersjach. Płatność końcowa zawsze przed publikacją, a&nbsp;prawa autorskie przechodzą dopiero po pełnej zapłacie.</p>
+
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Czynność</th><th>Narzędzie</th><th>Czas</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td>Checklista startu z&nbsp;sekcji 22, od góry do dołu: SSL, kopie, PageSpeed na telefonie, formularze przez SMTP, ochrona przed spamem, strona 404, dane w&nbsp;stopce, RODO, cookies. <span class="pill a">A</span> rezerwacja testowa, informacje formalne. <span class="pill bb">B</span> testy reguł cen, cena z&nbsp;serwera</td><td class="tool">checklista</td><td class="t">1–2&nbsp;h</td><td class="ok">wszystkie pola zaznaczone</td></tr>
+    <tr><td>2</td><td>Runda 2 poprawek: jedna zebrana lista uwag. Kolejne zmiany: wycena i&nbsp;akceptacja na piśmie (120–150&nbsp;zł/h)</td><td class="tool">Google Docs</td><td class="t">1–2&nbsp;h</td><td class="ok">lista zamknięta</td></tr>
+    <tr><td>3</td><td>Protokół odbioru z&nbsp;terminem na uwagi (np. 7&nbsp;dni)</td><td class="tool">szablon protokołu</td><td class="t">15&nbsp;min</td><td class="ok">klient potwierdził odbiór na piśmie</td></tr>
+    <tr><td>4</td><td>Płatność końcowa, wpis w&nbsp;ewidencji, rachunek, jeśli klient chce</td><td class="tool">ewidencja</td><td class="t">10&nbsp;min</td><td class="ok">wpłata na koncie</td></tr>
+    <tr><td>5</td><td>Publikacja: przeniesienie ze stagingu, DNS z&nbsp;zachowaniem rekordów MX (poczta), SSL, widoczność dla wyszukiwarek włączona, mapa strony wysłana</td><td class="tool">hosting, DNS</td><td class="t">1&nbsp;h</td><td class="ok">strona działa pod domeną klienta, poczta też</td></tr>
+    <tr><td>6</td><td>Instrukcja właściciela strony (domena, hosting, dostępy, odnowienia, kopie; <span class="pill a">A</span> godziny w&nbsp;kalendarzu, <span class="pill bb">B</span> jak zmienić ceny) i&nbsp;nagranie szkoleniowe 10–15&nbsp;min</td><td class="tool">Docs, OBS albo Loom</td><td class="t">1&nbsp;h</td><td class="ok">klient ma instrukcję i&nbsp;nagranie</td></tr>
+    <tr><td>7</td><td>Przeniesienie praw: 2 egzemplarze na papierze, podpis odręczny i&nbsp;list polecony (albo podpis kwalifikowany). Silnik wyceny zostaje na licencji</td><td class="tool">poczta, umowa</td><td class="t">20&nbsp;min</td><td class="ok">klient odesłał podpisany egzemplarz</td></tr>
+    <tr><td>8</td><td>Dostępy: konto Administratora na kliencie, hasła w&nbsp;menedżerze haseł; Twoje konto zostaje tylko na 30&nbsp;dni wsparcia, potem je usuwasz; klient zmienia hasła</td><td class="tool">menedżer haseł</td><td class="t">15&nbsp;min</td><td class="ok">klient ma wszystkie klucze</td></tr>
+    <tr><td>9</td><td>CRM: etap „oddane”, przypomnienia: opinia za 2 tygodnie, raport za 30&nbsp;dni, koniec wsparcia</td><td class="tool">CRM</td><td class="t">5&nbsp;min</td><td class="ok">3 daty w&nbsp;CRM</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box green" style="margin-top:0">
+      <h4>30&nbsp;dni wsparcia: co obejmuje</h4>
+      <p class="small" style="margin-bottom:0">Naprawę błędów, odpowiedzi na pytania i&nbsp;drobne poprawki w&nbsp;ramach zakresu. Nowe funkcje i&nbsp;zmiany zakresu wyceniasz osobno. Stała opieka dopiero po założeniu JDG (sekcja 9).</p>
+    </div>
+    <div class="box yellow" style="margin-top:0">
+      <h4>Gdy coś się przeciąga</h4>
+      <p class="small" style="margin-bottom:0">O opóźnieniu mówisz od razu, z&nbsp;nowym terminem. Gdy klient zwleka z&nbsp;materiałami albo akceptacją, termin przesuwa się o&nbsp;tyle samo dni. To zapisujesz w&nbsp;umowie, więc nie musisz się tłumaczyć.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAZA 6 ================= -->
+<section class="page">
+  <div class="kicker">Faza 6 · Po oddaniu</div>
+  <h2 class="section">Opinia, polecenie i&nbsp;liczby do portfolio</h2>
+  <p class="lead">Ta faza zamienia jeden projekt w&nbsp;kolejnych klientów. To tu powstają opinie, przedstawienia i&nbsp;studium przypadku, a&nbsp;z nich tańsze pozyskanie niż zimne <span class="nw">e-maile</span>.</p>
+
+  <table class="compact wsteps">
+    <tr><th>#</th><th>Kiedy</th><th>Czynność</th><th>Szablon</th><th>Gotowe, gdy…</th></tr>
+    <tr><td>1</td><td class="t">ok. dzień 14</td><td>Prośba o&nbsp;opinię w&nbsp;Google, gdy klient już widzi efekt (pierwsze zgłoszenia), a&nbsp;nie przy płatności</td><td class="tool">T12</td><td class="ok">opinia opublikowana albo jedno przypomnienie</td></tr>
+    <tr><td>2</td><td class="t">dzień 14–28</td><td>Prośba o&nbsp;polecenie: 2 przedstawienia z&nbsp;otoczenia klienta. <span class="pill a">A</span> pośrednicy, agenci, biuro rachunkowe. <span class="pill bb">B</span> firmy z&nbsp;tej samej okolicy, ale innej branży</td><td class="tool">T13</td><td class="ok">nazwiska w&nbsp;CRM, zgoda na kontakt</td></tr>
+    <tr><td>3</td><td class="t">dzień 30</td><td>Raport z&nbsp;arkusza: ile zgłoszeń, z&nbsp;jakich źródeł, ile zamieniło się w&nbsp;klientów. <span class="pill a">A</span> umówione konsultacje. <span class="pill bb">B</span> zgłoszenia z&nbsp;kalkulatora i&nbsp;ich wartość</td><td class="tool">szablon raportu</td><td class="ok">raport wysłany klientowi</td></tr>
+    <tr><td>4</td><td class="t">dzień 30–35</td><td>Opis przykładu na Twoją stronę: problem, rozwiązanie, 3 zrzuty, film, liczby z&nbsp;raportu, cytat z&nbsp;opinii. Tylko za zgodą na nazwę i&nbsp;dane</td><td class="tool">6 bloków (drogowskaz, sekcja 3)</td><td class="ok">przykład online, link w&nbsp;CRM</td></tr>
+    <tr><td>5</td><td class="t">koniec wsparcia</td><td>Usuwasz swoje konto albo, po JDG, proponujesz opiekę: Start, Plus albo Kalkulator (obowiązkowa, gdy w&nbsp;projekcie jest Twój kod)</td><td class="tool">sekcja 9</td><td class="ok">dostęp zamknięty albo umowa opieki</td></tr>
+    <tr><td>6</td><td class="t">koniec wsparcia</td><td>Retrospektywa: realne godziny na etap, co poszło źle, który szablon poprawić. Ceny kolejnych projektów według sekcji 27</td><td class="tool">CRM</td><td class="ok">godziny i&nbsp;wnioski zapisane</td></tr>
+    <tr><td>7</td><td class="t">co miesiąc</td><td>Tylko z&nbsp;opieką: raport zgłoszeń, aktualizacje z&nbsp;kopią, <span class="pill bb">B</span> zmiany cen do 2 razy w&nbsp;miesiącu, Profil Firmy w&nbsp;planie Plus</td><td class="tool">umowa opieki</td><td class="ok">raport miesięczny wysłany</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box accent" style="margin-top:0">
+      <h4>Gdy klient odchodzi</h4>
+      <p class="small" style="margin-bottom:0">Bez sporu: domena, hosting i&nbsp;dane są na nim. Przekazujesz aktualną instrukcję, usuwasz swoje konto, prosisz o&nbsp;zmianę haseł. Dobre rozstanie to też opinia.</p>
+    </div>
+    <div class="box blue" style="margin-top:0">
+      <h4>Wynik całego cyklu</h4>
+      <p class="small" style="margin-bottom:0">Zapłacony projekt, opinia, 2 przedstawienia, opis przykładu z&nbsp;liczbami i&nbsp;poprawione szablony. Dopiero wtedy projekt jest naprawdę skończony.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= OŚ CZASU ================= -->
+<section class="page">
+  <div class="kicker">Oś czasu</div>
+  <h2 class="section">Jeden projekt A&nbsp;i jeden projekt B w&nbsp;kalendarzu</h2>
+  <p class="lead">Dni liczysz od dnia, w&nbsp;którym masz zadatek i&nbsp;komplet materiałów. To dni Twojego kalendarza, czyli wieczory i&nbsp;sobota, a&nbsp;nie 8-godzinne dni pracy. Faza 6 dochodzi po publikacji.</p>
+
+  <div class="grid2">
+    <div>
+      <div class="stage"><b>A · K1, ok. 2 tygodnie</b><span>15–25&nbsp;h pracy</span></div>
+      <table class="compact">
+        <tr><th style="width:18mm">Dni</th><th>Co robisz</th></tr>
+        <tr><td>0</td><td>Zadatek, materiały, dostępy; Profil Firmy do weryfikacji</td></tr>
+        <tr><td>1–2</td><td>Treści z&nbsp;ankiety A&nbsp;do komentarzy klientki</td></tr>
+        <tr><td>3–5</td><td>Szkic i&nbsp;film akceptacyjny; runda 1</td></tr>
+        <tr><td>6–9</td><td>Staging: formularz wstępnej analizy, kalendarz, pakiet zgłoszeń, FAQ, opinie, informacje formalne; w&nbsp;piątek raport</td></tr>
+        <tr><td>10–11</td><td>Checklista startu, runda 2</td></tr>
+        <tr><td>12</td><td>Protokół odbioru, płatność końcowa</td></tr>
+        <tr><td>13–14</td><td>Publikacja, instrukcja, nagranie, prawa na papierze</td></tr>
+        <tr><td>+14, +30</td><td>Opinia (T12), polecenie (T13), raport, opis przykładu</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="stage a"><b>B · W1, ok. 1–2 tygodnie</b><span>10–20&nbsp;h pracy</span></div>
+      <table class="compact">
+        <tr><th style="width:18mm">Dni</th><th>Co robisz</th></tr>
+        <tr><td>0</td><td>Zadatek, cennik roboczy, dostępy; krok 0 potwierdzony</td></tr>
+        <tr><td>1–2</td><td>Tabela reguł i&nbsp;przypadki testowe do akceptacji</td></tr>
+        <tr><td>3–5</td><td>Silnik w&nbsp;panelu, testy jednostkowe, formularz zgłoszenia, pakiet zgłoszeń</td></tr>
+        <tr><td>6–7</td><td>Wpasowanie w&nbsp;styl, zrzuty do akceptacji; runda 1</td></tr>
+        <tr><td>8–9</td><td>Wdrożenie na stronie klienta, 3 zgłoszenia testowe, checklista, runda 2</td></tr>
+        <tr><td>10</td><td>Odbiór, płatność, publikacja, instrukcja „jak zmienić ceny”, prawa na papierze</td></tr>
+        <tr><td>+14, +30</td><td>Opinia (T12), polecenie (T13), raport, opis przykładu</td></tr>
+      </table>
+      <p class="small" style="margin-top:2mm"><strong>W2</strong> dokłada ok. tydzień: strony z&nbsp;przed i&nbsp;po, opiniami, obszarem dojazdu i&nbsp;FAQ, system opinii i&nbsp;Profil Firmy.</p>
+    </div>
+  </div>
+
+  <div class="box soft">
+    <h4>Gdzie to się mieści w&nbsp;Twoim tygodniu</h4>
+    <p class="small" style="margin-bottom:0">Pierwsza godzina wieczoru to zawsze godzina kroków do klienta (faza 1–2). Projekt dostaje resztę wieczoru i&nbsp;sobotni blok, czyli ok. 6–10&nbsp;h tygodniowo. Gdy tydzień się sypie: odpowiedzi w&nbsp;48&nbsp;h, potem projekt płacącego klienta, potem co najmniej 10 <span class="nw">e-maili</span>, na końcu treści (drogowskaz, sekcja 12).</p>
+  </div>
+</section>
+
+<!-- ================= CHECKLISTA A ================= -->
+<section class="page">
+  <div class="kicker">Checklista projektu · wersja A</div>
+  <h2 class="section"><span class="pill a" style="font-size:11pt; vertical-align:middle">A</span> Od <span class="nw">e-maila</span> do opisu przykładu</h2>
+  <p class="lead">Drukujesz albo kopiujesz do CRM jedną na każdy projekt. Odhaczasz w&nbsp;kolejności.</p>
+
+  <div class="phase">Faza 1–2 · pozyskanie i&nbsp;sprzedaż</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(5, auto)">
+    <li>Firma przeszła szybki filtr, fakt w&nbsp;CRM</li>
+    <li><span class="nw">E-mail</span> z&nbsp;pytaniem o&nbsp;zgodę (T5) albo przedstawienie (T4)</li>
+    <li>„TAK” zapisane w&nbsp;CRM (data, treść)</li>
+    <li>Mini-audyt i&nbsp;krok 0 (system strony)</li>
+    <li>Szkic pierwszego ekranu i&nbsp;film 60–90&nbsp;s</li>
+    <li>Wiadomość z&nbsp;pomysłem w&nbsp;48&nbsp;h</li>
+    <li>Ankieta A&nbsp;wypełniona</li>
+    <li>Propozycja w&nbsp;48&nbsp;h (T11), 3 warianty</li>
+    <li>Wariant wybrany na piśmie</li>
+  </ul>
+  <div class="phase">Faza 3 · start</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(4, auto)">
+    <li>Umowa zaakceptowana <span class="nw">e-mailem</span></li>
+    <li>Umowa powierzenia danych</li>
+    <li>Zadatek na koncie, wpis w&nbsp;ewidencji</li>
+    <li>Zdjęcie, dane formalne, numer KNF, zasady sieci</li>
+    <li>Domena i&nbsp;hosting na klientce, Twoje konta</li>
+    <li>Profil Firmy zgłoszony do weryfikacji</li>
+    <li>Harmonogram wysłany, daty w&nbsp;CRM</li>
+  </ul>
+  <div class="phase">Faza 4 · budowa</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(5, auto)">
+    <li>Treści z&nbsp;ankiety zaakceptowane</li>
+    <li>Szkic zaakceptowany (runda 1)</li>
+    <li>Formularz: 6–8 pól, przedziały, bez PESEL i&nbsp;skanów</li>
+    <li>Automatyczne usuwanie zgłoszeń ustawione</li>
+    <li>Kalendarz: rezerwacja testowa działa</li>
+    <li>Pakiet zgłoszeń: 3 testy przeszły</li>
+    <li>FAQ, opinie z&nbsp;informacją o&nbsp;weryfikacji</li>
+    <li>Informacje formalne zatwierdzone (art. 17, 25, 7)</li>
+    <li>Raport w&nbsp;każdy piątek</li>
+  </ul>
+  <div class="phase">Faza 5–6 · oddanie i&nbsp;po oddaniu</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(5, auto)">
+    <li>Checklista startu przeszła</li>
+    <li>Runda 2 zamknięta</li>
+    <li>Protokół odbioru podpisany</li>
+    <li>Płatność końcowa, ewidencja</li>
+    <li>Publikacja, poczta działa (MX)</li>
+    <li>Instrukcja i&nbsp;nagranie przekazane</li>
+    <li>Prawa przeniesione na papierze</li>
+    <li>Hasła zmienione przez klientkę</li>
+    <li>Opinia (T12) i&nbsp;2 przedstawienia (T13)</li>
+    <li>Raport po 30&nbsp;dniach i&nbsp;opis przykładu</li>
+  </ul>
+</section>
+
+<!-- ================= CHECKLISTA B ================= -->
+<section class="page">
+  <div class="kicker">Checklista projektu · wersja B</div>
+  <h2 class="section"><span class="pill bb" style="font-size:11pt; vertical-align:middle">B</span> Od <span class="nw">e-maila</span> do opisu przykładu</h2>
+  <p class="lead">Ta sama logika co w&nbsp;A, ale serce projektu to reguły cen i&nbsp;ich testy.</p>
+
+  <div class="phase">Faza 1–2 · pozyskanie i&nbsp;sprzedaż</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(5, auto)">
+    <li>Firma przeszła szybki filtr, fakt w&nbsp;CRM</li>
+    <li><span class="nw">E-mail</span> z&nbsp;pytaniem o&nbsp;zgodę (T5) albo przedstawienie (T4)</li>
+    <li>„TAK” zapisane w&nbsp;CRM (data, treść)</li>
+    <li>Mini-audyt i&nbsp;krok 0: na czym stoi strona</li>
+    <li>Szkic kalkulatora z&nbsp;ich usługami i&nbsp;film 60–90&nbsp;s</li>
+    <li>Wiadomość z&nbsp;pomysłem (T6) w&nbsp;48&nbsp;h</li>
+    <li>Ankieta B wypełniona</li>
+    <li>Propozycja w&nbsp;48&nbsp;h (T11), W1 / W2 / W2+</li>
+    <li>Wariant wybrany na piśmie</li>
+  </ul>
+  <div class="phase">Faza 3 · start</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(4, auto)">
+    <li>Umowa zaakceptowana <span class="nw">e-mailem</span></li>
+    <li>Umowa powierzenia danych</li>
+    <li>Zadatek na koncie, wpis w&nbsp;ewidencji</li>
+    <li>Cennik roboczy, dopłaty, minimum, strefy</li>
+    <li>Zdjęcia przed i&nbsp;po, adresy do zgłoszeń</li>
+    <li>Dostęp do strony albo domeny i&nbsp;hostingu</li>
+    <li>Harmonogram wysłany, daty w&nbsp;CRM</li>
+  </ul>
+  <div class="phase">Faza 4 · budowa</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(5, auto)">
+    <li>Tabela reguł zatwierdzona na piśmie</li>
+    <li>Przypadki testowe zatwierdzone przez klienta</li>
+    <li>Testy jednostkowe przechodzą</li>
+    <li>Silnik skonfigurowany w&nbsp;panelu</li>
+    <li>Zgłoszenie: termin, adres, zdjęcia, 14&nbsp;dni</li>
+    <li>Cena liczona ponownie na serwerze</li>
+    <li>Pakiet zgłoszeń: 3 testy przeszły</li>
+    <li>Styl dopasowany, zrzuty zaakceptowane</li>
+    <li>W2: przed i&nbsp;po, opinie, obszar, FAQ</li>
+    <li>System opinii i&nbsp;link z&nbsp;Profilu Firmy</li>
+  </ul>
+  <div class="phase">Faza 5–6 · oddanie i&nbsp;po oddaniu</div>
+  <ul class="check big twocol" style="grid-template-rows: repeat(5, auto)">
+    <li>Checklista startu przeszła</li>
+    <li>Runda 2 zamknięta</li>
+    <li>Protokół odbioru podpisany</li>
+    <li>Płatność końcowa, ewidencja</li>
+    <li>Publikacja, poczta działa (MX)</li>
+    <li>Instrukcja „jak zmienić ceny” i&nbsp;nagranie</li>
+    <li>Prawa na papierze, silnik na licencji</li>
+    <li>Hasła zmienione przez klienta</li>
+    <li>Opinia (T12) i&nbsp;2 przedstawienia (T13)</li>
+    <li>Raport po 30&nbsp;dniach i&nbsp;opis przykładu</li>
+  </ul>
+</section>
+
+<!-- ================= SZABLONY W PROCESIE ================= -->
+<section class="page">
+  <div class="kicker">Szablony i&nbsp;dokumenty</div>
+  <h2 class="section">Co wysyłasz na każdym etapie</h2>
+  <p class="lead">Szablony wiadomości T1–T14 są w&nbsp;drogowskazie (sekcje 19–20). Dokumenty przygotowujesz raz w&nbsp;fazie 0 i&nbsp;tylko podmieniasz dane.</p>
+
+  <table class="compact">
+    <tr><th style="width:42mm">Moment</th><th>Wiadomość albo dokument</th><th style="width:30mm">Gdzie</th></tr>
+    <tr><td>Ciepły start</td><td>T1 do znajomego, T2 do osoby po zgodzie znajomego, T3 prośba o&nbsp;przedstawienie, T4 pierwsza wiadomość po przedstawieniu</td><td>sekcja 19</td></tr>
+    <tr><td>Zimny start</td><td>T5 <span class="nw">e-mail</span> z&nbsp;pytaniem o&nbsp;zgodę, ze stopką RODO</td><td>sekcje 14, 19</td></tr>
+    <tr><td>Publiczne zapytania</td><td>T8 odpowiedź na post, T14 oferta na Useme</td><td>sekcje 19, 20</td></tr>
+    <tr><td>Po „TAK”</td><td><span class="pill a">A</span> jak T2 bez zdania o&nbsp;koledze · <span class="pill bb">B</span> T6 · biuro rachunkowe T7; film 60–90&nbsp;s; szkic</td><td>sekcje 15, 19</td></tr>
+    <tr><td>Pytanie o&nbsp;cenę przed ankietą</td><td>T9 z&nbsp;przedziałami cen i&nbsp;zaproszeniem do ankiety</td><td>sekcja 19</td></tr>
+    <tr><td>Ankieta</td><td>Ankieta Google A&nbsp;albo B z&nbsp;automatem, link ze źródłem, opcja głosówki; przypomnienie po 3&nbsp;dniach</td><td>sekcje 16, 18</td></tr>
+    <tr><td>Propozycja</td><td>Szkic z&nbsp;automatu (Google Docs) → PDF z&nbsp;8 blokami i&nbsp;T11; dzień 3 i&nbsp;dzień 8–10: T10</td><td>sekcje 17, 19</td></tr>
+    <tr><td>Start</td><td>Umowa (zadatek, rundy, harmonogram), umowa powierzenia danych, formularz „materiały” A&nbsp;albo B, film o&nbsp;zakładaniu domeny i&nbsp;hostingu</td><td>sekcje 23, 25</td></tr>
+    <tr><td>Budowa</td><td>Treści w&nbsp;Google Docs, film akceptacji szkicu, raport w&nbsp;piątek, tabela reguł i&nbsp;przypadki testowe (B)</td><td>sekcje 22, 23</td></tr>
+    <tr><td>Oddanie</td><td>Protokół odbioru, instrukcja właściciela strony, nagranie szkoleniowe, umowa przeniesienia praw na papierze</td><td>sekcje 22, 25</td></tr>
+    <tr><td>Po oddaniu</td><td>T12 opinia, T13 polecenie, raport po 30&nbsp;dniach, opis przykładu na Twoją stronę; po JDG umowa opieki</td><td>sekcje 3, 9, 19, 23</td></tr>
+    <tr><td>Telefon albo prośba o&nbsp;Meet</td><td>Telefon bez umówienia: uprzejmie na pismo. Na prośbę klienta: 15 minut po propozycji albo 30 minut na Meet z&nbsp;prezentacją A&nbsp;albo B, potem podsumowanie w&nbsp;5 punktach</td><td>sekcje 11, 18</td></tr>
+  </table>
+
+  <div class="box dark">
+    <h4 style="color:#fff">Jedno zdanie na koniec</h4>
+    <p class="small" style="margin-bottom:0">Ten sam proces w&nbsp;każdym projekcie, w&nbsp;tej samej kolejności i&nbsp;z tymi samymi szablonami. Po trzecim projekcie zobaczysz, które kroki robisz z&nbsp;pamięci, a&nbsp;które warto jeszcze uprościć.</p>
+  </div>
+</section>
+
+</body>
+</html>

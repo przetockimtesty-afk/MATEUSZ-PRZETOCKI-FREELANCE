@@ -1,0 +1,13 @@
+<!-- @dsCard group="Tekst" height=80 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { className: 'mp-tags', style: { padding: '24px' } },
+    h(M.Tag, null, 'kalendarz'), h(M.Tag, null, 'formularz analizy'), h(M.Tag, { tone: 'sand' }, 'Projekt demonstracyjny'), h(M.Tag, { tone: 'black' }, 'Polecam'), h(M.Tag, { tone: 'outline' }, 'Domena i dane są Twoje')));
+</script>
+</body>
+</html>

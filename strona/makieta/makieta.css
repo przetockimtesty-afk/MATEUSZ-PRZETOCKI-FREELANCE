@@ -1,0 +1,87 @@
+/* Makieta strony mateuszprzetocki.pl: tokeny i elementy */
+@font-face { font-family: "Inter Tight"; font-weight: 600; font-display: swap; src: url(fonts/inter-tight-latin-600-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Inter Tight"; font-weight: 600; font-display: swap; src: url(fonts/inter-tight-latin-ext-600-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: "Inter Tight"; font-weight: 700; font-display: swap; src: url(fonts/inter-tight-latin-700-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Inter Tight"; font-weight: 700; font-display: swap; src: url(fonts/inter-tight-latin-ext-700-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url(fonts/inter-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Inter"; font-weight: 400; font-display: swap; src: url(fonts/inter-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url(fonts/inter-latin-500-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Inter"; font-weight: 500; font-display: swap; src: url(fonts/inter-latin-ext-500-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url(fonts/inter-latin-600-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Inter"; font-weight: 600; font-display: swap; src: url(fonts/inter-latin-ext-600-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/instrument-serif-latin-400-italic.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Instrument Serif"; font-style: italic; font-weight: 400; font-display: swap; src: url(fonts/instrument-serif-latin-ext-400-italic.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/instrument-serif-latin-400-normal.woff2) format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122; }
+@font-face { font-family: "Instrument Serif"; font-style: normal; font-weight: 400; font-display: swap; src: url(fonts/instrument-serif-latin-ext-400-normal.woff2) format("woff2"); unicode-range: U+0100-02BA, U+1E00-1EFF; }
+
+:root {
+  --krem: #F5F2EC;
+  --piasek: #E8E0D4;
+  --biel: #FFFFFF;
+  --czern: #161514;
+  --czern-hover: #2E2B28;
+  --grafit: #5C574F;
+  --blekit: #A7C7E7;
+  --blekit-hover: #C3D9EF;
+  --blekit-jasny: #DCE8F3;
+  --szary: #C9C2B6;
+  --linia: #D9D0C3;
+  --linia-ciemna: #34312D;
+  --zdjecie: #DCD3C6;
+  --font-naglowki: "Inter Tight", "Inter", system-ui, sans-serif;
+  --font-tekst: "Inter", system-ui, sans-serif;
+  --font-akcent: "Instrument Serif", Georgia, serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { background: var(--krem); color: var(--czern); font: 400 18px/1.6 var(--font-tekst); }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+.sekcja { padding: 120px 0; }
+.t-piasek { background: var(--piasek); }
+.t-czern { background: var(--czern); color: var(--krem); }
+
+.nadtytul { display: flex; align-items: center; gap: 10px; font: 600 12px/1.2 var(--font-tekst); letter-spacing: .14em; text-transform: uppercase; color: var(--grafit); margin-bottom: 22px; }
+.nadtytul::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--blekit); flex: none; }
+.t-czern .nadtytul { color: var(--szary); }
+
+h1, h2, h3 { font-family: var(--font-naglowki); font-weight: 600; letter-spacing: -0.02em; }
+h1 { font-size: 64px; line-height: 1.05; }
+h2 { font-size: 44px; line-height: 1.1; }
+h3 { font-size: 22px; line-height: 1.3; letter-spacing: -0.01em; }
+.akcent { font-family: var(--font-akcent); font-style: italic; font-weight: 400; font-size: 1.08em; letter-spacing: 0; line-height: 0.9; }
+.t-czern .akcent, .akcent-blekit { color: var(--blekit); }
+.tekst { color: var(--czern); max-width: 560px; }
+.pomoc { color: var(--grafit); }
+.maly { font-size: 14px; line-height: 1.5; }
+
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 999px; font: 600 16px/1 var(--font-tekst); white-space: nowrap; border: 1.5px solid transparent; }
+.btn svg { width: 18px; height: 18px; }
+.btn-czarny { background: var(--czern); color: var(--krem); }
+.btn-obrys { border-color: var(--czern); color: var(--czern); }
+.btn-blekit { background: var(--blekit); color: var(--czern); }
+.btn-obrys-jasny { border-color: var(--krem); color: var(--krem); }
+.btn-maly { height: 44px; padding: 0 20px; font-size: 15px; }
+
+.etykieta { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: 999px; background: var(--blekit-jasny); font: 500 13px/1 var(--font-tekst); color: var(--czern); white-space: nowrap; }
+.etykieta-czarna { background: var(--czern); color: var(--krem); }
+.etykieta-piasek { background: var(--piasek); }
+
+.karta { background: var(--biel); border: 1px solid var(--linia); border-radius: 24px; padding: 32px; }
+.link { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.link svg { width: 16px; height: 16px; }
+.t-czern .link { color: var(--blekit); }
+
+.ikona-kolko { width: 48px; height: 48px; border-radius: 50%; background: var(--blekit-jasny); display: grid; place-items: center; }
+.ikona-kolko svg, .ikona svg { width: 24px; height: 24px; }
+
+/* ramki urządzeń */
+.telefon { width: 300px; height: 612px; border-radius: 46px; background: var(--czern); padding: 12px; position: relative; flex: none; }
+.telefon::before { content: ""; position: absolute; top: 22px; left: 50%; width: 84px; height: 24px; margin-left: -42px; border-radius: 999px; background: var(--czern); z-index: 2; }
+.ekran { background: var(--biel); border-radius: 35px; height: 100%; overflow: hidden; position: relative; font-size: 13px; line-height: 1.4; }
+.pasek-demo { background: var(--piasek); color: var(--grafit); font: 600 10px/1 var(--font-tekst); letter-spacing: .12em; text-transform: uppercase; text-align: center; padding: 50px 0 9px; }
+.laptop { width: 100%; border-radius: 16px; background: var(--czern); padding: 10px; }
+.laptop .ekran { border-radius: 8px; height: auto; }

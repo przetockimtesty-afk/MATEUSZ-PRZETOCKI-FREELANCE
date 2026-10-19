@@ -1,0 +1,14 @@
+<!-- @dsCard group="Tekst" height=228 width=1000 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', null,
+    h('h1', { style: { margin: 0, padding: '28px 24px', font: '600 64px/1.05 var(--font-naglowki)', letterSpacing: '-0.02em' } }, 'Klienci umawiają się ', h(M.Accent, null, 'sami.')),
+    h('div', { className: 'mp-dark', style: { padding: '28px 24px' } }, h('h2', { style: { margin: 0, font: '600 44px/1.1 var(--font-naglowki)', letterSpacing: '-0.02em' } }, 'Od ankiety do ', h(M.Accent, null, 'gotowej'), ' strony'))));
+</script>
+</body>
+</html>

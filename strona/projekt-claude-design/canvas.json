@@ -1,0 +1,54 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-10-19T07:55:01Z" },
+  "title": "Strona mateuszprzetocki.pl",
+  "launch": { "view": "canvas", "page": "v1" },
+  "pages": [
+    { "id": "v1", "name": "Wersja 1" },
+    { "id": "v2", "name": "Kolejne podstrony" }
+  ],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 8000, "title": "Strona główna", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Telefon.dc.html": { "x": 1520, "y": 0, "w": 390, "h": 844, "title": "Strona główna na telefonie", "page": "v1", "is_interactive": true },
+    "Oferta.dc.html": { "x": 1990, "y": 0, "w": 1440, "h": 5200, "title": "Oferta: pakiety i ceny", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Realizacje.dc.html": { "x": 3510, "y": 0, "w": 1440, "h": 3300, "title": "Realizacje", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Demo-doradca.dc.html": { "x": 5030, "y": 0, "w": 1440, "h": 5600, "title": "Opis przykładu: Demo A", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Kontakt.dc.html": { "x": 6550, "y": 0, "w": 1440, "h": 2000, "title": "Kontakt", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Polityka.dc.html": { "x": 8070, "y": 0, "w": 1440, "h": 2800, "title": "Polityka prywatności", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Regulamin.dc.html": { "x": 9590, "y": 0, "w": 1440, "h": 2900, "title": "Regulamin", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Blad-404.dc.html": { "x": 11110, "y": 0, "w": 1440, "h": 1400, "title": "Strona 404", "page": "v1", "expand": "fill", "is_interactive": true },
+    "Dla-kogo.dc.html": { "x": 0, "y": 0, "w": 1440, "h": 4400, "title": "Dla kogo", "page": "v2", "expand": "fill", "is_interactive": true },
+    "Doradcy.dc.html": { "x": 1520, "y": 0, "w": 1440, "h": 6600, "title": "Doradcy kredytowi", "page": "v2", "expand": "fill", "is_interactive": true },
+    "Biura.dc.html": { "x": 3040, "y": 0, "w": 1440, "h": 6400, "title": "Biura rachunkowe", "page": "v2", "expand": "fill", "is_interactive": true },
+    "Terapeuci.dc.html": { "x": 4560, "y": 0, "w": 1440, "h": 6600, "title": "Psycholodzy i terapeuci", "page": "v2", "expand": "fill", "is_interactive": true },
+    "Jak-pracuje.dc.html": { "x": 6080, "y": 0, "w": 1440, "h": 3800, "title": "Jak pracuję", "page": "v2", "expand": "fill", "is_interactive": true },
+    "Pytania.dc.html": { "x": 7600, "y": 0, "w": 1440, "h": 3200, "title": "Pytania", "page": "v2", "expand": "fill", "is_interactive": true },
+    "O-mnie.dc.html": { "x": 9120, "y": 0, "w": 1440, "h": 2900, "title": "O mnie", "page": "v2", "expand": "fill", "is_interactive": true }
+  },
+  "order": [
+    "Main.dc.html",
+    "Telefon.dc.html",
+    "Oferta.dc.html",
+    "Realizacje.dc.html",
+    "Demo-doradca.dc.html",
+    "Kontakt.dc.html",
+    "Polityka.dc.html",
+    "Regulamin.dc.html",
+    "Blad-404.dc.html",
+    "Dla-kogo.dc.html",
+    "Doradcy.dc.html",
+    "Biura.dc.html",
+    "Terapeuci.dc.html",
+    "Jak-pracuje.dc.html",
+    "Pytania.dc.html",
+    "O-mnie.dc.html"
+  ],
+  "notes": {
+    "tytul-v1": { "x": 0, "y": -300, "text": "Wersja 1: strona główna, 6 podstron i strona 404", "kind": "title1", "maxW": 12550, "page": "v1" },
+    "podmiany-v1": { "x": -620, "y": 0, "w": 520, "text": "Do podmiany przed startem\n\n• Przyciski „Wyceń stronę” → link do ankiety A ze źródłem „Ze strony internetowej”.\n• „Umów 30 minut” → strona rezerwacji w Kalendarzu Google.\n• „Zobacz demo” i „Zobacz na żywo” → adres Demo A na subdomenie.\n• Szare pola → Twoje portrety i zrzuty z Demo A.\n• Adres w stopce, w Kontakcie i na stronach prawnych → po rozmowie z radcą.\n\nNa telefonie menu samo przechodzi w ikonę, a na dole stoi czarny pasek z przyciskiem.", "size": "m", "fill": "blue", "page": "v1" },
+    "tytul-v2": { "x": 0, "y": -300, "text": "Kolejne podstrony: dokładasz od 16.11, jedna na tydzień", "kind": "title1", "maxW": 10560, "page": "v2" }
+  },
+  "designSystems": [
+    { "title": "Mateusz Przetocki", "namespace": "mp", "artifact": "https://claude.ai/artifact/DmzGLSZNV7yk6xEj32MEGf", "version": "1792396741-dbf6", "copiedAt": "2026-10-19T07:59:30Z" }
+  ]
+}

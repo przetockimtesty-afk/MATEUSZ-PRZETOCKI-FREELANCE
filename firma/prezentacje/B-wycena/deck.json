@@ -1,0 +1,20 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-10-15T14:20:00Z"},
+  "lists": "css",
+  "title": "Prezentacja B · Wycena",
+  "cover": "cover",
+  "order": ["cover", "plan", "heard", "cost", "how", "demo", "example", "process", "own", "variants", "next", "faq", "law", "cheat-questions", "cheat-questions-2", "cheat-questions-3", "cheat-questions-4", "cheat-flow"],
+  "sections": {
+    "s1": {"description": "Otwarcie: plan 30 minut i zgoda na rozmowę o decyzji", "start": "cover"},
+    "s2": {"description": "Diagnoza: co usłyszałem, z czego składa się cena i ile kosztuje problem", "start": "heard"},
+    "s3": {"description": "Pokaz: jak działa kalkulator, demo, przykład, współpraca i własność", "start": "how"},
+    "s4": {"description": "Oferta: trzy warianty i jeden następny krok", "start": "variants"},
+    "s5": {"description": "Zapas: częste pytania, przepisy i ściągi tylko dla Ciebie", "start": "faq"}
+  },
+  "faces": {
+    "inter": {"family": "Inter", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"},
+    "inter-tight": {"family": "Inter Tight", "href": "https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700;800&display=swap"}
+  },
+  "designSystems": []
+}

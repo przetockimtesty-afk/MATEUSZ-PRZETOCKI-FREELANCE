@@ -1,0 +1,13 @@
+<!-- @dsCard group="Ikony" height=96 -->
+<!doctype html>
+<html lang="pl">
+<head><meta charset="utf-8"><title>podgląd</title></head>
+<body>
+<div id="root"></div>
+<script>
+  var M = window.MP, h = React.createElement;
+  ReactDOM.createRoot(document.getElementById('root')).render(h('div', { style: { padding: '24px', display: 'flex', gap: '16px' } },
+    h(M.IconCircle, { name: 'calendar-check' }), h(M.IconCircle, { name: 'clipboard-list' }), h(M.IconCircle, { name: 'message-circle-question' }), h(M.IconCircle, { name: 'search' })));
+</script>
+</body>
+</html>
