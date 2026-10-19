@@ -54,8 +54,8 @@ stron z WordPressa.
 |---|---|---|---|
 | Strona mateuszprzetocki.pl (WordPress, 14 podstron) | źródło `strona/wordpress/`, kopie `backups/` | projekt w Claude Design to wzór | — |
 | Zdjęcia Mateusza (na stronie: media 92–94 w WordPressie) | nie, z zasady | — | oryginały, 2 pliki |
-| Drogowskaz PDF | tak | — | nie (wgrywam na prośbę) |
-| Workflow A i B PDF | tak | — | nie (wgrywam na prośbę) |
+| Drogowskaz PDF | tak | — | tak, ta sama wersja co w repozytorium |
+| Workflow A i B PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | PROFIL.md, Kod.gs, INSTRUKCJA.md | tak | — | — |
 | Plan strony (z tytułami SEO i przepisami branż) | kopia z 19.10, po zmianach | wersja robocza | — |
 | System marki | tak | tak | — |
