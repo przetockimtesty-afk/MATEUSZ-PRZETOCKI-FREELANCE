@@ -15,7 +15,7 @@ firma/
     A-konsultacja/          źródło prezentacji A (deck.json + slajdy)
     B-wycena/               źródło prezentacji B
 strona/                     moja strona mateuszprzetocki.pl
-  plan-strony.md            kopia dokumentu „Plan strony” (stan z 19.10.2026)
+  plan-strony.md            kopia dokumentu „Plan strony” (stan z 19.10.2026, po drugiej rozmowie)
   projekt-claude-design/    źródło projektu strony: 16 plansz + canvas.json
   system-marki/             system „Mateusz Przetocki”: kolory, fonty, logo, 21 komponentów
   makieta/                  wcześniejsza makieta HTML strony głównej
@@ -43,16 +43,16 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (19.10.2026)
+## Stan zapisu (19.10.2026, po drugiej rozmowie)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
 | Drogowskaz PDF | tak | — | nie (wgrywam na prośbę) |
 | Workflow A i B PDF | tak | — | nie (wgrywam na prośbę) |
 | PROFIL.md, Kod.gs, INSTRUKCJA.md | tak | — | — |
-| Plan strony | kopia z 19.10 | wersja robocza | — |
+| Plan strony (z tytułami SEO i przepisami branż) | kopia z 19.10, po zmianach | wersja robocza | — |
 | System marki | tak | tak | — |
-| Projekt strony w Claude Design | tak | tak | — |
+| Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
 
 Folder na Dysku: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw

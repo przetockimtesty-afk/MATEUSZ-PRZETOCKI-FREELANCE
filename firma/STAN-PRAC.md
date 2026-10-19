@@ -14,12 +14,16 @@
 - Prezentacji A i B nie wysyłamy klientom jako linku.
 - Projekt w Claude Design: plansz nie renderujemy ani nie sprawdzamy zrzutami, chyba że Mateusz poprosi. Przed publikacją `canvas.json` czytamy jego aktualną wersję.
 
+## Zrobione 19.10.2026 (druga rozmowa)
+
+- [x] Tytuły i opisy SEO wszystkich podstron dopisane do planu strony (claude.ai i `strona/plan-strony.md`, sekcja „Technika, SEO…”).
+- [x] Link „Wszystkie branże” w stopce 15 plansz projektu (claude.ai, wersja 21, i `strona/projekt-claude-design/`).
+- [x] Przepisy 4 nowych branż sprawdzone w podstawowym zakresie i dopisane do planu pod tabelą „Następne cztery branże”. Mateusz: nie wchodzimy szerzej, szczegóły zna klient.
+
 ## Otwarte sprawy
 
-- [ ] Dopisać do planu strony tytuły i opisy SEO wszystkich podstron (propozycje są wyżej i w rozmowie z 19.10).
-- [ ] W stopce 15 plansz projektu dodać link „Wszystkie branże” (plan już to przewiduje).
-- [ ] Sprawdzić przepisy dla 4 nowych branż: ustawa o dystrybucji ubezpieczeń, zasady Krajowej Izby Fizjoterapeutów, kodeksy etyki adwokatów i radców.
-- [ ] Uogólnić ankietę A w `Kod.gs` pod wszystkie branże (osobne zadanie).
-- [ ] Dopasować prezentacje i szablon propozycji do nowych kolorów (osobne zadanie).
-- [ ] Zdecydować, czy usunąć folder `plan-freelancer/` ze starego repozytorium `oneproductstore`.
-- [ ] Zdjęcie Mateusza na stronę: dostarczy później; nie trafia do repozytorium.
+- [ ] Uogólnić ankietę A w `Kod.gs` pod wszystkie branże. Teraz nie robimy; przypomnieć, gdy Mateusz zapyta o niedokończone zadania.
+- [ ] Dopasować prezentacje i szablon propozycji do nowych kolorów. Odłożone, niepilne.
+- [ ] Usunąć folder `plan-freelancer/` ze starego repozytorium `oneproductstore`, jeśli wszystko jest skopiowane tutaj (Mateusz się zgodził). Zablokowane: sesja nie dostała dostępu do `oneproductstore`.
+- [ ] Zdjęcie Mateusza na stronę: dostarczy później; nie trafia do repozytorium. Przypominać przy kolejnych rozmowach.
+- [ ] Przed zakupem hostingu LH.pl sprawdzić, czy domena `mateuszprzetocki.pl` jest wolna.

@@ -256,6 +256,14 @@ Strony dla tych branż wymagają prawie tego samego: kalendarza, krótkiego form
 | Kancelarie prawne | „Strona dla kancelarii prawnej, która umawia konsultacje” | „Klient z poważną sprawą szuka kancelarii wieczorem. Zakres praktyki i kalendarz pierwszej konsultacji pozwalają mu umówić się, zanim zadzwoni gdzie indziej” | zakres praktyki · pierwsza konsultacja · zasady samorządu | informowanie o działalności według kodeksu etyki adwokatów albo radców prawnych (sprawdzasz przed tekstami); bez obietnic wygranej i nazw klientów; formularz tylko z rodzajem sprawy, bez szczegółów i dokumentów, które klient omawia na konsultacji |
 | Firmy remontowe i wykończeniowe | „Strona dla firmy remontowej, która umawia oględziny” | „Jesteś na budowie, a telefon dzwoni z prośbą o wycenę. Formularz z zakresem prac, metrażem i zdjęciami oraz kalendarz oględzin oszczędzają Ci jazd na próżno” | realizacje przed i po · formularz wyceny · termin oględzin | zdjęcia realizacji za zgodą klientów, bez adresów i twarzy; w formularzu prośba o zdjęcia pomieszczeń bez osób; ceny „od” za m² z dopiskiem, że dokładna wycena jest po oględzinach; gwarancja opisana tak samo jak w umowie |
 
+**Przepisy czterech branż w skrócie (sprawdzone 19.10.2026).** Tylko podstawy: szczegóły swojego zawodu zna klient. Na stronie pokazujesz to, co od niego dostaniesz, a w ankiecie pytasz o numer wpisu i zasady samorządu.
+
+- **Agenci ubezpieczeniowi:** przed zawarciem umowy agent podaje numer wpisu do rejestru agentów, adres strony z rejestrem i sposób sprawdzenia wpisu ([art. 22 ustawy o dystrybucji ubezpieczeń](https://lexlege.pl/dystryb-ubezpieczen/art-22/)). Na stronie: numer wpisu z linkiem do rejestru KNF i zakłady, dla których pracuje.
+- **Fizjoterapeuci:** samorządem jest Krajowa Izba Fizjoterapeutów, a etyka zawodowa to obowiązek z [ustawy o zawodzie fizjoterapeuty](https://eli.gov.pl/eli/DU/2015/1994/ogl/pol/pdf). Omówienia kodeksu etyki mówią: informacja o usługach i kwalifikacjach, bez obietnic efektów i bez „najlepszy w mieście”. Oficjalnego tekstu kodeksu nie sprawdziłem, więc prosisz o niego klienta.
+- **Adwokaci:** wolno informować o działalności, jeśli informacja jest prawdziwa, zgodna z prawem i tajemnicą i nie zabiega o konkretne zlecenie; ceny tylko na prośbę klienta albo w ofercie ([Kodeks Etyki Adwokackiej, § 23a–23b](https://www.adwokatura.pl/admin/wgrane_pliki/file-zal-do-uchwaly-prezydium-nra-nr-1742026kodeksetykiadwokackiejtekst-jednolity-44572.pdf)). Na stronie adwokata: bez cennika i bez „tanio i skutecznie”.
+- **Radcowie prawni:** informowanie jest dozwolone, bez treści nieprawdziwych, wprowadzających w błąd albo natrętnych, a radca musi być rozpoznawalny jako radca prawny ([art. 31–32 Kodeksu Etyki Radcy Prawnego](https://lexlege.pl/etyka-radc-prawn/art-31/), [broszura OIRP w Warszawie](https://www.oirpwarszawa.pl/wp-content/uploads/2026/04/broszura-o-zasadach-promocji-oirp-w-warszawie.pdf)).
+- **Firmy remontowe:** bez przepisów samorządu; wystarczą zasady z tabeli wyżej.
+
 **Strona zbiorcza w grupach.** Na górze 7 kart z numerami: 3 branże ze stroną i 4 następne. Karta branży, która nie ma jeszcze strony, prowadzi do ankiety („Wyceń stronę dla kancelarii”). Ósma karta to „Nie widzisz swojej branży?” z linkami do listy niżej i do kontaktu. Pod kartami pozostałe branże w 4 grupach, każda z nazwą i jednym zdaniem, bez osobnych adresów:
 
 - **Finanse i prawo:** doradcy podatkowi, mediatorzy.
@@ -543,6 +551,31 @@ Strona stoi na WordPressie z lekkim darmowym motywem i blokami edytora, bez krea
 - Dane strukturalne: osoba (Ty), usługa dla każdego pakietu i okruszki. Pytania piszesz dla ludzi: Google od 2023 r. nie pokazuje rozszerzonych wyników FAQ zwykłym stronom ([Google](https://developers.google.com/search/blog/2023/08/howto-faq-changes)).
 - Mapa strony w XML i Google Search Console od dnia startu. Opisy alternatywne do każdego zdjęcia i zrzutu.
 - Profil Firmy w Google dla siebie zakładasz tylko wtedy, gdy spotykasz się z klientami osobiście. Firmy działające wyłącznie online nie mogą go mieć ([Google](https://support.google.com/business/answer/7039811?hl=en-GB)).
+
+**Tytuły i opisy wszystkich podstron.** W nawiasie liczba znaków. Strony branżowe i opisy przykładów podają cenę pakietu z kalendarzem (1 800 zł), pozostałe najniższą (1 200 zł). Adresy 4 następnych branż obowiązują od dnia, w którym dostaną własną stronę.
+
+| Strona | Adres | Tytuł (znaki) | Opis (znaki) |
+| --- | --- | --- | --- |
+| Strona główna | `/` | Strony z kalendarzem konsultacji \| Mateusz Przetocki (52) | Strony wizytówki z kalendarzem i formularzem: klient sam umawia konsultację, a Ty wiesz, z czym przyjdzie. Od 1 200 zł, gotowe w ok. 2 tygodnie. (144) |
+| Dla kogo | `/dla-kogo/` | Dla kogo robię strony \| Mateusz Przetocki (41) | Strony dla doradców, biur rachunkowych, terapeutów i innych specjalistów, u których sprzedaż zaczyna się od rozmowy. Znajdź swoją branżę. Od 1 200 zł. (150) |
+| Doradcy kredytowi | `/dla-kogo/doradcy-kredytowi/` | Strona dla doradcy kredytowego \| Mateusz Przetocki (50) | Klient umawia konsultację wieczorem, a Ty rano znasz kwotę i wkład własny. Kalendarz, formularz analizy i informacje KNF. Z kalendarzem od 1 800 zł. (148) |
+| Biura rachunkowe | `/dla-kogo/biura-rachunkowe/` | Strona dla biura rachunkowego \| Mateusz Przetocki (49) | Strona odpowiada na stałe pytania o KSeF i dokumenty, a nowy klient sam umawia rozmowę o współpracy, także w sezonie PIT. Z kalendarzem od 1 800 zł. (148) |
+| Psycholodzy i terapeuci | `/dla-kogo/psycholodzy-i-terapeuci/` | Strona dla psychologa i terapeuty \| Mateusz Przetocki (53) | Spokojna strona z Twoim podejściem i kalendarzem: klient umawia wizytę bez telefonu, a formularz nie pyta o zdrowie. Z kalendarzem od 1 800 zł. (143) |
+| Agenci ubezpieczeniowi | `/dla-kogo/agenci-ubezpieczeniowi/` | Strona dla agenta ubezpieczeniowego \| Mateusz Przetocki (55) | Klient umawia spotkanie, gdy Ty jesteś w terenie. Formularz potrzeb, kalendarz spotkań i numer w rejestrze agentów w jednym miejscu. Od 1 800 zł. (145) |
+| Fizjoterapeuci | `/dla-kogo/fizjoterapeuci/` | Strona dla fizjoterapeuty \| Mateusz Przetocki (45) | Pacjent umawia wizytę sam, nawet gdy jesteś w trakcie zabiegu. Kalendarz, odpowiedzi o pierwszą wizytę i informacja bez reklamy. Od 1 800 zł. (141) |
+| Kancelarie prawne | `/dla-kogo/kancelarie-prawne/` | Strona dla kancelarii prawnej \| Mateusz Przetocki (49) | Zakres praktyki i kalendarz pierwszej konsultacji: klient z poważną sprawą umawia się wieczorem. Treść zgodna z zasadami samorządu. Od 1 800 zł. (144) |
+| Firmy remontowe | `/dla-kogo/firmy-remontowe/` | Strona dla firmy remontowej \| Mateusz Przetocki (47) | Formularz z zakresem prac, metrażem i zdjęciami oraz kalendarz oględzin: mniej telefonów na budowie i jazd na próżno. Z kalendarzem od 1 800 zł. (144) |
+| Oferta | `/oferta/` | Pakiety i ceny stron wizytówek \| Mateusz Przetocki (50) | Trzy pakiety ze stałą ceną: 1 200, 1 800 i 2 500 zł. Propozycja na piśmie w 48 h od ankiety, strona gotowa w ok. 2 tygodnie. Faktura bez VAT. (141) |
+| Jak pracuję | `/jak-pracuje/` | Jak pracuję: od ankiety do startu \| Mateusz Przetocki (53) | Ankieta w 5 minut, propozycja w 48 h, szkic w 5 dni roboczych, start i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł. (141) |
+| Pytania | `/pytania/` | Pytania o stronę z kalendarzem \| Mateusz Przetocki (50) | Odpowiedzi na 12 pytań przed zamówieniem: koszty w kolejnych latach, domena, poprawki, RODO i kalendarz. Stałe ceny, strony od 1 200 zł. (136) |
+| Realizacje | `/realizacje/` | Realizacje i dema stron \| Mateusz Przetocki (43) | Dema i strony klientów do klikania: zobacz, jak klient sam umawia konsultację. Każde demo jest podpisane jako projekt demonstracyjny. Od 1 200 zł. (146) |
+| Opis Demo A | `/realizacje/demo-doradca-kredytowy/` | Demo: strona doradcy kredytowego \| Mateusz Przetocki (52) | Projekt demonstracyjny: jak doradca kredytowy dostaje konsultacje z kalendarza i formularza analizy. Problem, rozwiązanie i film. Od 1 800 zł. (142) |
+| Opis strony doradczyni (od 14.11) | `/realizacje/<nazwa-firmy>/` | [Nazwa firmy]: strona doradczyni \| Mateusz Przetocki (52) | Prawdziwa strona doradczyni kredytowej: jak klienci umawiają konsultacje sami i co to zmieniło. Liczby z raportu po starcie, za jej zgodą. (138) |
+| O mnie | `/o-mnie/` | Kim jestem i jak pracuję \| Mateusz Przetocki (44) | Robię strony wizytówki dla specjalistów, którzy umawiają konsultacje. Wszystko ustalamy na piśmie, a domena i strona są Twoje. Od 1 200 zł. (139) |
+| Kontakt | `/kontakt/` | Kontakt i wycena strony \| Mateusz Przetocki (43) | Wyceń stronę w 5 minut w ankiecie albo umów 30 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań. (121) |
+| Polityka prywatności | `/polityka-prywatnosci/` | Polityka prywatności \| Mateusz Przetocki (40) | Jakie dane zbieram przez ankietę i kalendarz, po co, jak długo je przechowuję i jakie masz prawa. Strona nie używa ciasteczek analitycznych. (140) |
+| Regulamin | `/regulamin/` | Regulamin \| Mateusz Przetocki (29) | Zasady zamówienia strony: propozycja, zadatek, poprawki, prawa autorskie, odstąpienie od umowy i reklamacje. (108) |
+| Strona 404 | (każdy błędny adres) | Tej strony tu nie ma \| Mateusz Przetocki (40) | bez opisu, strona wyłączona z indeksu |
 
 **RODO i ciasteczka**
 
