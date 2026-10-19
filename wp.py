@@ -55,7 +55,7 @@ def env(plik=".env"):
 
     user = z("WP_USER", "WP_LOGIN")
     pw = z("WP_PASSWORD", "WP_APP_PASSWORD", "WP_APP_PASS").replace(" ", "")
-    base = z("WP_URL").rstrip("/").removesuffix("/wp-admin")
+    base = (z("WP_URL") or "https://mateuszprzetocki.pl").rstrip("/").removesuffix("/wp-admin")
     if not base:
         sys.exit("BŁĄD: brak WP_URL w .env ani w zmiennych środowiska")
     if not pw:

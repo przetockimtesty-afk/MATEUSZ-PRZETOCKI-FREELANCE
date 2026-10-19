@@ -28,7 +28,9 @@
 - [ ] Zdjęcie Mateusza na stronę: dostarczy później; nie trafia do repozytorium. Przypominać przy kolejnych rozmowach.
 - [ ] Przed zakupem hostingu LH.pl sprawdzić, czy domena `mateuszprzetocki.pl` jest wolna.
 - [ ] Unieważnić hasło aplikacji WordPress, które 19.10 trafiło do repozytorium w `.env` (plik usunięty, ale zostaje w historii Gita). Nowe hasło trzymać tylko w sekretach środowiska sesji, nigdy w repozytorium.
-- [ ] Dostęp do WordPressa: Mateusz zakłada użytkownika `claude` (Redaktor) z hasłem aplikacji i dodaje je jako Network secret środowiska (typ Basic, strona `mateuszprzetocki.pl`, prefiks `/wp-json/`), domenę w Allowed domains oraz zmienne `WP_URL` i `WP_USER`. W nowej sesji: `python3 wp.py me` (tylko odczyt), potem uzupełnić tabelę „Ta instalacja” w `WP-REST.md`. SSH i MySQL na razie niepotrzebne.
+- [x] Dostęp do WordPressa działa (19.10): konto `agentai`, rola administrator, logowanie przez Network secret, poprawka nagłówka w `.htaccess`. Stan instalacji w tabeli „Ta instalacja” w `WP-REST.md`.
+- [ ] Zdecydować, czy konto `agentai` zostaje administratorem, czy schodzi do roli Redaktor.
+- [ ] Ustawić w WordPressie strefę czasową Europe/Warsaw.
 
 ## Ustalenia o WordPressie (19.10.2026)
 

@@ -393,23 +393,21 @@ i pcha się do każdego backupu); `WP_DEBUG_DISPLAY=false` przed tym nie chroni.
 
 ### Ta instalacja
 
-Uzupełnić po pierwszym `wp.py me`, `wp.py types` i `wp.py schema pages`.
+Rozpoznanie 19.10.2026 (tylko odczyt).
 
 | | |
 |---|---|
-| Domena / API | `https://mateuszprzetocki.pl/wp-json/` (do potwierdzenia) |
-| WP · PHP · motyw · builder | plan: lekki darmowy motyw (GeneratePress albo motyw blokowy), Gutenberg, bez Elementora |
-| SEO · cache · hosting (WAF?) | plan: Rank Math albo Yoast (darmowe), wtyczka cache · hosting LH.pl Kiwi · WAF: nieznany |
-| Konto agenta i rola | do założenia: `claude`, Redaktor |
-| CPT i ich `rest_base` (`wp.py types`) | |
-| Warstwa treści (Gutenberg / ACF / `wp:html` / builder) | plan: Gutenberg |
-| Skąd bierze się H1 | |
-| Bloki globalne i moduły w szablonie | |
-| Skąd generowane są menu i stopka | |
-| Własne endpointy (meta SEO itp.) i gdzie leży ich kod | brak |
-| ID kluczowych stron | |
-| **Czego NIE da się przez REST** | |
-| Znane pułapki tej instalacji | |
-| Dostęp z sesji w chmurze | Network secret środowiska (typ Basic: `claude` + hasło aplikacji, strona `mateuszprzetocki.pl`, prefiks `/wp-json/`) — proxy dokleja nagłówek, hasła nie ma w sesji; domena też w Allowed domains (dla `wp.py check`); zmienne `WP_URL` (i `WP_USER`) w Environment variables |
+| Domena / API | `https://mateuszprzetocki.pl/wp-json/` · hosting LH.pl |
+| Stan | **świeża instalacja**: 0 stron, 0 wtyczek, strona główna = najnowsze wpisy · tytuł „Mateusz Przetocki”, opis pusty · **strefa czasowa pusta** (ustawić Europe/Warsaw) |
+| WP · motyw · builder | motyw **Twenty Twenty-Five 1.5** (blokowy, FSE) · builder: brak (Gutenberg) |
+| SEO · cache · WAF | brak wtyczek · WAF: nie zaobserwowano |
+| Konto agenta i rola | `agentai` (id 2) · **administrator** (plan: Redaktor; zostawić admina tylko do instalacji wtyczek i ustawień) |
+| CPT i ich `rest_base` | tylko rdzeń WP: `posts`, `pages`, `media`, `blocks`, `templates`, `template-parts`, `navigation`, `global-styles` |
+| Warstwa treści | Gutenberg + szablony FSE — nagłówek i stopka to template parts motywu |
+| Skąd bierze się H1 | do ustalenia przy pierwszej stronie (w FSE zwykle blok tytułu w szablonie) |
+| ID kluczowych stron | brak (żadnej strony jeszcze nie ma) |
+| **Czego NIE da się przez REST** | upload wtyczek z ZIP (tylko wp-admin) |
+| Znane pułapki | LH.pl wycinał nagłówek `Authorization` — poprawka w `.htaccess` (SetEnvIf / RewriteRule nad `# BEGIN WordPress`) |
+| Dostęp z sesji w chmurze | Network secret środowiska (Basic, prefiks `/wp-json/`) — hasła nie ma w sesji; `WP_URL` domyślnie w `wp.py` |
 
 <!-- ===== KONIEC BLOKU ===== -->
