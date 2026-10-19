@@ -54,7 +54,9 @@ stron z WordPressa.
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design | tak | tak | — |
 | Prezentacje A i B | źródła | tak | — |
-| WordPress mateuszprzetocki.pl | — | — | — (pusty, API bez zapisu) |
+| WordPress mateuszprzetocki.pl | — | — | — |
+
+WordPress jest pusty; API ma pełny dostęp (administrator).
 
 Folder na Dysku: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw
 

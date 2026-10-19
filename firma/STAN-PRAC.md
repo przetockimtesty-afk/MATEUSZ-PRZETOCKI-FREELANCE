@@ -16,7 +16,7 @@
 
 ## Otwarte sprawy
 
-- [ ] Dostęp do WordPressa przez API (sprawdzone 19.10): odczyt publiczny działa, ale logowanie hasłem aplikacji nie przechodzi. WordPress odpowiada „nikt nie jest zalogowany”, czyli nie widzi nagłówka `Authorization`. Prawdopodobnie Apache go obcina. Poprawka: w `.htaccess` przed blokiem WordPressa dopisać `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1`. Jeśli to nie pomoże, wygenerować nowe hasło aplikacji i podmienić je w ustawieniach środowiska Claude.
+- [x] Dostęp do WordPressa przez API działa (19.10, po nowym haśle aplikacji): użytkownik `agentai`, administrator.
 - [ ] Po uzyskaniu dostępu ustawić w WordPressie: opis witryny, strefę czasową Europe/Warsaw, statyczną stronę główną.
 
 - [ ] Dopisać do planu strony tytuły i opisy SEO wszystkich podstron (propozycje są wyżej i w rozmowie z 19.10).
