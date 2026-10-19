@@ -485,7 +485,7 @@ Na telefonie wszystko idzie w jednej kolumnie, przyciski mają całą szerokoś�
 
 &#91;image: Makieta na telefonie: pierwszy ekran, dla kogo i pakiety\]
 
-Źródło makiety, czyli HTML i CSS z kolorami, krojami i rozmiarami, leży w repozytorium w folderze `plan-freelancer/strona/makieta/`. Przy budowie strony kopiujesz z niego wartości zamiast przepisywać je z tabel.
+Źródło makiety, czyli HTML i CSS z kolorami, krojami i rozmiarami, leży w repozytorium MATEUSZ-PRZETOCKI-FREELANCE w folderze `strona/makieta/`. Przy budowie strony kopiujesz z niego wartości zamiast przepisywać je z tabel.
 
 ## Animacje i interakcje
 
