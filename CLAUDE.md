@@ -10,6 +10,7 @@
 
 - Folder „Mateusz Przetocki Freelance”: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw (id `1rwFHbmAzA8V6gCV41brlmOkADtZOGauw`).
 - PDF-y wgrywaj tam tylko wtedy, gdy Mateusz o to poprosi.
+- Złącze Dysku nie przyjmie pliku większego niż ok. kilkadziesiąt KB (plik idzie jako tekst w wywołaniu narzędzia). Większe PDF-y Mateusz wgrywa sam: daj mu link „raw” z GitHuba i link do folderu.
 
 ## Przypominanie, co jest zapisane
 
