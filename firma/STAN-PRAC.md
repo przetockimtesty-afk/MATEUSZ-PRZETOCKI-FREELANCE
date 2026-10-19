@@ -3,7 +3,7 @@
 ## Najważniejsze ustalenia
 
 - Oferta: strony wizytówki, przez które klienci specjalistów sami umawiają konsultacje. Pakiety 1 200 / 1 800 (polecany) / 2 500 zł. Szczegóły w `PROFIL.md`.
-- Własna strona: domena `mateuszprzetocki.pl` (zostaje). Sprawdzić, czy jest wolna, przed zakupem hostingu LH.pl.
+- Własna strona: domena `mateuszprzetocki.pl` (zostaje). WordPress już na niej działa (Apache), na razie pusty: brak stron i wpisów, strona główna pokazuje wpisy, opis witryny i strefa czasowa nieustawione.
 - Wygląd: krem, piasek, czerń, jasny błękit. Fonty: Inter Tight, Instrument Serif, Inter. Wszystko jest w systemie marki.
 - Branże: 3 ze stroną (doradcy kredytowi, biura rachunkowe, psycholodzy i terapeuci); potem agenci ubezpieczeniowi, fizjoterapeuci, kancelarie prawne i firmy remontowe, po jednej na tydzień; 12 kolejnych w 4 grupach na `/dla-kogo/`. Własny adres tylko z własną treścią, bez stron „branża + miasto”.
 - Tytuł witryny: „Mateusz Przetocki”, opis „Strony, które umawiają konsultacje”. Tytuł SEO strony głównej: „Strony z kalendarzem konsultacji | Mateusz Przetocki”.
@@ -15,6 +15,9 @@
 - Projekt w Claude Design: plansz nie renderujemy ani nie sprawdzamy zrzutami, chyba że Mateusz poprosi. Przed publikacją `canvas.json` czytamy jego aktualną wersję.
 
 ## Otwarte sprawy
+
+- [ ] Dostęp do WordPressa przez API (sprawdzone 19.10): odczyt publiczny działa, ale logowanie hasłem aplikacji nie przechodzi. WordPress odpowiada „nikt nie jest zalogowany”, czyli nie widzi nagłówka `Authorization`. Prawdopodobnie Apache go obcina. Poprawka: w `.htaccess` przed blokiem WordPressa dopisać `SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1`. Jeśli to nie pomoże, wygenerować nowe hasło aplikacji i podmienić je w ustawieniach środowiska Claude.
+- [ ] Po uzyskaniu dostępu ustawić w WordPressie: opis witryny, strefę czasową Europe/Warsaw, statyczną stronę główną.
 
 - [ ] Dopisać do planu strony tytuły i opisy SEO wszystkich podstron (propozycje są wyżej i w rozmowie z 19.10).
 - [ ] W stopce 15 plansz projektu dodać link „Wszystkie branże” (plan już to przewiduje).
