@@ -4,6 +4,8 @@
 - To repozytorium jest prywatne. Pliki z `firma/` nie trafiają do klientów.
 - Nie zapisuj w plikach numeru telefonu ani adresu e-mail Mateusza (w prezentacjach jest znacznik `{{EMAIL_KONTAKT}}`). Jego zdjęcie nie trafia do repozytorium.
 
+- Na początku sesji przeczytaj `firma/STAN-PRAC.md` (ustalenia i otwarte sprawy) i aktualizuj go po każdym zadaniu.
+
 ## Dysk Google
 
 - Folder „Mateusz Przetocki Freelance”: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw (id `1rwFHbmAzA8V6gCV41brlmOkADtZOGauw`).
