@@ -17,6 +17,7 @@
 ## Otwarte sprawy
 
 - [x] Dostęp do WordPressa przez API działa (19.10, po nowym haśle aplikacji): użytkownik `agentai`, administrator.
+- [ ] System szukania klientów z AI (pomysł 19.10): CEIDG (API v3 działa, klucz w ustawieniach środowiska) i rejestr KNF → ocena firm według 5 kryteriów → szkice e-maili z pytaniem o zgodę w arkuszu Google na Dysku (kolumny: firma, branża, miasto, źródło, strona, ocena, powód, e-mail, szkic, status, data). Wysyła Mateusz ręcznie. Start: doradcy kredytowi, 30 firm.
 - [ ] Po uzyskaniu dostępu ustawić w WordPressie: opis witryny, strefę czasową Europe/Warsaw, statyczną stronę główną.
 
 - [ ] Dopisać do planu strony tytuły i opisy SEO wszystkich podstron (propozycje są wyżej i w rozmowie z 19.10).
