@@ -1,0 +1,100 @@
+{
+ "glowna": {
+  "tytul": "Strona główna",
+  "slug": "strona-glowna",
+  "rodzic": null,
+  "opis": "Strony wizytówki z kalendarzem i formularzem: klient sam umawia konsultację, a Ty wiesz, z czym przyjdzie. Od 1 200 zł, gotowe w ok. 2 tygodnie.",
+  "url": "/"
+ },
+ "oferta": {
+  "tytul": "Pakiety i ceny",
+  "slug": "oferta",
+  "rodzic": null,
+  "opis": "Trzy pakiety ze stałą ceną: 1 200, 1 800 i 2 500 zł. Propozycja na piśmie w 48 h od ankiety, strona gotowa w ok. 2 tygodnie. Faktura bez VAT.",
+  "url": "/oferta/"
+ },
+ "realizacje": {
+  "tytul": "Realizacje",
+  "slug": "realizacje",
+  "rodzic": null,
+  "opis": "Dema i strony klientów do klikania: zobacz, jak klient sam umawia konsultację. Każde demo jest podpisane jako projekt demonstracyjny. Od 1 200 zł.",
+  "url": "/realizacje/"
+ },
+ "demo": {
+  "tytul": "Strona ekspertki kredytowej",
+  "slug": "demo-doradca-kredytowy",
+  "rodzic": "realizacje",
+  "opis": "Projekt demonstracyjny: jak doradca kredytowy dostaje konsultacje z kalendarza i formularza analizy. Problem, rozwiązanie i film. Od 1 800 zł.",
+  "url": "/realizacje/demo-doradca-kredytowy/"
+ },
+ "kontakt": {
+  "tytul": "Kontakt",
+  "slug": "kontakt",
+  "rodzic": null,
+  "opis": "Wyceń stronę w 5 minut w ankiecie albo umów 30 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań.",
+  "url": "/kontakt/"
+ },
+ "polityka": {
+  "tytul": "Polityka prywatności",
+  "slug": "polityka-prywatnosci",
+  "rodzic": null,
+  "opis": "Jakie dane zbieram przez ankietę i kalendarz, po co, jak długo je przechowuję i jakie masz prawa. Strona nie używa ciasteczek analitycznych.",
+  "url": "/polityka-prywatnosci/"
+ },
+ "regulamin": {
+  "tytul": "Regulamin",
+  "slug": "regulamin",
+  "rodzic": null,
+  "opis": "Zasady zamówienia strony: propozycja, zadatek, poprawki, prawa autorskie, odstąpienie od umowy i reklamacje.",
+  "url": "/regulamin/"
+ },
+ "dlaKogo": {
+  "tytul": "Dla kogo",
+  "slug": "dla-kogo",
+  "rodzic": null,
+  "opis": "Strony dla doradców, biur rachunkowych, terapeutów i innych specjalistów, u których sprzedaż zaczyna się od rozmowy. Znajdź swoją branżę. Od 1 200 zł.",
+  "url": "/dla-kogo/"
+ },
+ "doradcy": {
+  "tytul": "Doradcy kredytowi",
+  "slug": "doradcy-kredytowi",
+  "rodzic": "dlaKogo",
+  "opis": "Klient umawia konsultację wieczorem, a Ty rano znasz kwotę i wkład własny. Kalendarz, formularz analizy i informacje KNF. Z kalendarzem od 1 800 zł.",
+  "url": "/dla-kogo/doradcy-kredytowi/"
+ },
+ "biura": {
+  "tytul": "Biura rachunkowe",
+  "slug": "biura-rachunkowe",
+  "rodzic": "dlaKogo",
+  "opis": "Strona odpowiada na stałe pytania o KSeF i dokumenty, a nowy klient sam umawia rozmowę o współpracy, także w sezonie PIT. Z kalendarzem od 1 800 zł.",
+  "url": "/dla-kogo/biura-rachunkowe/"
+ },
+ "terapeuci": {
+  "tytul": "Psycholodzy i terapeuci",
+  "slug": "psycholodzy-i-terapeuci",
+  "rodzic": "dlaKogo",
+  "opis": "Spokojna strona z Twoim podejściem i kalendarzem: klient umawia wizytę bez telefonu, a formularz nie pyta o zdrowie. Z kalendarzem od 1 800 zł.",
+  "url": "/dla-kogo/psycholodzy-i-terapeuci/"
+ },
+ "jakPracuje": {
+  "tytul": "Jak pracuję",
+  "slug": "jak-pracuje",
+  "rodzic": null,
+  "opis": "Ankieta w 5 minut, propozycja w 48 h, szkic w 5 dni roboczych, start i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł.",
+  "url": "/jak-pracuje/"
+ },
+ "pytania": {
+  "tytul": "Pytania",
+  "slug": "pytania",
+  "rodzic": null,
+  "opis": "Odpowiedzi na 12 pytań przed zamówieniem: koszty w kolejnych latach, domena, poprawki, RODO i kalendarz. Stałe ceny, strony od 1 200 zł.",
+  "url": "/pytania/"
+ },
+ "oMnie": {
+  "tytul": "O mnie",
+  "slug": "o-mnie",
+  "rodzic": null,
+  "opis": "Robię strony wizytówki dla specjalistów, którzy umawiają konsultacje. Wszystko ustalamy na piśmie, a domena i strona są Twoje. Od 1 200 zł.",
+  "url": "/o-mnie/"
+ }
+}

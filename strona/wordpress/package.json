@@ -1,0 +1,19 @@
+{
+  "name": "mp-wordpress",
+  "private": true,
+  "description": "Strona mateuszprzetocki.pl w blokach WordPressa: generator treści, walidator bloków i ilustracje.",
+  "scripts": {
+    "ilustracje": "node renderuj.js",
+    "zbuduj": "node zbuduj.js",
+    "sprawdz": "node sprawdz.js build/strony/*.html build/czesci/*.html"
+  },
+  "dependencies": {
+    "@wordpress/block-editor": "*",
+    "@wordpress/block-library": "11.2.0",
+    "@wordpress/blocks": "16.2.0",
+    "@wordpress/core-data": "*",
+    "@wordpress/data": "*",
+    "jsdom": "^25",
+    "playwright-core": "1.56.1"
+  }
+}

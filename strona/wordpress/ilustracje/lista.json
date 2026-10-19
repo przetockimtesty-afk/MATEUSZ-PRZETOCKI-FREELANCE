@@ -1,0 +1,135 @@
+[
+ {
+  "nazwa": "telefon-rezerwacja-powiadomienie",
+  "alt": "Telefon z ekranem rezerwacji z dema i powiadomieniem o nowej konsultacji w czwartek o 19:30",
+  "szerokosc": 336,
+  "wysokosc": 612,
+  "plik": "ilustracje/png/telefon-rezerwacja-powiadomienie.png"
+ },
+ {
+  "nazwa": "telefon-google",
+  "alt": "Wyniki wyszukiwania w Google ze stroną ekspertki kredytowej",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/telefon-google.png"
+ },
+ {
+  "nazwa": "telefon-pytania-termin",
+  "alt": "Najczęstsze pytania i wybór terminu na stronie dema",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/telefon-pytania-termin.png"
+ },
+ {
+  "nazwa": "telefon-potwierdzenie",
+  "alt": "Potwierdzenie rezerwacji na czwartek 19:30",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/telefon-potwierdzenie.png"
+ },
+ {
+  "nazwa": "demo-laptop-telefon",
+  "alt": "Strona ekspertki kredytowej z dema na komputerze i na telefonie",
+  "szerokosc": 600,
+  "wysokosc": 383,
+  "plik": "ilustracje/png/demo-laptop-telefon.png"
+ },
+ {
+  "nazwa": "demo-laptop",
+  "alt": "Pierwszy ekran strony ekspertki kredytowej na komputerze, z wyborem terminu",
+  "szerokosc": 640,
+  "wysokosc": 403,
+  "plik": "ilustracje/png/demo-laptop.png"
+ },
+ {
+  "nazwa": "doradcy-rezerwacja",
+  "alt": "Ekran rezerwacji konsultacji z dema",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/doradcy-rezerwacja.png"
+ },
+ {
+  "nazwa": "doradcy-formularz",
+  "alt": "Formularz wstępnej analizy z przedziałami kwot",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/doradcy-formularz.png"
+ },
+ {
+  "nazwa": "biura-formularz",
+  "alt": "Formularz zapytania o współpracę z przedziałami",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/biura-formularz.png"
+ },
+ {
+  "nazwa": "biura-pytania-termin",
+  "alt": "Najczęstsze pytania i wybór terminu rozmowy",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/biura-pytania-termin.png"
+ },
+ {
+  "nazwa": "biura-potwierdzenie",
+  "alt": "Potwierdzenie rozmowy o współpracy",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/biura-potwierdzenie.png"
+ },
+ {
+  "nazwa": "terapeuci-podejscie",
+  "alt": "Opis podejścia i specjalizacji terapeuty",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/terapeuci-podejscie.png"
+ },
+ {
+  "nazwa": "terapeuci-wizyta",
+  "alt": "Wybór formy wizyty i terminu",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/terapeuci-wizyta.png"
+ },
+ {
+  "nazwa": "terapeuci-potwierdzenie",
+  "alt": "Potwierdzenie pierwszej sesji",
+  "szerokosc": 236,
+  "wysokosc": 480,
+  "plik": "ilustracje/png/terapeuci-potwierdzenie.png"
+ },
+ {
+  "nazwa": "zaslepka-portret",
+  "alt": "Miejsce na Twoje zdjęcie: portret do pasa",
+  "szerokosc": 800,
+  "wysokosc": 1000,
+  "plik": "ilustracje/png/zaslepka-portret.png"
+ },
+ {
+  "nazwa": "zaslepka-przy-pracy",
+  "alt": "Miejsce na zdjęcie przy pracy",
+  "szerokosc": 800,
+  "wysokosc": 600,
+  "plik": "ilustracje/png/zaslepka-przy-pracy.png"
+ },
+ {
+  "nazwa": "zaslepka-zrzut",
+  "alt": "Miejsce na zrzut ekranu",
+  "szerokosc": 800,
+  "wysokosc": 500,
+  "plik": "ilustracje/png/zaslepka-zrzut.png"
+ },
+ {
+  "nazwa": "zaslepka-awatar",
+  "alt": "Miejsce na Twoje zdjęcie",
+  "szerokosc": 160,
+  "wysokosc": 160,
+  "plik": "ilustracje/png/zaslepka-awatar.png"
+ },
+ {
+  "nazwa": "ikona-witryny",
+  "alt": "Monogram MP",
+  "szerokosc": 512,
+  "wysokosc": 512,
+  "plik": "ilustracje/png/ikona-witryny.png"
+ }
+]

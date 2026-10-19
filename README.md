@@ -20,7 +20,10 @@ strona/                     moja strona mateuszprzetocki.pl
   system-marki/             system „Mateusz Przetocki”: kolory, fonty, logo, 21 komponentów
   makieta/                  wcześniejsza makieta HTML strony głównej
   narzedzia/                skrypty do systemu marki (ds_gen.py generuje bundle.js i podglądy)
+  wordpress/                strona w blokach WordPressa: generator (zbuduj.js), wysyłka (wyslij.py),
+                            walidator bloków, CSS marki, ilustracje wyrenderowane z plansz
 klienci/                    projekty klientów, każdy w osobnym folderze
+backups/                    kopie zasobów WordPressa sprzed każdej zmiany (wp.py, wyslij.py)
 wp.py                       klient WordPress REST API (zapisy z backupem i weryfikacją)
 WP-REST.md                  zasady pracy z WordPressem, wczytywane przez CLAUDE.md
 ```
@@ -45,10 +48,11 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (19.10.2026, po drugiej rozmowie)
+## Stan zapisu (19.10.2026, po wgraniu strony do WordPressa)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
+| Strona mateuszprzetocki.pl (WordPress, 14 podstron) | źródło `strona/wordpress/`, kopie `backups/` | projekt w Claude Design to wzór | — |
 | Drogowskaz PDF | tak | — | nie (wgrywam na prośbę) |
 | Workflow A i B PDF | tak | — | nie (wgrywam na prośbę) |
 | PROFIL.md, Kod.gs, INSTRUKCJA.md | tak | — | — |
@@ -57,6 +61,9 @@ stron z WordPressa.
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
 
+Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
+w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.
+
 Folder na Dysku: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw
 
 ## Generowanie plików
@@ -64,3 +71,6 @@ Folder na Dysku: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOk
 - PDF drogowskazu: `node firma/drogowskaz/build.js` (wymaga Playwright i pypdf).
 - Komponenty systemu marki po zmianie w `system-marki/src/bundle.template.js`:
   `python3 strona/narzedzia/ds_gen.py strona/system-marki`.
+- Strona w WordPressie: raz `npm ci` w `strona/wordpress/`, potem z katalogu głównego
+  `python3 strona/wordpress/wyslij.py [etap]` (zasady w `WP-REST.md`).
+  Ilustracje z plansz: `node strona/wordpress/renderuj.js`.

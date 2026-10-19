@@ -1,0 +1,78 @@
+{
+ "telefon-rezerwacja-powiadomienie": {
+  "id": 10,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/telefon-rezerwacja-powiadomienie.webp"
+ },
+ "telefon-google": {
+  "id": 11,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/telefon-google.webp"
+ },
+ "telefon-pytania-termin": {
+  "id": 12,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/telefon-pytania-termin.webp"
+ },
+ "telefon-potwierdzenie": {
+  "id": 13,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/telefon-potwierdzenie.webp"
+ },
+ "demo-laptop-telefon": {
+  "id": 14,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/demo-laptop-telefon.webp"
+ },
+ "demo-laptop": {
+  "id": 15,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/demo-laptop.webp"
+ },
+ "doradcy-rezerwacja": {
+  "id": 16,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/doradcy-rezerwacja.webp"
+ },
+ "doradcy-formularz": {
+  "id": 17,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/doradcy-formularz.webp"
+ },
+ "biura-formularz": {
+  "id": 18,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/biura-formularz.webp"
+ },
+ "biura-pytania-termin": {
+  "id": 19,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/biura-pytania-termin.webp"
+ },
+ "biura-potwierdzenie": {
+  "id": 20,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/biura-potwierdzenie.webp"
+ },
+ "terapeuci-podejscie": {
+  "id": 21,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/terapeuci-podejscie.webp"
+ },
+ "terapeuci-wizyta": {
+  "id": 22,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/terapeuci-wizyta.webp"
+ },
+ "terapeuci-potwierdzenie": {
+  "id": 23,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/terapeuci-potwierdzenie.webp"
+ },
+ "zaslepka-portret": {
+  "id": 24,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/zaslepka-portret.webp"
+ },
+ "zaslepka-przy-pracy": {
+  "id": 25,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/zaslepka-przy-pracy.webp"
+ },
+ "zaslepka-zrzut": {
+  "id": 26,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/zaslepka-zrzut.webp"
+ },
+ "zaslepka-awatar": {
+  "id": 27,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/zaslepka-awatar.webp"
+ },
+ "ikona-witryny": {
+  "id": 28,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/ikona-witryny.png"
+ }
+}

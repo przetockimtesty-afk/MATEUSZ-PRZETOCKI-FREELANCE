@@ -5,3 +5,10 @@ _body.pdf
 .DS_Store
 .env
 .env.*
+
+# zdjęcia (np. Mateusza) są na Dysku Google, nie w repozytorium
+*.jpg
+*.jpeg
+*.heic
+# zrzuty ekranu do sprawdzania wyglądu (pokazują też zdjęcia)
+strona/wordpress/zrzuty/

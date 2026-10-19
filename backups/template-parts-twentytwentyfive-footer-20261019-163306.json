@@ -1,0 +1,69 @@
+{
+ "id": "twentytwentyfive//footer",
+ "theme": "twentytwentyfive",
+ "content": {
+  "raw": "<!-- wp:group {\"style\":{\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|60\",\"bottom\":\"var:preset|spacing|50\"}}},\"layout\":{\"type\":\"constrained\"},\"metadata\":{\"patternName\":\"twentytwentyfive/footer\",\"name\":\"Footer\",\"description\":\"Footer columns with logo, title, tagline and links.\",\"categories\":[\"footer\"]}} -->\n<div class=\"wp-block-group\" style=\"padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)\">\n\t<!-- wp:group {\"align\":\"wide\",\"layout\":{\"type\":\"default\"}} -->\n\t<div class=\"wp-block-group alignwide\">\n\t\t<!-- wp:site-logo /-->\n\n\t\t<!-- wp:group {\"align\":\"full\",\"layout\":{\"type\":\"flex\",\"flexWrap\":\"wrap\",\"justifyContent\":\"space-between\",\"verticalAlignment\":\"top\"}} -->\n\t\t<div class=\"wp-block-group alignfull\">\n\t\t\t<!-- wp:columns -->\n\t\t\t<div class=\"wp-block-columns\">\n\t\t\t\t<!-- wp:column {\"width\":\"100%\"} -->\n\t\t\t\t<div class=\"wp-block-column\" style=\"flex-basis:100%\"><!-- wp:site-title {\"level\":2} /-->\n\n\t\t\t\t<!-- wp:site-tagline /-->\n\t\t\t\t</div>\n\t\t\t\t<!-- /wp:column -->\n\n\t\t\t\t<!-- wp:column {\"width\":\"\"} -->\n\t\t\t\t<div class=\"wp-block-column\">\n\t\t\t\t\t<!-- wp:spacer {\"height\":\"var:preset|spacing|40\",\"width\":\"0px\"} -->\n\t\t\t\t\t<div style=\"height:var(--wp--preset--spacing--40);width:0px\" aria-hidden=\"true\" class=\"wp-block-spacer\"></div>\n\t\t\t\t\t<!-- /wp:spacer -->\n\t\t\t\t</div>\n\t\t\t\t<!-- /wp:column -->\n\t\t\t</div>\n\t\t\t<!-- /wp:columns -->\n\n\t\t\t<!-- wp:group {\"style\":{\"spacing\":{\"blockGap\":\"var:preset|spacing|80\"}},\"layout\":{\"type\":\"flex\",\"flexWrap\":\"wrap\",\"verticalAlignment\":\"top\",\"justifyContent\":\"space-between\"}} -->\n\t\t\t<div class=\"wp-block-group\">\n\t\t\t\t<!-- wp:navigation {\"overlayMenu\":\"never\",\"layout\":{\"type\":\"flex\",\"orientation\":\"vertical\"}} -->\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"Blog\",\"url\":\"#\"} /-->\n\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"About\",\"url\":\"#\"} /-->\n\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"FAQs\",\"url\":\"#\"} /-->\n\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"Authors\",\"url\":\"#\"} /-->\n\t\t\t\t<!-- /wp:navigation -->\n\n\t\t\t\t<!-- wp:navigation {\"overlayMenu\":\"never\",\"layout\":{\"type\":\"flex\",\"orientation\":\"vertical\"}} -->\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"Events\",\"url\":\"#\"} /-->\n\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"Shop\",\"url\":\"#\"} /-->\n\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"Patterns\",\"url\":\"#\"} /-->\n\n\t\t\t\t\t<!-- wp:navigation-link {\"label\":\"Themes\",\"url\":\"#\"} /-->\n\t\t\t\t<!-- /wp:navigation -->\n\t\t\t</div>\n\t\t\t\t<!-- /wp:group -->\n\t\t</div>\n\t\t<!-- /wp:group -->\n\n\t\t<!-- wp:spacer {\"height\":\"var:preset|spacing|70\"} -->\n\t\t<div style=\"height:var(--wp--preset--spacing--70)\" aria-hidden=\"true\" class=\"wp-block-spacer\"></div>\n\t\t<!-- /wp:spacer -->\n\n\t\t<!-- wp:group {\"align\":\"full\",\"style\":{\"spacing\":{\"blockGap\":\"var:preset|spacing|20\"}},\"layout\":{\"type\":\"flex\",\"flexWrap\":\"wrap\",\"justifyContent\":\"space-between\"}} -->\n\t\t<div class=\"wp-block-group alignfull\">\n\t\t\t<!-- wp:paragraph {\"fontSize\":\"small\"} -->\n\t\t\t<p class=\"has-small-font-size\">Twenty Twenty-Five</p>\n\t\t\t<!-- /wp:paragraph -->\n\t\t\t<!-- wp:paragraph {\"fontSize\":\"small\"} -->\n\t\t\t<p class=\"has-small-font-size\">\n\t\t\t\tDesigned with <a href=\"https://wordpress.org\" rel=\"nofollow\">WordPress</a>\t\t\t</p>\n\t\t\t<!-- /wp:paragraph -->\n\t\t</div>\n\t\t<!-- /wp:group -->\n\t</div>\n\t<!-- /wp:group -->\n</div>\n<!-- /wp:group -->\n",
+  "block_version": 1
+ },
+ "slug": "footer",
+ "source": "theme",
+ "origin": null,
+ "type": "wp_template_part",
+ "description": "",
+ "title": {
+  "raw": "Footer",
+  "rendered": "Footer"
+ },
+ "status": "publish",
+ "wp_id": 0,
+ "has_theme_file": true,
+ "author": 0,
+ "area": "footer",
+ "modified": null,
+ "date": null,
+ "author_text": "Twenty Twenty-Five",
+ "original_source": "theme",
+ "_links": {
+  "self": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/template-parts/twentytwentyfive//footer",
+    "targetHints": {
+     "allow": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE"
+     ]
+    }
+   }
+  ],
+  "collection": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/template-parts"
+   }
+  ],
+  "about": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/types/wp_template_part"
+   }
+  ],
+  "wp:action-publish": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/template-parts/twentytwentyfive//footer"
+   }
+  ],
+  "wp:action-unfiltered-html": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/template-parts/twentytwentyfive//footer"
+   }
+  ],
+  "curies": [
+   {
+    "name": "wp",
+    "href": "https://api.w.org/{rel}",
+    "templated": true
+   }
+  ]
+ }
+}

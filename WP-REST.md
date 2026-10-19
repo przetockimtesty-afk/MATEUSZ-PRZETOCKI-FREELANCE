@@ -393,21 +393,25 @@ i pcha się do każdego backupu); `WP_DEBUG_DISPLAY=false` przed tym nie chroni.
 
 ### Ta instalacja
 
-Rozpoznanie 19.10.2026 (tylko odczyt).
+Rozpoznanie 19.10.2026, uzupełnione tego samego dnia po zbudowaniu strony.
 
 | | |
 |---|---|
-| Domena / API | `https://mateuszprzetocki.pl/wp-json/` · hosting LH.pl |
-| Stan | **świeża instalacja**: 0 stron, 0 wtyczek, strona główna = najnowsze wpisy · tytuł „Mateusz Przetocki”, opis pusty · **strefa czasowa pusta** (ustawić Europe/Warsaw) |
-| WP · motyw · builder | motyw **Twenty Twenty-Five 1.5** (blokowy, FSE) · builder: brak (Gutenberg) |
-| SEO · cache · WAF | brak wtyczek · WAF: nie zaobserwowano |
+| Domena / API | `https://mateuszprzetocki.pl/wp-json/` · hosting LH.pl · WordPress 7.1.3 |
+| Stan | 14 stron opublikowanych w blokach Gutenberga · strona główna = statyczna „Strona główna” (id 40) · tytuł „Mateusz Przetocki”, opis „Strony, które umawiają konsultacje” · strefa Europe/Warsaw · komentarze i pingbacki wyłączone · ikona witryny = media 28 |
+| Indeksowanie | do startu 27.10 zaznaczone „Ustawienia → Czytanie → Proś wyszukiwarki o nieindeksowanie” (robi Mateusz w wp-admin; `blog_public` nie jest dostępne przez REST) |
+| WP · motyw · builder | motyw **Twenty Twenty-Five 1.5** (blokowy, FSE) · builder: brak (Gutenberg, bloki rdzenia) |
+| Wygląd | style globalne użytkownika (`global-styles/9`): paleta marki (plus slugi TT5), rozmiary pisma, układ 680/1120 px, przyciski · dodatkowy CSS = `strona/wordpress/style/marka.css` w `styles.css` · fonty Inter, Inter Tight i Instrument Serif w Bibliotece fontów (pliki na serwerze, bez Google Fonts) |
+| SEO · cache · WAF | brak wtyczek · `<title>` = „Tytuł strony – Mateusz Przetocki” (tytuły SEO z planu wejdą z wtyczką SEO) · opisy SEO z planu są w zajawkach stron (`excerpt`), WordPress sam ich nie wypisuje · WAF: nie zaobserwowano |
 | Konto agenta i rola | `agentai` (id 2) · **administrator** (plan: Redaktor; zostawić admina tylko do instalacji wtyczek i ustawień) |
-| CPT i ich `rest_base` | tylko rdzeń WP: `posts`, `pages`, `media`, `blocks`, `templates`, `template-parts`, `navigation`, `global-styles` |
-| Warstwa treści | Gutenberg + szablony FSE — nagłówek i stopka to template parts motywu |
-| Skąd bierze się H1 | do ustalenia przy pierwszej stronie (w FSE zwykle blok tytułu w szablonie) |
-| ID kluczowych stron | brak (żadnej strony jeszcze nie ma) |
-| **Czego NIE da się przez REST** | upload wtyczek z ZIP (tylko wp-admin) |
-| Znane pułapki | LH.pl wycinał nagłówek `Authorization` — poprawka w `.htaccess` (SetEnvIf / RewriteRule nad `# BEGIN WordPress`) |
+| CPT i ich `rest_base` | tylko rdzeń WP: `posts`, `pages`, `media`, `blocks`, `templates`, `template-parts`, `navigation`, `global-styles`, `font-families` |
+| Warstwa treści | Gutenberg + szablony FSE · wszystkie strony mają szablon `page-no-title` · zmienione: `twentytwentyfive//header` i `//footer` (template parts), `//404` (szablon) · menu = `wp_navigation` 54 |
+| Skąd bierze się H1 | z treści strony (nagłówek w pierwszej sekcji); `page-no-title` nie dokłada tytułu, więc na każdej stronie jest dokładnie 1 H1 |
+| ID kluczowych stron | 40 główna · 41 oferta · 42 realizacje · 43 kontakt · 44 polityka prywatności · 45 regulamin · 46 dla kogo · 47 jak pracuję · 48 pytania · 49 o mnie · 50 demo (rodzic 42) · 51 doradcy kredytowi, 52 biura rachunkowe, 53 psycholodzy i terapeuci (rodzic 46) · media: `strona/wordpress/build/media.json` |
+| Źródło i wysyłka | generator `strona/wordpress/zbuduj.js` → `build/` → `python3 strona/wordpress/wyslij.py [etap]` (walidacja bloków, backup, zapis). **Od 19.10 Mateusz edytuje teksty i grafiki w edytorze.** `wyslij.py` zatrzymuje się przed zapisem, gdy zasób zmieniono w WordPressie po ostatniej wysyłce (odciski w `build/wyslane.json`). Takie zmiany najpierw przenieś do `zbuduj.js`; `--nadpisz` tylko za zgodą Mateusza |
+| Dane kontaktowe | e-mail i telefon Mateusz wpisuje sam w edytorze. W repozytorium zostają zaślepki (`kontakt@…`, `#email`), także przy przenoszeniu jego zmian do `zbuduj.js` |
+| **Czego NIE da się przez REST** | upload wtyczek z ZIP (tylko wp-admin) · „Proś wyszukiwarki o nieindeksowanie” (`blog_public`) |
+| Znane pułapki | LH.pl wycinał nagłówek `Authorization` — poprawka w `.htaccess` (SetEnvIf / RewriteRule nad `# BEGIN WordPress`) · WP 7: blok `core/html` ma pusty `save()`, kod idzie w `innerContent` · `blockGap` z `clamp()` silnik układu odrzuca, używaj presetów (`var:preset\|spacing\|50`) · slug presetu z cyfrą zmienia się w zmiennej CSS (`h1` → `--wp--preset--font-size--h-1`) · `font-faces` zwraca kroje wszystkich rodzin, filtruj po `parent` · WordPress zapisuje w stylach `var:preset\|…` jako `var(--wp--preset--…)` |
 | Dostęp z sesji w chmurze | Network secret środowiska (Basic, prefiks `/wp-json/`) — hasła nie ma w sesji; `WP_URL` domyślnie w `wp.py` |
 
 <!-- ===== KONIEC BLOKU ===== -->

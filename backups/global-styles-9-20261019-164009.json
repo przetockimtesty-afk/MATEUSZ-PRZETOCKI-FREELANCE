@@ -1,0 +1,475 @@
+{
+ "id": 9,
+ "title": {
+  "raw": "Custom Styles",
+  "rendered": "Custom Styles"
+ },
+ "settings": {
+  "color": {
+   "palette": {
+    "theme": [
+     {
+      "slug": "krem",
+      "name": "Krem (tło strony)",
+      "color": "#f5f2ec"
+     },
+     {
+      "slug": "piasek",
+      "name": "Piasek (co druga sekcja)",
+      "color": "#e8e0d4"
+     },
+     {
+      "slug": "piasek-ciemny",
+      "name": "Piasek ciemny (miejsce na zdjęcie)",
+      "color": "#dcd3c6"
+     },
+     {
+      "slug": "biel",
+      "name": "Biel (karty)",
+      "color": "#ffffff"
+     },
+     {
+      "slug": "czern",
+      "name": "Czerń (tekst, przyciski, ciemne pasy)",
+      "color": "#161514"
+     },
+     {
+      "slug": "grafit",
+      "name": "Grafit (tekst pomocniczy)",
+      "color": "#5c574f"
+     },
+     {
+      "slug": "blekit",
+      "name": "Błękit (akcent na czerni)",
+      "color": "#a7c7e7"
+     },
+     {
+      "slug": "blekit-jasny",
+      "name": "Błękit jasny (polecany pakiet, etykiety)",
+      "color": "#dce8f3"
+     },
+     {
+      "slug": "linia",
+      "name": "Linia (ramki na jasnym)",
+      "color": "#d9d0c3"
+     },
+     {
+      "slug": "szary-na-czerni",
+      "name": "Szary na czerni (akapity)",
+      "color": "#c9c2b6"
+     },
+     {
+      "slug": "linia-ciemna",
+      "name": "Linia na czerni",
+      "color": "#34312d"
+     },
+     {
+      "slug": "blekit-linia",
+      "name": "Linia na błękicie",
+      "color": "#b9ccdd"
+     },
+     {
+      "slug": "czern-hover",
+      "name": "Czerń po najechaniu",
+      "color": "#2e2b28"
+     },
+     {
+      "slug": "blekit-hover",
+      "name": "Błękit po najechaniu",
+      "color": "#c3d9ef"
+     },
+     {
+      "slug": "base",
+      "name": "Motyw: tło",
+      "color": "#f5f2ec"
+     },
+     {
+      "slug": "contrast",
+      "name": "Motyw: tekst",
+      "color": "#161514"
+     },
+     {
+      "slug": "accent-1",
+      "name": "Motyw: akcent 1",
+      "color": "#a7c7e7"
+     },
+     {
+      "slug": "accent-2",
+      "name": "Motyw: akcent 2",
+      "color": "#e8e0d4"
+     },
+     {
+      "slug": "accent-3",
+      "name": "Motyw: akcent 3",
+      "color": "#5c574f"
+     },
+     {
+      "slug": "accent-4",
+      "name": "Motyw: akcent 4",
+      "color": "#5c574f"
+     },
+     {
+      "slug": "accent-5",
+      "name": "Motyw: akcent 5",
+      "color": "#ffffff"
+     },
+     {
+      "slug": "accent-6",
+      "name": "Motyw: akcent 6",
+      "color": "color-mix(in srgb, currentColor 20%, transparent)"
+     }
+    ]
+   }
+  },
+  "typography": {
+   "fontFamilies": {
+    "custom": [
+     {
+      "slug": "inter",
+      "name": "Inter",
+      "fontFamily": "Inter, system-ui, sans-serif",
+      "fontFace": [
+       {
+        "fontFamily": "Inter",
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "src": [
+         "https://mateuszprzetocki.pl/wp-content/uploads/fonts/Inter-400.woff2"
+        ],
+        "fontDisplay": "swap"
+       },
+       {
+        "fontFamily": "Inter",
+        "fontStyle": "normal",
+        "fontWeight": "500",
+        "src": [
+         "https://mateuszprzetocki.pl/wp-content/uploads/fonts/Inter-500.woff2"
+        ],
+        "fontDisplay": "swap"
+       },
+       {
+        "fontFamily": "Inter",
+        "fontStyle": "normal",
+        "fontWeight": "600",
+        "src": [
+         "https://mateuszprzetocki.pl/wp-content/uploads/fonts/Inter-600.woff2"
+        ],
+        "fontDisplay": "swap"
+       }
+      ]
+     },
+     {
+      "slug": "inter-tight",
+      "name": "Inter Tight",
+      "fontFamily": "\"Inter Tight\", Inter, system-ui, sans-serif",
+      "fontFace": [
+       {
+        "fontFamily": "Inter Tight",
+        "fontStyle": "normal",
+        "fontWeight": "600",
+        "src": [
+         "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InterTight-600.woff2"
+        ],
+        "fontDisplay": "swap"
+       },
+       {
+        "fontFamily": "Inter Tight",
+        "fontStyle": "normal",
+        "fontWeight": "700",
+        "src": [
+         "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InterTight-700.woff2"
+        ],
+        "fontDisplay": "swap"
+       }
+      ]
+     },
+     {
+      "slug": "instrument-serif",
+      "name": "Instrument Serif",
+      "fontFamily": "\"Instrument Serif\", Georgia, serif",
+      "fontFace": [
+       {
+        "fontFamily": "Instrument Serif",
+        "fontStyle": "normal",
+        "fontWeight": "400",
+        "src": [
+         "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InstrumentSerif-Regular.woff2"
+        ],
+        "fontDisplay": "swap"
+       },
+       {
+        "fontFamily": "Instrument Serif",
+        "fontStyle": "italic",
+        "fontWeight": "400",
+        "src": [
+         "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InstrumentSerif-Italic.woff2"
+        ],
+        "fontDisplay": "swap"
+       }
+      ]
+     }
+    ]
+   },
+   "fontSizes": {
+    "theme": [
+     {
+      "slug": "podpis",
+      "name": "Podpis (14 px)",
+      "size": "14px",
+      "fluid": false
+     },
+     {
+      "slug": "small",
+      "name": "Mały (15 px)",
+      "size": "15px",
+      "fluid": false
+     },
+     {
+      "slug": "medium",
+      "name": "Tekst (17–18 px)",
+      "size": "clamp(17px, 1.25vw, 18px)",
+      "fluid": false
+     },
+     {
+      "slug": "large",
+      "name": "Wstęp (17–19 px)",
+      "size": "clamp(17px, 1.32vw, 19px)",
+      "fluid": false
+     },
+     {
+      "slug": "x-large",
+      "name": "Nagłówek karty (22 px)",
+      "size": "22px",
+      "fluid": false
+     },
+     {
+      "slug": "xx-large",
+      "name": "Nagłówek sekcji (30–44 px)",
+      "size": "clamp(30px, 3.1vw, 44px)",
+      "fluid": false
+     },
+     {
+      "slug": "naglowek-strony",
+      "name": "Nagłówek strony (40–64 px)",
+      "size": "clamp(40px, 4.45vw, 64px)",
+      "fluid": false
+     }
+    ]
+   }
+  },
+  "layout": {
+   "contentSize": "680px",
+   "wideSize": "1120px"
+  }
+ },
+ "styles": {
+  "color": {
+   "background": "var(--wp--preset--color--krem)",
+   "text": "var(--wp--preset--color--czern)"
+  },
+  "typography": {
+   "fontFamily": "var(--wp--preset--font-family--inter)",
+   "fontSize": "var(--wp--preset--font-size--medium)",
+   "fontWeight": "400",
+   "lineHeight": "1.6",
+   "letterSpacing": "0"
+  },
+  "spacing": {
+   "blockGap": "22px",
+   "padding": {
+    "top": "0px",
+    "bottom": "0px",
+    "left": "clamp(20px, 2.8vw, 40px)",
+    "right": "clamp(20px, 2.8vw, 40px)"
+   }
+  },
+  "elements": {
+   "heading": {
+    "typography": {
+     "fontFamily": "var(--wp--preset--font-family--inter-tight)",
+     "fontWeight": "600",
+     "letterSpacing": "-0.02em",
+     "lineHeight": "1.1"
+    },
+    "color": {
+     "text": "var(--wp--preset--color--czern)"
+    }
+   },
+   "h1": {
+    "typography": {
+     "fontSize": "var(--wp--preset--font-size--naglowek-strony)",
+     "lineHeight": "1.05"
+    }
+   },
+   "h2": {
+    "typography": {
+     "fontSize": "var(--wp--preset--font-size--xx-large)",
+     "lineHeight": "1.1"
+    }
+   },
+   "h3": {
+    "typography": {
+     "fontSize": "var(--wp--preset--font-size--x-large)",
+     "lineHeight": "1.3",
+     "letterSpacing": "-0.01em"
+    }
+   },
+   "h4": {
+    "typography": {
+     "fontSize": "18px",
+     "lineHeight": "1.35",
+     "letterSpacing": "-0.01em"
+    }
+   },
+   "link": {
+    "color": {
+     "text": "var(--wp--preset--color--czern)"
+    },
+    "typography": {
+     "textDecoration": "underline"
+    },
+    ":hover": {
+     "typography": {
+      "textDecoration": "none"
+     }
+    }
+   },
+   "button": {
+    "color": {
+     "background": "var(--wp--preset--color--czern)",
+     "text": "var(--wp--preset--color--krem)"
+    },
+    "border": {
+     "radius": "9999px",
+     "width": "1.5px",
+     "style": "solid",
+     "color": "var(--wp--preset--color--czern)"
+    },
+    "typography": {
+     "fontFamily": "var(--wp--preset--font-family--inter)",
+     "fontSize": "16px",
+     "fontWeight": "600",
+     "lineHeight": "1"
+    },
+    "spacing": {
+     "padding": {
+      "top": "0",
+      "bottom": "0",
+      "left": "26px",
+      "right": "26px"
+     }
+    },
+    ":hover": {
+     "color": {
+      "background": "var(--wp--preset--color--czern-hover)",
+      "text": "var(--wp--preset--color--krem)"
+     },
+     "border": {
+      "color": "var(--wp--preset--color--czern-hover)"
+     }
+    }
+   },
+   "caption": {
+    "typography": {
+     "fontSize": "15px",
+     "lineHeight": "1.5"
+    },
+    "color": {
+     "text": "var(--wp--preset--color--grafit)"
+    }
+   }
+  },
+  "blocks": {
+   "core/button": {
+    "variations": {
+     "outline": {
+      "color": {
+       "background": "transparent",
+       "text": "var(--wp--preset--color--czern)"
+      },
+      "border": {
+       "color": "var(--wp--preset--color--czern)",
+       "width": "1.5px"
+      },
+      "spacing": {
+       "padding": {
+        "top": "0",
+        "bottom": "0",
+        "left": "26px",
+        "right": "26px"
+       }
+      }
+     }
+    }
+   },
+   "core/buttons": {
+    "spacing": {
+     "blockGap": "12px"
+    }
+   },
+   "core/columns": {
+    "spacing": {
+     "blockGap": "clamp(36px, 5.6vw, 80px)"
+    }
+   },
+   "core/navigation": {
+    "typography": {
+     "fontSize": "15px",
+     "fontWeight": "500"
+    }
+   },
+   "core/site-title": {
+    "typography": {
+     "fontFamily": "var(--wp--preset--font-family--inter-tight)",
+     "fontWeight": "600",
+     "fontSize": "20px",
+     "letterSpacing": "-0.01em"
+    }
+   }
+  },
+  "css": "/* Mateusz Przetocki: dodatkowy CSS strony (Wygląd → Edytor → Style → Dodatkowy CSS).\n   Źródło: strona/wordpress/style/marka.css w repozytorium. Klasy is-style-… nadajesz blokom\n   w panelu „Zaawansowane → Dodatkowe klasy CSS”. */\n\nbody { -webkit-font-smoothing: antialiased; }\n::selection { background: var(--wp--preset--color--blekit-jasny); color: var(--wp--preset--color--czern); }\n:where(.wp-site-blocks) :where(img) { height: auto; }\n\n/* Słowo akcentu w nagłówku: zaznacz je kursywą (Ctrl+I) */\n:where(h1, h2, h3, .wp-block-heading) em,\n.is-style-cta h2 em {\n\tfont-family: var(--wp--preset--font-family--instrument-serif);\n\tfont-style: italic;\n\tfont-weight: 400;\n\tfont-size: 1.08em;\n\tletter-spacing: 0;\n\tline-height: 0.9;\n}\nh1, h2 { text-wrap: balance; }\n\n/* Nadtytuł z błękitną kropką */\n.is-style-nadtytul {\n\tdisplay: flex;\n\talign-items: center;\n\tgap: 10px;\n\tmargin-block-end: 0;\n\tfont-family: var(--wp--preset--font-family--inter);\n\tfont-size: 12px !important;\n\tline-height: 1.2;\n\tfont-weight: 600;\n\tletter-spacing: 0.14em;\n\ttext-transform: uppercase;\n\tcolor: var(--wp--preset--color--grafit);\n}\n.is-style-nadtytul::before { content: \"\"; width: 8px; height: 8px; border-radius: 9999px; background: var(--wp--preset--color--blekit); flex: none; }\n.is-style-nadtytul.has-text-align-center { justify-content: center; }\n\n/* Tekst wprowadzenia, podpis pod przyciskiem, okruszki */\n.is-style-wstep { font-size: clamp(17px, 1.32vw, 19px); max-width: 640px; }\n.is-style-podpis { font-size: 14px; line-height: 1.5; color: var(--wp--preset--color--grafit); }\n.is-style-okruszki { font-size: 14px; line-height: 1.5; font-weight: 500; color: var(--wp--preset--color--grafit); }\n.is-style-okruszki a { color: var(--wp--preset--color--czern); text-decoration: underline; text-underline-offset: 3px; }\n\n/* Etykiety (pigułki) */\n[class*=\"is-style-etykieta\"] {\n\tdisplay: inline-flex;\n\talign-items: center;\n\twidth: fit-content;\n\tmin-height: 30px;\n\tmargin: 0;\n\tpadding: 0 12px;\n\tborder-radius: 9999px;\n\tfont-size: 13px !important;\n\tline-height: 1.2;\n\tfont-weight: 500;\n\twhite-space: nowrap;\n\tbackground: var(--wp--preset--color--blekit-jasny);\n\tcolor: var(--wp--preset--color--czern);\n}\n.is-style-etykieta-piasek { background: var(--wp--preset--color--piasek); }\n.is-style-etykieta-czarna { background: var(--wp--preset--color--czern); color: var(--wp--preset--color--krem); }\n.is-style-etykieta-obrys { background: var(--wp--preset--color--krem); border: 1px solid var(--wp--preset--color--linia); }\n\n/* Link ze strzałką */\n.is-style-strzalka { margin: 0; }\n.is-style-strzalka a {\n\tdisplay: inline-flex;\n\talign-items: center;\n\tgap: 8px;\n\tpadding-bottom: 2px;\n\tfont-weight: 600;\n\tfont-size: 16px;\n\tline-height: 1.3;\n\tcolor: var(--wp--preset--color--czern);\n\ttext-decoration: none;\n\tborder-bottom: 1px solid currentColor;\n}\n.is-style-strzalka a::after,\n.ze-strzalka .wp-block-button__link::after {\n\tcontent: \"\";\n\twidth: 16px;\n\theight: 16px;\n\tflex: none;\n\tbackground: currentColor;\n\t-webkit-mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E\") center / contain no-repeat;\n\tmask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E\") center / contain no-repeat;\n\ttransition: transform 150ms;\n}\n.ze-strzalka .wp-block-button__link::after { width: 18px; height: 18px; }\n.is-style-strzalka a:hover::after, .ze-strzalka .wp-block-button__link:hover::after { transform: translateX(4px); }\n\n/* Przyciski */\n.wp-block-button__link { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; white-space: nowrap; transition: background-color 150ms, border-color 150ms; }\n.wp-block-button.is-style-outline > .wp-block-button__link:hover { background: var(--wp--preset--color--biel); }\n.wp-block-button.mp-maly > .wp-block-button__link { min-height: 44px; padding: 0 20px; font-size: 15px; }\n.wp-block-button__link:focus-visible { outline: 2px solid transparent; box-shadow: 0 0 0 2px var(--wp--preset--color--krem), 0 0 0 4px var(--wp--preset--color--czern); }\n\n/* Karty */\n.is-style-karta, .is-style-karta-branza, .is-style-pakiet {\n\tbackground: var(--wp--preset--color--biel);\n\tborder: 1px solid var(--wp--preset--color--linia);\n\tborder-radius: 24px;\n\tpadding: 32px;\n\tcolor: var(--wp--preset--color--czern);\n}\n.is-style-karta-przerywana { border: 1.5px dashed var(--wp--preset--color--grafit); border-radius: 24px; padding: 32px; }\n.is-style-karta-piasek { background: var(--wp--preset--color--piasek); border-radius: 24px; padding: 32px; }\n.is-style-karta h3, .is-style-karta-branza h3, .is-style-pakiet h3, .is-style-pakiet-polecany h3 { font-size: 21px; line-height: 1.3; letter-spacing: -0.01em; }\n.is-style-karta > .mp-ikona + h3 { margin-top: 26px; }\n.is-style-karta > h3 + p { margin-top: 10px; font-size: 16px; line-height: 1.55; color: var(--wp--preset--color--grafit); }\n.is-style-karta > h3 + p + .wp-block-buttons, .is-style-karta > h3 + p + .is-style-strzalka { margin-top: 22px; }\n.is-style-karta-branza { display: flex; flex-direction: column; padding: 28px; }\n.is-style-karta-branza > h3 { font-size: 22px; margin-top: 18px; }\n.is-style-karta-branza > h3 + p { margin-top: 12px; font-size: 15px; line-height: 1.55; color: var(--wp--preset--color--grafit); }\n.is-style-karta-branza > .mp-etykiety { margin-top: auto; padding-top: 20px; }\n.is-style-karta-branza > .is-style-strzalka { margin-top: 22px; }\n.is-style-karta-branza > .is-style-strzalka a { font-size: 15px; }\n\n/* Ikona w kółku i ikony w treści */\n.mp-ikona { width: 48px; height: 48px; border-radius: 9999px; background: var(--wp--preset--color--blekit-jasny); display: grid; place-items: center; color: var(--wp--preset--color--czern); flex: none; }\n.mp-ikona svg, .mp-ikona-gola svg { display: block; }\n.mp-ikona-gola { display: block; line-height: 0; color: var(--wp--preset--color--czern); }\n\n/* Listy ze znacznikami: ✓ (domyślnie), tarcza, kropki */\n.is-style-lista-znaczniki, .is-style-lista-tarcza, .is-style-lista-cennik { list-style: none; margin: 0; padding: 0; }\n.is-style-lista-znaczniki > li, .is-style-lista-tarcza > li {\n\tposition: relative;\n\tmargin: 0;\n\tpadding: 20px 0 20px 36px;\n\tborder-bottom: 1px solid var(--wp--preset--color--linia);\n}\n.is-style-lista-znaczniki > li::before, .is-style-lista-tarcza > li::before {\n\tcontent: \"\";\n\tposition: absolute;\n\tleft: 0;\n\ttop: 21px;\n\twidth: 22px;\n\theight: 22px;\n\tbackground: currentColor;\n\t-webkit-mask: var(--mp-znak) center / contain no-repeat;\n\tmask: var(--mp-znak) center / contain no-repeat;\n}\n.is-style-lista-znaczniki, .is-style-lista-pakiet { --mp-znak: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E\"); }\n.is-style-lista-tarcza { --mp-znak: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E\"); border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-znaczniki.mp-kolumny { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); column-gap: 48px; }\n.is-style-lista-znaczniki.mp-kolumny > li { border-bottom: 0; border-top: 1px solid var(--wp--preset--color--linia); }\n\n/* Lista z cenami „od” (dodatki) */\n.is-style-lista-cennik { border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-cennik > li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 24px; margin: 0; padding: 20px 0; border-bottom: 1px solid var(--wp--preset--color--linia); font-weight: 500; }\n.is-style-lista-cennik > li strong { font-family: var(--wp--preset--font-family--inter-tight); font-weight: 600; font-size: 20px; line-height: 1.2; white-space: nowrap; }\n\n/* Lista „Czego potrzebuję od Ciebie” */\n.is-style-lista-wiersze { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-wiersze > li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 24px; margin: 0; padding: 20px 0; border-bottom: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-wiersze > li strong { flex: 1 1 260px; }\n.is-style-lista-wiersze > li em { font-style: normal; font-size: 15px; color: var(--wp--preset--color--grafit); }\n\n/* Krótka lista z kropkami w pierwszym ekranie */\n.is-style-lista-kropki { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 15px; line-height: 1.4; font-weight: 500; color: var(--wp--preset--color--grafit); }\n.is-style-lista-kropki > li { display: flex; align-items: center; gap: 8px; margin: 0; }\n.is-style-lista-kropki > li::before { content: \"\"; width: 6px; height: 6px; border-radius: 9999px; background: var(--wp--preset--color--blekit); flex: none; }\n\n/* Pakiety */\n.is-style-pakiet, .is-style-pakiet-polecany { position: relative; display: flex; flex-direction: column; padding: 36px 32px; border-radius: 24px; }\n.is-style-pakiet-polecany { background: var(--wp--preset--color--blekit-jasny); border: 1.5px solid var(--wp--preset--color--czern); }\n.is-style-pakiet-polecany > .is-style-etykieta-czarna:first-child { position: absolute; top: -15px; left: 32px; margin: 0; }\n.is-style-pakiet-polecany > .is-style-etykieta-czarna:first-child + h3 { margin-top: 0; }\n.mp-cena { align-items: baseline !important; gap: 6px !important; margin-top: 10px !important; }\n.mp-cena > p:first-child { margin: 0; font-family: var(--wp--preset--font-family--inter-tight); font-size: 46px !important; line-height: 1; font-weight: 600; letter-spacing: -0.03em; }\n.mp-cena > p + p { margin: 0; font-size: 16px; font-weight: 500; color: var(--wp--preset--color--grafit); }\n.mp-dla { margin-top: 14px !important; font-size: 15px; line-height: 1.5; color: var(--wp--preset--color--grafit); }\n.is-style-lista-pakiet { list-style: none; margin: 24px 0 30px !important; padding: 0; border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-pakiet > li { position: relative; margin: 0; padding: 11px 0 11px 28px; border-bottom: 1px solid var(--wp--preset--color--linia); font-size: 15px; line-height: 1.45; }\n.is-style-lista-pakiet > li::before { content: \"\"; position: absolute; left: 0; top: 13px; width: 18px; height: 18px; background: currentColor; -webkit-mask: var(--mp-znak) center / contain no-repeat; mask: var(--mp-znak) center / contain no-repeat; }\n.is-style-lista-pakiet > li.mp-plus { font-weight: 600; --mp-znak: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5v14'/%3E%3C/svg%3E\"); }\n.is-style-pakiet-polecany .is-style-lista-pakiet, .is-style-pakiet-polecany .is-style-lista-pakiet > li { border-color: var(--wp--preset--color--blekit-linia); }\n.is-style-pakiet > .wp-block-buttons, .is-style-pakiet-polecany > .wp-block-buttons { margin-top: auto !important; }\n.is-style-pakiet .wp-block-button, .is-style-pakiet-polecany .wp-block-button { width: 100%; }\n.is-style-pakiet .wp-block-button__link, .is-style-pakiet-polecany .wp-block-button__link { width: 100%; }\n\n/* Ciemne sekcje (czarny pas) */\n.is-style-ciemna { background: var(--wp--preset--color--czern); color: var(--wp--preset--color--krem); }\n.is-style-ciemna h1, .is-style-ciemna h2, .is-style-ciemna h3 { color: var(--wp--preset--color--krem); }\n.is-style-ciemna :where(h1, h2, h3) em { color: var(--wp--preset--color--blekit); }\n.is-style-ciemna .is-style-nadtytul { color: var(--wp--preset--color--szary-na-czerni); }\n.is-style-ciemna p:not([class*=\"is-style\"]), .is-style-ciemna .mp-szary { color: var(--wp--preset--color--szary-na-czerni); }\n.is-style-ciemna .is-style-strzalka a { color: var(--wp--preset--color--blekit); }\n.is-style-ciemna .mp-ikona-gola { color: var(--wp--preset--color--blekit); }\n.is-style-ciemna .wp-block-button:not(.is-style-outline) > .wp-block-button__link { background: var(--wp--preset--color--blekit); color: var(--wp--preset--color--czern); border-color: var(--wp--preset--color--blekit); }\n.is-style-ciemna .wp-block-button:not(.is-style-outline) > .wp-block-button__link:hover { background: var(--wp--preset--color--blekit-hover); border-color: var(--wp--preset--color--blekit-hover); }\n.is-style-ciemna .wp-block-button.is-style-outline > .wp-block-button__link { color: var(--wp--preset--color--krem); border-color: var(--wp--preset--color--krem); background: transparent; }\n.is-style-ciemna .wp-block-button.is-style-outline > .wp-block-button__link:hover { background: var(--wp--preset--color--czern-hover); }\n.is-style-ciemna .wp-block-button__link:focus-visible, .is-style-ciemna a:focus-visible { box-shadow: 0 0 0 2px var(--wp--preset--color--czern), 0 0 0 4px var(--wp--preset--color--blekit); }\n\n/* Pasek zaufania */\n.mp-zaufanie { justify-content: space-between !important; gap: 24px !important; max-width: 1120px; margin-inline: auto !important; }\n.mp-zaufanie > .wp-block-group { gap: 12px !important; }\n.mp-zaufanie p { margin: 0; font-size: 16px; line-height: 1.35; font-weight: 500; color: var(--wp--preset--color--krem) !important; }\n\n/* Kroki procesu */\n.mp-krok { padding-top: 34px; padding-bottom: 26px; border-top: 1px solid var(--wp--preset--color--linia-ciemna); }\n.mp-krok > .is-style-cyfra { margin: 0 0 22px; }\n.mp-krok > h3 { margin: 0 0 10px; font-size: 21px; line-height: 1.3; letter-spacing: -0.01em; }\n.mp-krok > p:last-child { margin: 0; font-size: 16px; line-height: 1.55; }\n.is-style-cyfra { font-family: var(--wp--preset--font-family--instrument-serif); font-size: clamp(64px, 6.2vw, 88px) !important; line-height: 0.9; font-weight: 400; color: var(--wp--preset--color--blekit); }\n.is-style-numer { margin: 0; font-family: var(--wp--preset--font-family--instrument-serif); font-style: italic; font-size: 34px !important; line-height: 1; }\n.is-style-liczba { margin: 0; font-family: var(--wp--preset--font-family--instrument-serif); font-size: clamp(96px, 8.4vw, 120px) !important; line-height: 0.9; letter-spacing: -0.02em; }\n\n/* Pytania (rozwijane) */\n.mp-pytania { border-top: 1px solid var(--wp--preset--color--linia); }\n.mp-pytania > * + * { margin-top: 0 !important; }\n.wp-block-details.is-style-pytanie { margin: 0; padding: 24px 0; border-bottom: 1px solid var(--wp--preset--color--linia); }\n.wp-block-details.is-style-pytanie > summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 20px; cursor: pointer; font-size: 19px; line-height: 1.35; font-weight: 600; }\n.wp-block-details.is-style-pytanie > summary::-webkit-details-marker { display: none; }\n.wp-block-details.is-style-pytanie > summary::after {\n\tcontent: \"\";\n\twidth: 22px;\n\theight: 22px;\n\tflex: none;\n\tbackground: currentColor;\n\t-webkit-mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5v14'/%3E%3C/svg%3E\") center / contain no-repeat;\n\tmask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='M12 5v14'/%3E%3C/svg%3E\") center / contain no-repeat;\n}\n.wp-block-details.is-style-pytanie[open] > summary::after {\n\t-webkit-mask-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E\");\n\tmask-image: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E\");\n}\n.wp-block-details.is-style-pytanie > summary:focus-visible { outline: 2px solid transparent; box-shadow: 0 0 0 2px var(--wp--preset--color--krem), 0 0 0 4px var(--wp--preset--color--czern); border-radius: 4px; }\n.wp-block-details.is-style-pytanie > :not(summary) { max-width: 600px; margin-top: 12px; font-size: 17px; line-height: 1.6; color: var(--wp--preset--color--grafit); }\n.wp-block-details.is-style-pytanie a { color: var(--wp--preset--color--czern); font-weight: 600; text-underline-offset: 3px; }\n\n/* Karta z wezwaniem do działania */\n.is-style-cta { border-radius: 32px; padding: 88px 64px !important; text-align: center; }\n.is-style-cta > h2 { max-width: 900px; margin-inline: auto !important; font-size: 52px !important; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }\n.is-style-cta > p { max-width: 560px; margin-inline: auto !important; }\n.is-style-cta > .wp-block-buttons { justify-content: center; margin-top: 36px !important; }\n.mp-zobacz-tez { gap: 14px 32px !important; margin-top: 32px !important; }\n.mp-zobacz-tez > p:first-child { margin: 0; font-size: 15px; color: var(--wp--preset--color--grafit); }\n\n/* Telefon w pierwszym ekranie, obrazy, zdjęcia */\n.wp-block-image.mp-cien-brak img { box-shadow: none; }\n.wp-block-image.is-style-zaokraglone img, .wp-block-image.mp-zaokraglone img { border-radius: 24px; }\n.mp-zdjecia { position: relative; min-height: clamp(360px, 39vw, 560px); }\n.mp-zdjecia > .wp-block-image { position: absolute; margin: 0 !important; }\n.mp-zdjecia > .wp-block-image img { width: 100%; height: 100%; object-fit: cover; }\n.mp-zdjecia > .wp-block-image:first-child { left: 0; top: 0; width: 76%; height: 84%; }\n.mp-zdjecia > .wp-block-image:first-child img { border-radius: 24px; }\n.mp-zdjecia > .wp-block-image + .wp-block-image { right: 0; bottom: 0; width: 46%; height: 45%; }\n.mp-zdjecia > .wp-block-image + .wp-block-image img { border-radius: 30px; border: 8px solid var(--wp--preset--color--piasek); }\n.mp-zdjecia.mp-tlo-krem > .wp-block-image + .wp-block-image img { border-color: var(--wp--preset--color--krem); }\n.mp-osoba { gap: 12px !important; font-size: 15px; line-height: 1.4; color: var(--wp--preset--color--grafit); }\n.mp-osoba > .wp-block-image { margin: 0; flex: none; }\n.mp-osoba > .wp-block-image img { width: 40px; height: 40px; border-radius: 9999px; object-fit: cover; }\n.mp-osoba > p { margin: 0; }\n\n/* Trzy telefony w rzędzie: na telefonie przewijane w bok */\n.mp-ekrany { flex-wrap: nowrap !important; overflow-x: auto; scroll-snap-type: x mandatory; justify-content: safe center !important; padding-bottom: 8px; }\n.mp-ekrany > * { flex: 0 0 280px !important; scroll-snap-align: center; text-align: center; }\n.mp-ekrany .wp-block-image { margin-inline: auto; }\n.mp-ekrany .wp-block-image img { width: 236px; }\n.mp-ekrany figcaption, .mp-ekrany .mp-opis { font-size: 17px; line-height: 1.4; font-weight: 600; color: var(--wp--preset--color--czern); }\n.mp-ekrany .is-style-numer + p { margin-top: 8px; font-size: 18px; line-height: 1.4; font-weight: 600; }\n\n/* Miejsce na film */\n.is-style-film { aspect-ratio: 16 / 9; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; border-radius: 24px; text-align: center; }\n.is-style-film .mp-ikona { width: 72px; height: 72px; background: var(--wp--preset--color--blekit); }\n\n/* Tabela porównania pakietów */\n.wp-block-table.is-style-porownanie { overflow-x: auto; margin: 0; border: 1px solid var(--wp--preset--color--linia); border-radius: 24px; background: var(--wp--preset--color--biel); }\n.wp-block-table.is-style-porownanie table { min-width: 760px; border-collapse: collapse; font-size: 15px; line-height: 1.5; }\n.wp-block-table.is-style-porownanie th, .wp-block-table.is-style-porownanie td { padding: 18px 24px; border: 0; border-bottom: 1px solid var(--wp--preset--color--linia); text-align: left; vertical-align: top; }\n.wp-block-table.is-style-porownanie thead th { padding: 24px 24px 20px; vertical-align: bottom; font-family: var(--wp--preset--font-family--inter-tight); font-size: 20px; line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; }\n.wp-block-table.is-style-porownanie thead th:first-child { font-family: var(--wp--preset--font-family--inter); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp--preset--color--grafit); }\n.wp-block-table.is-style-porownanie tbody th { font-weight: 600; }\n.wp-block-table.is-style-porownanie tbody tr:first-child td { font-family: var(--wp--preset--font-family--inter-tight); font-size: 22px; line-height: 1.2; font-weight: 600; }\n.wp-block-table.is-style-porownanie tr > :nth-child(3) { background: var(--wp--preset--color--blekit-jasny); border-bottom-color: var(--wp--preset--color--blekit-linia); }\n.wp-block-table.is-style-porownanie tbody tr:last-child > * { border-bottom: 0; }\n.wp-block-table.is-style-porownanie thead th:nth-child(3)::before { content: \"Polecam\"; display: flex; align-items: center; width: fit-content; min-height: 30px; margin-bottom: 10px; padding: 0 12px; border-radius: 9999px; background: var(--wp--preset--color--czern); color: var(--wp--preset--color--krem); font-family: var(--wp--preset--font-family--inter); font-size: 13px; font-weight: 500; letter-spacing: 0; }\n.wp-block-table.is-style-porownanie figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }\n\n/* Spis treści na stronach prawnych i lista tematów pytań */\n.is-style-spis { position: sticky; top: 104px; }\n.is-style-spis > p:first-child { margin: 0 0 14px; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp--preset--color--grafit); }\n.is-style-spis ol, .is-style-spis ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-spis li { margin: 0; padding: 10px 0; border-bottom: 1px solid var(--wp--preset--color--linia); font-size: 15px; }\n.is-style-spis a { color: var(--wp--preset--color--czern); text-decoration: none; }\n.is-style-spis a:hover { text-decoration: underline; }\n.mp-dokument h2 { margin-top: 44px; font-size: 26px; line-height: 1.25; letter-spacing: -0.01em; scroll-margin-top: 104px; }\n.mp-dokument h2:first-child { margin-top: 0; }\n.mp-dokument > p, .mp-dokument li { max-width: 680px; }\n.mp-dokument ul { padding-left: 20px; }\n.mp-dokument li { margin-bottom: 8px; }\n.mp-uwaga { color: var(--wp--preset--color--grafit); }\n.mp-grupa-pytan { scroll-margin-top: 104px; }\n\n/* Nagłówek strony (logo, menu, przycisk) */\n.wp-site-blocks > header.wp-block-template-part { position: sticky; top: var(--wp-admin--admin-bar--height, 0px); z-index: 20; background: var(--wp--preset--color--krem); }\n.mp-naglowek { min-height: 80px; }\n.mp-naglowek .wp-block-site-title { margin: 0; font-family: var(--wp--preset--font-family--inter-tight); font-size: 20px; line-height: 1; font-weight: 600; letter-spacing: -0.01em; }\n.mp-naglowek .wp-block-site-title a, .mp-stopka .wp-block-site-title a { text-decoration: none; color: inherit; }\n.mp-naglowek .wp-block-site-title a::after, .mp-stopka .wp-block-site-title a::after { content: \"\"; display: inline-block; width: 7px; height: 7px; margin-left: 3px; border-radius: 9999px; background: var(--wp--preset--color--blekit); }\n.mp-naglowek .wp-block-navigation { font-size: 15px; font-weight: 500; gap: 30px; }\n.mp-naglowek .wp-block-navigation a { text-decoration: none; }\n.mp-naglowek .wp-block-navigation a:hover, .mp-naglowek .wp-block-navigation .current-menu-item > a { text-decoration: underline; text-underline-offset: 6px; }\n.mp-naglowek .wp-block-navigation .wp-block-navigation__submenu-container { padding: 8px 0; border: 1px solid var(--wp--preset--color--linia) !important; border-radius: 16px; background: var(--wp--preset--color--biel) !important; min-width: 240px !important; }\n.mp-naglowek .wp-block-navigation .wp-block-navigation__submenu-container a { padding: 10px 18px !important; }\n.mp-naglowek .wp-block-navigation__responsive-container.is-menu-open { background: var(--wp--preset--color--krem) !important; padding: 24px 20px !important; }\n.mp-naglowek .wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__container { font-size: 22px; gap: 18px; }\n@media (max-width: 599px) { .mp-naglowek .wp-block-navigation__responsive-container-open { width: 44px; height: 44px; border: 1px solid var(--wp--preset--color--linia); border-radius: 9999px; display: grid; place-items: center; } }\n\n/* Stopka */\n.mp-stopka { font-size: 15px; }\n.mp-stopka .wp-block-site-title { margin: 0 0 18px; font-family: var(--wp--preset--font-family--inter-tight); font-size: 20px; line-height: 1; font-weight: 600; letter-spacing: -0.01em; color: var(--wp--preset--color--krem); }\n.mp-stopka h2 { margin: 0 0 20px; font-family: var(--wp--preset--font-family--inter); font-size: 13px !important; line-height: 1; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wp--preset--color--krem); }\n.mp-stopka ul { list-style: none; margin: 0; padding: 0; }\n.mp-stopka li { margin: 0 0 12px; }\n.mp-stopka a { color: var(--wp--preset--color--szary-na-czerni); text-decoration: none; }\n.mp-stopka a:hover { color: var(--wp--preset--color--krem); text-decoration: underline; }\n.mp-stopka .mp-stopka-wstep p { max-width: 300px; }\n.mp-stopka-dol { border-top: 1px solid var(--wp--preset--color--linia-ciemna); padding-top: 26px; font-size: 13px; }\n.mp-stopka-dol p { margin: 0; font-size: 13px; }\n\n/* Nagłówki sekcji i pierwszy ekran */\n.wp-site-blocks > * { margin-block-start: 0; }\nbody .wp-site-blocks > * { margin-block-start: 0; }\n.wp-block-post-content > .alignfull { margin-block-start: 0 !important; margin-block-end: 0 !important; }\n.mp-naglowek-sekcji > h2 { max-width: 860px; }\n.mp-naglowek-sekcji > p:not(.is-style-nadtytul) { max-width: 640px; }\n.mp-srodek { text-align: center; }\n.mp-srodek > * { margin-inline: auto !important; }\n.mp-bez-kropki::before { display: none; }\n.mp-hero-tekst { max-width: 880px; }\n.mp-hero > .wp-block-buttons, .mp-hero-tekst > .wp-block-buttons { margin-top: 32px; }\n.mp-hero > .is-style-podpis, .mp-hero-tekst > .is-style-podpis { margin-top: 14px; }\n.mp-hero-tekst > .is-style-lista-kropki { margin-top: 28px; }\n.mp-hero > .mp-osoba { margin-top: 30px; }\n.mp-telefon-hero { margin-inline: auto; }\n.mp-telefon-hero img { width: 336px; }\n\n/* Duża liczba z danymi i źródłem */\n.mp-karta-liczba { padding: 40px; }\n.mp-liczba { align-items: baseline !important; gap: 10px !important; }\n.mp-liczba > p { margin: 0; }\n.mp-ok { font-size: 22px; line-height: 1; font-weight: 500; color: var(--wp--preset--color--grafit); }\n.mp-liczba-srednia { font-size: clamp(64px, 6.2vw, 88px) !important; }\n.mp-opis-liczby { margin-top: 18px !important; font-size: 17px; }\n.mp-zrodlo { margin-top: 18px !important; padding-top: 14px; border-top: 1px solid var(--wp--preset--color--linia); font-size: 13px; color: var(--wp--preset--color--grafit); }\n.mp-zrodlo a { color: var(--wp--preset--color--czern); text-underline-offset: 3px; }\n\n/* Drobne */\n.mp-rozciagnij { flex: 1 1 320px; margin: 0; }\n.mp-inna-branza { align-items: center !important; }\n.mp-inna-branza > h3 { margin: 0; font-size: 24px; }\n.mp-inna-branza > p { font-size: 15px; line-height: 1.55; }\n.mp-inna-branza-pion > h3 { font-size: 22px; }\n.mp-inna-branza-pion > .is-style-strzalka + .is-style-strzalka { margin-top: 0; }\n.mp-maly-tekst { font-size: 15px; line-height: 1.55; }\n.mp-h2-maly { font-size: 26px !important; line-height: 1.25; letter-spacing: -0.01em; margin: 0; }\n.mp-h2-sredni { font-size: clamp(28px, 2.5vw, 36px) !important; line-height: 1.15; }\n.mp-h3-maly { font-size: 20px !important; }\n.mp-akapity > p { max-width: 640px; }\n.mp-akapity { padding-top: 6px; }\n\n/* Karta Demo A */\n.mp-karta-demo { padding: clamp(32px, 3.3vw, 48px); }\n.mp-tytul-demo { margin-top: 18px !important; font-size: 30px !important; line-height: 1.2; letter-spacing: -0.02em; }\n.mp-tekst-demo { margin-top: 14px !important; font-size: 17px; }\n.mp-demo-a .mp-etykiety { margin-top: 22px; }\n.mp-demo-a .wp-block-buttons { margin-top: 30px; }\n.mp-demo-a .wp-block-image { margin: 0; }\n\n/* Przypisy pod siatkami */\n.mp-przypis, .mp-przypis-tekst { border-top: 1px solid var(--wp--preset--color--linia); padding-top: 22px; font-size: 15px; color: var(--wp--preset--color--grafit); }\n.mp-przypis { gap: 14px 24px !important; }\n.mp-przypis > p { margin: 0; }\n.mp-przypis-ciemny { gap: 14px 24px !important; font-size: 15px; }\n.mp-przypis-ciemny > p { margin: 0; }\n.mp-od { align-items: baseline !important; gap: 4px !important; }\n.mp-od > p { margin: 0; font-size: 16px; font-weight: 500; color: var(--wp--preset--color--grafit); }\n.mp-od > p:nth-child(2) { font-family: var(--wp--preset--font-family--inter-tight); font-size: 30px; line-height: 1; font-weight: 600; letter-spacing: -0.02em; color: var(--wp--preset--color--czern); }\n.mp-masz-strone { align-items: center !important; }\n\n/* Projekty własne */\n.mp-zrzut { margin: 0; }\n.mp-zrzut img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 16px; }\n.mp-projekt > p { margin: 0; }\n\n/* Jak to działa (Demo A) */\n.mp-jak-dziala > .wp-block-image { margin: 0; }\n.mp-jak-dziala > .mp-laptop { flex: 2 1 480px; min-width: 0; }\n.mp-jak-dziala > .mp-laptop img { width: 100%; }\n.mp-jak-dziala > .mp-telefon { flex: 0 0 236px; text-align: center; }\n.mp-jak-dziala > .mp-telefon img { width: 236px; }\n.mp-jak-dziala figcaption { margin-top: 16px; font-size: 15px; color: var(--wp--preset--color--grafit); }\n\n/* Trzy telefony: numer i opis */\n.mp-ekrany > .wp-block-group > .is-style-numer { margin-top: 26px; }\n.mp-ekrany > .wp-block-group > .wp-block-image + .mp-opis { margin-top: 22px; }\n.mp-ekrany > .wp-block-group > .is-style-numer + .mp-opis { margin-top: 8px; font-size: 18px; }\n\n/* Lista z ikonami */\n.mp-lista-ikon { margin-top: 24px !important; }\n.mp-punkt { gap: 12px !important; font-size: 16px; }\n.mp-punkt > p { margin: 0; }\n\n/* Karta ankiety (Kontakt) */\n.is-style-karta-ankieta { height: 100%; padding: clamp(32px, 3.4vw, 48px); border: 1.5px solid var(--wp--preset--color--czern); border-radius: 24px; background: var(--wp--preset--color--blekit-jasny); }\n.is-style-karta-ankieta > h2 { margin-top: 28px; }\n.mp-lista-mala { margin-top: 22px !important; border-top: 1px solid var(--wp--preset--color--blekit-linia); }\n.mp-lista-mala > li { padding: 11px 0 11px 30px !important; font-size: 15px; border-bottom-color: var(--wp--preset--color--blekit-linia) !important; }\n.mp-lista-mala > li::before { top: 12px !important; width: 18px !important; height: 18px !important; }\n.is-style-karta-ankieta > .wp-block-buttons { margin-top: 30px; }\n.is-style-karta-ankieta > .is-style-podpis { margin-top: 14px; }\n\n/* Dane usługodawcy */\n.is-style-lista-dane { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-dane > li { display: flex; flex-wrap: wrap; gap: 4px 24px; margin: 0; padding: 16px 0; border-bottom: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-dane > li strong { flex: 0 0 200px; }\n\n/* Pozostałe branże */\n.is-style-lista-branze { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-branze > li { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--wp--preset--color--linia); font-size: 15px; line-height: 1.5; color: var(--wp--preset--color--grafit); }\n.is-style-lista-branze > li strong { display: block; margin-bottom: 4px; font-size: clamp(17px, 1.25vw, 18px); font-weight: 500; color: var(--wp--preset--color--czern); }\n\n/* Strona 404 */\n.is-style-404 { margin: 0; font-family: var(--wp--preset--font-family--instrument-serif); font-size: clamp(120px, 16vw, 230px) !important; line-height: 0.85; letter-spacing: -0.03em; }\n.is-style-lista-linki { list-style: none; margin: 0; padding: 0; max-width: 560px; border-top: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-linki > li { margin: 0; padding: 16px 0; border-bottom: 1px solid var(--wp--preset--color--linia); }\n.is-style-lista-linki a { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 2px; font-weight: 600; color: var(--wp--preset--color--czern); text-decoration: none; border-bottom: 1px solid currentColor; }\n.is-style-lista-linki a::after { content: \"\"; width: 16px; height: 16px; background: currentColor; -webkit-mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E\") center / contain no-repeat; mask: url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E\") center / contain no-repeat; }\n\n/* Przyklejony pasek z przyciskiem na telefonie */\n.mp-pasek-telefon { display: none; }\n\n@media (max-width: 781px) {\n\t.mp-naglowek { min-height: 64px; }\n\t.mp-naglowek .wp-block-site-title { font-size: 18px; }\n\t.mp-naglowek .mp-przycisk-naglowka { display: none; }\n\t.is-style-cta { padding: 56px 24px !important; border-radius: 26px; }\n\t.is-style-cta > h2 { font-size: 32px !important; }\n\t.is-style-cta .wp-block-button { flex: 1 1 100%; }\n\t.is-style-cta .wp-block-button__link { width: 100%; }\n\t.wp-block-button__link { white-space: normal; text-align: center; line-height: 1.25; }\n\t.mp-zaufanie { display: grid !important; grid-template-columns: 1fr 1fr; gap: 18px !important; }\n\t.mp-zaufanie p { font-size: 14px; }\n\t.mp-pakiety > .is-style-pakiet-polecany { order: -1; }\n\t.mp-stopka-kolumny { flex-wrap: wrap !important; }\n\t.mp-stopka-kolumny > .wp-block-column { flex-basis: calc(50% - 20px) !important; }\n\t.mp-stopka-kolumny > .wp-block-column:first-child { flex-basis: 100% !important; }\n\t.mp-zdjecia { min-height: 360px; }\n\t.is-style-spis { position: static; }\n\t.mp-pasek-telefon { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 12px 20px; border-top: 1px solid var(--wp--preset--color--linia-ciemna); }\n\t.mp-pasek-telefon .wp-block-button, .mp-pasek-telefon .wp-block-button__link { width: 100%; }\n\tbody { padding-bottom: 77px; }\n}\n\n@media (prefers-reduced-motion: reduce) {\n\t.wp-block-button__link, .is-style-strzalka a::after, .ze-strzalka .wp-block-button__link::after { transition: none; }\n}\n"
+ },
+ "_links": {
+  "self": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/global-styles/9",
+    "targetHints": {
+     "allow": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH"
+     ]
+    }
+   }
+  ],
+  "about": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/types/wp_global_styles"
+   }
+  ],
+  "version-history": [
+   {
+    "count": 2,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/global-styles/9/revisions"
+   }
+  ],
+  "wp:action-publish": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/global-styles/9"
+   }
+  ],
+  "wp:action-edit-css": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/global-styles/9"
+   }
+  ],
+  "curies": [
+   {
+    "name": "wp",
+    "href": "https://api.w.org/{rel}",
+    "templated": true
+   }
+  ]
+ }
+}

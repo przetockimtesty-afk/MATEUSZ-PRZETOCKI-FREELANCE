@@ -1,0 +1,69 @@
+{
+ "id": "twentytwentyfive//404",
+ "theme": "twentytwentyfive",
+ "content": {
+  "raw": "<!-- wp:template-part {\"slug\":\"header\",\"theme\":\"twentytwentyfive\"} /-->\n\n<!-- wp:group {\"tagName\":\"main\",\"style\":{\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|50\",\"bottom\":\"var:preset|spacing|50\",\"left\":\"var:preset|spacing|50\",\"right\":\"var:preset|spacing|50\"}}},\"layout\":{\"type\":\"default\"}} -->\n<main class=\"wp-block-group\" style=\"padding-top:var(--wp--preset--spacing--50);padding-right:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50);padding-left:var(--wp--preset--spacing--50)\">\n\t<!-- wp:group {\"style\":{\"spacing\":{\"padding\":{\"right\":\"0\",\"left\":\"0\"}}},\"layout\":{\"type\":\"constrained\"},\"metadata\":{\"patternName\":\"twentytwentyfive/hidden-404\",\"name\":\"404\"}} -->\n<div class=\"wp-block-group\" style=\"padding-right:0;padding-left:0\">\n\t<!-- wp:columns {\"align\":\"wide\",\"style\":{\"spacing\":{\"blockGap\":{\"top\":\"var:preset|spacing|50\",\"left\":\"var:preset|spacing|50\"}}}} -->\n\t<div class=\"wp-block-columns alignwide\">\n\t\t<!-- wp:column -->\n\t\t<div class=\"wp-block-column\">\n\t\t\t<!-- wp:image {\"scale\":\"cover\",\"sizeSlug\":\"full\",\"linkDestination\":\"none\"} -->\n\t\t\t<figure class=\"wp-block-image size-full\">\n\t\t\t\t<img src=\"https://mateuszprzetocki.pl/wp-content/themes/twentytwentyfive/assets/images/404-image.webp\" alt=\"Small totara tree on ridge above Long Point\" style=\"object-fit:cover\"/>\n\t\t\t</figure>\n\t\t\t<!-- /wp:image -->\n\t\t</div>\n\t\t<!-- /wp:column -->\n\t\t<!-- wp:column {\"verticalAlignment\":\"bottom\"} -->\n\t\t<div class=\"wp-block-column is-vertically-aligned-bottom\">\n\t\t\t<!-- wp:group {\"layout\":{\"type\":\"default\"}} -->\n\t\t\t<div class=\"wp-block-group\">\n\t\t\t\t<!-- wp:heading {\"level\":1} -->\n\t\t\t\t<h1 class=\"wp-block-heading\">\n\t\t\t\t\tPage not found\t\t\t\t</h1>\n\t\t\t\t<!-- /wp:heading -->\n\t\t\t\t<!-- wp:paragraph -->\n\t\t\t\t<p>The page you are looking for doesn&#039;t exist, or it has been moved. Please try searching using the form below.</p>\n\t\t\t\t<!-- /wp:paragraph -->\n\t\t\t\t<!-- wp:search {\"label\":\"Search\",\"showLabel\":false,\"placeholder\":\"Type here...\",\"buttonText\":\"Search\",\"metadata\":{\"patternName\":\"twentytwentyfive/hidden-search\",\"name\":\"Search\"}} /-->\n\t\t\t</div>\n\t\t\t<!-- /wp:group -->\n\t\t</div>\n\t\t<!-- /wp:column -->\n\t</div>\n\t<!-- /wp:columns -->\n</div>\n<!-- /wp:group -->\n</main>\n<!-- /wp:group -->\n\n<!-- wp:template-part {\"slug\":\"footer\",\"theme\":\"twentytwentyfive\"} /-->\n",
+  "block_version": 1
+ },
+ "slug": "404",
+ "source": "theme",
+ "origin": null,
+ "type": "wp_template",
+ "description": "Wyświetla się, gdy odwiedzający trafia na nieistniejącą stronę, na przykład niedziałający lub błędnie wpisany adres URL.",
+ "title": {
+  "raw": "Strona: 404",
+  "rendered": "Strona: 404"
+ },
+ "status": "publish",
+ "wp_id": 0,
+ "has_theme_file": true,
+ "is_custom": false,
+ "author": 0,
+ "modified": null,
+ "date": null,
+ "author_text": "Twenty Twenty-Five",
+ "original_source": "theme",
+ "_links": {
+  "self": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/templates/twentytwentyfive//404",
+    "targetHints": {
+     "allow": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE"
+     ]
+    }
+   }
+  ],
+  "collection": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/templates"
+   }
+  ],
+  "about": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/types/wp_template"
+   }
+  ],
+  "wp:action-publish": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/templates/twentytwentyfive//404"
+   }
+  ],
+  "wp:action-unfiltered-html": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/templates/twentytwentyfive//404"
+   }
+  ],
+  "curies": [
+   {
+    "name": "wp",
+    "href": "https://api.w.org/{rel}",
+    "templated": true
+   }
+  ]
+ }
+}

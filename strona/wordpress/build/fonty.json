@@ -1,0 +1,57 @@
+{
+ "inter": [
+  {
+   "fontWeight": "400",
+   "fontStyle": "normal",
+   "src": [
+    "https://mateuszprzetocki.pl/wp-content/uploads/fonts/Inter-400.woff2"
+   ]
+  },
+  {
+   "fontWeight": "500",
+   "fontStyle": "normal",
+   "src": [
+    "https://mateuszprzetocki.pl/wp-content/uploads/fonts/Inter-500.woff2"
+   ]
+  },
+  {
+   "fontWeight": "600",
+   "fontStyle": "normal",
+   "src": [
+    "https://mateuszprzetocki.pl/wp-content/uploads/fonts/Inter-600.woff2"
+   ]
+  }
+ ],
+ "inter-tight": [
+  {
+   "fontWeight": "600",
+   "fontStyle": "normal",
+   "src": [
+    "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InterTight-600.woff2"
+   ]
+  },
+  {
+   "fontWeight": "700",
+   "fontStyle": "normal",
+   "src": [
+    "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InterTight-700.woff2"
+   ]
+  }
+ ],
+ "instrument-serif": [
+  {
+   "fontWeight": "400",
+   "fontStyle": "normal",
+   "src": [
+    "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InstrumentSerif-Regular.woff2"
+   ]
+  },
+  {
+   "fontWeight": "400",
+   "fontStyle": "italic",
+   "src": [
+    "https://mateuszprzetocki.pl/wp-content/uploads/fonts/InstrumentSerif-Italic.woff2"
+   ]
+  }
+ ]
+}
