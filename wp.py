@@ -56,14 +56,17 @@ def env(plik=".env"):
     user = z("WP_USER", "WP_LOGIN")
     pw = z("WP_PASSWORD", "WP_APP_PASSWORD", "WP_APP_PASS").replace(" ", "")
     base = z("WP_URL").rstrip("/").removesuffix("/wp-admin")
-    if not (user and pw and base):
-        sys.exit("BŁĄD: brak WP_USER, WP_PASSWORD (albo WP_APP_PASS) i WP_URL "
-                 "w .env ani w zmiennych środowiska")
+    if not base:
+        sys.exit("BŁĄD: brak WP_URL w .env ani w zmiennych środowiska")
+    if not pw:
+        # Sesja w chmurze z „Network secret”: proxy samo dokleja nagłówek Authorization
+        # do zapytań na /wp-json/ — hasła nie ma w sesji i tak ma zostać.
+        print("(hasło nie jest ustawione: logowanie przez Network secret środowiska)", file=sys.stderr)
     return user, pw, base
 
 
 USER, PW, BASE = env()
-AUTH = base64.b64encode(f"{USER}:{PW}".encode()).decode()
+AUTH = base64.b64encode(f"{USER}:{PW}".encode()).decode() if PW else None
 API = BASE + "/wp-json/"
 
 
@@ -73,7 +76,7 @@ def zapytaj(sciezka, payload=None, metoda=None, surowe=False, body=None, ctype=N
     req = urllib.request.Request(url, method=metoda or domyslna)
     # anon=True: front oglądamy JAK GOOGLE — bez Basic auth. Zalogowanemu redaktorowi
     # WordPress wyrenderuje także draft, więc uwierzytelniony `check` kłamałby o publikacji.
-    if not anon:
+    if not anon and AUTH:
         req.add_header("Authorization", "Basic " + AUTH)
     req.add_header("User-Agent", UA)
     req.add_header("Accept", "text/html,application/json" if anon else "application/json")

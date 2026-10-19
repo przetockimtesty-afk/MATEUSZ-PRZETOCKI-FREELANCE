@@ -410,6 +410,6 @@ Uzupełnić po pierwszym `wp.py me`, `wp.py types` i `wp.py schema pages`.
 | ID kluczowych stron | |
 | **Czego NIE da się przez REST** | |
 | Znane pułapki tej instalacji | |
-| Dostęp z sesji w chmurze | domena w Allowed domains środowiska; `WP_URL`, `WP_USER`, `WP_APP_PASS` jako zmienne środowiska |
+| Dostęp z sesji w chmurze | Network secret środowiska (typ Basic: `claude` + hasło aplikacji, strona `mateuszprzetocki.pl`, prefiks `/wp-json/`) — proxy dokleja nagłówek, hasła nie ma w sesji; domena też w Allowed domains (dla `wp.py check`); zmienne `WP_URL` (i `WP_USER`) w Environment variables |
 
 <!-- ===== KONIEC BLOKU ===== -->
