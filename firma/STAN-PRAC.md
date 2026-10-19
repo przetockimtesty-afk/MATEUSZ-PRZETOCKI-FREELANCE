@@ -27,7 +27,8 @@
 - [ ] Uogólnić ankietę A w `Kod.gs` pod wszystkie branże. Teraz nie robimy; przypomnieć, gdy Mateusz zapyta o niedokończone zadania.
 - [ ] Dopasować prezentacje i szablon propozycji do nowych kolorów. Odłożone, niepilne.
 - [ ] Usunąć folder `plan-freelancer/` ze starego repozytorium `oneproductstore`, jeśli wszystko jest skopiowane tutaj (Mateusz się zgodził). Zablokowane: sesja nie dostała dostępu do `oneproductstore`.
-- [ ] Zdjęcie Mateusza na stronę: dostarczy później; nie trafia do repozytorium. Przypominać przy kolejnych rozmowach.
+- [x] Zdjęcia Mateusza na stronie (19.10). Dwa zdjęcia z Dysku („zalozonerece_1.png”, „Projekt bez nazwy (17).png”) są na stronie głównej i „O mnie” jako portret, sylwetka i awatar przy imieniu. Mają tło w kolorach marki i są bez metadanych (media 92–94). Plików zdjęć nie ma w repozytorium.
+- [ ] Opcjonalnie: zdjęcie przy pracy (np. przy laptopie) do małej ramki, którą teraz zajmuje sylwetka, i zdjęcia w większej rozdzielczości. Obecne mają 600 × 600 px i na dużych ekranach są lekko miękkie. Podmiana w edytorze: „Zastąp”.
 - [ ] Przed zakupem hostingu LH.pl sprawdzić, czy domena `mateuszprzetocki.pl` jest wolna.
 - [ ] Unieważnić hasło aplikacji WordPress, które 19.10 trafiło do repozytorium w `.env` (plik usunięty, ale zostaje w historii Gita). Nowe hasło trzymać tylko w sekretach środowiska sesji, nigdy w repozytorium.
 - [x] Dostęp do WordPressa działa (19.10): konto `agentai`, rola administrator, logowanie przez Network secret, poprawka nagłówka w `.htaccess`. Stan instalacji w tabeli „Ta instalacja” w `WP-REST.md`.

@@ -74,5 +74,17 @@
  "ikona-witryny": {
   "id": 28,
   "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/ikona-witryny.png"
+ },
+ "mateusz-przetocki-portret": {
+  "id": 92,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp"
+ },
+ "mateusz-przetocki-sylwetka": {
+  "id": 93,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp"
+ },
+ "mateusz-przetocki-awatar": {
+  "id": 94,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp"
  }
 }

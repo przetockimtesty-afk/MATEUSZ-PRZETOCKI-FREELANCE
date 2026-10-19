@@ -104,6 +104,9 @@ function obraz(nazwa, o = {}) {
 	return blok('core/image', { id: m.id, url: m.url, alt: o.alt ?? (opis ? opis.alt : ''), caption: o.podpis, sizeSlug: 'full', linkDestination: 'none', className: o.klasa, width: o.szer, align: o.wyrownaj });
 }
 
+// zdjęcia Mateusza: duże (portret) i małe (sylwetka); pliki są tylko w mediach WordPressa, nie w repozytorium
+const zdjecia = () => [obraz('mateusz-przetocki-portret', { alt: 'Mateusz Przetocki' }), obraz('mateusz-przetocki-sylwetka', { alt: 'Mateusz Przetocki w marynarce, z rękami w kieszeniach' })];
+
 // listy
 const lista = (pozycje, o = {}) => blok('core/list', { className: o.klasa, ordered: o.numerowana }, pozycje.map((x) => (typeof x === 'string' ? blok('core/list-item', { content: x }) : blok('core/list-item', { content: x.t, className: x.klasa }))));
 
@@ -231,7 +234,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 				lista(['Z&nbsp;kalendarzem od 1&nbsp;800&nbsp;zł', 'gotowa w&nbsp;ok.&nbsp;2&nbsp;tygodnie', 'wszystko ustalamy na piśmie'], { klasa: 'is-style-lista-kropki' }),
 				przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), przycisk('Zobacz demo', DEMO, { obrys: true })]),
 				podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h'),
-				wiersz([obraz('zaslepka-awatar'), p('Mateusz Przetocki, Kraków. Odpowiadam osobiście.')], { klasa: 'mp-osoba', nowrap: true }),
+				wiersz([obraz('mateusz-przetocki-awatar', { alt: '' }), p('Mateusz Przetocki, Kraków. Odpowiadam osobiście.')], { klasa: 'mp-osoba', nowrap: true }),
 			], { klasa: 'mp-hero' }],
 			['42%', [obraz('telefon-rezerwacja-powiadomienie', { szer: '336px', wyrownaj: 'center', klasa: 'mp-telefon-hero' })]],
 		], { pion: 'center', gap: '48px' }),
@@ -304,7 +307,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 	], { id: 'jak-pracuje', ciemna: true }),
 	sekcja([
 		kolumny([
-			['50%', [grupa([obraz('zaslepka-portret'), obraz('zaslepka-przy-pracy')], { klasa: 'mp-zdjecia' })]],
+			['50%', [grupa(zdjecia(), { klasa: 'mp-zdjecia' })]],
 			['50%', tekstSekcji('O&nbsp;mnie', 'Strony robię <em>sam</em>, od ankiety do startu', [
 				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat obsługiwałem klientów w&nbsp;Castoramie, więc wiem, o&nbsp;co ludzie pytają, zanim się zdecydują.'),
 				p('Strony buduję na WordPressie i&nbsp;każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.'),
@@ -764,7 +767,7 @@ strona('oMnie', { tytul: 'O mnie', slug: 'o-mnie', opis: 'Robię strony wizytów
 	sekcja([
 		okruszki([['Strona główna', U.glowna], 'O&nbsp;mnie']),
 		kolumny([
-			['50%', [grupa([obraz('zaslepka-portret'), obraz('zaslepka-przy-pracy')], { klasa: 'mp-zdjecia mp-tlo-krem' })]],
+			['50%', [grupa(zdjecia(), { klasa: 'mp-zdjecia mp-tlo-krem' })]],
 			['50%', [
 				nad('O&nbsp;mnie'),
 				h1('Strony robię <em>sam</em>, od ankiety do startu'),
