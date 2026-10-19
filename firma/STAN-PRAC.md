@@ -3,7 +3,7 @@
 ## Najważniejsze ustalenia
 
 - Oferta: strony wizytówki, przez które klienci specjalistów sami umawiają konsultacje. Pakiety 1 200 / 1 800 (polecany) / 2 500 zł. Szczegóły w `PROFIL.md`.
-- Własna strona: domena `mateuszprzetocki.pl` (zostaje). Sprawdzić, czy jest wolna, przed zakupem hostingu LH.pl.
+- Własna strona: domena `mateuszprzetocki.pl` na hostingu LH.pl, WordPress działa (od 19.10).
 - Wygląd: krem, piasek, czerń, jasny błękit. Fonty: Inter Tight, Instrument Serif, Inter. Wszystko jest w systemie marki.
 - Branże: 3 ze stroną (doradcy kredytowi, biura rachunkowe, psycholodzy i terapeuci); potem agenci ubezpieczeniowi, fizjoterapeuci, kancelarie prawne i firmy remontowe, po jednej na tydzień; 12 kolejnych w 4 grupach na `/dla-kogo/`. Własny adres tylko z własną treścią, bez stron „branża + miasto”.
 - Tytuł witryny: „Mateusz Przetocki”, opis „Strony, które umawiają konsultacje”. Tytuł SEO strony głównej: „Strony z kalendarzem konsultacji | Mateusz Przetocki”.
@@ -29,7 +29,7 @@
 - [ ] Usunąć folder `plan-freelancer/` ze starego repozytorium `oneproductstore`, jeśli wszystko jest skopiowane tutaj (Mateusz się zgodził). Zablokowane: sesja nie dostała dostępu do `oneproductstore`.
 - [x] Zdjęcia Mateusza na stronie (19.10). Dwa zdjęcia z Dysku („zalozonerece_1.png”, „Projekt bez nazwy (17).png”) są na stronie głównej i „O mnie” jako portret, sylwetka i awatar przy imieniu. Mają tło w kolorach marki i są bez metadanych (media 92–94). Plików zdjęć nie ma w repozytorium.
 - [ ] Opcjonalnie: zdjęcie przy pracy (np. przy laptopie) do małej ramki, którą teraz zajmuje sylwetka, i zdjęcia w większej rozdzielczości. Obecne mają 600 × 600 px i na dużych ekranach są lekko miękkie. Podmiana w edytorze: „Zastąp”.
-- [ ] Przed zakupem hostingu LH.pl sprawdzić, czy domena `mateuszprzetocki.pl` jest wolna.
+- [x] Domena `mateuszprzetocki.pl` i hosting LH.pl kupione, strona działa (19.10).
 - [ ] Unieważnić hasło aplikacji WordPress, które 19.10 trafiło do repozytorium w `.env` (plik usunięty, ale zostaje w historii Gita). Nowe hasło trzymać tylko w sekretach środowiska sesji, nigdy w repozytorium.
 - [x] Dostęp do WordPressa działa (19.10): konto `agentai`, rola administrator, logowanie przez Network secret, poprawka nagłówka w `.htaccess`. Stan instalacji w tabeli „Ta instalacja” w `WP-REST.md`.
 - [ ] Zdecydować, czy konto `agentai` zostaje administratorem, czy schodzi do roli Redaktor.
