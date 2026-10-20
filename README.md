@@ -11,6 +11,7 @@ firma/
   drogowskaz/               plan działania w PDF i jego źródło (plan.html, build.js)
                             oraz workflow wersji A i B (workflow.html, build_workflow.js)
   automatyzacja/            Kod.gs: ankiety Google → propozycja; INSTRUKCJA.md
+  wdrozenia/                instrukcja wdrażania kalendarza MP Rezerwacje u klienta (HTML → PDF, zbuduj.js)
   umowy/                    wzór umowy z klientem i instrukcja (źródła Dokumentów Google)
   prezentacje/
     A-konsultacja/          źródło prezentacji A (deck.json + slajdy)
@@ -65,6 +66,7 @@ stron z WordPressa.
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
+| Kalendarz u klienta: wdrożenie krok po kroku (PDF) | `firma/wdrozenia/` | — | do wgrania przez Mateusza (za duży dla złącza) |
 | Wtyczka MP Rezerwacje 0.1.0 (włączona na mateuszprzetocki.pl) | szkielet `strona/wtyczki/mp-rezerwacje/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
@@ -79,6 +81,7 @@ Wzór umowy edytujesz w Dokumencie Google; większą zmianę przenieś też do `
 - PDF drogowskazu: `node firma/drogowskaz/build.js` (wymaga Playwright i pypdf).
 - Komponenty systemu marki po zmianie w `system-marki/src/bundle.template.js`:
   `python3 strona/narzedzia/ds_gen.py strona/system-marki`.
+- PDF wdrożenia kalendarza: `node firma/wdrozenia/zbuduj.js` (Playwright z `strona/wordpress/node_modules`).
 - Strona w WordPressie: raz `npm ci` w `strona/wordpress/`, potem z katalogu głównego
   `python3 strona/wordpress/wyslij.py [etap]` (zasady w `WP-REST.md`).
   Ilustracje z plansz: `node strona/wordpress/renderuj.js`.

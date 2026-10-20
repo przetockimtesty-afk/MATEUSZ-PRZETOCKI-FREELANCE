@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>Kalendarz u klienta: wdrożenie krok po kroku</title>
+<style>
+@font-face { font-family: "Inter"; font-weight: 400; src: url("../../strona/system-marki/project/fonts/Inter-400.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-weight: 600; src: url("../../strona/system-marki/project/fonts/Inter-600.woff2") format("woff2"); }
+@font-face { font-family: "Inter Tight"; font-weight: 600; src: url("../../strona/system-marki/project/fonts/InterTight-600.woff2") format("woff2"); }
+@page { size: A4; margin: 16mm 16mm 18mm; }
+:root { --krem: #f5f2ec; --piasek: #e8e0d4; --czern: #161514; --grafit: #5c574f; --blekit: #dce8f3; --linia: #d9d0c3; }
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Inter", sans-serif; font-size: 9.6pt; line-height: 1.5; color: var(--czern); }
+h1 { font-family: "Inter Tight", sans-serif; font-weight: 600; font-size: 23pt; line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 8pt; }
+h2 { font-family: "Inter Tight", sans-serif; font-weight: 600; font-size: 13pt; margin: 16pt 0 6pt; break-after: avoid; }
+h2 .nr { display: inline-block; min-width: 20pt; color: var(--grafit); }
+h2 .czas { font-family: "Inter", sans-serif; font-weight: 400; font-size: 8.5pt; color: var(--grafit); margin-left: 6pt; }
+p { margin: 0 0 6pt; }
+ul, ol { margin: 0 0 6pt; padding-left: 15pt; }
+li { margin: 0 0 3pt; }
+code { font-family: "DejaVu Sans Mono", monospace; font-size: 8.2pt; background: var(--krem); border: 1px solid var(--linia); border-radius: 3pt; padding: 0 3pt; }
+.nad { font-size: 8pt; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--grafit); margin-bottom: 6pt; }
+.wstep { font-size: 10.5pt; color: var(--grafit); max-width: 150mm; }
+.zasada { background: var(--blekit); border-radius: 8pt; padding: 9pt 12pt; margin: 10pt 0; }
+.zasada strong { display: block; margin-bottom: 2pt; }
+.uwaga { border-left: 3pt solid var(--czern); padding: 2pt 0 2pt 9pt; margin: 6pt 0; }
+.sekcja { break-inside: avoid; }
+table { width: 100%; border-collapse: collapse; margin: 4pt 0 8pt; font-size: 9pt; }
+th, td { text-align: left; vertical-align: top; padding: 5pt 6pt; border-bottom: 1px solid var(--linia); }
+th { font-weight: 600; background: var(--krem); }
+.drobne { font-size: 8.3pt; color: var(--grafit); }
+.pomysly { background: var(--piasek); border-radius: 8pt; padding: 9pt 12pt; margin-top: 14pt; break-inside: avoid; }
+</style>
+</head>
+<body>
+
+<div class="nad">MP Rezerwacje 0.1.0 · stan z 20.10.2026</div>
+<h1>Kalendarz u klienta: wdrożenie krok po kroku</h1>
+<p class="wstep">Ta sama wtyczka u każdego klienta. Różnią się tylko ustawienia i kolory motywu. Całość zajmuje ok. 2 godziny mojej pracy i ok. 15 minut klienta (tylko przy Kalendarzu Google).</p>
+
+<div class="zasada"><strong>Zasada: szkielet wtyczki się nie zmienia.</strong>Kodu wtyczki ani katalogu <code>branze/</code> nie przerabiam pod jednego klienta. Wszystko, co dotyczy konkretnej strony, idzie do pliku ustawień klienta, do panelu wtyczki albo do CSS motywu. Poprawka szkieletu, która przyda się wszystkim, to osobna decyzja i nowa wersja wtyczki dla wszystkich.</div>
+
+<div class="sekcja">
+<h2><span class="nr">1.</span>Co zebrać od klienta <span class="czas">w ankiecie albo przy propozycji</span></h2>
+<ul>
+	<li>Rodzaje spotkań: nazwa, czas, forma (online, na miejscu, telefon), adres gabinetu albo biura.</li>
+	<li>Godziny w tygodniu, urlopy, najwyżej ile spotkań dziennie, ile godzin wcześniej najpóźniej można się umówić, do kiedy można zmienić albo odwołać termin.</li>
+	<li>2–4 pytania przed spotkaniem. Start z zestawu branży. U psychologów i terapeutów bez pytań o zdrowie (RODO, art. 9).</li>
+	<li>Adres e-mail na powiadomienia, najlepiej w domenie klienta (ten adres widać też na stronie), i skrzynka w domenie do wysyłki potwierdzeń.</li>
+	<li>Stały link Google Meet, jeśli są spotkania online. Klient tworzy go na meet.google.com → „Nowe spotkanie” → „Utwórz spotkanie na później”.</li>
+	<li>Zdjęcie twarzy do kalendarza (kwadrat).</li>
+	<li>Decyzja: Kalendarz Google tak albo nie, arkusz tak albo nie, wariant A albo B (punkt 8).</li>
+</ul>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">2.</span>Plik ustawień klienta <span class="czas">u mnie, ok. 20 min</span></h2>
+<ol>
+	<li>Kopiuję zestaw branży z <code>strona/wtyczki/mp-rezerwacje/branze/</code> albo wzór z mojej strony <code>strona/wordpress/rezerwacje-ustawienia.json</code>.</li>
+	<li>Uzupełniam: osoba (imię, podpis), rodzaje spotkań, godziny, zasady, pytania, teksty kalendarza i e-maili, adres polityki prywatności klienta.</li>
+	<li>Zapisuję w <code>klienci/&lt;klient&gt;/rezerwacje-ustawienia.json</code>. Bez e-maili, telefonów, linku Meet i klucza Google: te wpisuje się w panelu.</li>
+</ol>
+<p class="uwaga">Wczytanie pliku zastępuje w całości godziny, rodzaje spotkań i pytania. Po poprawkach klienta w panelu nie wczytuję starego pliku drugi raz.</p>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">3.</span>Instalacja <span class="czas">ok. 10 min</span></h2>
+<ol>
+	<li>Paczka: <code>cd strona/wtyczki &amp;&amp; zip -r mp-rezerwacje.zip mp-rezerwacje</code>.</li>
+	<li>wp-admin klienta: Wtyczki → Dodaj nową → Wyślij wtyczkę na serwer → Włącz. ZIP da się wgrać tylko w wp-admin, nie przez API.</li>
+	<li>Rezerwacje → Ustawienia → Narzędzia → „Wczytaj plik ustawień”.</li>
+	<li>Szybkie sprawdzenie godzin bez logowania: <code>https://domena-klienta.pl/wp-json/mp-rezerwacje/v1/terminy</code>.</li>
+</ol>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">4.</span>Panel wtyczki <span class="czas">klient albo ja, ok. 10 min</span></h2>
+<table>
+	<tr><th style="width:24%">Zakładka</th><th>Co ustawić</th></tr>
+	<tr><td>Spotkania</td><td>Zdjęcie twarzy, stały link Meet, adres miejsca spotkań.</td></tr>
+	<tr><td>Powiadomienia</td><td><strong>Adres na powiadomienia.</strong> Pusty = e-mail administratora WordPressa, który pokazuje się wtedy w kodzie strony z kalendarzem. Nadawca, potem „Wyślij mi testowe potwierdzenie”.</td></tr>
+	<tr><td>Dostępność</td><td>Urlopy i dni wolne jako wyjątki, sprawdzenie godzin.</td></tr>
+	<tr><td>Formularz, Wygląd</td><td>Zwykle nic: teksty są z pliku, kolory z motywu.</td></tr>
+</table>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">5.</span>Strona z kalendarzem <span class="czas">ok. 20 min</span></h2>
+<ul>
+	<li>Osobna strona „Umów wizytę” albo „Umów rozmowę”: z lewej 3–4 zdania i lista „jak wygląda spotkanie”, z prawej blok „Rezerwacja terminu”. Wszystkie przyciski „Umów…” na stronie prowadzą do niej.</li>
+	<li>Najpierw szkic. Publikacja dopiero po testach z punktu 10. Tytuł i opis SEO jak dla każdej podstrony.</li>
+	<li>CSS motywu klienta: przy przyklejonym nagłówku <code>.mp-rez { scroll-margin-top: 88px; }</code> (wysokość nagłówka plus zapas). Dolny pasek z przyciskiem na telefonie chowam na tej stronie: <code>body:has(.mp-rez) .pasek { display: none; }</code>.</li>
+</ul>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">6.</span>Poczta <span class="czas">ok. 15 min</span></h2>
+<ul>
+	<li>Skrzynka w domenie klienta z SPF i DKIM, wtyczka SMTP (np. FluentSMTP albo WP Mail SMTP) wysyłająca przez tę skrzynkę. Bez tego potwierdzenia trafiają do spamu.</li>
+	<li>Test: „Wyślij mi testowe potwierdzenie” na Gmaila i drugą skrzynkę. Sprawdzić folder Spam i Oferty.</li>
+</ul>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">7.</span>Zadanie cron w LH.pl <span class="czas">2 min</span></h2>
+<p>Panel LH.pl → Zadania cron → Dodaj → Tryb prosty → co 15 minut → interpreter cURL → adres <code>https://domena-klienta.pl/wp-cron.php?doing_wp_cron</code> (w tej wersji domeny, na której naprawdę działa strona). Dzięki temu przypomnienia wychodzą na czas także przy małym ruchu. Sprawdzenie: Narzędzia → „Następne sprawdzenie” przesuwa się co kwadrans.</p>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">8.</span>Kalendarz Google <span class="czas">opcjonalnie, ok. 15 min</span></h2>
+<p><strong>Wariant A, domyślny: projekt na koncie klienta</strong>, więc nic nie zależy ode mnie.</p>
+<ol>
+	<li>Klient: console.cloud.google.com → „Nowy projekt” → IAM → „Przyznaj dostęp” mojemu adresowi z rolą Edytor.</li>
+	<li>Ja w projekcie klienta: włączam Google Calendar API (i Sheets API przy arkuszu), tworzę konto usługi bez ról, klucz JSON.</li>
+	<li>Klient: Kalendarz Google → Ustawienia kalendarza → Udostępnij adresowi konta usługi z prawem „Wprowadzanie zmian w wydarzeniach” (arkusz: Edytor).</li>
+	<li>Ja: klucz wklejam w zakładce Google, wpisuję adres kalendarza, „Sprawdź połączenie”, plik klucza usuwam ze swojego komputera.</li>
+</ol>
+<p><strong>Wariant B</strong>: projekt na moim koncie roboczym, tylko przy abonamencie opieki. Przy rozstaniu przejście na wariant A. Ograniczenia Google w obu wariantach: konto usługi nie wysyła zaproszeń (klient końcowy dostaje nasz e-mail z plikiem .ics) i nie tworzy linków Meet (jest jeden stały link).</p>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">9.</span>Polityka prywatności klienta</h2>
+<p>Dopisać rezerwacje: jakie dane (imię, e-mail, telefon opcjonalnie, termin, odpowiedzi), po co, gdzie są zapisane (serwer hostingu, Kalendarz Google, jeśli włączony), po ilu dniach znikają (ustawienie w Narzędziach, domyślnie 365). Gotowy szkic jest w wp-admin: Ustawienia → Prywatność → Przewodnik po polityce. Ostateczny tekst sprawdza radca klienta.</p>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">10.</span>Testy przed publikacją <span class="czas">ok. 20 min</span></h2>
+<ul>
+	<li>Rezerwacja na telefonie i na komputerze, błędy w formularzu, oba e-maile z plikiem .ics, termin znika z kalendarza.</li>
+	<li>Zmiana terminu i odwołanie z linku w e-mailu. Przypomnienie: na próbę krótki czas w Powiadomieniach, potem z powrotem.</li>
+	<li>Z Google: wydarzenie pojawia się w kalendarzu klienta, a jego zajęte godziny znikają z kalendarza na stronie.</li>
+	<li>Panel: lista spotkań, CSV, widżet w kokpicie. Próbne rezerwacje odwołuję.</li>
+</ul>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">11.</span>Przekazanie klientowi</h2>
+<ul>
+	<li>Rezerwacje → Spotkania: lista dzień po dniu, odwołanie z wiadomością do klienta, CSV do Excela, widżet „Najbliższe spotkania” w kokpicie.</li>
+	<li>Jak zablokować dzień: wyjątek w Dostępności albo wydarzenie „Zajęty” w Kalendarzu Google.</li>
+	<li>Ręcznego dodawania rezerwacji w panelu nie ma. Telefon od klienta = wydarzenie w Kalendarzu Google albo rezerwacja przez stronę.</li>
+</ul>
+</div>
+
+<div class="sekcja">
+<h2><span class="nr">12.</span>Pułapki z pierwszego wdrożenia (mateuszprzetocki.pl)</h2>
+<ul>
+	<li>Zdjęcie w ustawieniach to numer z biblioteki mediów. Po usunięciu albo podmianie zdjęcia trzeba wybrać nowe w Spotkaniach, inaczej jest ikona osoby.</li>
+	<li>Bez adresu na powiadomienia w kodzie strony jest e-mail administratora WordPressa.</li>
+	<li>Ustawień nie zmienię przez API: robi to klient albo ja w panelu, albo plik w Narzędziach.</li>
+	<li>Agent: adres strony w sesji bez „www”, jeśli sekret logowania jest na domenie bez „www”, inaczej 401.</li>
+</ul>
+</div>
+
+<div class="pomysly">
+<strong>Pomysły do szkieletu wtyczki</strong> <span class="drobne">(do decyzji, nie są wprowadzone)</span>
+<ol>
+	<li>Zapasowy kontakt bez adresu w Powiadomieniach: nie pokazywać e-maila administratora, tylko poprosić o uzupełnienie adresu.</li>
+	<li>Własna nazwa formy „Online”, np. „Google Meet” albo „Wideorozmowa”.</li>
+	<li>Przewijanie do kalendarza z zapasem na przyklejony nagłówek motywu (dziś CSS w każdej stronie osobno).</li>
+	<li>Zapis ustawień przez API (tylko administrator), żebym mógł ustawić wtyczkę u klienta bez klikania w panelu.</li>
+</ol>
+</div>
+
+</body>
+</html>

@@ -45,6 +45,8 @@
 ## Otwarte sprawy
 
 - [x] Kalendarz na mateuszprzetocki.pl działa (20.10): Mateusz wczytał ustawienia i dodał cron w LH.pl; strona `/rozmowa/` (100) opublikowana, 13 przycisków na 12 stronach prowadzi do niej, karta na Kontakcie i polityka prywatności (dane z rezerwacji, LH.pl, usuwanie po 365 dniach) zaktualizowane.
+- [x] Instrukcja wdrażania kalendarza u klienta (12 kroków, pułapki, pomysły do szkieletu): `firma/wdrozenia/kalendarz-wdrozenie.html` → `Kalendarz_wdrozenie_u_klienta.pdf` (20.10).
+- [ ] Wgrać `Kalendarz_wdrozenie_u_klienta.pdf` na Dysk (robi Mateusz, plik za duży dla złącza).
 - [ ] Kalendarz u Mateusza, dalsze kroki: zdjęcie twarzy (media 104) w zakładce Spotkania, próbna rezerwacja z własnym e-mailem (sprawdzić spam), skrzynka w domenie i wtyczka SMTP, później Kalendarz Google (wariant na własnym koncie). Instrukcja wdrażania u klientów: `firma/wdrozenia/`.
 - [ ] Zmienić w ustawieniach środowiska sesji `WP_URL` na `https://mateuszprzetocki.pl` (bez „www”). Sekret logowania działa tylko na adres bez „www”, z „www” jest 401.
 - [ ] Pomysły do szkieletu wtyczki MP Rezerwacje (Mateusz kazał zapamiętać 20.10; niewprowadzone, do decyzji, opisane też w PDF z wdrożenia): przy pustym adresie powiadomień kalendarz pokazuje w kodzie strony e-mail administratora WordPressa; forma „Online” nie ma własnej nazwy (np. „Google Meet”); przewijanie do kalendarza nie uwzględnia przyklejonego nagłówka motywu (na tej stronie poprawione w CSS); ustawień nie da się zmienić przez REST, więc agent nie ustawi wtyczki u klienta sam (np. endpoint z uprawnieniem `manage_options`).
