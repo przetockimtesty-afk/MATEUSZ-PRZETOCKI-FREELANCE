@@ -434,6 +434,21 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 .is-style-lista-linki a { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 2px; font-weight: 600; color: var(--wp--preset--color--czern); text-decoration: none; border-bottom: 1px solid currentColor; }
 .is-style-lista-linki a::after { content: ""; width: 16px; height: 16px; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14'/%3E%3Cpath d='m12 5 7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat; }
 
+/* Plansza „Kto odpowie pierwszy”: dwie drogi klienta i liczba z badania */
+.mp-plansza-czasu { align-items: stretch; }
+.mp-sciezka > h3 { margin-top: 18px !important; }
+.mp-os-czasu { list-style: none; margin: 24px 0 0; padding: 0; }
+.mp-os-czasu > li { position: relative; margin: 0; padding: 0 0 18px 76px; font-size: 16px; line-height: 1.5; }
+.mp-os-czasu > li:last-child { padding-bottom: 0; }
+.mp-os-czasu > li strong { position: absolute; left: 0; top: 0; font-family: var(--wp--preset--font-family--inter-tight); font-weight: 600; }
+.mp-os-czasu > li::before { content: ""; position: absolute; left: 58px; top: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--wp--preset--color--linia); }
+.mp-os-czasu > li::after { content: ""; position: absolute; left: 61px; top: 20px; bottom: 2px; width: 1px; background: var(--wp--preset--color--linia); }
+.mp-os-czasu > li:last-child::after { display: none; }
+.mp-sciezka-zla .mp-os-czasu > li:last-child { color: var(--wp--preset--color--grafit); }
+.mp-sciezka-dobra { background: var(--wp--preset--color--blekit-jasny) !important; border-color: var(--wp--preset--color--blekit-jasny) !important; }
+.mp-sciezka-dobra .mp-os-czasu > li::before { background: var(--wp--preset--color--czern); }
+.mp-sciezka-dobra .mp-os-czasu > li::after { background: var(--wp--preset--color--czern); opacity: 0.25; }
+
 /* Kalendarz rezerwacji (wtyczka MP Rezerwacje): przy przejściu do kolejnego kroku nie chowa się pod przyklejonym nagłówkiem */
 .mp-rez { scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 0px) + 88px); }
 

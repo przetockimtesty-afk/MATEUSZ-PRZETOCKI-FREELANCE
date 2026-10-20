@@ -251,6 +251,26 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 		], { pion: 'center' }),
 	], { id: 'problem', tlo: 'piasek' }),
 	sekcja([
+		naglowekSekcji('Liczy się pierwsza godzina', 'Kto odpowie <em>pierwszy</em>, ten umawia klienta', 'Klient zwykle pyta kilku specjalistów naraz. Spotkanie dostaje ten, kto odezwie się pierwszy, a&nbsp;kalendarz na stronie odpowiada od razu, także wieczorem.', { srodek: true }),
+		siatka([
+			karta([etykieta('Bez kalendarza', 'piasek'), h3('Oddzwaniasz po spotkaniu'), lista([
+				'<strong>10:05</strong> Klient dzwoni, a&nbsp;Ty masz konsultację.',
+				'<strong>12:30</strong> Oddzwaniasz, gdy kończysz.',
+				'<strong>12:31</strong> „Dziękuję, już się umówiłem gdzie indziej”.',
+			], { klasa: 'mp-os-czasu' })], { klasa: 'mp-sciezka mp-sciezka-zla' }),
+			karta([etykieta('Z kalendarzem', 'czarna'), h3('Klient umawia się sam'), lista([
+				'<strong>21:40</strong> Klient wybiera wolny termin na Twojej stronie.',
+				'<strong>21:41</strong> Dostaje potwierdzenie e‑mailem.',
+				'<strong>8:00</strong> Rano wiesz, kto przyjdzie i&nbsp;z&nbsp;czym.',
+			], { klasa: 'mp-os-czasu' })], { klasa: 'mp-sciezka mp-sciezka-dobra' }),
+			karta([
+				wiersz([p('prawie', { klasa: 'mp-ok' }), p('7×', { klasa: 'is-style-liczba' })], { klasa: 'mp-liczba', nowrap: true }),
+				p('większa szansa na rozmowę z&nbsp;klientem, gdy firma odezwie się w&nbsp;ciągu godziny, a&nbsp;nie godzinę później. Po dobie ponad 60&nbsp;razy mniejsza.', { klasa: 'mp-opis-liczby' }),
+				p('Źródło: <a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads">Harvard Business Review, 2011</a>', { klasa: 'mp-zrodlo' }),
+			], { klasa: 'mp-karta-liczba' }),
+		], { min: '300px', klasa: 'mp-plansza-czasu' }),
+	], { id: 'czas-odpowiedzi' }),
+	sekcja([
 		naglowekSekcji('Co dostajesz', 'Strona, która <em>pracuje</em>, kiedy Ty pracujesz'),
 		siatka([
 			kartaKorzysci('calendar-check', 'Klient umawia się sam', 'Kalendarz konsultacji w&nbsp;2&nbsp;kliknięciach i&nbsp;potwierdzenie e-mailem.'),
@@ -309,7 +329,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 		kolumny([
 			['50%', [grupa(zdjecia('mateusz-przetocki-zalozone-rece'), { klasa: 'mp-zdjecia' })]],
 			['50%', tekstSekcji('O&nbsp;mnie', 'Strony robię <em>sam</em>, od ankiety do startu', [
-				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat obsługiwałem klientów w&nbsp;Castoramie, więc wiem, o&nbsp;co ludzie pytają, zanim się zdecydują.'),
+				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat codziennie rozmawiałem z&nbsp;klientami przy sprzedaży. Wiem, o&nbsp;co ludzie pytają, zanim się zdecydują, i&nbsp;wiem, że rezygnują, gdy nikt nie odpowiada.'),
 				p('Strony buduję na WordPressie i&nbsp;każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.'),
 				etykiety(['Demo zawsze podpisuję jako demo', 'Domena i&nbsp;dane są Twoje', 'Propozycja w&nbsp;48 godzin'], 'obrys'),
 				strzalka('Więcej o&nbsp;mnie', U.oMnie),
@@ -795,8 +815,8 @@ strona('oMnie', { tytul: 'O mnie', slug: 'o-mnie', opis: 'Robię strony wizytów
 			['50%', [
 				nad('O&nbsp;mnie'),
 				h1('Strony robię <em>sam</em>, od ankiety do startu'),
-				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat obsługiwałem klientów w&nbsp;Castoramie, więc wiem, o&nbsp;co ludzie pytają, zanim się zdecydują.'),
-				p('Wcześniej budowałem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. Dziś robię strony na WordPressie i&nbsp;każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.'),
+				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat codziennie rozmawiałem z&nbsp;klientami przy sprzedaży. Wiem, o&nbsp;co ludzie pytają, zanim się zdecydują, i&nbsp;wiem, że rezygnują, gdy nikt nie odpowiada.'),
+				p('Wcześniej budowałem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. Dziś robię strony na WordPressie z&nbsp;własnym kalendarzem rezerwacji, tym samym, przez który umówisz się ze mną. Każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.'),
 				p('Pracuję z&nbsp;Krakowa i&nbsp;wszystko ustalam na piśmie, z&nbsp;terminem na każdy krok: propozycja w&nbsp;48 godzin, szkic w&nbsp;5&nbsp;dni roboczych, publikacja po Twojej akceptacji.'),
 				przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), przycisk('Umów 30&nbsp;minut na Google Meet', ROZMOWA, { obrys: true })]),
 			]],

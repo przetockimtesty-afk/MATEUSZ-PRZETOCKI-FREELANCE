@@ -149,7 +149,7 @@ Strona główna ma 11 sekcji i jedną myśl: klient umawia się sam, a Ty prowad
    - Cztery kroki w rzędzie: „Ankieta, 5 minut” → „Propozycja w 48 h” → „Szkic do akceptacji w 5 dni roboczych” → „Start i 30 dni wsparcia”.
    - Pod spodem liczby: „48 h na propozycję · 2 rundy poprawek · zadatek 40%” i link „Jak pracuję”.
 10. **O mnie w skrócie**
-    - Twoje zdjęcie i 3 zdania: „Nazywam się Mateusz Przetocki. Przez 5 lat obsługiwałem klientów w Castoramie, więc wiem, o co ludzie pytają, zanim się zdecydują. Strony buduję na WordPressie i każdą testuję ręcznie: formularze, wersję na telefon i szybkość”.
+    - Twoje zdjęcie i 3 zdania: „Nazywam się Mateusz Przetocki. Przez 5 lat codziennie rozmawiałem z klientami przy sprzedaży. Wiem, o co ludzie pytają, zanim się zdecydują, i wiem, że rezygnują, gdy nikt nie odpowiada. Strony buduję na WordPressie i każdą testuję ręcznie: formularze, wersję na telefon i szybkość”.
     - Link: „Więcej o mnie”.
 11. **Pytania i końcowy krok**
     - Pięć rozwijanych pytań (ile to kosztuje, czy muszę dzwonić, kto jest właścicielem, ile trwa, co jeśli mam stronę) i link „Wszystkie pytania”.
@@ -327,7 +327,7 @@ Każda podstrona ma ten sam rytm: nagłówek z obietnicą, treść w krótkich b
 **O mnie `/o-mnie/`**
 
 1. Duże zdjęcie i nagłówek „Strony robię sam, od ankiety do startu”.
-2. Trzy krótkie akapity: 5 lat obsługi klientów w Castoramie (wiesz, o co ludzie pytają, zanim się zdecydują), własne sklepy i wtyczki na WordPressie, praca na piśmie z terminem na każdy krok.
+2. Trzy krótkie akapity: 5 lat rozmów z klientami przy sprzedaży, bez nazwy sklepu (wiesz, o co ludzie pytają, zanim się zdecydują), własne sklepy i wtyczki na WordPressie, praca na piśmie z terminem na każdy krok.
 3. Trzy zasady w kartach: „Demo zawsze podpisuję jako demo”, „Domena i dane są Twoje”, „Propozycja w 48 godzin”.
 4. Przyciski: „Wyceń stronę w 5 minut” i „Umów 30 minut na Google Meet”. Bez „wieloletniego doświadczenia” i wymyślonych logotypów klientów.
 

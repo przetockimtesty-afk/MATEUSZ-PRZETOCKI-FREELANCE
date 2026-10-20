@@ -66,7 +66,7 @@ stron z WordPressa.
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
-| Kalendarz u klienta: wdrożenie krok po kroku (PDF) | `firma/wdrozenia/` | — | do wgrania przez Mateusza (za duży dla złącza) |
+| Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |
 | Wtyczka MP Rezerwacje 0.1.0 (włączona na mateuszprzetocki.pl) | szkielet `strona/wtyczki/mp-rezerwacje/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
