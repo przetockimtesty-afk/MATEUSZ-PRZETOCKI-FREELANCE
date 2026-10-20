@@ -11,6 +11,7 @@ firma/
   drogowskaz/               plan działania w PDF i jego źródło (plan.html, build.js)
                             oraz workflow wersji A i B (workflow.html, build_workflow.js)
   automatyzacja/            Kod.gs: ankiety Google → propozycja; INSTRUKCJA.md
+  umowy/                    wzór umowy z klientem i instrukcja wysyłki (źródła Dokumentów Google)
   prezentacje/
     A-konsultacja/          źródło prezentacji A (deck.json + slajdy)
     B-wycena/               źródło prezentacji B
@@ -48,7 +49,7 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (19.10.2026, po wgraniu strony do WordPressa)
+## Stan zapisu (20.10.2026, po wzorze umowy)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
@@ -61,11 +62,14 @@ stron z WordPressa.
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
+| Wzór umowy i instrukcja wysyłki | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 1 |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.
 
 Folder na Dysku: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw
+(umowy w podfolderze „Umowy”: https://drive.google.com/drive/folders/1bNf1iI9igG1IVPrbyNRiolhnoFa9mz1A).
+Wzór umowy edytujesz w Dokumencie Google; większą zmianę przenieś też do `firma/umowy/umowa.src.html`.
 
 ## Generowanie plików
 
