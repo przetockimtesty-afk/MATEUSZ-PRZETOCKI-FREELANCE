@@ -12,5 +12,6 @@
  "demo": 50,
  "doradcy": 51,
  "biura": 52,
- "terapeuci": 53
+ "terapeuci": 53,
+ "rozmowa": 100
 }

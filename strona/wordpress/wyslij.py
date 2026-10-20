@@ -182,7 +182,8 @@ def style():
     print(f"  zapisano style globalne (id {odp.get('id')}), CSS: {len(dane['styles']['css'])} zn.")
 
 
-KOLEJNOSC = ["glowna", "oferta", "realizacje", "demo", "kontakt", "polityka", "regulamin", "dlaKogo", "doradcy", "biura", "terapeuci", "jakPracuje", "pytania", "oMnie"]
+# nowe strony na końcu, żeby nie przesuwać menu_order (i nie nadpisywać) pozostałych
+KOLEJNOSC = ["glowna", "oferta", "realizacje", "demo", "kontakt", "polityka", "regulamin", "dlaKogo", "doradcy", "biura", "terapeuci", "jakPracuje", "pytania", "oMnie", "rozmowa"]
 POLA_STRONY = ["title", "slug", "status", "content", "excerpt", "template", "comment_status", "ping_status", "menu_order", "parent"]
 
 
@@ -207,7 +208,7 @@ def strony():
         if problemy:
             sys.exit(f"Lint {klucz}: {problemy}")
         payload = {
-            "title": m["tytul"], "slug": m["slug"], "status": "publish", "content": tresc, "excerpt": m["opis"],
+            "title": m["tytul"], "slug": m["slug"], "status": m.get("status") or "publish", "content": tresc, "excerpt": m["opis"],
             "template": "page-no-title", "comment_status": "closed", "ping_status": "closed",
             "menu_order": KOLEJNOSC.index(klucz), "parent": ids.get(m["rodzic"], 0) if m["rodzic"] else 0,
         }

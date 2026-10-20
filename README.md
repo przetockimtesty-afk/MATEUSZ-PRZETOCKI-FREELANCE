@@ -51,11 +51,11 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (20.10.2026, po wtyczce MP Rezerwacje)
+## Stan zapisu (20.10.2026, kalendarz rezerwacji na mojej stronie: krok 1)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
-| Strona mateuszprzetocki.pl (WordPress, 14 podstron) | źródło `strona/wordpress/`, kopie `backups/` | projekt w Claude Design to wzór | — |
+| Strona mateuszprzetocki.pl (WordPress, 14 podstron i szkic `/rozmowa/`) | źródło `strona/wordpress/`, kopie `backups/` | projekt w Claude Design to wzór | — |
 | Zdjęcia Mateusza (na stronie: media 92–94 w WordPressie) | nie, z zasady | — | oryginały, 2 pliki |
 | Drogowskaz PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | Workflow A i B PDF | tak | — | tak, ta sama wersja co w repozytorium |
@@ -65,7 +65,7 @@ stron z WordPressa.
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
-| Wtyczka MP Rezerwacje 0.1.0 | `strona/wtyczki/mp-rezerwacje/` | — | — (nie jest zainstalowana na żadnej stronie) |
+| Wtyczka MP Rezerwacje 0.1.0 (włączona na mateuszprzetocki.pl) | szkielet `strona/wtyczki/mp-rezerwacje/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.

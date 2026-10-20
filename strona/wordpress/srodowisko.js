@@ -31,5 +31,9 @@ console.log = cicho;
 const blocks = require('@wordpress/blocks');
 require('@wordpress/block-library').registerCoreBlocks();
 
+// Blok „Rezerwacja terminu” z własnej wtyczki MP Rezerwacje: rysuje go PHP na serwerze, w treści jest tylko komentarz z atrybutami
+const rezerwacja = require('../wtyczki/mp-rezerwacje/bloki/rezerwacja/block.json');
+blocks.registerBlockType(rezerwacja.name, { ...rezerwacja, save: () => null });
+
 console.log = konsola.log;
 module.exports = { blocks, konsola };

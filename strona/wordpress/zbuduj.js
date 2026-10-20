@@ -31,7 +31,7 @@ const U = {
 	glowna: '/', dlaKogo: '/dla-kogo/', doradcy: '/dla-kogo/doradcy-kredytowi/', biura: '/dla-kogo/biura-rachunkowe/',
 	terapeuci: '/dla-kogo/psycholodzy-i-terapeuci/', oferta: '/oferta/', jakPracuje: '/jak-pracuje/', pytania: '/pytania/',
 	realizacje: '/realizacje/', demo: '/realizacje/demo-doradca-kredytowy/', oMnie: '/o-mnie/', kontakt: '/kontakt/',
-	polityka: '/polityka-prywatnosci/', regulamin: '/regulamin/',
+	polityka: '/polityka-prywatnosci/', regulamin: '/regulamin/', rozmowa: '/rozmowa/',
 };
 // Zaślepki do podmiany, gdy będą prawdziwe linki (ankieta A ze źródłem „Ze strony internetowej”, kalendarz, Demo A)
 const ANKIETA = '#ankieta';
@@ -485,6 +485,30 @@ strona('kontakt', { tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5
 	])], { id: 'dane', gora: 'clamp(56px, 6.7vw, 96px)' }),
 ]);
 
+// Rozmowa: kalendarz z wtyczki MP Rezerwacje (godziny, pytania i e-maile są w jej ustawieniach, plik rezerwacje-ustawienia.json)
+// Szkic, dopóki Mateusz nie wczyta ustawień wtyczki; potem status i linki #rozmowa → U.rozmowa
+strona('rozmowa', { tytul: 'Umów rozmowę', slug: 'rozmowa', status: 'draft', opis: 'Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.' }, [
+	sekcja([
+		okruszki([['Strona główna', U.glowna], ['Kontakt', U.kontakt], 'Rozmowa']),
+		kolumny([
+			['44%', [
+				nad('Rozmowa 30&nbsp;minut'),
+				h1('Porozmawiajmy o&nbsp;Twojej <em>stronie</em>'),
+				wstep('Wybierz wolny termin w&nbsp;kalendarzu. Umawiasz się tak samo, jak będą się umawiać Twoi klienci.'),
+				lista([
+					'Opowiadasz o&nbsp;firmie i&nbsp;klientach, a&nbsp;ja głównie słucham i&nbsp;pytam.',
+					'Pokazuję na żywo, jak działa strona z&nbsp;kalendarzem.',
+					'Mówię, ile by kosztowała: trzy warianty z&nbsp;widełkami.',
+					'Po rozmowie dostajesz podsumowanie, a&nbsp;propozycję na piśmie w&nbsp;48&nbsp;h.',
+				], { klasa: 'is-style-lista-znaczniki' }),
+				podpis('Bez zobowiązań · nie musisz niczego przygotowywać'),
+				strzalka('Wolisz bez rozmowy? Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA),
+			], { klasa: 'mp-hero-tekst' }],
+			['56%', [blok('mp/rezerwacja', {})]],
+		], { pion: 'top', gap: '48px', klasa: 'mp-rozmowa' }),
+	], { gora: 'clamp(24px, 2.8vw, 40px)', gap: 'var:preset|spacing|50' }),
+]);
+
 // Strony prawne: spis treści + dokument
 function dokument(klucz, meta, { okruszek, tytul, tekst, spis, tresc }) {
 	strona(klucz, meta, [
@@ -925,7 +949,7 @@ for (const [klucz, s] of Object.entries(STRONY)) {
 }
 for (const [klucz, s] of Object.entries(STRONY)) {
 	fs.writeFileSync(path.join(BUILD, 'strony', `${klucz}.html`), serializuj(s.bloki));
-	meta[klucz] = { tytul: s.tytul, slug: s.slug, rodzic: s.rodzic || null, opis: s.opis, url: s.url };
+	meta[klucz] = { tytul: s.tytul, slug: s.slug, rodzic: s.rodzic || null, opis: s.opis, url: s.url, status: s.status };
 }
 fs.writeFileSync(path.join(BUILD, 'strony.json'), JSON.stringify(meta, null, 1));
 fs.writeFileSync(path.join(BUILD, 'czesci', 'naglowek.html'), serializuj(naglowekStrony));

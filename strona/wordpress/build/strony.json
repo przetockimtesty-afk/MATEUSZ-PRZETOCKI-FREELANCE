@@ -34,6 +34,14 @@
   "opis": "Wyceń stronę w 5 minut w ankiecie albo umów 30 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań.",
   "url": "/kontakt/"
  },
+ "rozmowa": {
+  "tytul": "Umów rozmowę",
+  "slug": "rozmowa",
+  "rodzic": null,
+  "opis": "Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.",
+  "url": "/rozmowa/",
+  "status": "draft"
+ },
  "polityka": {
   "tytul": "Polityka prywatności",
   "slug": "polityka-prywatnosci",
