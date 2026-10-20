@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<title>System szukania klientów: plan workflow</title>
+<style>
+  @page { size: A4; margin: 15mm 15mm 17mm 15mm; }
+  @page :first { margin: 0; }
+  :root {
+    --krem: #f5f2ec; --piasek: #e8e0d4; --piasek-c: #dcd3c6; --biel: #fff;
+    --czern: #161514; --grafit: #5c574f; --blekit: #a7c7e7; --blekit-j: #dce8f3;
+    --linia: #dcd3c6;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: "Inter", "DejaVu Sans", sans-serif; color: var(--czern); font-size: 9.2pt; line-height: 1.45;
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  h1, h2, h3, h4 { font-family: "Inter Display", "Inter", sans-serif; margin: 0; line-height: 1.2; }
+  h2 { font-size: 19pt; font-weight: 800; letter-spacing: -0.01em; margin: 0 0 2.5mm; }
+  h3 { font-size: 11.5pt; font-weight: 700; margin: 4mm 0 1.5mm; break-after: avoid; }
+  h4 { font-size: 9.8pt; font-weight: 700; margin: 2.5mm 0 1mm; break-after: avoid; }
+  .kicker { font-size: 7.8pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--grafit); margin-bottom: 1.5mm; }
+  .kicker::before { content: ""; display: inline-block; width: 2mm; height: 2mm; border-radius: 50%; background: var(--blekit); margin-right: 2mm; vertical-align: 0.2mm; }
+  .lead { font-size: 10.3pt; color: var(--grafit); margin: 0 0 4mm; }
+  p { margin: 0 0 2mm; }
+  ul, ol { margin: 0 0 2mm; padding-left: 5mm; }
+  li { margin-bottom: .7mm; }
+  .page { page-break-before: always; }
+  .muted { color: var(--grafit); }
+  .small { font-size: 8.2pt; }
+
+  .cover { height: 297mm; width: 210mm; background: var(--czern); color: var(--krem); padding: 24mm 20mm; position: relative; overflow: hidden; }
+  .cover .dot1 { position: absolute; right: -40mm; top: -40mm; width: 150mm; height: 150mm; border-radius: 50%; background: #23211f; }
+  .cover .dot2 { position: absolute; right: 26mm; top: 30mm; width: 34mm; height: 34mm; border-radius: 50%; background: var(--blekit); }
+  .cover .inner { position: relative; height: 100%; display: flex; flex-direction: column; }
+  .cover .tag { font-size: 8.5pt; letter-spacing: .2em; text-transform: uppercase; color: var(--blekit); font-weight: 700; }
+  .cover h1 { font-size: 38pt; font-weight: 800; letter-spacing: -0.02em; margin-top: 62mm; line-height: 1.05; max-width: 165mm; }
+  .cover h1 span { color: var(--blekit); }
+  .cover .sub { font-size: 12.5pt; color: #cfc8bc; margin-top: 7mm; max-width: 150mm; }
+  .cover .flow { display: flex; gap: 2.5mm; align-items: center; margin-top: 16mm; flex-wrap: wrap; }
+  .cover .st { border: 1px solid #3a3733; border-radius: 3mm; padding: 2.6mm 3.5mm; font-size: 8.5pt; color: #cfc8bc; }
+  .cover .st b { display: block; color: var(--krem); font-size: 11pt; }
+  .cover .ar { color: var(--blekit); font-weight: 800; }
+  .cover .meta { margin-top: auto; display: flex; gap: 10mm; font-size: 8.5pt; color: #a59e92; }
+  .cover .meta b { display: block; color: var(--krem); font-size: 10pt; margin-top: .8mm; }
+
+  .box { border-radius: 3mm; padding: 3mm 4mm; margin: 2.5mm 0; break-inside: avoid; }
+  .box.krem { background: var(--krem); }
+  .box.piasek { background: var(--piasek); }
+  .box.blekit { background: var(--blekit-j); border-left: 1.3mm solid var(--blekit); }
+  .box.czern { background: var(--czern); color: var(--krem); }
+  .box.czern .muted { color: #b5ada0; }
+  .box h4:first-child, .box h3:first-child { margin-top: 0; }
+  .box p:last-child, .box ul:last-child, .box ol:last-child { margin-bottom: 0; }
+
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5mm; }
+  .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3mm; }
+
+  table { width: 100%; border-collapse: collapse; margin: 2mm 0 3mm; font-size: 8.4pt; break-inside: auto; }
+  th { text-align: left; font-weight: 700; background: var(--piasek); padding: 1.6mm 2mm; border-bottom: 1px solid var(--linia); }
+  td { padding: 1.5mm 2mm; border-bottom: 1px solid var(--linia); vertical-align: top; }
+  tr { break-inside: avoid; }
+  td.num, th.num { text-align: right; white-space: nowrap; }
+  .who { display: inline-block; font-size: 7.4pt; font-weight: 700; border-radius: 1.2mm; padding: .3mm 1.6mm; white-space: nowrap; }
+  .who.a { background: var(--czern); color: var(--krem); }
+  .who.t { background: var(--blekit-j); color: var(--czern); border: 1px solid var(--blekit); }
+  .who.c { background: var(--piasek); color: var(--czern); }
+  .who.z { background: #fff; color: var(--grafit); border: 1px solid var(--linia); }
+
+  .pipe { display: flex; align-items: stretch; gap: 1.6mm; margin: 3mm 0; }
+  .pipe .n { flex: 1; border-radius: 2.5mm; padding: 2.4mm 2.4mm; font-size: 7.8pt; background: var(--krem); border: 1px solid var(--linia); }
+  .pipe .n b { display: block; font-size: 8.8pt; margin-bottom: .6mm; }
+  .pipe .n.dark { background: var(--czern); color: var(--krem); border-color: var(--czern); }
+  .pipe .n.blue { background: var(--blekit-j); border-color: var(--blekit); }
+  .pipe .x { align-self: center; font-weight: 800; color: var(--grafit); }
+
+  .step { display: grid; grid-template-columns: 9mm 1fr; gap: 3mm; margin: 2.6mm 0; break-inside: avoid; }
+  .step .nr { width: 9mm; height: 9mm; border-radius: 50%; background: var(--czern); color: var(--krem); font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 10pt; }
+  .step .nr.t { background: var(--blekit); color: var(--czern); }
+  .step h4 { margin-top: .8mm; }
+  .tags { margin-bottom: 1mm; }
+  .mail { background: #fff; border: 1px solid var(--linia); border-radius: 2.5mm; padding: 2.6mm 4mm; font-size: 8.3pt; line-height: 1.4; }
+  .mail p { margin-bottom: 1.6mm; }
+  .check li { list-style: none; position: relative; }
+  .check li::before { content: "☐"; position: absolute; left: -4.5mm; }
+</style>
+</head>
+<body>
+
+<!-- OKŁADKA -->
+<section class="cover">
+  <div class="dot1"></div><div class="dot2"></div>
+  <div class="inner">
+    <div class="tag">Plan · wersja 1 · 20.10.2026</div>
+    <h1>System szukania klientów: <span>automat robi, Ty wysyłasz</span></h1>
+    <div class="sub">Co tydzień nowa lista firm z oceną i gotowymi szkicami wiadomości. Powtarzalną pracę wykonuje skrypt za darmo, a Claude zajmuje się tylko budową i poprawkami. Ty dokładasz to, czego automat nie widzi, i wysyłasz.</div>
+    <div class="flow">
+      <div class="st"><b>Źródła</b>CEIDG · Google · KNF</div><span class="ar">→</span>
+      <div class="st"><b>Automat</b>bramki · strona · szybkość</div><span class="ar">→</span>
+      <div class="st"><b>Punkty</b>0–100 · kolejka</div><span class="ar">→</span>
+      <div class="st"><b>Ty</b>2–3 min na firmę</div><span class="ar">→</span>
+      <div class="st"><b>Wysyłka</b>jedna wiadomość</div>
+    </div>
+    <div class="meta">
+      <div>Start<b>doradcy kredytowi, Małopolska</b></div>
+      <div>Rytm<b>raz w tygodniu, w poniedziałek</b></div>
+      <div>Twój czas<b>ok. 1 h tygodniowo</b></div>
+      <div>Koszt<b>0 zł</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- 1. ZASADA I ARCHITEKTURA -->
+<section class="page">
+  <div class="kicker">1 · Zasada</div>
+  <h2>Darmowy automat, Claude tylko przy budowie</h2>
+  <p class="lead">Najdroższe w tym systemie są tokeny Claude, czyli każde moje czytanie i pisanie. Dlatego cotygodniowej pracy nie wykonuję ja, tylko skrypt Google Apps Script podpięty do arkusza. Działa za darmo, sam się uruchamia i nie zużywa ani tokenów, ani płatnych zapytań.</p>
+
+  <div class="pipe">
+    <div class="n"><b>1. Źródła</b>CEIDG (API, darmowe)<br>Google Places (darmowy limit)<br>KNF (publiczny rejestr)</div><span class="x">→</span>
+    <div class="n dark"><b>2. Silnik: Apps Script</b>w arkuszu Google, co poniedziałek, sam: pobiera, sprawdza, mierzy, liczy</div><span class="x">→</span>
+    <div class="n"><b>3. Arkusz „Leady”</b>wynik, kolejka, szkic wiadomości</div><span class="x">→</span>
+    <div class="n blue"><b>4. Ty</b>uzupełniasz kolumny „(Ty)”, czytasz, wysyłasz</div>
+  </div>
+
+  <h3>Kto co robi</h3>
+  <table>
+    <tr><th style="width:24%">Kto</th><th>Co robi</th><th style="width:22%">Kiedy</th></tr>
+    <tr><td><span class="who a">Automat</span></td><td>Pobiera nowe firmy, odrzuca te, które nie pasują, sprawdza strony, mierzy ich szybkość, liczy punkty, układa szkic wiadomości, zapisuje wszystko w arkuszu.</td><td>Co tydzień, sam</td></tr>
+    <tr><td><span class="who c">Claude</span></td><td>Raz buduje skrypt. Potem tylko na Twoją prośbę: zmiana reguł, nowa branża, naprawa, comiesięczny przegląd wyników.</td><td>Jednorazowo, potem rzadko</td></tr>
+    <tr><td><span class="who t">Ty</span></td><td>Dla zwycięzców: Facebook/Instagram, LinkedIn, wygląd strony, brakujący kontakt, wspólni znajomi. Potem czytasz szkic, wysyłasz i prowadzisz odpowiedzi.</td><td>Poniedziałek i wtorek, ok. 1 h</td></tr>
+  </table>
+
+  <h3>Koszty i limity</h3>
+  <table>
+    <tr><th>Usługa</th><th>Do czego</th><th>Koszt</th><th>Jak trzymamy 0 zł</th></tr>
+    <tr><td>Google Apps Script</td><td>Silnik całego procesu</td><td>0 zł</td><td>Limity darmowego konta (m.in. 20 000 zapytań dziennie, 6 min na jedno uruchomienie) wystarczają z dużym zapasem. Większe partie dzielimy na kilka uruchomień.</td></tr>
+    <tr><td>API CEIDG</td><td>Nowe firmy, e-mail, data założenia</td><td>0 zł</td><td>Klucz już masz. Pobieramy tylko firmy założone od ostatniego uruchomienia.</td></tr>
+    <tr><td>PageSpeed Insights API</td><td>Szybkość strony (to samo co w Twoim teście)</td><td>0 zł</td><td>Darmowe przy kluczu Google. Mierzymy tylko strony potwierdzone i tylko firmy, które przeszły bramki.</td></tr>
+    <tr><td>Google Places API</td><td>Wizytówki: strona, opinie, telefon</td><td>0 zł w darmowym limicie</td><td>Jedno zapytanie na miasto i branżę zwraca do 20 firm. Ustawiamy twardy limit dzienny w konsoli i alert budżetu na 1 zł. Aktualne progi darmowego limitu sprawdzisz w konsoli.</td></tr>
+    <tr><td>Rejestr KNF</td><td>Wpis pośrednika, agent sieci czy samodzielny</td><td>0 zł</td><td>Sprawdzamy tylko zwycięzców z branży kredytowej.</td></tr>
+    <tr><td>Claude (tokeny)</td><td>Budowa i zmiany skryptu</td><td>w ramach abonamentu</td><td>W cotygodniowym procesie nie bierze udziału. Szkice powstają z gotowych szablonów zdań, nie są pisane od zera.</td></tr>
+  </table>
+
+  <div class="box blekit">
+    <h4>Dlaczego nie robi tego Claude co tydzień?</h4>
+    <p>Mógłbym, ale każde przejście przez 30 firm to kilkadziesiąt tysięcy tokenów, a wynik byłby taki sam jak ze skryptu. Moja przewaga to ocena przypadków niejasnych, więc zostawiamy mi tylko je: <b>raz w miesiącu</b> przeglądam firmy oznaczone „do sprawdzenia” i wyniki odpowiedzi.</p>
+  </div>
+</section>
+
+<!-- 2. CYKL TYGODNIOWY -->
+<section class="page">
+  <div class="kicker">2 · Cykl tygodniowy</div>
+  <h2>Tydzień krok po kroku</h2>
+  <p class="lead">Kroki 1–7 wykonuje automat w poniedziałek o 6:00. Gdy siadasz do kawy, lista jest gotowa. Kroki 8–11 należą do Ciebie.</p>
+
+  <table>
+    <tr><th class="num">#</th><th>Krok</th><th>Kto</th><th>Kiedy</th><th class="num">Twój czas</th></tr>
+    <tr><td class="num">1</td><td>Pobranie nowych firm (CEIDG, Google) i usunięcie duplikatów</td><td><span class="who a">Automat</span></td><td>pon. 6:00</td><td class="num">0</td></tr>
+    <tr><td class="num">2</td><td>Bramki: odrzucenie firm, które nie pasują</td><td><span class="who a">Automat</span></td><td>pon. 6:00</td><td class="num">0</td></tr>
+    <tr><td class="num">3</td><td>Znalezienie i sprawdzenie strony</td><td><span class="who a">Automat</span></td><td>pon. 6:00</td><td class="num">0</td></tr>
+    <tr><td class="num">4</td><td>Pomiar szybkości strony na telefonie</td><td><span class="who a">Automat</span></td><td>pon. 6:00</td><td class="num">0</td></tr>
+    <tr><td class="num">5</td><td>KNF: wpis i rodzaj pośrednika (branża kredytowa)</td><td><span class="who a">Automat</span></td><td>pon. 6:00</td><td class="num">0</td></tr>
+    <tr><td class="num">6</td><td>Punkty, kolejka, wybór najmocniejszego konkretu</td><td><span class="who a">Automat</span></td><td>pon. 6:00</td><td class="num">0</td></tr>
+    <tr><td class="num">7</td><td>Szkic wiadomości z szablonu i e-mail do Ciebie: „X nowych zwycięzców”</td><td><span class="who a">Automat</span></td><td>pon. 6:30</td><td class="num">0</td></tr>
+    <tr><td class="num">8</td><td>Kolumny „(Ty)” dla zwycięzców</td><td><span class="who t">Ty</span></td><td>pon.</td><td class="num">2–3 min / firma</td></tr>
+    <tr><td class="num">9</td><td>Czytanie szkicu, poprawka pierwszego zdania, wysyłka (po kilka dziennie)</td><td><span class="who t">Ty</span></td><td>pon.–śr.</td><td class="num">2 min / firma</td></tr>
+    <tr><td class="num">10</td><td>Odpowiedzi w ciągu 48 h: „TAK”, „NIE”, pytania</td><td><span class="who t">Ty</span></td><td>na bieżąco</td><td class="num">różnie</td></tr>
+    <tr><td class="num">11</td><td>Statusy w arkuszu, niedziela: 5 min na liczby</td><td><span class="who t">Ty</span></td><td>nd.</td><td class="num">5 min</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box krem">
+      <h4>Ile firm tygodniowo</h4>
+      <p>Cel: <b>10–15 wysłanych wiadomości</b> (Twoja zasada: co najmniej 10). Automat dostarcza 30–50 nowych firm, z których po bramkach i punktach zostaje ok. 10–15 zwycięzców.</p>
+    </div>
+    <div class="box krem">
+      <h4>Raz w miesiącu</h4>
+      <p><span class="who c">Claude</span> przegląda firmy „do sprawdzenia” i liczby z lejka. Jeśli 0 „TAK” po 60 e-mailach: zmieniamy pierwsze zdanie albo dobór firm (zasada z PROFIL.md).</p>
+    </div>
+  </div>
+</section>
+
+<!-- 3. KROKI AUTOMATU -->
+<section class="page">
+  <div class="kicker">3 · Automat</div>
+  <h2>Co dokładnie robi automat</h2>
+
+  <div class="step"><div class="nr">1</div><div>
+    <h4>Pobranie firm</h4>
+    <p><b>CEIDG:</b> firmy z kodami branży (np. 66.19.Z dla doradców kredytowych) w Małopolsce, założone od daty ostatniego uruchomienia, aktywne. API zwraca po 25 firm na stronę, a przy dużych zapytaniach się zawiesza, dlatego pytamy wąsko, po dacie.<br>
+    <b>Google:</b> jedno zapytanie typu „doradca kredytowy Tarnów” na miasto. W tygodniu bierzemy 3–4 miasta po kolei.<br>
+    <b>Duplikaty:</b> po NIP, nazwie i adresie. Firm, które już są w arkuszu, nie dodajemy drugi raz.</p>
+  </div></div>
+
+  <div class="step"><div class="nr">2</div><div>
+    <h4>Bramki (firma odpada od razu)</h4>
+    <p>Działalność zawieszona lub wykreślona · ma już kalendarz online (Calendly, Booksy, ZnanyLekarz, własny system) · branża wykluczona · tylko telefon, bez kontaktu na piśmie · oddział sieci, której stronę prowadzi centrala · wcześniej odmówiła lub była już kontaktowana.</p>
+  </div></div>
+
+  <div class="step"><div class="nr">3</div><div>
+    <h4>Strona</h4>
+    <p>Kolejność szukania: link w wizytówce Google → domena z e-maila w CEIDG → domena zgadnięta po nazwie. Zgadniętą stronę potwierdzamy imieniem, nazwiskiem albo miastem w jej treści. Bez potwierdzenia trafia do arkusza jako „niepotwierdzona” i dostaje połowę punktów.<br>
+    Sprawdzamy: formularz, kalendarz, numer wpisu KNF, HTTPS, dopasowanie do telefonu, rok w stopce.</p>
+    <p class="small muted">Ograniczenie: skrypt czyta kod strony, ale go nie uruchamia. Strony z Wixa i podobnych kreatorów bywają dla niego puste i wtedy dostają oznaczenie „do sprawdzenia”.</p>
+  </div></div>
+
+  <div class="step"><div class="nr">4</div><div>
+    <h4>Szybkość</h4>
+    <p>PageSpeed Insights API, wersja na telefon, ten sam test co w Twojej aplikacji. Zapisujemy, po ilu sekundach widać główną treść, wynik na 100 i najcięższy plik (np. „zdjęcie 14 MB”). Mierzymy tylko potwierdzone strony firm, które przeszły bramki.</p>
+  </div></div>
+
+  <div class="step"><div class="nr">5</div><div>
+    <h4>KNF (branża kredytowa)</h4>
+    <p>Czy pośrednik ma wpis i czy działa sam, czy jako agent sieci (Expander, Notus, mFinanse…). Agent sieci często ma już podstronę u sieci, więc dostaje mniej punktów.</p>
+  </div></div>
+
+  <div class="step"><div class="nr">6</div><div>
+    <h4>Punkty i kolejka</h4>
+    <p>Według tabeli z rozdziału 5. Wynik i kolejkę liczą formuły w arkuszu, więc gdy zmienisz punkty albo progi w zakładce „Ustawienia”, wszystko przelicza się samo.</p>
+  </div></div>
+
+  <div class="step"><div class="nr">7</div><div>
+    <h4>Szkic wiadomości</h4>
+    <p>Automat wybiera <b>najmocniejszy konkret</b> (kryterium z największą liczbą punktów) i wstawia gotowe zdanie z szablonu, np.:</p>
+    <table>
+      <tr><th>Konkret</th><th>Pierwsze zdanie (szablon)</th></tr>
+      <tr><td>wolna strona</td><td>„Sprawdziłem, jak {Pani} strona {domena} działa na telefonie. W teście Google PageSpeed główna część strony pojawia się dopiero po ok. {X} sekundach{, bo …}.”</td></tr>
+      <tr><td>brak wyboru terminu</td><td>„… klient może zostawić wiadomość w formularzu, ale nie może od razu wybrać terminu konsultacji.”</td></tr>
+      <tr><td>brak strony</td><td>„Nie znalazłem {Pani} strony internetowej, więc klient, który chce się umówić, musi zadzwonić …”</td></tr>
+    </table>
+    <p>Pozostałe akapity, podpis i stopka RODO pochodzą z zakładki „Ustawienia”. Zmiana tekstu w jednym miejscu zmienia wszystkie szkice.</p>
+  </div></div>
+</section>
+
+<!-- 4. TWOJE ZADANIA -->
+<section class="page">
+  <div class="kicker">4 · Ty</div>
+  <h2>Co robisz ręcznie</h2>
+  <p class="lead">Tylko dla firm z kolejki „zwycięzca”. To rzeczy, których automat nie może zrobić (logowanie, regulaminy serwisów) albo których nie oceni tak dobrze jak człowiek.</p>
+
+  <h3>Lista na jedną firmę (2–3 minuty)</h3>
+  <table>
+    <tr><th>Kolumna w arkuszu</th><th>Co sprawdzasz</th><th>Wpływ na punkty</th></tr>
+    <tr><td><b>Facebook / Instagram (Ty)</b></td><td>Czy profil żyje (post z ostatniego miesiąca)? Czy jest przycisk „Umów” albo rezerwacja?</td><td>żywy profil: +4 w C (aktywność), jeśli Google tego nie dał. Rezerwacja na FB: bramka.</td></tr>
+    <tr><td><b>LinkedIn (Ty)</b></td><td>Czy osoba ma profil i czym się chwali (lata w banku, specjalizacja)? Przydaje się do pierwszego zdania i do rozmowy.</td><td>bez punktów, informacja</td></tr>
+    <tr><td><b>Wygląd strony 1–5 (Ty)</b></td><td>Pierwsze wrażenie na telefonie: 1 = przestarzała, 5 = nowoczesna. Jeśli strona jest „niepotwierdzona”, sprawdzasz też, czy to ta osoba.</td><td>ocena 1–2: +3 w B (strona porzucona). Potwierdzona strona: pełne punkty zamiast połowy.</td></tr>
+    <tr><td><b>Kontakt znaleziony (Ty)</b></td><td>Dla firm bez e-maila: e-mail z Facebooka, wizytówki albo strony.</td><td>+4 w E</td></tr>
+    <tr><td><b>Wspólni znajomi (Ty)</b></td><td>Ktoś z Twoich znajomych zna tę osobę? Wtedy lepiej poprosić o przedstawienie niż pisać do obcej osoby.</td><td>bonus +5 ponad limit, firma idzie na górę</td></tr>
+  </table>
+
+  <div class="grid2">
+    <div class="box krem">
+      <h4>Wysyłka</h4>
+      <ul class="check">
+        <li>Przeczytaj szkic, popraw formę Pani/Pan, jeśli trzeba.</li>
+        <li>Pierwsze zdanie zgadza się z tym, co sam widzisz na stronie.</li>
+        <li>Bez linku, załącznika, ceny i oferty.</li>
+        <li>Jedna wiadomość, bez przypomnień.</li>
+        <li>Po kilka dziennie, nie wszystkie naraz.</li>
+        <li>Status „wysłane” i data w arkuszu.</li>
+      </ul>
+    </div>
+    <div class="box krem">
+      <h4>Odpowiedzi</h4>
+      <ul>
+        <li><b>„TAK”</b>: w ciągu 48 h wiadomość z pomysłem. Tu możesz dać wynik PageSpeed i link do ankiety A (automat ankieta → propozycja już działa).</li>
+        <li><b>„NIE”</b>: podziękuj jednym zdaniem, status „NIE”, usuń e-mail z arkusza (RODO).</li>
+        <li><b>Brak odpowiedzi</b> po 14 dniach: status „brak odpowiedzi”, koniec.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Przykład gotowej wiadomości <span class="small muted" style="font-weight:400">· jeden, najwyżej dwa konkrety, fakty bez ocen</span></h3>
+  <div class="mail">
+    <p><b>Temat:</b> Krótkie pytanie o stronę</p>
+    <p>Dzień dobry,</p>
+    <p>sprawdziłem, jak Pani strona magdalenafior.pl działa na telefonie. W teście Google PageSpeed główna część strony pojawia się dopiero po ok. 20 sekundach. Spowalniają ją głównie trzy zdjęcia, z których każde waży ponad 1 MB. Przy takim czasie część osób nie doczeka do końca, a ci, którzy doczekają, mogą tylko zostawić wiadomość w formularzu, bez wyboru terminu konsultacji.</p>
+    <p>Robię strony dla doradców kredytowych, które szybko działają na telefonie i pozwalają klientowi samemu umówić się na konsultację w wolnym terminie z kalendarza doradcy, a przy okazji odpowiadają na jego pierwsze pytania.</p>
+    <p>Czy mogę przesłać krótki pomysł, jak mogłoby to wyglądać u Pani? Wystarczy odpisać „TAK”. Jeśli to nie jest dobry moment, nie odezwę się ponownie.</p>
+    <p style="margin-bottom:0">Pozdrawiam<br>Mateusz Przetocki <span class="small muted">· dalej stopka RODO (art. 14)</span></p>
+  </div>
+</section>
+
+<!-- 5. PUNKTACJA -->
+<section class="page">
+  <div class="kicker">5 · Punktacja</div>
+  <h2>Jak liczymy punkty</h2>
+  <p class="lead">Najpierw bramki, potem maksymalnie 100 punktów w pięciu grupach. Przy każdym punkcie zapisujemy źródło i kto go ustalił.</p>
+
+  <table>
+    <tr><th style="width:15%">Grupa</th><th>Kryterium</th><th class="num">Pkt</th><th style="width:16%">Źródło</th><th style="width:11%">Kto</th></tr>
+    <tr><td rowspan="1"><b>A. Branża</b><br><span class="small muted">do 25</span></td><td>5 kryteriów branży po 0–5: pierwszy krok to rozmowa lub wizyta · telefon dzwoni w trakcie pracy · klient wart więcej niż strona · nie wystarcza platforma · przepisy jako wyróżnik. Doradcy kredytowi: <b>24</b>.</td><td class="num">0–25</td><td>raz na branżę</td><td><span class="who c">Claude</span> + <span class="who t">Ty</span></td></tr>
+    <tr><td rowspan="7"><b>B. Potrzeba</b><br><span class="small muted">do 35</span></td><td>Brak strony (lub domena pusta)</td><td class="num">20</td><td>strona, Google</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>Strona bez formularza, tylko telefon i e-mail</td><td class="num">16</td><td>strona</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>Formularz lub „Umów”, ale bez wyboru terminu</td><td class="num">12</td><td>strona</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>+ wolna strona: główna treść po ponad 4 s / po ponad 10 s</td><td class="num">+3 / +5</td><td>PageSpeed</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>+ źle działa na telefonie</td><td class="num">+5</td><td>strona</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>+ strona porzucona (stary rok, brak HTTPS) albo wygląd 1–2</td><td class="num">+3</td><td>strona</td><td><span class="who a">Automat</span> / <span class="who t">Ty</span></td></tr>
+    <tr><td>+ brak informacji wymaganych przepisami (np. nr wpisu KNF) · wizytówka bez linku do strony</td><td class="num">+5 · +2</td><td>strona, KNF, Google</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td rowspan="4"><b>C. Popyt</b><br><span class="small muted">do 20</span></td><td>10–100 opinii w Google</td><td class="num">6</td><td>Google</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>Średnia ocena co najmniej 4,5</td><td class="num">4</td><td>Google</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>Opinie o trudnym kontakcie („nie mogłem się dodzwonić”)</td><td class="num">6</td><td>Google (5 opinii)</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>Aktywność w ostatnich 3 mies. (opinia albo żywy Facebook)</td><td class="num">4</td><td>Google / FB</td><td><span class="who a">Automat</span> / <span class="who t">Ty</span></td></tr>
+    <tr><td rowspan="3"><b>D. Gotowość</b><br><span class="small muted">do 10</span></td><td>Firma działa od 3 do 24 miesięcy</td><td class="num">4</td><td>CEIDG</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>Samodzielny pośrednik, nie agent sieci</td><td class="num">3</td><td>KNF, strona</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>Własna domena e-mail lub strona, logo, profil firmowy</td><td class="num">3</td><td>CEIDG, strona</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td rowspan="3"><b>E. Osiągalność</b><br><span class="small muted">do 10</span></td><td>E-mail w CEIDG</td><td class="num">6</td><td>CEIDG</td><td><span class="who a">Automat</span></td></tr>
+    <tr><td>E-mail lub formularz na stronie, w wizytówce albo znaleziony przez Ciebie</td><td class="num">4</td><td>strona, Google</td><td><span class="who a">Automat</span> / <span class="who t">Ty</span></td></tr>
+    <tr><td>Bonusy ponad limit: Małopolska +2 · wspólni znajomi +5</td><td class="num">+2 / +5</td><td>CEIDG / Ty</td><td><span class="who a">Automat</span> / <span class="who t">Ty</span></td></tr>
+  </table>
+
+  <div class="grid3">
+    <div class="box czern"><h4>Zwycięzca</h4><p><b style="font-size:16pt">70+</b><br><span class="muted">wysyłka w tym tygodniu</span></p></div>
+    <div class="box piasek"><h4>Rezerwa</h4><p><b style="font-size:16pt">50–69</b><br><span class="muted">gdy skończą się zwycięzcy</span></p></div>
+    <div class="box krem"><h4>Pomijamy</h4><p><b style="font-size:16pt">&lt; 50</b><br><span class="muted">nie piszemy</span></p></div>
+  </div>
+  <p class="small muted">Do czasu podłączenia Google (grupa C) i KNF da się zdobyć najwyżej 77 pkt, więc progi są tymczasowo przeliczone proporcjonalnie: 54 i 39 (zakładka „Ustawienia”). Remis: najpierw potwierdzony e-mail, potem nowsza firma. Dane zgadnięte (np. niepotwierdzona strona) liczą się za połowę punktów.</p>
+</section>
+
+<!-- 6. PRZYKŁAD I WDROŻENIE -->
+<section class="page">
+  <div class="kicker">6 · Przykład i wdrożenie</div>
+  <h2>Jak to wygląda na prawdziwej firmie</h2>
+
+  <table>
+    <tr><th>Magdalena Fior – Ekspert Finansowy (Dzierżaniny)</th><th class="num">Pkt</th></tr>
+    <tr><td>A: doradcy kredytowi</td><td class="num">24</td></tr>
+    <tr><td>B: formularz bez wyboru terminu 12 + brak nr wpisu KNF 5 + główna treść po 20,5 s 5</td><td class="num">22</td></tr>
+    <tr><td>C: popyt z Google</td><td class="num">czeka na klucz</td></tr>
+    <tr><td>D: firma od 12 mies. 4 + własna domena 3</td><td class="num">7</td></tr>
+    <tr><td>E: e-mail w CEIDG 6 + formularz 4 + Małopolska 2</td><td class="num">12</td></tr>
+    <tr><td><b>Razem (bez C) → zwycięzca przy progu tymczasowym 54</b></td><td class="num"><b>65</b></td></tr>
+  </table>
+
+  <h3>Plan wdrożenia</h3>
+  <table>
+    <tr><th>Etap</th><th>Co</th><th>Kto</th><th>Stan</th></tr>
+    <tr><td>0</td><td>Reguły, arkusz z formułami, pierwsza partia 30 firm, pomiar szybkości</td><td><span class="who c">Claude</span></td><td>gotowe (20.10)</td></tr>
+    <tr><td>1</td><td>Klucz Google Cloud: Places API + PageSpeed API, limit dzienny, alert budżetu 1 zł</td><td><span class="who t">Ty</span></td><td>do zrobienia, ok. 15 min</td></tr>
+    <tr><td>2</td><td>Apps Script w arkuszu: kroki 1–7, wyzwalacz w poniedziałek o 6:00, e-mail z podsumowaniem</td><td><span class="who c">Claude</span></td><td>po etapie 1, jedna sesja</td></tr>
+    <tr><td>3</td><td>Pierwszy tydzień: 10 wiadomości, sprawdzenie, czy kolumny „(Ty)” są wygodne</td><td><span class="who t">Ty</span></td><td>—</td></tr>
+    <tr><td>4</td><td>KNF w automacie (gdy wyszukiwarka wróci po przerwie technicznej)</td><td><span class="who c">Claude</span></td><td>—</td></tr>
+    <tr><td>5</td><td>Po 4 tygodniach: przegląd liczb, korekta wag, kolejna branża (agenci ubezpieczeniowi: 32 firmy już w danych CEIDG)</td><td><span class="who c">Claude</span> + <span class="who t">Ty</span></td><td>—</td></tr>
+  </table>
+
+  <h3>Prawo i dobre obyczaje</h3>
+  <div class="grid2">
+    <div class="box krem">
+      <ul>
+        <li><b>RODO:</b> dane z CEIDG są publiczne, ale jednoosobowa firma to osoba. W pierwszej wiadomości stopka z art. 14, po „NIE” usuwamy dane.</li>
+        <li><b>Art. 398 Prawa komunikacji elektronicznej:</b> pierwsza wiadomość tylko pyta o zgodę, bez oferty, ceny i linku. Ryzyko jest mniejsze, ale nie zerowe.</li>
+      </ul>
+    </div>
+    <div class="box krem">
+      <ul>
+        <li><b>Google:</b> dane z wizytówek trzymamy najwyżej 30 dni (oprócz identyfikatora miejsca), potem odświeżamy albo usuwamy.</li>
+        <li><b>Facebook i LinkedIn:</b> bez automatu, tylko ręcznie przez Ciebie.</li>
+        <li><b>Opinie:</b> bierzemy tylko sygnał o kontakcie, bez imion autorów.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

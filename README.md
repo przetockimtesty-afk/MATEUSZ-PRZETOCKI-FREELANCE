@@ -54,7 +54,8 @@ stron z WordPressa.
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design | tak | tak | — |
 | Prezentacje A i B | źródła | tak | — |
-| Arkusz leadów (doradcy kredytowi, Małopolska) | skrypty | — | tak (19.10) |
+| Arkusz leadów (doradcy kredytowi, Małopolska) | skrypty, reguły | — | tak (aktualizowany 20.10) |
+| Plan workflow leadów PDF | tak | — | nie (wgrywam na prośbę) |
 | WordPress mateuszprzetocki.pl | — | — | — |
 
 WordPress jest pusty; API ma pełny dostęp (administrator).
