@@ -70,7 +70,7 @@ final class Front {
 	private static function dane( array $a, ?array $rez ): array {
 		$wizyty = Ustawienia::wizyty();
 		if ( $rez ) {
-			$wizyty = array( Ustawienia::wizyta( $rez['wizyta'] ) ?? $wizyty[0] );
+			$wizyty = array( Rezerwacje::wizyta_rezerwacji( $rez ) );
 		} elseif ( ! empty( $a['wizyta'] ) && Ustawienia::wizyta( (string) $a['wizyta'] ) ) {
 			$wizyty = array( Ustawienia::wizyta( (string) $a['wizyta'] ) );
 		}
@@ -235,6 +235,7 @@ final class Front {
 		do_action( 'litespeed_control_set_nocache', 'mp-rezerwacje' );
 		nocache_headers();
 		header( 'X-Robots-Tag: noindex, nofollow' );
+		header( 'Referrer-Policy: no-referrer' );
 
 		if ( $rez && 'ics' === sanitize_key( wp_unslash( $_GET['plik'] ?? '' ) ) ) { // phpcs:ignore WordPress.Security.NonceVerification
 			header( 'Content-Type: text/calendar; charset=utf-8' );
@@ -254,8 +255,6 @@ final class Front {
 			$komunikat = $wynik->get_error_message();
 		}
 
-		add_filter( 'wp_robots', 'wp_robots_no_robots' );
-		wp_enqueue_style( 'mp-rezerwacja-style' );
 		$kalendarz = ( $rez && Rezerwacje::mozna_zmieniac( $rez ) ) ? self::html( array( 'osoba' => false ), 'class="mp-rez mp-rez--zmiana"', $rez ) : '';
 		status_header( $rez ? 200 : 404 );
 		include dirname( PLIK ) . '/szablony/zarzadzanie.php';

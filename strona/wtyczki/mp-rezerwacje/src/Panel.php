@@ -352,6 +352,25 @@ final class Panel {
 		}
 	}
 
+	/** Ostrzeżenie, gdy w ostatniej dobie Google odmówił odczytu albo zapisu (szczegóły w Narzędziach). */
+	public static function problem_google(): void {
+		$dzialalo = (int) get_option( 'mp_rezerwacje_google_ok' );
+		foreach ( Dziennik::wpisy() as $wpis ) {
+			if ( time() - $wpis['czas'] > DAY_IN_SECONDS || $wpis['czas'] <= $dzialalo ) {
+				break;
+			}
+			if ( str_contains( $wpis['tekst'], 'Google' ) ) {
+				printf(
+					'<div class="notice notice-warning"><p><strong>Problem z Google (%s):</strong> %s <a href="%s">Dziennik</a></p></div>',
+					esc_html( wp_date( 'j.m H:i', $wpis['czas'] ) ),
+					esc_html( $wpis['tekst'] ),
+					esc_url( self::adres_ustawien( 'narzedzia' ) )
+				);
+				return;
+			}
+		}
+	}
+
 	/** Strony, na których stoi kalendarz (blok albo shortcode). */
 	public static function strony_z_kalendarzem(): array {
 		global $wpdb;

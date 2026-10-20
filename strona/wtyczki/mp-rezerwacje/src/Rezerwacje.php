@@ -61,6 +61,7 @@ final class Rezerwacje {
 		foreach ( Ustawienia::pytania() as $p ) {
 			$wartosc = is_scalar( $wyslane[ $p['id'] ] ?? null ) ? (string) $wyslane[ $p['id'] ] : '';
 			$wartosc = 'dlugi' === $p['typ'] ? mb_substr( trim( sanitize_textarea_field( $wartosc ) ), 0, 2000 ) : mb_substr( trim( sanitize_text_field( $wartosc ) ), 0, 300 );
+			$wartosc = wp_specialchars_decode( $wartosc, ENT_QUOTES ); // „<10%” zamiast „&lt;10%”; wszędzie przy wyświetlaniu jest escapowanie.
 			if ( $p['opcje'] && '' !== $wartosc && ! in_array( $wartosc, $p['opcje'], true ) ) {
 				$wartosc = '';
 			}
@@ -90,7 +91,7 @@ final class Rezerwacje {
 				)
 			);
 		}
-		if ( ! self::limit_adresu() ) {
+		if ( ! self::limit_adresu( false ) ) {
 			return self::blad( 'limit', 'Z tego adresu wysłano już kilka rezerwacji. Spróbuj za godzinę.', 429 );
 		}
 
@@ -119,8 +120,10 @@ final class Rezerwacje {
 			self::odblokuj();
 		}
 		if ( ! $id ) {
+			Dziennik::zapisz( 'Zapis rezerwacji w bazie: ' . ( Baza::ostatni_blad() ?: 'nieznany błąd' ) );
 			return self::blad( 'baza', 'Nie udało się zapisać rezerwacji. Spróbuj ponownie.', 500 );
 		}
+		self::limit_adresu( true );
 
 		$rez = self::do_google( Baza::po_id( $id ), 'nowa' );
 		Maile::do_klienta( $rez, 'potwierdzenie' );
@@ -146,10 +149,15 @@ final class Rezerwacje {
 			return self::blad( 'zajety', 'Serwer jest chwilę zajęty. Spróbuj ponownie za kilka sekund.', 503 );
 		}
 		try {
+			// Świeży odczyt pod blokadą: właściciel mógł w tej chwili odwołać spotkanie.
+			$rez = Baza::po_id( $rez['id'] );
+			if ( ! $rez || ! self::mozna_zmieniac( $rez ) ) {
+				return self::blad( 'za_pozno', $rez ? self::powod_blokady( $rez ) : 'Nie znaleziono rezerwacji.', 409 );
+			}
 			if ( ! Dostepnosc::czy_wolny( $wizyta, $start, $rez['id'] ) ) {
 				return self::blad( 'termin_zajety', 'Ktoś właśnie zajął ten termin. Wybierz, proszę, inny.', 409 );
 			}
-			Baza::zmien(
+			$zmieniona = Baza::zmien(
 				$rez['id'],
 				array(
 					'poczatek'      => Czas::do_bazy( $start ),
@@ -157,8 +165,12 @@ final class Rezerwacje {
 					'sekwencja'     => $rez['sekwencja'] + 1,
 					'przypomnienie' => null,
 					'zmieniona'     => gmdate( 'Y-m-d H:i:s' ),
-				)
+				),
+				'potwierdzona'
 			);
+			if ( ! $zmieniona ) {
+				return self::blad( 'status', 'To spotkanie zostało właśnie odwołane.', 409 );
+			}
 		} finally {
 			self::odblokuj();
 		}
@@ -177,20 +189,32 @@ final class Rezerwacje {
 	 * @param string $kto klient | wlasciciel
 	 */
 	public static function odwolaj( array $rez, string $kto, string $powod = '', bool $powiadom = true ) {
-		if ( 'potwierdzona' !== $rez['status'] ) {
+		if ( ! self::zablokuj() ) {
+			return self::blad( 'zajety', 'Serwer jest chwilę zajęty. Spróbuj ponownie za kilka sekund.', 503 );
+		}
+		try {
+			$rez = Baza::po_id( $rez['id'] );
+			if ( ! $rez || 'potwierdzona' !== $rez['status'] ) {
+				return self::blad( 'status', 'To spotkanie jest już odwołane.', 409 );
+			}
+			if ( 'klient' === $kto && ! self::mozna_zmieniac( $rez ) ) {
+				return self::blad( 'za_pozno', self::powod_blokady( $rez ), 403 );
+			}
+			$odwolana = Baza::zmien(
+				$rez['id'],
+				array(
+					'status'    => 'odwolana',
+					'odwolal'   => 'klient' === $kto ? 'klient' : 'wlasciciel',
+					'zmieniona' => gmdate( 'Y-m-d H:i:s' ),
+				),
+				'potwierdzona'
+			);
+		} finally {
+			self::odblokuj();
+		}
+		if ( ! $odwolana ) {
 			return self::blad( 'status', 'To spotkanie jest już odwołane.', 409 );
 		}
-		if ( 'klient' === $kto && ! self::mozna_zmieniac( $rez ) ) {
-			return self::blad( 'za_pozno', self::powod_blokady( $rez ), 403 );
-		}
-		Baza::zmien(
-			$rez['id'],
-			array(
-				'status'    => 'odwolana',
-				'odwolal'   => 'klient' === $kto ? 'klient' : 'wlasciciel',
-				'zmieniona' => gmdate( 'Y-m-d H:i:s' ),
-			)
-		);
 		$rez   = Baza::po_id( $rez['id'] );
 		$powod = mb_substr( trim( sanitize_textarea_field( $powod ) ), 0, 1000 );
 
@@ -291,7 +315,8 @@ final class Rezerwacje {
 	public static function ponow_google(): int {
 		$udane = 0;
 		foreach ( Baza::z_bledem_google() as $rez ) {
-			$rez = self::do_google( $rez, '' === $rez['google_id'] ? 'nowa' : 'zmiana', false );
+			$zdarzenie = 'odwolana' === $rez['status'] ? 'odwolana' : ( '' === $rez['google_id'] ? 'nowa' : 'zmiana' );
+			$rez       = self::do_google( $rez, $zdarzenie, false );
 			if ( '' === $rez['google_blad'] ) {
 				++$udane;
 			}
@@ -305,8 +330,11 @@ final class Rezerwacje {
 	private static function do_google( array $rez, string $zdarzenie, bool $arkusz = true ): array {
 		if ( Google::polaczony() ) {
 			if ( 'odwolana' === $zdarzenie ) {
-				$wynik = Google::usun_wydarzenie( $rez );
-				$zmiany = array( 'google_blad' => '' );
+				$wynik  = Google::usun_wydarzenie( $rez );
+				$zmiany = array(
+					'google_id'   => '',
+					'google_blad' => '',
+				);
 			} else {
 				$wynik  = 'nowa' === $zdarzenie ? Google::dodaj_wydarzenie( $rez ) : Google::zmien_wydarzenie( $rez );
 				$zmiany = is_wp_error( $wynik ) ? array() : array(
@@ -330,13 +358,14 @@ final class Rezerwacje {
 		return $rez;
 	}
 
-	/** Spotkanie z ustawień, a gdy ktoś je usunął: odtworzone z samej rezerwacji. */
-	private static function wizyta_rezerwacji( array $rez ): array {
+	/** Spotkanie z ustawień, a gdy ktoś je usunął albo zmienił: odtworzone z samej rezerwacji. */
+	public static function wizyta_rezerwacji( array $rez ): array {
 		return Ustawienia::wizyta( $rez['wizyta'] ) ?? array(
 			'id'    => $rez['wizyta'],
 			'nazwa' => Czas::wielka( str_replace( '-', ' ', $rez['wizyta'] ) ),
 			'czas'  => (int) round( ( strtotime( $rez['koniec'] . ' UTC' ) - strtotime( $rez['poczatek'] . ' UTC' ) ) / 60 ),
 			'formy' => array( $rez['forma'] ),
+			'opis'  => '',
 		);
 	}
 
@@ -353,16 +382,18 @@ final class Rezerwacje {
 		return mb_substr( $numer, 0, 40 );
 	}
 
-	/** Najwyżej 5 rezerwacji na godzinę z jednego adresu IP (filtr `mp_rezerwacje_limit_ip`). */
-	private static function limit_adresu(): bool {
+	/**
+	 * Najwyżej 5 udanych rezerwacji na godzinę z jednego adresu IP (filtr `mp_rezerwacje_limit_ip`).
+	 * Bez $zapisz tylko sprawdza, z $zapisz liczy udaną rezerwację.
+	 */
+	private static function limit_adresu( bool $zapisz ): bool {
 		$adres = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
 		$klucz = 'mp_rez_ip_' . md5( $adres . wp_salt( 'nonce' ) );
 		$ile   = (int) get_transient( $klucz );
-		if ( $ile >= (int) apply_filters( 'mp_rezerwacje_limit_ip', 5 ) ) {
-			return false;
+		if ( $zapisz ) {
+			set_transient( $klucz, $ile + 1, HOUR_IN_SECONDS );
 		}
-		set_transient( $klucz, $ile + 1, HOUR_IN_SECONDS );
-		return true;
+		return $ile < (int) apply_filters( 'mp_rezerwacje_limit_ip', 5 );
 	}
 
 	/** Jedna rezerwacja naraz: dwie osoby klikające ten sam termin w tej samej sekundzie nie dostaną go obie. */

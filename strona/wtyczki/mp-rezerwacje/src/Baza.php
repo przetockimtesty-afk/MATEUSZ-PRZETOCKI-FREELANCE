@@ -74,12 +74,26 @@ final class Baza {
 		return $wpdb->insert( self::tabela(), $dane ) ? (int) $wpdb->insert_id : 0;
 	}
 
-	public static function zmien( int $id, array $dane ): bool {
+	/**
+	 * Zmienia rezerwację. Z $status zmienia tylko wtedy, gdy rezerwacja nadal ma ten status
+	 * (np. nie przesunie spotkania, które ktoś w tej samej chwili odwołał).
+	 */
+	public static function zmien( int $id, array $dane, ?string $status = null ): bool {
 		global $wpdb;
 		if ( isset( $dane['odpowiedzi'] ) && is_array( $dane['odpowiedzi'] ) ) {
 			$dane['odpowiedzi'] = wp_json_encode( $dane['odpowiedzi'], JSON_UNESCAPED_UNICODE );
 		}
-		return false !== $wpdb->update( self::tabela(), $dane, array( 'id' => $id ) );
+		$warunek = null === $status ? array( 'id' => $id ) : array(
+			'id'     => $id,
+			'status' => $status,
+		);
+		$wynik   = $wpdb->update( self::tabela(), $dane, $warunek );
+		return null === $status ? false !== $wynik : (int) $wynik > 0;
+	}
+
+	public static function ostatni_blad(): string {
+		global $wpdb;
+		return (string) $wpdb->last_error;
 	}
 
 	public static function po_id( int $id ): ?array {
@@ -153,11 +167,11 @@ final class Baza {
 		return array_map( array( self::class, 'rozpakuj' ), $wiersze );
 	}
 
-	/** Spotkania z błędem zapisu w Kalendarzu Google (jeszcze przed nami). */
+	/** Spotkania przed nami z błędem Google: niezapisane albo odwołane, a nadal stojące w kalendarzu. */
 	public static function z_bledem_google(): array {
 		global $wpdb;
 		$wiersze = $wpdb->get_results(
-			$wpdb->prepare( 'SELECT * FROM ' . self::tabela() . " WHERE status = 'potwierdzona' AND google_blad <> '' AND koniec > %s ORDER BY poczatek", gmdate( 'Y-m-d H:i:s' ) ),
+			$wpdb->prepare( 'SELECT * FROM ' . self::tabela() . " WHERE google_blad <> '' AND koniec > %s AND (status = 'potwierdzona' OR google_id <> '') ORDER BY poczatek", gmdate( 'Y-m-d H:i:s' ) ),
 			ARRAY_A
 		) ?: array();
 		return array_map( array( self::class, 'rozpakuj' ), $wiersze );
@@ -188,10 +202,10 @@ final class Baza {
 		);
 	}
 
-	/** Spotkania zakończone przed granicą, w których są jeszcze dane osobowe. */
+	/** Spotkania zakończone przed granicą, w których są jeszcze dane osobowe (najwyżej 50 naraz). */
 	public static function do_anonimizacji( string $granica ): array {
 		global $wpdb;
-		return array_map( 'intval', $wpdb->get_col( $wpdb->prepare( 'SELECT id FROM ' . self::tabela() . " WHERE koniec < %s AND (email <> '' OR imie <> '')", $granica ) ) ?: array() );
+		return array_map( 'intval', $wpdb->get_col( $wpdb->prepare( 'SELECT id FROM ' . self::tabela() . " WHERE koniec < %s AND (email <> '' OR imie <> '') ORDER BY koniec LIMIT 50", $granica ) ) ?: array() );
 	}
 
 	private static function widok( string $widok ): array {

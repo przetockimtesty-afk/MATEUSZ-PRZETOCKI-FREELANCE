@@ -39,7 +39,8 @@ final class Prywatnosc {
 		}
 		$dni   = (int) Ustawienia::get( 'rodo.przechowywanie' );
 		$tekst = '<p>Gdy umawiasz spotkanie przez kalendarz na stronie, zapisujemy imię i nazwisko, adres e-mail, numer telefonu (jeśli go podasz), wybrany termin i odpowiedzi z formularza. Używamy ich, żeby przygotować się do spotkania, potwierdzić je, przypomnieć o nim i umożliwić zmianę terminu.</p>'
-			. ( Google::polaczony() ? '<p>Termin i dane spotkania trafiają też do naszego Kalendarza Google (Google Ireland Limited).</p>' : '' )
+			. ( Google::polaczony() ? '<p>Termin i dane spotkania trafiają też do naszego Kalendarza Google (Google Ireland Limited). Gdy usuwamy dane, z wydarzenia w kalendarzu też znikają dane osobowe.</p>' : '' )
+			. ( Google::arkusz_wlaczony() ? '<p>Kopia zgłoszenia trafia też do naszego arkusza Google; usuwamy ją ręcznie w tym samym terminie albo na Twoją prośbę.</p>' : '' )
 			. '<p>' . ( $dni ? sprintf( 'Dane usuwamy automatycznie %d dni po spotkaniu; zostaje tylko termin i rodzaj spotkania bez danych osobowych.', $dni ) : 'Dane przechowujemy do czasu, aż poprosisz o ich usunięcie.' ) . '</p>';
 		wp_add_privacy_policy_content( 'MP Rezerwacje', wp_kses_post( $tekst ) );
 	}
@@ -91,12 +92,13 @@ final class Prywatnosc {
 	public static function usun( string $email, int $strona = 1 ): array {
 		$rezerwacje = Baza::po_emailu( $email, 100 );
 		foreach ( $rezerwacje as $rez ) {
-			Baza::anonimizuj( $rez['id'] );
+			self::anonimizuj( $rez );
 		}
+		$arkusz = $rezerwacje && Google::arkusz_wlaczony();
 		return array(
 			'items_removed'  => count( $rezerwacje ) > 0,
-			'items_retained' => false,
-			'messages'       => array(),
+			'items_retained' => $arkusz,
+			'messages'       => $arkusz ? array( 'Rezerwacje spotkań: usuń ręcznie wiersze z tym adresem e-mail w arkuszu Google ustawionym we wtyczce.' ) : array(),
 			'done'           => count( $rezerwacje ) < 100,
 		);
 	}
@@ -108,7 +110,21 @@ final class Prywatnosc {
 			return;
 		}
 		foreach ( Baza::do_anonimizacji( gmdate( 'Y-m-d H:i:s', time() - $dni * DAY_IN_SECONDS ) ) as $id ) {
-			Baza::anonimizuj( $id );
+			$rez = Baza::po_id( $id );
+			if ( $rez ) {
+				self::anonimizuj( $rez );
+			}
+		}
+	}
+
+	/** Usuwa dane osobowe z rezerwacji i z wydarzenia w Kalendarzu Google. */
+	private static function anonimizuj( array $rez ): void {
+		Baza::anonimizuj( $rez['id'] );
+		if ( '' !== $rez['google_id'] && Google::polaczony() ) {
+			$wynik = Google::anonimizuj_wydarzenie( $rez );
+			if ( is_wp_error( $wynik ) ) {
+				Dziennik::zapisz( 'RODO, rezerwacja #' . $rez['id'] . ': nie udało się usunąć danych z Kalendarza Google (' . $wynik->get_error_message() . ').' );
+			}
 		}
 	}
 }

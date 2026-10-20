@@ -24,11 +24,20 @@ $mp_zmieniona      = isset( $_GET['zmieniona'] );
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
 <title><?php echo esc_html( 'Twoja rezerwacja · ' . wp_specialchars_decode( get_bloginfo( 'name' ), ENT_QUOTES ) ); ?></title>
-<?php wp_head(); ?>
+<?php
+// Bez wp_head() i wp_footer(): w adresie jest token rezerwacji, więc nie ładujemy skryptów innych
+// wtyczek (analityka zapisałaby pełny adres). Tylko fonty i kolory motywu oraz style i skrypt kalendarza.
+if ( function_exists( 'wp_print_font_faces' ) ) {
+	wp_print_font_faces();
+}
+echo '<style id="mp-rez-zmienne">' . wp_strip_all_tags( wp_get_global_stylesheet( array( 'variables' ) ) ) . '</style>' . "\n"; // phpcs:ignore WordPress.Security.EscapeOutput
+wp_print_styles( array( 'mp-rezerwacja-style' ) );
+?>
 </head>
-<body <?php body_class( 'mp-rez-strona' ); ?>>
-<?php wp_body_open(); ?>
+<body class="mp-rez-strona">
 <div class="mp-rez-strona__srodek">
 	<a class="mp-rez-strona__logo" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 
@@ -103,6 +112,10 @@ $mp_zmieniona      = isset( $_GET['zmieniona'] );
 		</div>
 	</div>
 </div>
-<?php wp_footer(); ?>
+<?php
+if ( $kalendarz ) {
+	wp_print_scripts( array( 'mp-rezerwacja-view-script' ) );
+}
+?>
 </body>
 </html>

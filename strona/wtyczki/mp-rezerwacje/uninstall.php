@@ -16,7 +16,7 @@ if ( empty( $mp_ustawienia['rodo']['usun_przy_odinstalowaniu'] ) ) {
 
 global $wpdb;
 $wpdb->query( "DROP TABLE IF EXISTS {$wpdb->prefix}mp_rezerwacje" ); // phpcs:ignore WordPress.DB.DirectDatabaseQuery
-foreach ( array( 'mp_rezerwacje', 'mp_rezerwacje_db', 'mp_rezerwacje_google_klucz', 'mp_rezerwacje_dziennik', 'mp_rezerwacje_google_pamiec' ) as $mp_opcja ) {
+foreach ( array( 'mp_rezerwacje', 'mp_rezerwacje_db', 'mp_rezerwacje_google_klucz', 'mp_rezerwacje_dziennik', 'mp_rezerwacje_google_pamiec', 'mp_rezerwacje_google_ok' ) as $mp_opcja ) {
 	delete_option( $mp_opcja );
 }
 delete_metadata( 'user', 0, 'mp_rez_widziane', '', true );

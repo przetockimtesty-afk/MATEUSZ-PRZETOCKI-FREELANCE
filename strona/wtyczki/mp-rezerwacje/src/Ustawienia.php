@@ -138,10 +138,10 @@ final class Ustawienia {
 		self::$cache = null;
 	}
 
-	/** Zmiany z formularza panelu nałożone na obecne ustawienia; listy z LISTY zastępowane w całości. */
+	/** Zmiany z formularza panelu albo z importu nałożone na obecne ustawienia; listy (i sekcje z LISTY) zastępowane w całości. */
 	public static function nadpisz( array $obecne, array $zmiany, int $poziom = 0 ): array {
 		foreach ( $zmiany as $klucz => $wartosc ) {
-			$lista = 0 === $poziom && in_array( $klucz, self::LISTY, true );
+			$lista = ( 0 === $poziom && in_array( $klucz, self::LISTY, true ) ) || ( is_array( $wartosc ) && array_is_list( $wartosc ) );
 			if ( ! $lista && is_array( $wartosc ) && isset( $obecne[ $klucz ] ) && is_array( $obecne[ $klucz ] ) ) {
 				$obecne[ $klucz ] = self::nadpisz( $obecne[ $klucz ], $wartosc, $poziom + 1 );
 			} else {
@@ -184,7 +184,7 @@ final class Ustawienia {
 				$bledy[] = "Spotkanie „{$nazwa}” nie miało zaznaczonej formy, ustawiłem online.";
 			}
 			$w['wizyty'][] = array(
-				'id'    => self::unikalny( sanitize_key( $wizyta['id'] ?? '' ) ?: sanitize_title( $nazwa ), $idy, 'wizyta' ),
+				'id'    => self::unikalny( substr( sanitize_key( $wizyta['id'] ?? '' ) ?: sanitize_title( $nazwa ), 0, 60 ), $idy, 'wizyta' ),
 				'nazwa' => $nazwa,
 				'czas'  => self::liczba( $wizyta['czas'] ?? 30, 5, 480, 30 ),
 				'formy' => $formy,
@@ -250,7 +250,7 @@ final class Ustawienia {
 				$typ     = 'tekst';
 			}
 			$w['pytania'][] = array(
-				'id'         => self::unikalny( sanitize_key( $pytanie['id'] ?? '' ) ?: substr( sanitize_title( $etykieta ), 0, 40 ), $idy, 'pytanie' ),
+				'id'         => self::unikalny( substr( sanitize_key( $pytanie['id'] ?? '' ) ?: sanitize_title( $etykieta ), 0, 40 ), $idy, 'pytanie' ),
 				'etykieta'   => $etykieta,
 				'typ'        => $typ,
 				'opcje'      => in_array( $typ, array( 'wybor', 'lista' ), true ) ? $opcje : array(),
@@ -407,13 +407,23 @@ final class Ustawienia {
 		return apply_filters( 'mp_rezerwacje_branze', $wynik );
 	}
 
-	/** Wczytuje zestaw branży: spotkania, pytania, godziny i teksty. Dane osoby, Google i wygląd zostają. */
+	/**
+	 * Wczytuje zestaw branży: spotkania, pytania, godziny, zasady i teksty. Najpierw wracają one do wartości
+	 * domyślnych, żeby nic nie zostało z poprzedniej branży. Dane osoby, adres, Google i wygląd zostają.
+	 */
 	public static function zastosuj_branze( string $slug, array &$bledy = array() ): bool {
 		$branze = self::branze();
 		if ( empty( $branze[ $slug ]['ustawienia'] ) ) {
 			return false;
 		}
-		$nowe           = self::nadpisz( self::scal( self::domyslne(), self::zapisane() ), $branze[ $slug ]['ustawienia'] );
+		$d     = self::domyslne();
+		$baza  = self::do_edycji();
+		$baza  = array_merge( $baza, array_intersect_key( $d, array_flip( array( 'wizyty', 'pytania', 'godziny', 'zasady', 'telefon' ) ) ) );
+		$baza['teksty'] = array_merge( $baza['teksty'], array_diff_key( $d['teksty'], array( 'polityka' => 1 ) ) );
+		$baza['maile']  = array_merge( $baza['maile'], array_intersect_key( $d['maile'], array_flip( array( 'potwierdzenie', 'przypomnienie_tekst' ) ) ) );
+		$baza['miejsce']['etykieta'] = $d['miejsce']['etykieta'];
+
+		$nowe           = self::nadpisz( $baza, $branze[ $slug ]['ustawienia'] );
 		$nowe['branza'] = $slug;
 		self::zapisz( self::normalizuj( $nowe, $bledy ) );
 		return true;
@@ -460,12 +470,16 @@ final class Ustawienia {
 		return $zapisane;
 	}
 
+	/**
+	 * Tekst bez znaczników. sanitize_text_field() zapisuje samotne „<” jako „&lt;”, więc odkodowujemy encje:
+	 * teksty i tak są escapowane przy każdym wyświetleniu, a „<10%” ma zostać „<10%”.
+	 */
 	public static function tekst( $wartosc, int $max ): string {
-		return mb_substr( trim( sanitize_text_field( is_scalar( $wartosc ) ? (string) $wartosc : '' ) ), 0, $max );
+		return mb_substr( trim( wp_specialchars_decode( sanitize_text_field( is_scalar( $wartosc ) ? (string) $wartosc : '' ), ENT_QUOTES ) ), 0, $max );
 	}
 
 	private static function akapit( $wartosc, int $max ): string {
-		return mb_substr( trim( sanitize_textarea_field( is_scalar( $wartosc ) ? (string) $wartosc : '' ) ), 0, $max );
+		return mb_substr( trim( wp_specialchars_decode( sanitize_textarea_field( is_scalar( $wartosc ) ? (string) $wartosc : '' ), ENT_QUOTES ) ), 0, $max );
 	}
 
 	private static function liczba( $wartosc, int $min, int $max, int $domyslna ): int {

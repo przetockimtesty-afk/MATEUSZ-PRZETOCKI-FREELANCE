@@ -120,8 +120,10 @@ final class Maile {
 					$ics = self::ics( $rez, 'PUBLISH', true );
 				}
 		}
-		if ( 'potwierdzona' === $rez['status'] && '' !== $rez['google_blad'] ) {
-			$m['wstep'] .= "\n\nUwaga: nie udało się zapisać spotkania w Kalendarzu Google (" . $rez['google_blad'] . '). Wpisz je ręcznie albo ponów zapis w panelu.';
+		if ( '' !== $rez['google_blad'] ) {
+			$m['wstep'] .= 'odwolana' === $rez['status']
+				? "\n\nUwaga: nie udało się usunąć spotkania z Kalendarza Google (" . $rez['google_blad'] . '), więc nadal blokuje ten termin. Usuń je ręcznie albo ponów w panelu.'
+				: "\n\nUwaga: nie udało się zapisać spotkania w Kalendarzu Google (" . $rez['google_blad'] . '). Wpisz je ręcznie albo ponów zapis w panelu.';
 		}
 		$m['szczegoly'] = self::szczegoly( $rez, true );
 		$m['podpis']    = '';
@@ -299,7 +301,7 @@ final class Maile {
 	}
 
 	private static function nazwa_wizyty( array $rez ): string {
-		return (string) ( Ustawienia::wizyta( $rez['wizyta'] )['nazwa'] ?? Czas::wielka( str_replace( '-', ' ', $rez['wizyta'] ) ) );
+		return Rezerwacje::wizyta_rezerwacji( $rez )['nazwa'];
 	}
 
 	/** {imie}, {wizyta}, {kiedy}, {termin} w tekstach z ustawień. */

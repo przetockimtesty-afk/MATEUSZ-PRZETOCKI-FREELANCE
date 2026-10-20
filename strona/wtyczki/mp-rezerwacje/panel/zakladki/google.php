@@ -13,6 +13,7 @@ $mp_klucz    = Google::klucz();
 $mp_w_config = defined( 'MP_REZERWACJE_GOOGLE_KLUCZ' );
 ?>
 <h2>Kalendarz Google</h2>
+<?php \MP\Rezerwacje\Panel::problem_google(); ?>
 <div class="mp-status<?php echo Google::polaczony() ? ' mp-status--ok' : ''; ?>">
 	<?php if ( Google::polaczony() ) : ?>
 		<strong>Połączony z kalendarzem <?php echo esc_html( Google::kalendarz() ); ?>.</strong>

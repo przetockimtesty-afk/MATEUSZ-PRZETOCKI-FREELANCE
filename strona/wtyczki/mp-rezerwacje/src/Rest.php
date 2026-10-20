@@ -94,7 +94,7 @@ final class Rest {
 			$rez = Baza::po_tokenie( (string) $r['token'] );
 			if ( $rez && Rezerwacje::mozna_zmieniac( $rez ) ) {
 				$pomin  = $rez['id'];
-				$wizyta = Ustawienia::wizyta( $rez['wizyta'] );
+				$wizyta = Rezerwacje::wizyta_rezerwacji( $rez );
 			}
 		}
 		$wizyta = $wizyta ?? Ustawienia::wizyta( (string) $r['wizyta'] ) ?? Ustawienia::wizyta();

@@ -37,7 +37,8 @@
 
 ## Otwarte sprawy
 
-- [ ] Wtyczka MP Rezerwacje: test z prawdziwym kontem Google (konto usługi w Google Cloud Mateusza i testowy kalendarz), potem pierwsza instalacja. Na mateuszprzetocki.pl (np. zamiast zaślepki `#rozmowa`) albo u pierwszej klientki tylko za zgodą Mateusza (`WP-REST.md` §16).
+- [ ] Wtyczka MP Rezerwacje: test z prawdziwym kontem Google (konto usługi w Google Cloud Mateusza i testowy kalendarz): zajętość i zapis wydarzeń, dodatkowy kalendarz bez dostępu, odwołanie i ponowienie zapisu, całodniowe wydarzenie oznaczone jako „Zajęty”, arkusz. Potem pierwsza instalacja: na mateuszprzetocki.pl (np. zamiast zaślepki `#rozmowa`) albo u pierwszej klientki, tylko za zgodą Mateusza (`WP-REST.md` §16).
+- [ ] Wtyczka MP Rezerwacje: zdecydować o aktualizacjach (własny kanał aktualizacji z przyciskiem „Zaktualizuj” na stronach klientów albo ręczne wgrywanie ZIP) i o tym, czy klient ma sam zmieniać godziny i urlopy (dziś tylko administrator).
 
 - [ ] Uogólnić ankietę A w `Kod.gs` pod wszystkie branże. Teraz nie robimy; przypomnieć, gdy Mateusz zapyta o niedokończone zadania.
 - [ ] Dopasować prezentacje i szablon propozycji do nowych kolorów. Odłożone, niepilne.

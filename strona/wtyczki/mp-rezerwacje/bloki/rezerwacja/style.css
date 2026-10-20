@@ -270,7 +270,13 @@
 @container (min-width: 480px) { .mp-rez__akcje { grid-template-columns: 1fr 1fr; } }
 
 /* Strona „Twoja rezerwacja” (link z e-maila) */
-body.mp-rez-strona { margin: 0; background: var(--wp--preset--color--krem, var(--wp--preset--color--base, #f5f2ec)); }
+body.mp-rez-strona {
+	margin: 0;
+	background: var(--wp--preset--color--krem, var(--wp--preset--color--base, #f5f2ec));
+	color: var(--wp--preset--color--czern, var(--wp--preset--color--contrast, #161514));
+	font-family: var(--wp--preset--font-family--inter, var(--wp--preset--font-family--manrope, system-ui, -apple-system, "Segoe UI", sans-serif));
+	-webkit-font-smoothing: antialiased;
+}
 .mp-rez-strona__srodek { max-width: 600px; margin: 0 auto; padding: 40px 16px 72px; }
 .mp-rez-strona__logo { display: inline-block; margin: 0 0 24px; font-size: 18px; font-weight: 600; color: var(--wp--preset--color--czern, #161514); text-decoration: none; }
 .mp-rez--strona { max-width: none; }

@@ -114,11 +114,19 @@ dostaje ostrzeżenie w e-mailu, a w panelu jest przycisk „Zapisz je ponownie w
 Bez kroku budowania: PHP 8.1+, WordPress 6.5+, JavaScript bez bibliotek.
 
 Bezpieczeństwo i dane: losowy 128-bitowy token w linku do rezerwacji, odwołanie tylko przez POST
-(skanery linków w poczcie nie odwołają spotkania), blokada zapisu przed podwójną rezerwacją, pole-pułapka
-na boty i limit rezerwacji z jednego adresu, strony rezerwacji i REST bez cache i z `noindex`, formuły
-w CSV zneutralizowane. Dane klientów usuwają się same po ustawionej liczbie dni (domyślnie 365) i są
-podpięte pod Narzędzia → Eksport / Usuwanie danych osobowych. Przy pytaniach nie pytamy o zdrowie
-(RODO art. 9); dla psychologów opis wydarzenia w Google jest domyślnie minimalny.
+(skanery linków w poczcie nie odwołają spotkania), blokada zapisu przed podwójną rezerwacją, a zmiana
+terminu i odwołanie zapisują się tylko dla wciąż potwierdzonego spotkania, pole-pułapka na boty i limit
+5 udanych rezerwacji na godzinę z jednego adresu. Strona „Twoja rezerwacja” nie ładuje skryptów motywu
+ani innych wtyczek (token z adresu nie trafi do analityki) i wysyła `Referrer-Policy: no-referrer`;
+ona i REST są bez cache i z `noindex`. Formuły w CSV są zneutralizowane. Dane klientów usuwają się same
+po ustawionej liczbie dni (domyślnie 365), razem z danymi w opisie wydarzenia w Kalendarzu Google,
+i są podpięte pod Narzędzia → Eksport / Usuwanie danych osobowych. Wierszy w Arkuszu Google wtyczka nie
+usuwa (narzędzie WordPressa o tym przypomina). Nie pytamy o zdrowie (RODO art. 9); dla psychologów opis
+wydarzenia w Google jest domyślnie minimalny.
+
+Google: wydarzenie ma stałe id zależne od rezerwacji, więc ponowienie zapisu nie robi duplikatu;
+dodatkowy kalendarz bez dostępu jest pomijany (z wpisem w dzienniku), a zajętość z głównego zostaje;
+odwołane spotkanie, którego nie udało się usunąć z Google, czeka na „Zapisz je ponownie w Google”.
 
 ## Testy (20.10.2026, lokalnie: WordPress 7.1.3, PHP 8.3, Twenty Twenty-Five ze stylami strony)
 
@@ -134,6 +142,9 @@ podpięte pod Narzędzia → Eksport / Usuwanie danych osobowych. Przy pytaniach
   spotkań, spotkanie telefoniczne, limit dzienny, przerwy.
 - Panel: wszystkie zakładki, zapis z dodaniem i przesunięciem pytania, test Google, kolory na stronie, CSV,
   eksport i import ustawień, RODO (eksport, usuwanie, automatyczne czyszczenie), blok w edytorze.
+- Niezależny przegląd kodu (bezpieczeństwo i logika): 12 uwag, wszystkie poprawione i sprawdzone
+  (m.in. równoczesne odwołania: przechodzi jedno, długie nazwy spotkań, strefa „UTC+1”, „<10%” w opcjach,
+  zmiana terminu spotkania, którego rodzaju już nie ma w ustawieniach).
 
 ## Czego świadomie nie ma
 

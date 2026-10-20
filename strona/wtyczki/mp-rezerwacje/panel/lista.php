@@ -33,10 +33,12 @@ $mp_dzien = '';
 
 	<?php Panel::pokaz_komunikat(); ?>
 
+	<?php Panel::problem_google(); ?>
+
 	<?php if ( $bledy_google ) : ?>
 	<div class="notice notice-warning">
 		<p>
-			<?php echo esc_html( sprintf( 'Spotkania niezapisane w Kalendarzu Google: %d. Są tutaj i w e-mailach, ale nie blokują terminów w Google.', $bledy_google ) ); ?>
+			<?php echo esc_html( sprintf( 'Spotkania z problemem w Kalendarzu Google: %d (nowe, których nie udało się zapisać, albo odwołane, które nadal tam stoją i blokują termin).', $bledy_google ) ); ?>
 		</p>
 		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 			<input type="hidden" name="action" value="mp_rez_akcja">
@@ -129,8 +131,9 @@ $mp_dzien = '';
 					<span class="mp-znaczek"><?php echo esc_html( $mp_formy[ $rez['forma'] ]['etykieta'] ?? $rez['forma'] ); ?></span>
 					<?php if ( 'odwolana' === $rez['status'] ) : ?>
 					<span class="mp-znaczek mp-znaczek--odwolana"><?php echo 'klient' === $rez['odwolal'] ? 'Odwołał klient' : 'Odwołane przez Ciebie'; ?></span>
-					<?php elseif ( '' !== $rez['google_blad'] ) : ?>
-					<span class="mp-znaczek mp-znaczek--blad" title="<?php echo esc_attr( $rez['google_blad'] ); ?>">Brak w Google</span>
+					<?php endif; ?>
+					<?php if ( '' !== $rez['google_blad'] ) : ?>
+					<span class="mp-znaczek mp-znaczek--blad" title="<?php echo esc_attr( $rez['google_blad'] ); ?>"><?php echo 'odwolana' === $rez['status'] ? 'Zostało w Google' : 'Brak w Google'; ?></span>
 					<?php endif; ?>
 				</td>
 				<td data-etykieta="Odpowiedzi">
