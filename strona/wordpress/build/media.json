@@ -75,16 +75,20 @@
   "id": 28,
   "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/ikona-witryny.png"
  },
- "mateusz-przetocki-portret": {
-  "id": 92,
-  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp"
+ "mateusz-przetocki-zalozone-rece": {
+  "id": 101,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-zalozone-rece.webp"
  },
- "mateusz-przetocki-sylwetka": {
-  "id": 93,
-  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp"
+ "mateusz-przetocki-rece-w-kieszeniach": {
+  "id": 102,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-rece-w-kieszeniach.webp"
  },
- "mateusz-przetocki-awatar": {
-  "id": 94,
-  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp"
+ "mateusz-przetocki-przy-komputerze": {
+  "id": 103,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-przy-komputerze.webp"
+ },
+ "mateusz-przetocki-twarz": {
+  "id": 104,
+  "url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-twarz.webp"
  }
 }

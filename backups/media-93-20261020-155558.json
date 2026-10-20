@@ -1,0 +1,158 @@
+{
+ "id": 93,
+ "date": "2026-10-19T19:08:46",
+ "date_gmt": "2026-10-19T17:08:46",
+ "guid": {
+  "rendered": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp",
+  "raw": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp"
+ },
+ "modified": "2026-10-19T19:08:48",
+ "modified_gmt": "2026-10-19T17:08:48",
+ "slug": "mateusz-przetocki-sylwetka",
+ "status": "inherit",
+ "type": "attachment",
+ "link": "https://mateuszprzetocki.pl/mateusz-przetocki-sylwetka/",
+ "title": {
+  "raw": "Mateusz Przetocki w marynarce, z rękami w kieszeniach",
+  "rendered": "Mateusz Przetocki w marynarce, z rękami w kieszeniach"
+ },
+ "author": 2,
+ "featured_media": 0,
+ "comment_status": "closed",
+ "ping_status": "closed",
+ "template": "",
+ "meta": [],
+ "permalink_template": "https://mateuszprzetocki.pl/?attachment_id=93",
+ "generated_slug": "mateusz-przetocki-w-marynarce-z-rekami-w-kieszeniach",
+ "class_list": [
+  "post-93",
+  "attachment",
+  "type-attachment",
+  "status-inherit",
+  "hentry"
+ ],
+ "description": {
+  "raw": "",
+  "rendered": "<p class=\"attachment\"><a href='https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp'><img loading=\"lazy\" decoding=\"async\" width=\"285\" height=\"300\" src=\"https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka-285x300.webp\" class=\"attachment-medium size-medium\" alt=\"Mateusz Przetocki w marynarce, z rękami w kieszeniach\" srcset=\"https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka-285x300.webp 285w, https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp 342w\" sizes=\"auto, (max-width: 285px) 100vw, 285px\" /></a></p>\n"
+ },
+ "caption": {
+  "raw": "",
+  "rendered": ""
+ },
+ "alt_text": "Mateusz Przetocki w marynarce, z rękami w kieszeniach",
+ "media_type": "image",
+ "mime_type": "image/webp",
+ "media_details": {
+  "width": 342,
+  "height": 360,
+  "file": "2026/10/mateusz-przetocki-sylwetka.webp",
+  "filesize": 7918,
+  "sizes": {
+   "medium": {
+    "file": "mateusz-przetocki-sylwetka-285x300.webp",
+    "width": 285,
+    "height": 300,
+    "filesize": 4438,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka-285x300.webp"
+   },
+   "thumbnail": {
+    "file": "mateusz-przetocki-sylwetka-150x150.webp",
+    "width": 150,
+    "height": 150,
+    "filesize": 2062,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka-150x150.webp"
+   },
+   "full": {
+    "file": "mateusz-przetocki-sylwetka.webp",
+    "width": 342,
+    "height": 360,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp"
+   }
+  },
+  "image_meta": {
+   "aperture": "0",
+   "credit": "",
+   "camera": "",
+   "caption": "",
+   "created_timestamp": "0",
+   "copyright": "",
+   "focal_length": "0",
+   "iso": "0",
+   "shutter_speed": "0",
+   "title": "",
+   "orientation": "0",
+   "keywords": [],
+   "alt": ""
+  }
+ },
+ "post": null,
+ "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-sylwetka.webp",
+ "missing_image_sizes": [],
+ "filename": "mateusz-przetocki-sylwetka.webp",
+ "filesize": 7918,
+ "exif_orientation": 1,
+ "image_output_format": null,
+ "image_save_progressive": false,
+ "image_quality": {
+  "default": 86,
+  "sizes": []
+ },
+ "_links": {
+  "self": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/93",
+    "targetHints": {
+     "allow": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE"
+     ]
+    }
+   }
+  ],
+  "collection": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media"
+   }
+  ],
+  "about": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/types/attachment"
+   }
+  ],
+  "author": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/users/2"
+   }
+  ],
+  "replies": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/comments?post=93"
+   }
+  ],
+  "wp:action-unfiltered-html": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/93"
+   }
+  ],
+  "wp:action-assign-author": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/93"
+   }
+  ],
+  "curies": [
+   {
+    "name": "wp",
+    "href": "https://api.w.org/{rel}",
+    "templated": true
+   }
+  ]
+ }
+}

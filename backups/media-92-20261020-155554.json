@@ -1,0 +1,158 @@
+{
+ "id": 92,
+ "date": "2026-10-19T19:08:41",
+ "date_gmt": "2026-10-19T17:08:41",
+ "guid": {
+  "rendered": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp",
+  "raw": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp"
+ },
+ "modified": "2026-10-19T19:08:43",
+ "modified_gmt": "2026-10-19T17:08:43",
+ "slug": "mateusz-przetocki-portret",
+ "status": "inherit",
+ "type": "attachment",
+ "link": "https://mateuszprzetocki.pl/mateusz-przetocki-portret/",
+ "title": {
+  "raw": "Mateusz Przetocki",
+  "rendered": "Mateusz Przetocki"
+ },
+ "author": 2,
+ "featured_media": 0,
+ "comment_status": "closed",
+ "ping_status": "closed",
+ "template": "",
+ "meta": [],
+ "permalink_template": "https://mateuszprzetocki.pl/?attachment_id=92",
+ "generated_slug": "mateusz-przetocki",
+ "class_list": [
+  "post-92",
+  "attachment",
+  "type-attachment",
+  "status-inherit",
+  "hentry"
+ ],
+ "description": {
+  "raw": "",
+  "rendered": "<p class=\"attachment\"><a href='https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp'><img loading=\"lazy\" decoding=\"async\" width=\"252\" height=\"300\" src=\"https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret-252x300.webp\" class=\"attachment-medium size-medium\" alt=\"Mateusz Przetocki\" srcset=\"https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret-252x300.webp 252w, https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp 504w\" sizes=\"auto, (max-width: 252px) 100vw, 252px\" /></a></p>\n"
+ },
+ "caption": {
+  "raw": "",
+  "rendered": ""
+ },
+ "alt_text": "Mateusz Przetocki",
+ "media_type": "image",
+ "mime_type": "image/webp",
+ "media_details": {
+  "width": 504,
+  "height": 600,
+  "file": "2026/10/mateusz-przetocki-portret.webp",
+  "filesize": 14636,
+  "sizes": {
+   "medium": {
+    "file": "mateusz-przetocki-portret-252x300.webp",
+    "width": 252,
+    "height": 300,
+    "filesize": 5036,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret-252x300.webp"
+   },
+   "thumbnail": {
+    "file": "mateusz-przetocki-portret-150x150.webp",
+    "width": 150,
+    "height": 150,
+    "filesize": 2568,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret-150x150.webp"
+   },
+   "full": {
+    "file": "mateusz-przetocki-portret.webp",
+    "width": 504,
+    "height": 600,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp"
+   }
+  },
+  "image_meta": {
+   "aperture": "0",
+   "credit": "",
+   "camera": "",
+   "caption": "",
+   "created_timestamp": "0",
+   "copyright": "",
+   "focal_length": "0",
+   "iso": "0",
+   "shutter_speed": "0",
+   "title": "",
+   "orientation": "0",
+   "keywords": [],
+   "alt": ""
+  }
+ },
+ "post": null,
+ "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-portret.webp",
+ "missing_image_sizes": [],
+ "filename": "mateusz-przetocki-portret.webp",
+ "filesize": 14636,
+ "exif_orientation": 1,
+ "image_output_format": null,
+ "image_save_progressive": false,
+ "image_quality": {
+  "default": 86,
+  "sizes": []
+ },
+ "_links": {
+  "self": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/92",
+    "targetHints": {
+     "allow": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE"
+     ]
+    }
+   }
+  ],
+  "collection": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media"
+   }
+  ],
+  "about": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/types/attachment"
+   }
+  ],
+  "author": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/users/2"
+   }
+  ],
+  "replies": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/comments?post=92"
+   }
+  ],
+  "wp:action-unfiltered-html": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/92"
+   }
+  ],
+  "wp:action-assign-author": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/92"
+   }
+  ],
+  "curies": [
+   {
+    "name": "wp",
+    "href": "https://api.w.org/{rel}",
+    "templated": true
+   }
+  ]
+ }
+}

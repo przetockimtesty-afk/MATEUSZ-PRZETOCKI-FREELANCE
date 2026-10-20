@@ -5,7 +5,7 @@
 		"osoba": {
 			"imie": "Mateusz Przetocki",
 			"opis": "Strony, które umawiają konsultacje",
-			"zdjecie": 94
+			"zdjecie": 104
 		},
 		"wizyty": [
 			{ "id": "rozmowa", "nazwa": "Rozmowa o Twojej stronie", "czas": 30, "formy": [ "online" ], "opis": "" }

@@ -51,12 +51,12 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (20.10.2026, kalendarz rezerwacji na mojej stronie: krok 1)
+## Stan zapisu (20.10.2026, nowe zdjęcia i kalendarz rezerwacji: krok 1)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
 | Strona mateuszprzetocki.pl (WordPress, 14 podstron i szkic `/rozmowa/`) | źródło `strona/wordpress/`, kopie `backups/` | projekt w Claude Design to wzór | — |
-| Zdjęcia Mateusza (na stronie: media 92–94 w WordPressie) | nie, z zasady | — | oryginały, 2 pliki |
+| Zdjęcia Mateusza (na stronie: media 101–104 w WordPressie) | nie, z zasady | — | oryginały, 3 pliki WebP i ich wersje PNG |
 | Drogowskaz PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | Workflow A i B PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | PROFIL.md, Kod.gs, INSTRUKCJA.md | tak | — | — |

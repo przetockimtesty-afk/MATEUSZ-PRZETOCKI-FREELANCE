@@ -1,0 +1,150 @@
+{
+ "id": 94,
+ "date": "2026-10-19T19:08:51",
+ "date_gmt": "2026-10-19T17:08:51",
+ "guid": {
+  "rendered": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp",
+  "raw": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp"
+ },
+ "modified": "2026-10-19T19:08:53",
+ "modified_gmt": "2026-10-19T17:08:53",
+ "slug": "mateusz-przetocki-awatar",
+ "status": "inherit",
+ "type": "attachment",
+ "link": "https://mateuszprzetocki.pl/mateusz-przetocki-awatar/",
+ "title": {
+  "raw": "Mateusz Przetocki",
+  "rendered": "Mateusz Przetocki"
+ },
+ "author": 2,
+ "featured_media": 0,
+ "comment_status": "closed",
+ "ping_status": "closed",
+ "template": "",
+ "meta": [],
+ "permalink_template": "https://mateuszprzetocki.pl/?attachment_id=94",
+ "generated_slug": "mateusz-przetocki",
+ "class_list": [
+  "post-94",
+  "attachment",
+  "type-attachment",
+  "status-inherit",
+  "hentry"
+ ],
+ "description": {
+  "raw": "",
+  "rendered": "<p class=\"attachment\"><a href='https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp'><img loading=\"lazy\" decoding=\"async\" width=\"160\" height=\"160\" src=\"https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp\" class=\"attachment-medium size-medium\" alt=\"Mateusz Przetocki\" srcset=\"https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp 160w, https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar-150x150.webp 150w\" sizes=\"auto, (max-width: 160px) 100vw, 160px\" /></a></p>\n"
+ },
+ "caption": {
+  "raw": "",
+  "rendered": ""
+ },
+ "alt_text": "Mateusz Przetocki",
+ "media_type": "image",
+ "mime_type": "image/webp",
+ "media_details": {
+  "width": 160,
+  "height": 160,
+  "file": "2026/10/mateusz-przetocki-awatar.webp",
+  "filesize": 2450,
+  "sizes": {
+   "thumbnail": {
+    "file": "mateusz-przetocki-awatar-150x150.webp",
+    "width": 150,
+    "height": 150,
+    "filesize": 1912,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar-150x150.webp"
+   },
+   "full": {
+    "file": "mateusz-przetocki-awatar.webp",
+    "width": 160,
+    "height": 160,
+    "mime_type": "image/webp",
+    "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp"
+   }
+  },
+  "image_meta": {
+   "aperture": "0",
+   "credit": "",
+   "camera": "",
+   "caption": "",
+   "created_timestamp": "0",
+   "copyright": "",
+   "focal_length": "0",
+   "iso": "0",
+   "shutter_speed": "0",
+   "title": "",
+   "orientation": "0",
+   "keywords": [],
+   "alt": ""
+  }
+ },
+ "post": null,
+ "source_url": "https://mateuszprzetocki.pl/wp-content/uploads/2026/10/mateusz-przetocki-awatar.webp",
+ "missing_image_sizes": [],
+ "filename": "mateusz-przetocki-awatar.webp",
+ "filesize": 2450,
+ "exif_orientation": 1,
+ "image_output_format": null,
+ "image_save_progressive": false,
+ "image_quality": {
+  "default": 86,
+  "sizes": []
+ },
+ "_links": {
+  "self": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/94",
+    "targetHints": {
+     "allow": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE"
+     ]
+    }
+   }
+  ],
+  "collection": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media"
+   }
+  ],
+  "about": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/types/attachment"
+   }
+  ],
+  "author": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/users/2"
+   }
+  ],
+  "replies": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/comments?post=94"
+   }
+  ],
+  "wp:action-unfiltered-html": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/94"
+   }
+  ],
+  "wp:action-assign-author": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media/94"
+   }
+  ],
+  "curies": [
+   {
+    "name": "wp",
+    "href": "https://api.w.org/{rel}",
+    "templated": true
+   }
+  ]
+ }
+}
