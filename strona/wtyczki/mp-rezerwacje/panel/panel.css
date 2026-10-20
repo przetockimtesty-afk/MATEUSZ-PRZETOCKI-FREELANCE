@@ -1,0 +1,91 @@
+/* MP Rezerwacje: panel w WordPressie. Kolory WordPressa, akcenty marki (błękit, krem). */
+
+.mp-panel { --mp-panel-linia: #dcdcde; --mp-panel-szary: #50575e; --mp-panel-blekit: #dce8f3; }
+.mp-panel .description code, .mp-panel p code { font-size: 12px; }
+
+/* Lista spotkań */
+.mp-karty { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; max-width: 960px; margin: 16px 0 12px; }
+.mp-karta { padding: 14px 18px; background: #fff; border: 1px solid var(--mp-panel-linia); border-radius: 12px; }
+.mp-karta span { display: block; font-size: 13px; color: var(--mp-panel-szary); }
+.mp-karta strong { display: block; margin-top: 2px; font-size: 28px; line-height: 1.2; font-weight: 600; }
+.mp-pasek { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0 10px; }
+.mp-pasek .subsubsub { float: none; margin: 0; }
+.mp-pasek .search-box { float: none; display: flex; gap: 6px; }
+.mp-pasek .search-box input[type="search"] { min-width: 220px; }
+
+.mp-tabela { border-radius: 8px; overflow: visible; }
+.mp-tabela th, .mp-tabela td { padding: 12px 14px; vertical-align: top; }
+.mp-tabela tr.mp-dzien th { padding: 10px 14px; background: #f6f7f7; border-top: 1px solid var(--mp-panel-linia); font-weight: 600; }
+.mp-tabela .mp-kol-termin { width: 130px; }
+.mp-tabela .mp-kol-akcje { width: 110px; text-align: right; }
+.mp-maly { display: block; margin-top: 2px; font-size: 13px; color: var(--mp-panel-szary); }
+.mp-znaczek { display: inline-block; margin: 4px 4px 0 0; padding: 2px 10px; border-radius: 999px; background: var(--mp-panel-blekit); color: #161514; font-size: 12px; font-weight: 500; }
+.mp-znaczek--odwolana { background: #f0f0f1; color: var(--mp-panel-szary); }
+.mp-znaczek--blad { background: #fcf0f1; color: #8a2424; }
+.mp-odwolana td { color: var(--mp-panel-szary); }
+.mp-odwolana .mp-kol-termin strong { text-decoration: line-through; }
+.mp-odpowiedzi summary { cursor: pointer; color: #2271b1; }
+.mp-odpowiedzi dl { margin: 6px 0 0; }
+.mp-odpowiedzi dt { margin-top: 6px; font-size: 12px; color: var(--mp-panel-szary); }
+.mp-odpowiedzi dd { margin: 0; }
+.mp-odwolaj { position: relative; display: inline-block; text-align: left; }
+.mp-odwolaj > summary { list-style: none; }
+.mp-odwolaj > summary::-webkit-details-marker { display: none; }
+.mp-odwolaj form { position: absolute; z-index: 20; top: calc(100% + 6px); right: 0; display: grid; gap: 8px; width: 280px; padding: 14px; background: #fff; border: 1px solid var(--mp-panel-linia); border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, .12); }
+.mp-odwolaj textarea { width: 100%; }
+.mp-pusto { max-width: 880px; padding: 28px; background: #fff; border: 1px dashed #c3c4c7; border-radius: 12px; text-align: center; }
+
+@media (max-width: 782px) {
+	.mp-tabela thead { display: none; }
+	.mp-tabela tr, .mp-tabela td, .mp-tabela th { display: block; width: auto !important; }
+	.mp-tabela td { padding: 6px 14px; }
+	.mp-tabela td[data-etykieta]::before { content: attr(data-etykieta); display: block; font-size: 12px; color: var(--mp-panel-szary); }
+	.mp-tabela .mp-kol-akcje { text-align: left; padding-bottom: 14px; }
+	.mp-odwolaj form { position: static; width: auto; margin-top: 8px; }
+}
+
+/* Ustawienia */
+.mp-gdzie { max-width: 880px; margin: 12px 0 0; padding: 10px 14px; background: #fff; border-left: 4px solid #a7c7e7; }
+.mp-formularz h2, .mp-panel h2 { margin-top: 28px; }
+.mp-wiersze { display: grid; gap: 12px; max-width: 900px; margin: 12px 0; }
+.mp-wiersz { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 16px 18px; background: #fff; border: 1px solid var(--mp-panel-linia); border-radius: 12px; }
+.mp-pola { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; }
+.mp-pole { display: grid; gap: 4px; align-content: start; margin: 0; padding: 0; border: 0; font-weight: 600; }
+.mp-pole[hidden] { display: none; }
+.mp-pole input[type="text"], .mp-pole input[type="number"], .mp-pole select, .mp-pole textarea { width: 100%; max-width: none; font-weight: 400; }
+.mp-pole input[type="number"] { max-width: 120px; }
+.mp-pole--cale { grid-column: 1 / -1; }
+fieldset.mp-pole { display: block; }
+.mp-pole legend { padding: 0; margin-bottom: 6px; font-weight: 600; }
+.mp-check { display: inline-flex; align-items: center; gap: 6px; margin-right: 16px; font-weight: 400; }
+.mp-wiersz-akcje { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.mp-wiersz-akcje .button-link { text-decoration: none; }
+.mp-panel .mp-usun { color: #b32d2e; }
+.mp-zdjecie { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.mp-zdjecie-podglad:empty { display: none; }
+.mp-zdjecie-podglad img { display: block; width: 64px; height: 64px; border-radius: 50%; object-fit: cover; }
+.mp-blad { color: #b32d2e; }
+.mp-ramka { max-width: 880px; margin-top: 24px; padding: 4px 20px 18px; background: #fff; border: 1px solid var(--mp-panel-linia); border-radius: 12px; }
+.mp-ramka h2 { margin-top: 16px; }
+.mp-status { max-width: 880px; padding: 12px 16px; background: #fff; border: 1px solid var(--mp-panel-linia); border-left: 4px solid #dba617; }
+.mp-status--ok { border-left-color: #00a32a; }
+.mp-status p { margin: 8px 0 0; }
+.mp-kroki { max-width: 880px; margin: 16px 0 0 20px; }
+.mp-kroki li { margin-bottom: 8px; }
+.mp-test { max-width: 880px; margin-top: 8px; }
+.mp-wyniki { margin: 12px 0 0; }
+.mp-wyniki li { margin-bottom: 6px; }
+.mp-wyniki .mp-ok strong { color: #00701a; }
+.mp-wyniki .mp-zle strong { color: #b32d2e; }
+.mp-narzedzie { max-width: 880px; }
+.mp-branze { margin: 12px 0 8px; }
+.mp-dziennik { max-width: 960px; }
+.mp-dziennik .mp-kol-czas { width: 130px; white-space: nowrap; color: var(--mp-panel-szary); }
+@media (max-width: 782px) { .mp-pola { grid-template-columns: 1fr; } }
+
+/* Wygląd: pola obok podglądu */
+.mp-wyglad { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 440px); gap: 32px; align-items: start; max-width: 1180px; }
+.mp-podglad-ramka { position: sticky; top: 48px; padding: 24px; background: var(--wp--preset--color--krem, #f5f2ec); border-radius: 16px; }
+.mp-podglad-tytul { margin: 0 0 12px; font-weight: 600; }
+.mp-podglad { font-family: var(--wp--preset--font-family--inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif); }
+@media (max-width: 1100px) { .mp-wyglad { grid-template-columns: 1fr; } .mp-podglad-ramka { position: static; } }

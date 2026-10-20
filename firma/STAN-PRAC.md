@@ -30,7 +30,14 @@
 - [x] Wersja 4: w umowie zaraz pod tabelką lista „Co obejmuje zamówienie” (pełna lista dla każdego z wariantów 1–3, w kopii dla klienta zostaje jedna), „Poza ceną” i „Co dostarcza Zamawiający”, więc klient nie musi szukać tego w propozycji.
 - [x] Poprzednie wersje (1–3) i pliki próbne są w koszu Dysku.
 
+## Zrobione 20.10.2026: wtyczka MP Rezerwacje
+
+- [x] Własna wtyczka WordPress `strona/wtyczki/mp-rezerwacje/` (wersja 0.1.0): blok „Rezerwacja terminu” w stylu strony (dni jako kafelki, godziny jako pigułki, „Dalej: 3 krótkie pytania”), formularz z pytaniami, ekran „Do zobaczenia…”, e-maile z plikiem .ics, przypomnienia, strona „Twoja rezerwacja” do zmiany terminu i odwołania, panel Rezerwacje (lista spotkań, 7 zakładek ustawień, CSV, widżet w kokpicie), Kalendarz i Arkusz Google przez konto usługi (klient tylko udostępnia kalendarz, bez haseł), RODO. Gotowe zestawy: doradca kredytowy, psycholog, biuro rachunkowe. Opis i instrukcja: `README.md` wtyczki.
+- [x] Przetestowana lokalnie (WordPress 7.1.3, SQLite, style strony): rezerwacja na telefonie i komputerze, 5 równoczesnych rezerwacji jednego terminu (przeszła 1), e-maile, zmiana i odwołanie, Google na atrapie API, panel, RODO. Lokalny WordPress i zrzuty są tylko w plikach tymczasowych sesji.
+
 ## Otwarte sprawy
+
+- [ ] Wtyczka MP Rezerwacje: test z prawdziwym kontem Google (konto usługi w Google Cloud Mateusza i testowy kalendarz), potem pierwsza instalacja. Na mateuszprzetocki.pl (np. zamiast zaślepki `#rozmowa`) albo u pierwszej klientki tylko za zgodą Mateusza (`WP-REST.md` §16).
 
 - [ ] Uogólnić ankietę A w `Kod.gs` pod wszystkie branże. Teraz nie robimy; przypomnieć, gdy Mateusz zapyta o niedokończone zadania.
 - [ ] Dopasować prezentacje i szablon propozycji do nowych kolorów. Odłożone, niepilne.

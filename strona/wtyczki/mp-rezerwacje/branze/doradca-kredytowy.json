@@ -1,0 +1,23 @@
+{
+	"nazwa": "Doradca kredytowy",
+	"opis": "Konsultacja 30 minut online albo w biurze, także wieczorem. Trzy pytania: kwota, wkład własny, zatrudnienie.",
+	"ustawienia": {
+		"wizyty": [
+			{ "id": "konsultacja", "nazwa": "Konsultacja kredytowa", "czas": 30, "formy": [ "online", "na-miejscu" ], "opis": "" }
+		],
+		"miejsce": { "etykieta": "W biurze" },
+		"godziny": { "1": "10:00-20:00", "2": "10:00-20:00", "3": "10:00-20:00", "4": "10:00-21:00", "5": "10:00-16:00", "6": "", "7": "" },
+		"zasady": { "krok": 30, "przerwa": 15, "wyprzedzenie": 4, "okno": 30, "limit": 0, "zmiany": 12 },
+		"telefon": "wymagany",
+		"pytania": [
+			{ "id": "kwota", "etykieta": "Jakiej kwoty kredytu potrzebujesz?", "typ": "lista", "opcje": [ "do 200 tys. zł", "200–400 tys. zł", "400–700 tys. zł", "powyżej 700 tys. zł", "Jeszcze nie wiem" ], "wymagane": true, "podpowiedz": "" },
+			{ "id": "wklad", "etykieta": "Ile masz wkładu własnego?", "typ": "wybor", "opcje": [ "Poniżej 10%", "10–20%", "Powyżej 20%", "Nie wiem" ], "wymagane": true, "podpowiedz": "" },
+			{ "id": "zatrudnienie", "etykieta": "Forma zatrudnienia", "typ": "wybor", "opcje": [ "Umowa o pracę", "Działalność gospodarcza", "Inna" ], "wymagane": true, "podpowiedz": "" }
+		],
+		"teksty": { "naglowek": "Umów konsultację", "zapowiedz": "Kwota, wkład własny, forma zatrudnienia", "przycisk": "Umawiam konsultację" },
+		"maile": {
+			"potwierdzenie": "Dziękuję za rezerwację. Na spotkanie warto mieć pod ręką orientacyjne dochody z ostatnich miesięcy i listę obecnych zobowiązań (kredyty, karty, limity).",
+			"przypomnienie_tekst": "Przypominam o naszej konsultacji. Przygotuj, proszę, orientacyjne dochody i listę obecnych zobowiązań."
+		}
+	}
+}

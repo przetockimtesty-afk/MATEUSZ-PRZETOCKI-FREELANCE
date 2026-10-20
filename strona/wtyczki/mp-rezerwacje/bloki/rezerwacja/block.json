@@ -1,0 +1,27 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mp/rezerwacja",
+	"version": "0.1.0",
+	"title": "Rezerwacja terminu",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Kalendarz wolnych terminów z krótkim formularzem. Terminy, pytania i wygląd ustawiasz w menu Rezerwacje → Ustawienia.",
+	"keywords": [ "rezerwacja", "kalendarz", "termin", "konsultacja", "umów" ],
+	"textdomain": "mp-rezerwacje",
+	"attributes": {
+		"wizyta": { "type": "string", "default": "" },
+		"naglowek": { "type": "string", "default": "" },
+		"osoba": { "type": "boolean", "default": true }
+	},
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"anchor": true,
+		"align": [ "wide" ],
+		"spacing": { "margin": true }
+	},
+	"editorScript": "file:./edit.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style.css"
+}

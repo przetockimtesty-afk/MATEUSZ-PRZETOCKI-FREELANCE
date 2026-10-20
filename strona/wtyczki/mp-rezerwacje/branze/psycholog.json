@@ -1,0 +1,27 @@
+{
+	"nazwa": "Psycholog lub psychoterapeuta",
+	"opis": "Pierwsza konsultacja 50 minut w gabinecie albo online. W formularzu nie ma pytań o zdrowie, a w Kalendarzu Google tylko rodzaj spotkania.",
+	"ustawienia": {
+		"wizyty": [
+			{ "id": "pierwsza-konsultacja", "nazwa": "Pierwsza konsultacja", "czas": 50, "formy": [ "na-miejscu", "online" ], "opis": "Poznamy się i ustalimy, jak mogę pomóc. Nie musisz się przygotowywać." }
+		],
+		"miejsce": { "etykieta": "W gabinecie" },
+		"godziny": { "1": "09:00-19:00", "2": "09:00-19:00", "3": "12:00-20:00", "4": "09:00-19:00", "5": "09:00-15:00", "6": "", "7": "" },
+		"zasady": { "krok": 60, "przerwa": 10, "wyprzedzenie": 24, "okno": 42, "limit": 6, "zmiany": 24 },
+		"telefon": "opcjonalny",
+		"pytania": [
+			{ "id": "pierwszy-raz", "etykieta": "Czy to Twoja pierwsza konsultacja psychologiczna?", "typ": "wybor", "opcje": [ "Tak", "Nie" ], "wymagane": false, "podpowiedz": "" }
+		],
+		"teksty": {
+			"naglowek": "Umów pierwszą konsultację",
+			"zapowiedz": "Jedno pytanie, możesz je pominąć",
+			"przycisk": "Umawiam konsultację",
+			"sukces": "Potwierdzenie jest już w Twojej skrzynce. Gdyby coś się zmieniło, termin zmienisz przez link w e-mailu."
+		},
+		"maile": {
+			"potwierdzenie": "Dziękuję za zaufanie. Na pierwsze spotkanie nie trzeba niczego przygotowywać.",
+			"przypomnienie_tekst": "Przypominam o naszym spotkaniu. Jeśli nie możesz przyjść, zmień termin albo odwołaj spotkanie przez link poniżej."
+		},
+		"google": { "opis": "minimalny" }
+	}
+}

@@ -1,0 +1,22 @@
+{
+	"nazwa": "Biuro rachunkowe",
+	"opis": "Rozmowa o współpracy 20 minut przez telefon albo online. Pytania o formę działalności, podatek i liczbę dokumentów.",
+	"ustawienia": {
+		"wizyty": [
+			{ "id": "rozmowa", "nazwa": "Rozmowa o współpracy", "czas": 20, "formy": [ "telefon", "online" ], "opis": "" }
+		],
+		"godziny": { "1": "09:00-16:00", "2": "09:00-16:00", "3": "09:00-16:00", "4": "09:00-16:00", "5": "09:00-14:00", "6": "", "7": "" },
+		"zasady": { "krok": 30, "przerwa": 10, "wyprzedzenie": 4, "okno": 21, "limit": 0, "zmiany": 4 },
+		"telefon": "wymagany",
+		"pytania": [
+			{ "id": "dzialalnosc", "etykieta": "Forma działalności", "typ": "lista", "opcje": [ "Jednoosobowa działalność", "Spółka z o.o.", "Spółka jawna lub cywilna", "Fundacja lub stowarzyszenie", "Dopiero zakładam firmę" ], "wymagane": true, "podpowiedz": "" },
+			{ "id": "podatek", "etykieta": "Forma opodatkowania", "typ": "wybor", "opcje": [ "Ryczałt", "Skala", "Liniowy", "Nie wiem" ], "wymagane": false, "podpowiedz": "" },
+			{ "id": "dokumenty", "etykieta": "Ile dokumentów miesięcznie?", "typ": "wybor", "opcje": [ "do 20", "20–50", "50–100", "ponad 100" ], "wymagane": false, "podpowiedz": "Faktury kosztowe i sprzedażowe razem" }
+		],
+		"teksty": { "naglowek": "Umów rozmowę o współpracy", "zapowiedz": "Forma działalności, podatek, liczba dokumentów", "przycisk": "Umawiam rozmowę" },
+		"maile": {
+			"potwierdzenie": "Dziękuję za rezerwację. W rozmowie omówimy zakres obsługi i wycenę.",
+			"przypomnienie_tekst": "Przypominam o naszej rozmowie."
+		}
+	}
+}

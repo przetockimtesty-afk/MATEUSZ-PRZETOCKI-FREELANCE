@@ -23,6 +23,8 @@ strona/                     moja strona mateuszprzetocki.pl
   narzedzia/                skrypty do systemu marki (ds_gen.py generuje bundle.js i podglądy)
   wordpress/                strona w blokach WordPressa: generator (zbuduj.js), wysyłka (wyslij.py),
                             walidator bloków, CSS marki, ilustracje wyrenderowane z plansz
+  wtyczki/
+    mp-rezerwacje/          własna wtyczka: kalendarz rezerwacji, e-maile, Google, panel (README w środku)
 klienci/                    projekty klientów, każdy w osobnym folderze
 backups/                    kopie zasobów WordPressa sprzed każdej zmiany (wp.py, wyslij.py)
 wp.py                       klient WordPress REST API (zapisy z backupem i weryfikacją)
@@ -49,7 +51,7 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (20.10.2026, po wzorze umowy)
+## Stan zapisu (20.10.2026, po wtyczce MP Rezerwacje)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
@@ -63,6 +65,7 @@ stron z WordPressa.
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
+| Wtyczka MP Rezerwacje 0.1.0 | `strona/wtyczki/mp-rezerwacje/` | — | — (nie jest zainstalowana na żadnej stronie) |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.
