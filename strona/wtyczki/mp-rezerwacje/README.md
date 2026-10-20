@@ -50,9 +50,41 @@ weryfikacji aplikacji ani płatnego Google Workspace.
 
 ## Google krok po kroku
 
+Są dwa warianty. **Domyślny jest A: projekt na koncie klienta**, wtedy nic nie zależy od Mateusza.
+
+### Wariant A: projekt na koncie Google klienta (klient jest niezależny)
+
+**Klient (ok. 5 minut, na koncie Google, na którym ma kalendarz):**
+
+1. Wchodzi na console.cloud.google.com, akceptuje warunki (karta płatnicza nie jest potrzebna).
+2. U góry „Wybierz projekt” → „Nowy projekt” → nazwa np. `Strona rezerwacje` → Utwórz.
+3. Menu → „Administracja” (IAM i administracja) → „Uprawnienia” → „Przyznaj dostęp” → wpisuje e-mail Mateusza,
+   rola **Edytor** → Zapisz. (Edytor wystarczy do reszty i nie wymaga potwierdzania zaproszenia.)
+4. Kalendarz Google → Ustawienia kalendarza → Udostępnij określonym osobom → adres konta usługi, który
+   poda Mateusz → „Wprowadzanie zmian w wydarzeniach”.
+
+**Mateusz (w projekcie klienta):** włącza Google Calendar API (i Google Sheets API), tworzy konto usługi
+i klucz JSON (kroki 1–3 niżej), wkleja klucz we wtyczce, klika „Sprawdź połączenie”, a plik klucza usuwa
+ze swojego komputera.
+
+**Koniec współpracy:** klient w „Uprawnieniach” usuwa Mateusza z projektu. Połączenie działa dalej,
+bo projekt, konto usługi i klucz są klienta.
+
+Uwaga: przy koncie firmowym Google Workspace administrator firmy może mieć zablokowane tworzenie kluczy
+kont usługi; wtedy musi to odblokować dla tego projektu.
+
+### Wariant B: projekt na koncie Mateusza (gdy klient ma abonament opieki)
+
+Prościej dla klienta (tylko krok 4 z wariantu A), ale połączenie zależy od konta Mateusza: usunięcie
+projektu, konta usługi albo klucza, wyłączenie API albo blokada konta wyłącza zapis do Kalendarza Google
+(strona dalej przyjmuje rezerwacje i wysyła e-maile, ale zajętość z Google przestaje blokować terminy).
+Projekt na osobnym koncie Google do pracy, nie prywatnym. Przy rozstaniu z klientem przejść na wariant A.
+
+### Kroki techniczne (w projekcie z wariantu A albo B)
+
 **Mateusz, raz na klienta (ok. 10 minut):**
 
-1. console.cloud.google.com → projekt (może być jeden na wszystkich klientów) → Interfejsy API i usługi →
+1. console.cloud.google.com → właściwy projekt → Interfejsy API i usługi →
    włącz **Google Calendar API** (i **Google Sheets API**, jeśli ma być arkusz).
 2. Administracja → Konta usługi → Utwórz konto usługi (np. `rezerwacje-nazwa-klienta`, bez ról) →
    Klucze → Dodaj klucz → JSON. Każdy klient ma osobne konto usługi, żeby wyciek klucza z jednej strony
