@@ -11,7 +11,7 @@ firma/
   drogowskaz/               plan działania w PDF i jego źródło (plan.html, build.js)
                             oraz workflow wersji A i B (workflow.html, build_workflow.js)
   automatyzacja/            Kod.gs: ankiety Google → propozycja; INSTRUKCJA.md
-  umowy/                    wzór umowy z klientem i instrukcja wysyłki (źródła Dokumentów Google)
+  umowy/                    wzór umowy z klientem i instrukcja (źródła Dokumentów Google)
   prezentacje/
     A-konsultacja/          źródło prezentacji A (deck.json + slajdy)
     B-wycena/               źródło prezentacji B
@@ -62,7 +62,7 @@ stron z WordPressa.
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
-| Wzór umowy i instrukcja wysyłki | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 2 |
+| Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 3 |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.

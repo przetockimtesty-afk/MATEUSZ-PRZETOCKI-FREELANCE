@@ -7,8 +7,8 @@ Wejście: firma/umowy/*.src.html. Wyjście w firma/umowy/build/:
 - umowa.docx: wzór umowy z załącznikami. Przez .docx, bo konwersja HTML na Dysku gubi podziały stron.
 - instrukcja.html: instrukcja (bez podziałów stron, więc wystarcza HTML).
 
-Pola {{…}} dostają kolor według kategorii z POLA; <zolty>, <niebieski>, <zielony> i <fiolet> kolorują
-dowolny tekst. Pole spoza POLA zatrzymuje budowanie.
+Pola {{…}} są żółte (do wpisania), <zielony> oznacza opcję do wyboru, <zolty> koloruje dowolny tekst.
+Pole spoza POLA zatrzymuje budowanie.
 """
 import html
 import pathlib
@@ -20,14 +20,13 @@ from html.parser import HTMLParser
 KATALOG = pathlib.Path(__file__).resolve().parent
 BUILD = KATALOG / 'build'
 
-# Kolory z palety zakreślacza w Dokumentach Google (rząd „jasny 2”), żeby dało się je dobrać ręcznie.
-KOLORY = {'zolty': 'FFE599', 'niebieski': '9FC5E8', 'zielony': 'B6D7A8', 'fiolet': 'B4A7D6'}
+# Kolory z palety zakreślacza w Dokumentach Google (rząd „jasny 2”): żółte pola do wpisania,
+# zielone opcje do wyboru.
+KOLORY = {'zolty': 'FFE599', 'zielony': 'B6D7A8'}
 POLA = {
-    'zolty': ['NR_UMOWY', 'FIRMA', 'ZAMAWIAJACY', 'ADRES_ZAMAWIAJACEGO', 'NIP', 'REPREZENTANT',
-              'EMAIL_ZAMAWIAJACEGO', 'DOMENA', 'DATA_ZAWARCIA', 'TERMIN_ZADATKU', 'DATA_SPOTKANIA'],
-    'niebieski': ['DATA_PROPOZYCJI', 'WARIANT', 'CENA', 'ZADATEK', 'RESZTA', 'MATERIALY_DO', 'PUBLIKACJA',
-                  'MATERIALY', 'DODATEK', 'CENA_DODATKU', 'RABAT'],
-    'fiolet': ['ADRES_WYKONAWCY', 'EMAIL_KONTAKT', 'NR_KONTA'],
+    'zolty': ['NR_UMOWY', 'FIRMA', 'ZAMAWIAJACY', 'ADRES_ZAMAWIAJACEGO', 'NIP', 'EMAIL_ZAMAWIAJACEGO', 'DOMENA',
+              'DATA_PROPOZYCJI', 'WARIANT', 'DODATKI', 'CENA', 'ZADATEK', 'RESZTA', 'MATERIALY_DO', 'PUBLIKACJA',
+              'MATERIALY', 'DATA_SZKICU', 'ADRES_WYKONAWCY', 'EMAIL_KONTAKT', 'NR_KONTA'],
 }
 KATEGORIA = {pole: kolor for kolor, pola in POLA.items() for pole in pola}
 
@@ -187,10 +186,10 @@ class Docx:
                 wiersze = [[self.komorka(td) for td in znaczniki(tr)] for tr in znaczniki(w)]
                 out += [self.tabela(wiersze, [3000, SZER - 3000]), self.akapit([])]
             elif w.tag == 'podpisy':
-                pola = [[self.akapit([], ppr='<w:spacing w:before="600" w:after="0"/>'),
+                pola = [[self.akapit([], ppr='<w:spacing w:before="360" w:after="0"/>'),
                          self.akapit(self.runy([LINIA]), ppr='<w:spacing w:after="0"/><w:jc w:val="center"/>'),
                          self.akapit(self.runy([f'{kto} (data i podpis)'], rozmiar=20), ppr='<w:jc w:val="center"/>')]
-                        for kto in ('Zamawiający', 'Wykonawca')]
+                        for kto in ('Wykonawca', 'Zamawiający')]
                 out.append(self.tabela([pola], [SZER // 2, SZER - SZER // 2], ramka=False))
             else:
                 sys.exit(f'Nieobsługiwany blok: <{w.tag}>')
@@ -209,8 +208,8 @@ class Docx:
 
 STYLES = (f'<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles {NS}>'
           f'<w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="{FONT}" w:hAnsi="{FONT}" w:cs="{FONT}" w:eastAsia="{FONT}"/>'
-          '<w:sz w:val="22"/><w:szCs w:val="22"/><w:lang w:val="pl-PL"/></w:rPr></w:rPrDefault>'
-          '<w:pPrDefault><w:pPr><w:spacing w:after="120" w:line="264" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>'
+          '<w:sz w:val="21"/><w:szCs w:val="21"/><w:lang w:val="pl-PL"/></w:rPr></w:rPrDefault>'
+          '<w:pPrDefault><w:pPr><w:spacing w:after="100" w:line="252" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>'
           '<w:style w:type="paragraph" w:default="1" w:styleId="Normalny"><w:name w:val="Normal"/></w:style>'
           '<w:style w:type="paragraph" w:styleId="Nagwek1"><w:name w:val="heading 1"/><w:basedOn w:val="Normalny"/>'
           '<w:next w:val="Normalny"/><w:pPr><w:keepNext/><w:spacing w:before="0" w:after="160"/><w:jc w:val="center"/>'
@@ -265,7 +264,7 @@ def zbuduj_html(zrodlo):
     t = t.replace('<tabela>', '<table style="border-collapse:collapse;width:100%">').replace('</tabela>', '</table><p></p>')
     t = t.replace('<td>', f'<td style="{TD}">').replace('<p class="srodek">', '<p style="text-align:center;color:#444444">')
     t = re.sub(r'\n\s*\n+', '\n', t).strip()
-    zostalo = re.findall(r'</?(?:ramka|tabela|podpisy|zolty|niebieski|zielony|fiolet)\b|nowa-strona|class="', t)
+    zostalo = re.findall(r'</?(?:ramka|tabela|podpisy|zolty|zielony)\b|nowa-strona|class="', t)
     if zostalo:
         sys.exit(f'Nieprzetworzone znaczniki w instrukcji: {zostalo}')
     return f'<!DOCTYPE html><html><head><meta charset="utf-8"><style>{CSS}</style></head><body>\n{t}\n</body></html>\n'

@@ -1,40 +1,44 @@
 # Umowy z klientami
 
-Wzór umowy o wykonanie strony (wersja 2 z 20.10.2026) i instrukcja wysyłki. Żywe wersje są
-w Dokumentach Google, w folderze „Umowy” na Dysku; tu jest ich źródło.
-
-| Plik | Co to jest |
-|---|---|
-| `umowa.src.html` | źródło wzoru: umowa § 1–11 i załączniki 1–3 |
-| `instrukcja.src.html` | źródło instrukcji: co się zmienia, wysyłka, e-maile 1–3, punkty dla radcy |
-| `zbuduj.py` | `python3 firma/umowy/zbuduj.py` → `build/umowa.docx` i `build/instrukcja.html` |
-| `build/` | pliki wgrane na Dysk (Dysk zamienia je w Dokumenty Google) |
+Jedna umowa na 3 strony (wersja 3 z 20.10.2026): 2 strony umowy z tabelą zamówienia i podpisami,
+1 strona z informacją o odstąpieniu i formularzem. Żywe wersje są w Dokumentach Google w folderze
+„Umowy” na Dysku; tu jest ich źródło.
 
 Na Dysku (folder https://drive.google.com/drive/folders/1bNf1iI9igG1IVPrbyNRiolhnoFa9mz1A):
 
-- „WZÓR · Umowa o wykonanie strony”: https://docs.google.com/document/d/1lOBJjZJvaKWZqsKsn0oreNlDLuW14N_OCmfwuoCRqr0/edit
-- „Umowy · jak wypełniać i wysyłać”: https://docs.google.com/document/d/1gTM1Xlqn6lyHRp41ToII3JtlOYbCFDD8Xcos_RYomS8/edit
+- „WZÓR · Umowa o wykonanie strony”: https://docs.google.com/document/d/1KM5UneEkoId6ouZP8VsLAySyap0VuzbURIK672_CXG4/edit
+- „Umowa · jak używać”: https://docs.google.com/document/d/1AVH2sWWzuMlJncUpreQ__s3SDLoZwP76ykydrqIseYQ/edit
 
-## Jak to działa w skrócie
+## Jak to działa
 
-- Treść umowy jest stała. Dla klienta zmieniają się tylko kolorowe pola: żółte (dane klienta
-  i umowy), niebieskie (z propozycji), zielone (opcje do wyboru), fioletowe (dane Mateusza, raz we wzorze).
-- Umowę z Załącznikami 1–3 klient przyjmuje e-mailem jednym zdaniem, które zawiera też żądanie
-  rozpoczęcia prac przed upływem 14 dni na odstąpienie. Może też odesłać zdjęcie albo skan
-  podpisanej umowy (§ 10 ust. 1), ale to zdanie i tak pisze w e-mailu. Potwierdzenie idzie e-mailem z PDF.
-- Przeniesienie praw autorskich (Załącznik 3) podpisujemy po zapłacie na papierze w dwóch
-  egzemplarzach albo kwalifikowanymi podpisami (art. 53 prawa autorskiego); zdjęcie ani skan tu nie
-  wystarczą (§ 7 ust. 3). Do tego czasu klient
-  ma licencję z § 7 ust. 2.
+1. Kopia wzoru, żółte pola do wpisania, zielone opcje do wyboru, PDF.
+2. E-mail „Umowa”: klient podpisuje i odsyła skan albo zdjęcie (albo podpis palcem na PDF w telefonie)
+   i wpłaca zadatek. Podpis oznacza też prośbę o start od razu (pkt 2 umowy).
+3. E-mail „Zaczynam” z podpisaną umową. Koniec formalności, bez papieru i bez spotkań.
+
+Prawa autorskie (pkt 9 i 10): umowa przenosi prawa po zapłacie. Przeniesienie wymaga podpisów na
+oryginale (art. 53 prawa autorskiego), więc przy podpisie na skanie klient ma od zapłaty licencję
+na 50 lat na tych samych polach, a Mateusz nie licencjonuje projektu i tekstów nikomu innemu.
+Oryginał podpisują tylko wtedy, gdy klient o to poprosi.
+
+## Pliki
+
+| Plik | Co to jest |
+|---|---|
+| `umowa.src.html` | źródło wzoru umowy |
+| `instrukcja.src.html` | źródło instrukcji z dwoma e-mailami |
+| `zbuduj.py` | `python3 firma/umowy/zbuduj.py` → `build/umowa.docx` i `build/instrukcja.html` |
+| `build/` | pliki wgrane na Dysk (Dysk zamienia je w Dokumenty Google) |
 
 ## Zasady
 
 - Zmiany treści robimy w `*.src.html`, budujemy i wgrywamy na Dysk jako nowy plik albo wprowadzamy
   ręcznie w Dokumencie Google i przenosimy tutaj. Obie wersje mają mówić to samo.
-- Danych kontaktowych Mateusza nie wpisujemy do źródła: zostają pola `{{EMAIL_KONTAKT}}`,
-  `{{ADRES_WYKONAWCY}}` i `{{NR_KONTA}}`.
+- Danych kontaktowych Mateusza ani zdjęcia jego podpisu nie wpisujemy do repozytorium: zostają pola
+  `{{EMAIL_KONTAKT}}`, `{{ADRES_WYKONAWCY}}` i `{{NR_KONTA}}`.
 - Umowa przez .docx, a nie HTML: konwersja HTML na Dysku gubi podziały stron (sprawdzone 20.10.2026
   na 14 zapisach podziału), a .docx je zachowuje razem z kolorami pól i numeracją.
 - Warunki w umowie muszą zgadzać się ze stroną Oferta i z propozycją w `automatyzacja/Kod.gs`
-  (zadatek 40%, 2 rundy poprawek, 30 dni wsparcia, faktura bez VAT).
-- Wzór nie był jeszcze sprawdzony przez radcę; punkty do sprawdzenia są na końcu instrukcji.
+  (zadatek 40%, 2 rundy poprawek, 30 dni wsparcia, faktura bez VAT). Zakres bierze się z propozycji,
+  która jest częścią umowy.
+- Wzór nie był jeszcze sprawdzony przez radcę.
