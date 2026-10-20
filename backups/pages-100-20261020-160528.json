@@ -1,0 +1,121 @@
+{
+ "id": 100,
+ "date": "2026-10-20T17:42:29",
+ "date_gmt": "2026-10-20T15:42:29",
+ "guid": {
+  "rendered": "https://mateuszprzetocki.pl/?page_id=100",
+  "raw": "https://mateuszprzetocki.pl/?page_id=100"
+ },
+ "modified": "2026-10-20T17:42:29",
+ "modified_gmt": "2026-10-20T15:42:29",
+ "password": "",
+ "slug": "rozmowa",
+ "status": "draft",
+ "type": "page",
+ "link": "https://mateuszprzetocki.pl/?page_id=100",
+ "title": {
+  "raw": "Umów rozmowę",
+  "rendered": "Umów rozmowę"
+ },
+ "content": {
+  "raw": "<!-- wp:group {\"tagName\":\"section\",\"align\":\"full\",\"style\":{\"spacing\":{\"padding\":{\"top\":\"clamp(24px, 2.8vw, 40px)\",\"bottom\":\"clamp(72px, 8.4vw, 120px)\"}}},\"layout\":{\"type\":\"constrained\"}} -->\n<section class=\"wp-block-group alignfull\" style=\"padding-top:clamp(24px, 2.8vw, 40px);padding-bottom:clamp(72px, 8.4vw, 120px)\"><!-- wp:group {\"align\":\"wide\",\"style\":{\"spacing\":{\"blockGap\":\"var:preset|spacing|50\"}}} -->\n<div class=\"wp-block-group alignwide\"><!-- wp:paragraph {\"className\":\"is-style-okruszki\"} -->\n<p class=\"is-style-okruszki\"><a href=\"/\">Strona główna</a> › <a href=\"/kontakt/\">Kontakt</a> › Rozmowa</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:columns {\"verticalAlignment\":\"top\",\"className\":\"mp-rozmowa\",\"style\":{\"spacing\":{\"blockGap\":{\"top\":\"48px\",\"left\":\"48px\"}}}} -->\n<div class=\"wp-block-columns are-vertically-aligned-top mp-rozmowa\"><!-- wp:column {\"width\":\"44%\",\"className\":\"mp-hero-tekst\"} -->\n<div class=\"wp-block-column mp-hero-tekst\" style=\"flex-basis:44%\"><!-- wp:paragraph {\"className\":\"is-style-nadtytul\"} -->\n<p class=\"is-style-nadtytul\">Rozmowa 30 minut</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:heading {\"level\":1} -->\n<h1 class=\"wp-block-heading\">Porozmawiajmy o Twojej <em>stronie</em></h1>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph {\"className\":\"is-style-wstep\"} -->\n<p class=\"is-style-wstep\">Wybierz wolny termin w kalendarzu. Umawiasz się tak samo, jak będą się umawiać Twoi klienci.</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:list {\"className\":\"is-style-lista-znaczniki\"} -->\n<ul class=\"wp-block-list is-style-lista-znaczniki\"><!-- wp:list-item -->\n<li>Opowiadasz o firmie i klientach, a ja głównie słucham i pytam.</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>Pokazuję na żywo, jak działa strona z kalendarzem.</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>Mówię, ile by kosztowała: trzy warianty z widełkami.</li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li>Po rozmowie dostajesz podsumowanie, a propozycję na piśmie w 48 h.</li>\n<!-- /wp:list-item --></ul>\n<!-- /wp:list -->\n\n<!-- wp:paragraph {\"className\":\"is-style-podpis\"} -->\n<p class=\"is-style-podpis\">Bez zobowiązań · nie musisz niczego przygotowywać</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:paragraph {\"className\":\"is-style-strzalka\"} -->\n<p class=\"is-style-strzalka\"><a href=\"#ankieta\">Wolisz bez rozmowy? Wyceń stronę w 5 minut</a></p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column {\"width\":\"56%\"} -->\n<div class=\"wp-block-column\" style=\"flex-basis:56%\"><!-- wp:mp/rezerwacja /--></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns --></div>\n<!-- /wp:group --></section>\n<!-- /wp:group -->",
+  "rendered": "\n<section class=\"wp-block-group alignfull has-global-padding is-layout-constrained wp-block-group-is-layout-constrained\" style=\"padding-top:clamp(24px, 2.8vw, 40px);padding-bottom:clamp(72px, 8.4vw, 120px)\">\n<div class=\"wp-block-group alignwide is-layout-flow wp-container-core-group-is-layout-327af1f9 wp-block-group-is-layout-flow\">\n<p class=\"is-style-okruszki wp-block-paragraph\"><a href=\"/\">Strona główna</a> › <a href=\"/kontakt/\">Kontakt</a> › Rozmowa</p>\n\n\n\n<div class=\"wp-block-columns are-vertically-aligned-top mp-rozmowa is-layout-flex wp-container-core-columns-is-layout-84271ed7 wp-block-columns-is-layout-flex\">\n<div class=\"wp-block-column mp-hero-tekst is-layout-flow wp-block-column-is-layout-flow\" style=\"flex-basis:44%\">\n<p class=\"is-style-nadtytul wp-block-paragraph\">Rozmowa 30 minut</p>\n\n\n\n<h1 class=\"wp-block-heading\">Porozmawiajmy o Twojej <em>stronie</em></h1>\n\n\n\n<p class=\"is-style-wstep wp-block-paragraph\">Wybierz wolny termin w kalendarzu. Umawiasz się tak samo, jak będą się umawiać Twoi klienci.</p>\n\n\n\n<ul class=\"wp-block-list is-style-lista-znaczniki\">\n<li>Opowiadasz o firmie i klientach, a ja głównie słucham i pytam.</li>\n\n\n\n<li>Pokazuję na żywo, jak działa strona z kalendarzem.</li>\n\n\n\n<li>Mówię, ile by kosztowała: trzy warianty z widełkami.</li>\n\n\n\n<li>Po rozmowie dostajesz podsumowanie, a propozycję na piśmie w 48 h.</li>\n</ul>\n\n\n\n<p class=\"is-style-podpis wp-block-paragraph\">Bez zobowiązań · nie musisz niczego przygotowywać</p>\n\n\n\n<p class=\"is-style-strzalka wp-block-paragraph\"><a href=\"#ankieta\">Wolisz bez rozmowy? Wyceń stronę w 5 minut</a></p>\n</div>\n\n\n\n<div class=\"wp-block-column is-layout-flow wp-block-column-is-layout-flow\" style=\"flex-basis:56%\"><div class=\"mp-rez wp-block-mp-rezerwacja\" data-mp-rez>\n\t<script type=\"application/json\" class=\"mp-rez__dane\">{\"api\":{\"terminy\":\"https://mateuszprzetocki.pl/wp-json/mp-rezerwacje/v1/terminy\",\"rezerwacje\":\"https://mateuszprzetocki.pl/wp-json/mp-rezerwacje/v1/rezerwacje\",\"zmien\":\"\"},\"tryb\":\"nowa\",\"token\":\"\",\"po\":\"\",\"strona\":\"https://mateuszprzetocki.pl/?page_id=100\",\"wizyty\":[{\"id\":\"rozmowa\",\"nazwa\":\"Rozmowa o Twojej stronie\",\"czas\":\"30 minut\",\"formy_tekst\":\"online\",\"info\":\"\",\"formy\":[{\"id\":\"online\",\"etykieta\":\"Online\",\"ikona\":\"wideo\"}]}],\"pytania\":[{\"id\":\"branza\",\"etykieta\":\"Czym się zajmujesz?\",\"typ\":\"wybor\",\"opcje\":[\"Doradztwo kredytowe\",\"Biuro rachunkowe\",\"Psychologia lub terapia\",\"Inna branża\"],\"wymagane\":true,\"podpowiedz\":\"\"},{\"id\":\"strona\",\"etykieta\":\"Adres Twojej obecnej strony\",\"typ\":\"tekst\",\"opcje\":[],\"wymagane\":false,\"podpowiedz\":\"np. mojafirma.pl\"},{\"id\":\"przeszkadza\",\"etykieta\":\"Co dziś najbardziej przeszkadza Ci w umawianiu klientów?\",\"typ\":\"dlugi\",\"opcje\":[],\"wymagane\":false,\"podpowiedz\":\"\"}],\"telefon\":\"opcjonalny\",\"teksty\":{\"naglowek\":\"Umów 30 minut na Google Meet\",\"dalej\":\"Dalej: 3 krótkie pytania\",\"pytania\":\"3 krótkie pytania\",\"zapowiedz\":\"Branża, obecna strona i to, co dziś przeszkadza\",\"przycisk\":\"Umawiam rozmowę\",\"sukces\":\"Potwierdzenie i szczegóły rozmowy są już w Twojej skrzynce.\",\"zgoda\":\"Zgadzam się na przetwarzanie moich danych w celu umówienia i obsługi spotkania. Więcej w \\u003Ca href=\\u0022https://mateuszprzetocki.pl/polityka-prywatnosci/\\u0022 target=\\u0022_blank\\u0022 rel=\\u0022noopener\\u0022\\u003Epolityce prywatności\\u003C/a\\u003E.\"},\"ikony\":{\"osoba\":\"\\u003Cpath d=\\u0022M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\\u0022/\\u003E\\u003Ccircle cx=\\u002212\\u0022 cy=\\u00227\\u0022 r=\\u00224\\u0022/\\u003E\",\"zegar\":\"\\u003Ccircle cx=\\u002212\\u0022 cy=\\u002212\\u0022 r=\\u002210\\u0022/\\u003E\\u003Cpath d=\\u0022M12 6v6l4 2\\u0022/\\u003E\",\"wideo\":\"\\u003Cpath d=\\u0022m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5\\u0022/\\u003E\\u003Crect x=\\u00222\\u0022 y=\\u00226\\u0022 width=\\u002214\\u0022 height=\\u002212\\u0022 rx=\\u00222\\u0022/\\u003E\",\"pinezka\":\"\\u003Cpath d=\\u0022M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0\\u0022/\\u003E\\u003Ccircle cx=\\u002212\\u0022 cy=\\u002210\\u0022 r=\\u00223\\u0022/\\u003E\",\"telefon\":\"\\u003Cpath d=\\u0022M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384\\u0022/\\u003E\",\"lista\":\"\\u003Crect width=\\u00228\\u0022 height=\\u00224\\u0022 x=\\u00228\\u0022 y=\\u00222\\u0022 rx=\\u00221\\u0022 ry=\\u00221\\u0022/\\u003E\\u003Cpath d=\\u0022M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2\\u0022/\\u003E\\u003Cpath d=\\u0022M12 11h4\\u0022/\\u003E\\u003Cpath d=\\u0022M12 16h4\\u0022/\\u003E\\u003Cpath d=\\u0022M8 11h.01\\u0022/\\u003E\\u003Cpath d=\\u0022M8 16h.01\\u0022/\\u003E\",\"kalendarz\":\"\\u003Cpath d=\\u0022M8 2v3\\u0022/\\u003E\\u003Cpath d=\\u0022M16 2v3\\u0022/\\u003E\\u003Crect x=\\u00223\\u0022 y=\\u00223\\u0022 width=\\u002218\\u0022 height=\\u002218\\u0022 rx=\\u00222\\u0022/\\u003E\\u003Cpath d=\\u0022M3 9h18\\u0022/\\u003E\\u003Cpath d=\\u0022m9 15 2 2 4-4\\u0022/\\u003E\",\"ok\":\"\\u003Cpath d=\\u0022M20 6 9 17l-5-5\\u0022/\\u003E\",\"lewo\":\"\\u003Cpath d=\\u0022m15 18-6-6 6-6\\u0022/\\u003E\",\"prawo\":\"\\u003Cpath d=\\u0022m9 18 6-6-6-6\\u0022/\\u003E\",\"strzalka\":\"\\u003Cpath d=\\u0022M5 12h14\\u0022/\\u003E\\u003Cpath d=\\u0022m12 5 7 7-7 7\\u0022/\\u003E\",\"mail\":\"\\u003Cpath d=\\u0022m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7\\u0022/\\u003E\\u003Crect x=\\u00222\\u0022 y=\\u00224\\u0022 width=\\u002220\\u0022 height=\\u002216\\u0022 rx=\\u00222\\u0022/\\u003E\"}}</script>\n\t<div class=\"mp-rez__karta\">\n\t\t\t\t<div class=\"mp-rez__osoba\">\n\t\t\t<span class=\"mp-rez__awatar\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2\"/><circle cx=\"12\" cy=\"7\" r=\"4\"/></svg></span>\n\t\t\t<span>\n\t\t\t\t<strong>Mateusz Przetocki</strong>\n\t\t\t\t\t\t\t\t<small>Strony, które umawiają konsultacje</small>\n\t\t\t\t\t\t\t</span>\n\t\t</div>\n\t\t\t\t<div class=\"mp-rez__tresc\">\n\t\t\t<h3 class=\"mp-rez__tytul\">Umów 30 minut na Google Meet</h3>\n\t\t\t<p class=\"mp-rez__pomoc\">\n\t\t\t\t<span><span class=\"mp-rez__ikona\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><circle cx=\"12\" cy=\"12\" r=\"10\"/><path d=\"M12 6v6l4 2\"/></svg></span>30 minut</span>\n\t\t\t\t<span><span class=\"mp-rez__ikona\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\" focusable=\"false\"><path d=\"m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5\"/><rect x=\"2\" y=\"6\" width=\"14\" height=\"12\" rx=\"2\"/></svg></span>Online</span>\n\t\t\t</p>\n\t\t\t<div class=\"mp-rez__szkielet\" aria-hidden=\"true\">\n\t\t\t\t<i class=\"mp-rez__szkielet-miesiac\"></i>\n\t\t\t\t<span class=\"mp-rez__dni\"><i></i><i></i><i></i><i></i><i></i></span>\n\t\t\t\t<span class=\"mp-rez__godziny\"><i></i><i></i><i></i><i></i><i></i><i></i></span>\n\t\t\t\t<i class=\"mp-rez__szkielet-przycisk\"></i>\n\t\t\t</div>\n\t\t\t<noscript>\n\t\t\t\t<p class=\"mp-rez__info\">Kalendarz potrzebuje włączonego JavaScriptu. Możesz też napisać: prz&#101;&#116;&#111;&#099;&#107;&#105;m&#097;&#116;e&#117;s&#122;.&#107;o&#110;tak&#116;&#064;&#103;m&#097;i&#108;.&#099;om</p>\n\t\t\t</noscript>\n\t\t</div>\n\t</div>\n\t<p class=\"mp-rez__sr\" aria-live=\"polite\"></p>\n</div>\n</div>\n</div>\n</div>\n</section>\n",
+  "protected": false,
+  "block_version": 1
+ },
+ "excerpt": {
+  "raw": "Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.",
+  "rendered": "<p>Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.</p>\n",
+  "protected": false
+ },
+ "author": 2,
+ "featured_media": 0,
+ "parent": 0,
+ "menu_order": 14,
+ "comment_status": "closed",
+ "ping_status": "closed",
+ "template": "page-no-title",
+ "meta": {
+  "footnotes": ""
+ },
+ "permalink_template": "https://mateuszprzetocki.pl/%pagename%/",
+ "generated_slug": "umow-rozmowe",
+ "class_list": [
+  "post-100",
+  "page",
+  "type-page",
+  "status-draft",
+  "hentry"
+ ],
+ "_links": {
+  "self": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/pages/100",
+    "targetHints": {
+     "allow": [
+      "GET",
+      "POST",
+      "PUT",
+      "PATCH",
+      "DELETE"
+     ]
+    }
+   }
+  ],
+  "collection": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/pages"
+   }
+  ],
+  "about": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/types/page"
+   }
+  ],
+  "author": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/users/2"
+   }
+  ],
+  "replies": [
+   {
+    "embeddable": true,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/comments?post=100"
+   }
+  ],
+  "version-history": [
+   {
+    "count": 0,
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/pages/100/revisions"
+   }
+  ],
+  "wp:attachment": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/media?parent=100"
+   }
+  ],
+  "wp:action-publish": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/pages/100"
+   }
+  ],
+  "wp:action-unfiltered-html": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/pages/100"
+   }
+  ],
+  "wp:action-assign-author": [
+   {
+    "href": "https://mateuszprzetocki.pl/wp-json/wp/v2/pages/100"
+   }
+  ],
+  "curies": [
+   {
+    "name": "wp",
+    "href": "https://api.w.org/{rel}",
+    "templated": true
+   }
+  ]
+ }
+}

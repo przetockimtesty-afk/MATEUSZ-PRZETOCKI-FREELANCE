@@ -33,9 +33,9 @@ const U = {
 	realizacje: '/realizacje/', demo: '/realizacje/demo-doradca-kredytowy/', oMnie: '/o-mnie/', kontakt: '/kontakt/',
 	polityka: '/polityka-prywatnosci/', regulamin: '/regulamin/', rozmowa: '/rozmowa/',
 };
-// Zaślepki do podmiany, gdy będą prawdziwe linki (ankieta A ze źródłem „Ze strony internetowej”, kalendarz, Demo A)
+// Zaślepki do podmiany, gdy będą prawdziwe linki (ankieta A ze źródłem „Ze strony internetowej”, Demo A)
 const ANKIETA = '#ankieta';
-const ROZMOWA = '#rozmowa';
+const ROZMOWA = U.rozmowa;
 const DEMO = '#demo';
 
 // ---------------------------------------------------------------- klocki
@@ -470,7 +470,7 @@ strona('kontakt', { tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5
 			podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h'),
 		], { klasa: 'is-style-karta-ankieta' })]],
 		['45%', [grupa([
-			karta([ikona('video'), h3('Rozmowa 30&nbsp;minut na Google Meet'), p('Wybierasz wolny termin w&nbsp;moim kalendarzu. Strona rezerwacji otworzy się w&nbsp;nowej karcie.'), przyciski([przycisk('Umów 30&nbsp;minut', ROZMOWA, { obrys: true })])]),
+			karta([ikona('video'), h3('Rozmowa 30&nbsp;minut na Google Meet'), p('Wybierasz wolny termin w&nbsp;moim kalendarzu i&nbsp;od razu dostajesz potwierdzenie.'), przyciski([przycisk('Umów 30&nbsp;minut', ROZMOWA, { obrys: true })])]),
 			karta([ikona('mail'), h3('E-mail'), p('Odpowiadam w&nbsp;ciągu dnia roboczego.'), strzalka('kontakt@…', '#email')]),
 		], { gap: '20px' })]],
 	])], { id: 'drogi', gora: '16px', dol: '0' }),
@@ -486,8 +486,7 @@ strona('kontakt', { tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5
 ]);
 
 // Rozmowa: kalendarz z wtyczki MP Rezerwacje (godziny, pytania i e-maile są w jej ustawieniach, plik rezerwacje-ustawienia.json)
-// Szkic, dopóki Mateusz nie wczyta ustawień wtyczki; potem status i linki #rozmowa → U.rozmowa
-strona('rozmowa', { tytul: 'Umów rozmowę', slug: 'rozmowa', status: 'draft', opis: 'Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.' }, [
+strona('rozmowa', { tytul: 'Umów rozmowę', slug: 'rozmowa', opis: 'Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.' }, [
 	sekcja([
 		okruszki([['Strona główna', U.glowna], ['Kontakt', U.kontakt], 'Rozmowa']),
 		kolumny([
@@ -527,12 +526,13 @@ dokument('polityka', { tytul: 'Polityka prywatności', slug: 'polityka-prywatnos
 		h2('1. Kto jest administratorem', { id: 'administrator' }),
 		p('Administratorem danych jest Mateusz Przetocki, [adres zamieszkania albo do korespondencji], e-mail: kontakt@…. Prowadzę działalność sam, więc Twoje dane widzę tylko ja.'),
 		h2('2. Jakie dane i&nbsp;po co', { id: 'cele' }),
-		lista(['<strong>Ankieta wyceny:</strong> imię, e-mail i&nbsp;odpowiedzi o&nbsp;Twojej firmie. Używam ich, żeby odpowiedzieć na zapytanie i&nbsp;przygotować propozycję.', '<strong>Rezerwacja rozmowy:</strong> imię, e-mail i&nbsp;wybrany termin. Używam ich, żeby umówić i&nbsp;przeprowadzić rozmowę na Google Meet.', '<strong>E-mail:</strong> adres i&nbsp;treść wiadomości. Używam ich, żeby odpowiedzieć.']),
+		lista(['<strong>Ankieta wyceny:</strong> imię, e-mail i&nbsp;odpowiedzi o&nbsp;Twojej firmie. Używam ich, żeby odpowiedzieć na zapytanie i&nbsp;przygotować propozycję.', '<strong>Rezerwacja rozmowy:</strong> imię, e-mail, telefon (jeśli go podasz), wybrany termin i&nbsp;odpowiedzi na trzy krótkie pytania o&nbsp;Twoją firmę. Używam ich, żeby umówić, przygotować i&nbsp;przeprowadzić rozmowę na Google Meet, przypomnieć o&nbsp;niej i&nbsp;umożliwić zmianę terminu.', '<strong>E-mail:</strong> adres i&nbsp;treść wiadomości. Używam ich, żeby odpowiedzieć.']),
 		p('[Podstawa prawna dla każdego celu: do ustalenia z&nbsp;radcą.] Nie proszę o&nbsp;dane wrażliwe i&nbsp;nie wysyłam newslettera.'),
 		h2('3. Komu przekazuję dane', { id: 'odbiorcy' }),
-		lista(['<strong>Google:</strong> ankieta, kalendarz rezerwacji i&nbsp;dokumenty, w&nbsp;których przygotowuję propozycję. Dane mogą być przekazywane do USA. [Podstawa przekazania i&nbsp;umowa powierzenia: do ustalenia z&nbsp;radcą.]', '<strong>LH.pl:</strong> hosting strony i&nbsp;skrzynka kontakt@….']),
+		lista(['<strong>Google:</strong> ankieta, rozmowa na Google Meet i&nbsp;dokumenty, w&nbsp;których przygotowuję propozycję. Dane mogą być przekazywane do USA. [Podstawa przekazania i&nbsp;umowa powierzenia: do ustalenia z&nbsp;radcą.]', '<strong>LH.pl:</strong> hosting strony (tu zapisują się rezerwacje rozmów) i&nbsp;skrzynka kontakt@….']),
 		h2('4. Jak długo je przechowuję', { id: 'okres' }),
-		p('[Okres przechowywania dla ankiety, rezerwacji i&nbsp;korespondencji: do ustalenia z&nbsp;radcą.]'),
+		p('Dane z&nbsp;rezerwacji rozmowy usuwają się automatycznie 365 dni po rozmowie. Zostaje tylko termin, bez danych osobowych.'),
+		p('[Okres przechowywania dla ankiety i&nbsp;korespondencji: do ustalenia z&nbsp;radcą.]'),
 		h2('5. Twoje prawa', { id: 'prawa' }),
 		p('Możesz zażądać dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania i&nbsp;przeniesienia, a&nbsp;także wnieść sprzeciw. Wystarczy e-mail na kontakt@….'),
 		p('Masz też prawo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych.'),

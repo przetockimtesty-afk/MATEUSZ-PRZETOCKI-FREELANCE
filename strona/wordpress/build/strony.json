@@ -39,8 +39,7 @@
   "slug": "rozmowa",
   "rodzic": null,
   "opis": "Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.",
-  "url": "/rozmowa/",
-  "status": "draft"
+  "url": "/rozmowa/"
  },
  "polityka": {
   "tytul": "Polityka prywatności",
