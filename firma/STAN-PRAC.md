@@ -27,6 +27,7 @@
 - [x] Własny wzór umowy o wykonanie strony (wersja 1), na podstawie dwóch przykładowych umów od Mateusza (wzór i specyfikacja innego wykonawcy), ale napisany od nowa pod nasze warunki: umowa § 1–11, Załącznik 1 Zamówienie, Załącznik 2 prawo odstąpienia z formularzem, Załącznik 3 protokół odbioru z przeniesieniem praw. Źródło `firma/umowy/`, na Dysku folder „Umowy” z Dokumentami Google „WZÓR · Umowa o wykonanie strony” i „Umowy · jak wypełniać i wysyłać” (opis i linki w `firma/umowy/README.md`).
 - [x] Pola do podmiany w kolorach: żółte (klient i umowa), niebieskie (z propozycji), zielone (opcje), fioletowe (dane Mateusza, raz we wzorze). Nazwy pól jak w automacie propozycji (`{{NR_UMOWY}}`, `{{ZADATEK}}`…).
 - [x] Sposób wysyłki: e-mail 1 z PDF i zdaniem do odpisania (akceptacja + żądanie rozpoczęcia prac przed upływem 14 dni), e-mail 2 z potwierdzeniem i PDF, po zapłacie Załącznik 3 na papierze w dwóch egzemplarzach (osobiście albo poleconym z kopertą zwrotną) albo podpisami kwalifikowanymi. Treść e-maili w instrukcji.
+- [x] Wersja 2 (20.10): zdjęcie albo skan podpisanej umowy wystarcza do jej zawarcia (§ 10 ust. 1), ale nie do przeniesienia praw (§ 7 ust. 3, potrzebny oryginał). To samo w instrukcji i e-mailach 1 i 3. Na Dysku stare wersje i 3 pliki próbne są w koszu; w folderze „Umowy” zostały tylko 2 aktualne dokumenty.
 
 ## Otwarte sprawy
 
@@ -45,7 +46,6 @@
   - linki: `#ankieta` (36 przycisków na wszystkich stronach), `#rozmowa` (13, kalendarz rozmowy), `#demo` (11), `#propozycja` (Jak pracuję), `#email` (Kontakt);
   - teksty: `kontakt@…` (stopka, Kontakt, polityka, regulamin; e-mail wpisuje Mateusz sam w edytorze, nie trafia do repozytorium), „[adres z danych z ustawy]” w stopce, „[adres zamieszkania albo do korespondencji…]” i „[data publikacji]” w polityce i regulaminie, trzy uwagi „do ustalenia z radcą” / „sprawdzić przed publikacją” w polityce prywatności.
 - [ ] Umowa: Mateusz wpisuje we wzorze na Dysku swoje dane w fioletowe pola (adres, e-mail, numer konta) i pokazuje wzór radcy razem z polityką i regulaminem (lista 7 punktów na końcu instrukcji). Poprawki radcy przenieść też do `firma/umowy/umowa.src.html`.
-- [ ] Na Dysku w folderze „Umowy” są 3 pliki z nazwą „do usunięcia” (próby konwersji z 20.10). Usuwa je Mateusz albo Claude na jego prośbę.
 - [ ] Regulamin strony, pkt 6 „Odstąpienie od umowy o stronę”: zamiast zaślepki „[Zasady odstąpienia… do ustalenia z radcą]” można wstawić skrót § 9 umowy, gdy radca go zatwierdzi.
 - [ ] Zdecydować o wtyczkach WordPressa (propozycja z 19.10: Rank Math, cache, SMTP, Koko Analytics, Two Factor) i o własnych wtyczkach „MP Bloki” i „MP Linki”. Instalacja tylko za zgodą Mateusza.
 - [ ] Po instalacji wtyczki SEO wpisać tytuły SEO z planu strony (opisy SEO już są w zajawkach stron).

@@ -3,7 +3,7 @@
 Budowanie: python3 firma/umowy/zbuduj.py  →  firma/umowy/build/instrukcja.html
 -->
 <h1>Umowy · jak wypełniać i wysyłać</h1>
-<p class="srodek">Wersja 1 z 20.10.2026 · do wzoru „WZÓR · Umowa o wykonanie strony”</p>
+<p class="srodek">Wersja 2 z 20.10.2026 · do wzoru „WZÓR · Umowa o wykonanie strony”</p>
 
 <h2>Co jest stałe, a co się zmienia</h2>
 <p>Treść umowy jest dla każdego klienta taka sama. Zmieniasz tylko kolorowe pola, czyli dane klienta, numer umowy i Załącznik 1 z zakresem, ceną i terminami. Dzięki temu nie piszesz umowy od nowa i nie musisz za każdym razem sprawdzać jej z radcą.</p>
@@ -45,11 +45,11 @@ Budowanie: python3 firma/umowy/zbuduj.py  →  firma/umowy/build/instrukcja.html
 
 <h2>Jak klient przyjmuje umowę</h2>
 <p>Domyślnie e-mailem. Umowa o dzieło nie wymaga podpisu, a odpowiedź z adresu klienta pokazuje, kto i kiedy ją przyjął. Klient odpisuje jedno zdanie, które dostaje w e-mailu 1. Druga część tego zdania to żądanie rozpoczęcia prac przed upływem 14 dni na odstąpienie: bez niego klient będący jednoosobową firmą może w tym czasie odstąpić od umowy i dostać zwrot całego zadatku, nawet gdy praca już trwa.</p>
-<p>Jeśli klient woli podpisać, może podpisać PDF podpisem zaufanym (bezpłatnie na gov.pl), kwalifikowanym albo na papierze. Wtedy i tak poproś o zdanie z e-maila 1 w wiadomości, w której odsyła podpisaną umowę.</p>
+<p>Jeśli klient woli podpisać, może podpisać PDF podpisem zaufanym (bezpłatnie na gov.pl) albo kwalifikowanym, albo wydrukować umowę, podpisać ją i odesłać zdjęcie lub skan. Przy umowie zdjęcie wystarcza, bo umowa o dzieło nie wymaga szczególnej formy. W każdym z tych przypadków poproś w tym samym e-mailu o zdanie z e-maila 1, bo prośby o rozpoczęcie prac nie ma w treści umowy.</p>
 <p>Po akceptacji wysyłasz e-mail 2 z PDF umowy. Przepisy wymagają takiego potwierdzenia na trwałym nośniku przy umowie z konsumentem i jednoosobową firmą, a przy spółce też się przydaje.</p>
 
 <h2>Jak podpisujemy przeniesienie praw</h2>
-<p>Przeniesienie autorskich praw majątkowych bez formy pisemnej jest nieważne (art. 53 ustawy o prawie autorskim). Skan z podpisem, zdjęcie podpisu ani akceptacja e-mailem jej nie spełniają. Prawnicy nie są też zgodni, czy podpis zaufany zastępuje ją między firmami. Dlatego Załącznik 3 podpisujecie po zapłacie całego wynagrodzenia w jeden z tych sposobów:</p>
+<p>Przeniesienie autorskich praw majątkowych bez formy pisemnej jest nieważne (art. 53 ustawy o prawie autorskim). Zdjęcie albo skan podpisanego dokumentu to tylko kopia i według przeważającego stanowiska sądów i prawników nie spełnia tej formy; akceptacja e-mailem też nie. Przy Załączniku 3 potrzebny jest oryginał z podpisem odręcznym. Prawnicy nie są też zgodni, czy podpis zaufany zastępuje ją między firmami. Dlatego Załącznik 3 podpisujecie po zapłacie całego wynagrodzenia w jeden z tych sposobów:</p>
 <ul>
 <li><b>Na papierze, osobiście.</b> Drukujesz Załącznik 3 w dwóch egzemplarzach, podpisujesz oba przy kliencie (np. przy przekazaniu strony w Krakowie), każdy zabiera jeden.</li>
 <li><b>Na papierze, pocztą.</b> Podpisujesz oba egzemplarze i wysyłasz je listem poleconym z kopertą zwrotną ze znaczkiem. Klient podpisuje oba i odsyła jeden. Koszt to kilkanaście złotych.</li>
@@ -60,11 +60,11 @@ Budowanie: python3 firma/umowy/zbuduj.py  →  firma/umowy/build/instrukcja.html
 <h2>Forma każdego kroku</h2>
 <tabela>
 <tr><td><b>Krok</b></td><td><b>Co wystarcza</b></td><td><b>Jak w praktyce</b></td></tr>
-<tr><td>Umowa z załącznikami</td><td>forma dokumentowa</td><td>e-mail 1 i odpowiedź klienta jednym zdaniem</td></tr>
+<tr><td>Umowa z załącznikami</td><td>forma dokumentowa</td><td>e-mail 1 i odpowiedź klienta jednym zdaniem; zdjęcie albo skan podpisanej umowy też wystarcza, jeśli w e-mailu jest to zdanie</td></tr>
 <tr><td>Żądanie rozpoczęcia prac przed upływem 14 dni</td><td>oświadczenie klienta na trwałym nośniku</td><td>druga część zdania z e-maila 1</td></tr>
 <tr><td>Potwierdzenie zawarcia umowy</td><td>trwały nośnik</td><td>e-mail 2 z PDF</td></tr>
 <tr><td>Zmiany zakresu, ceny i terminów, prace dodatkowe</td><td>forma dokumentowa (§ 10 ust. 3)</td><td>Twoja wycena e-mailem i odpowiedź klienta „Akceptuję”</td></tr>
-<tr><td>Przeniesienie praw autorskich (Załącznik 3)</td><td>forma pisemna pod rygorem nieważności</td><td>papier w dwóch egzemplarzach albo dwa podpisy kwalifikowane</td></tr>
+<tr><td>Przeniesienie praw autorskich (Załącznik 3)</td><td>forma pisemna pod rygorem nieważności</td><td>oryginał na papierze w dwóch egzemplarzach albo dwa podpisy kwalifikowane; zdjęcie i skan nie wystarczą</td></tr>
 </tabela>
 
 <h2>E-mail 1: umowa do akceptacji</h2>
@@ -75,7 +75,7 @@ Budowanie: python3 firma/umowy/zbuduj.py  →  firma/umowy/build/instrukcja.html
 <p>„Akceptuję umowę nr {{NR_UMOWY}} z załącznikami. Proszę o rozpoczęcie prac przed upływem 14 dni na odstąpienie od umowy i przyjmuję do wiadomości, że po pełnym wykonaniu usługi stracę prawo odstąpienia.”</p>
 <p>Zadatek: {{ZADATEK}} zł na rachunek {{NR_KONTA}}, tytuł „Zadatek, umowa {{NR_UMOWY}}”, w ciągu 3 dni roboczych. Fakturę bez VAT wyślę po wpłacie.</p>
 <p>Żeby zacząć, potrzebuję: {{MATERIALY}}. Najwygodniej odpisać z załącznikami albo z linkiem do folderu.</p>
-<p>Jeśli chcą Państwo coś w umowie zmienić, proszę napisać, poprawię ją. Można ją też podpisać podpisem zaufanym (bezpłatnie na gov.pl) albo kwalifikowanym i odesłać.</p>
+<p>Jeśli chcą Państwo coś w umowie zmienić, proszę napisać, poprawię ją. Zamiast zdania można też odesłać umowę podpisaną podpisem zaufanym (bezpłatnie na gov.pl) lub kwalifikowanym albo zdjęcie podpisanego wydruku. Wtedy proszę dopisać w e-mailu zdanie o rozpoczęciu prac.</p>
 <p>Pozdrawiam<br>Mateusz Przetocki</p>
 
 <h2>E-mail 2: potwierdzenie zawarcia umowy</h2>
@@ -89,7 +89,7 @@ Budowanie: python3 firma/umowy/zbuduj.py  →  firma/umowy/build/instrukcja.html
 <p><b>Temat:</b> Strona {{DOMENA}} działa</p>
 <p>Dzień dobry,</p>
 <p>strona działa pod adresem {{DOMENA}}. Dziękuję za wpłatę. W załączniku są instrukcja obsługi, nagranie i lista dostępów.</p>
-<p>Została ostatnia formalność: protokół odbioru z przeniesieniem praw autorskich. Przepisy wymagają przy przeniesieniu praw podpisu na papierze, dlatego <zielony>przywiozę dwa egzemplarze {{DATA_SPOTKANIA}} / wysłałem dziś dwa podpisane egzemplarze listem poleconym z kopertą zwrotną</zielony>. Proszę podpisać oba i jeden odesłać. Do tego czasu mogą Państwo w pełni korzystać ze strony na licencji z § 7 ust. 2 umowy.</p>
+<p>Została ostatnia formalność: protokół odbioru z przeniesieniem praw autorskich. Przepisy wymagają przy przeniesieniu praw podpisu na papierze, dlatego <zielony>przywiozę dwa egzemplarze {{DATA_SPOTKANIA}} / wysłałem dziś dwa podpisane egzemplarze listem poleconym z kopertą zwrotną</zielony>. Proszę podpisać oba i jeden odesłać. Zdjęcie albo skan tu nie wystarczy, potrzebny jest oryginał. Do tego czasu mogą Państwo w pełni korzystać ze strony na licencji z § 7 ust. 2 umowy.</p>
 <p>Przez 30 dni piszę pod tym adresem w sprawie błędów i pytań o obsługę.</p>
 <p>Pozdrawiam<br>Mateusz Przetocki</p>
 
