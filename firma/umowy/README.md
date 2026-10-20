@@ -1,17 +1,19 @@
 # Umowy z klientami
 
-Jedna umowa na 3 strony (wersja 3 z 20.10.2026): 2 strony umowy z tabelą zamówienia i podpisami,
-1 strona z informacją o odstąpieniu i formularzem. Żywe wersje są w Dokumentach Google w folderze
+Jedna umowa (wersja 4 z 20.10.2026): tabela zamówienia, lista „Co obejmuje zamówienie” dla
+wybranego wariantu, lista „Co dostarcza Zamawiający”, 15 punktów zasad i podpisy (u klienta ok. 3 strony),
+a na ostatniej stronie informacja o odstąpieniu z formularzem. We wzorze są listy wszystkich trzech
+wariantów; w kopii dla klienta zostaje jedna. Żywe wersje są w Dokumentach Google w folderze
 „Umowy” na Dysku; tu jest ich źródło.
 
 Na Dysku (folder https://drive.google.com/drive/folders/1bNf1iI9igG1IVPrbyNRiolhnoFa9mz1A):
 
-- „WZÓR · Umowa o wykonanie strony”: https://docs.google.com/document/d/1KM5UneEkoId6ouZP8VsLAySyap0VuzbURIK672_CXG4/edit
-- „Umowa · jak używać”: https://docs.google.com/document/d/1AVH2sWWzuMlJncUpreQ__s3SDLoZwP76ykydrqIseYQ/edit
+- „WZÓR · Umowa o wykonanie strony”: https://docs.google.com/document/d/1LfslztMwoO5yJlXzDrsjEITLCw6wQB4xGXk_sW-fU6Y/edit
+- „Umowa · jak używać”: https://docs.google.com/document/d/18H16HN2spnwy9tNUHKIQYK6464KsQ5qj0D4IOJoOCwQ/edit
 
 ## Jak to działa
 
-1. Kopia wzoru, żółte pola do wpisania, zielone opcje do wyboru, PDF.
+1. Kopia wzoru, żółte pola do wpisania, zielone opcje do wyboru (w tym lista zakresu wybranego wariantu), PDF.
 2. E-mail „Umowa”: klient podpisuje i odsyła skan albo zdjęcie (albo podpis palcem na PDF w telefonie)
    i wpłaca zadatek. Podpis oznacza też prośbę o start od razu (pkt 2 umowy).
 3. E-mail „Zaczynam” z podpisaną umową. Koniec formalności, bez papieru i bez spotkań.
@@ -39,6 +41,8 @@ Oryginał podpisują tylko wtedy, gdy klient o to poprosi.
 - Umowa przez .docx, a nie HTML: konwersja HTML na Dysku gubi podziały stron (sprawdzone 20.10.2026
   na 14 zapisach podziału), a .docx je zachowuje razem z kolorami pól i numeracją.
 - Warunki w umowie muszą zgadzać się ze stroną Oferta i z propozycją w `automatyzacja/Kod.gs`
-  (zadatek 40%, 2 rundy poprawek, 30 dni wsparcia, faktura bez VAT). Zakres bierze się z propozycji,
-  która jest częścią umowy.
+  (zadatek 40%, 2 rundy poprawek, 30 dni wsparcia, faktura bez VAT). Listy zakresu wariantów 1–3
+  i lista materiałów odpowiadają stronie Oferta i punktowi 6 propozycji; przy zmianie pakietów zmień wszystkie.
+- Wariant B (strona, która wycenia, np. dla pralni) nie ma jeszcze listy zakresu w umowie; dopisać,
+  gdy pojawi się taki klient.
 - Wzór nie był jeszcze sprawdzony przez radcę.

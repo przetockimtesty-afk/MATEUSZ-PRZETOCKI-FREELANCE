@@ -24,10 +24,11 @@
 
 ## Zrobione 20.10.2026: umowa z klientem
 
-- [x] Własny wzór umowy o wykonanie strony, wersja 3 (uproszczona na prośbę Mateusza): jeden dokument na 3 strony, tabela zamówienia na górze (zakres = wariant z propozycji, która jest częścią umowy), 15 krótkich punktów, podpisy, na ostatniej stronie informacja o odstąpieniu z formularzem. Pola: żółte do wpisania, zielone do wyboru. Źródło `firma/umowy/`, na Dysku folder „Umowy” z Dokumentami Google „WZÓR · Umowa o wykonanie strony” i „Umowa · jak używać” (linki w `firma/umowy/README.md`).
+- [x] Własny wzór umowy o wykonanie strony, wersja 3 (uproszczona na prośbę Mateusza): jeden dokument, tabela zamówienia na górze, 15 krótkich punktów, podpisy, na ostatniej stronie informacja o odstąpieniu z formularzem. Pola: żółte do wpisania, zielone do wyboru. Źródło `firma/umowy/`, na Dysku folder „Umowy” z Dokumentami Google „WZÓR · Umowa o wykonanie strony” i „Umowa · jak używać” (linki w `firma/umowy/README.md`).
 - [x] Podpisywanie bez spotkań i bez papieru: klient podpisuje i odsyła skan, zdjęcie albo podpis palcem na PDF w telefonie; podpis oznacza też prośbę o start od razu (bez czekania 14 dni). Mateusz wysyła 2 e-maile: „Umowa” i „Zaczynam” (ten drugi z podpisaną umową jest potwierdzeniem zawarcia).
 - [x] Prawa autorskie: przeniesienie po zapłacie; przy podpisie na skanie klient ma licencję na 50 lat na tych samych polach, a Mateusz nie licencjonuje projektu i tekstów innym. Oryginał tylko na prośbę klienta.
-- [x] Poprzednie wersje (1 i 2, z osobnym protokołem na papierze) i pliki próbne są w koszu Dysku.
+- [x] Wersja 4: w umowie zaraz pod tabelką lista „Co obejmuje zamówienie” (pełna lista dla każdego z wariantów 1–3, w kopii dla klienta zostaje jedna), „Poza ceną” i „Co dostarcza Zamawiający”, więc klient nie musi szukać tego w propozycji.
+- [x] Poprzednie wersje (1–3) i pliki próbne są w koszu Dysku.
 
 ## Otwarte sprawy
 

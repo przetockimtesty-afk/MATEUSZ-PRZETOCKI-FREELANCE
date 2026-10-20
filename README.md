@@ -62,7 +62,7 @@ stron z WordPressa.
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
-| Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 3 |
+| Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.
