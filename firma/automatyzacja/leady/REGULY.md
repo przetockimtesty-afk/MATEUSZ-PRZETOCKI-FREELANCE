@@ -18,7 +18,7 @@ Ustalone 20.10.2026. Firma przechodzi przez bramki, potem dostaje punkty (maks. 
 
 ### B. Potrzeba (do 35)
 Najwyższa z: brak strony lub domena pusta 20 / strona bez formularza 16 / formularz lub „Umów” bez wyboru terminu 12.
-Dodatkowo: strona źle działa na telefonie +5; strona porzucona (stary rok, brak HTTPS) +3; brak obowiązkowych informacji (np. nr wpisu KNF) +5; wizytówka Google bez linku do strony +2.
+Dodatkowo: strona źle działa na telefonie +5; strona porzucona (stary rok, brak HTTPS) +3; brak obowiązkowych informacji (np. nr wpisu KNF) +5; wizytówka Google bez linku do strony +2; strona wolna na telefonie (Lighthouse, największy element widoczny po ponad 4 s) +3, po ponad 10 s +5 (dodane 20.10).
 
 ### C. Popyt (do 20)
 10–100 opinii w Google 6; średnia ≥ 4,5 4; opinie o trudnym kontakcie 6; aktywność w ostatnich 3 miesiącach 4.
@@ -49,3 +49,12 @@ Dane zgadnięte (np. domena dobrana po nazwie, niepotwierdzona) dają połowę p
 ## Czego nie oceniamy
 
 Cech osób (wiek, płeć, nazwisko). Z opinii bierzemy tylko sygnał o kontakcie, bez imion autorów.
+
+## Podział pracy (20.10)
+
+- Automat: CEIDG, strona (formularz, kalendarz, nr wpisu KNF, HTTPS, telefon), szybkość (`szybkosc.sh`), wizytówki Google (po kluczu), KNF (po przerwie technicznej), punkty, kolejka, szkic.
+- Mateusz, tylko dla zwycięzców (kolumny „(Ty)” w arkuszu): Facebook/Instagram, LinkedIn, wygląd strony 1–5, kontakt dla firm bez e-maila, wspólni znajomi, ostatnie czytanie i wysyłka.
+
+## Wiadomość
+
+Jeden, najwyżej dwa konkrety z pomiaru, opisane faktami bez ocen („pojawia się po 20 s”, nie „strona jest zła”). Bez linku do wyniku w pierwszej wiadomości; wynik PageSpeed można wysłać po „TAK”.
