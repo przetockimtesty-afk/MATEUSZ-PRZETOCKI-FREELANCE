@@ -8,6 +8,8 @@ Repozytorium jest prywatne i nie trafia do klientów.
 ```
 firma/
   PROFIL.md                 kim jestem, oferta, ceny, decyzje (aktualizowane na bieżąco)
+  STAN-PRAC.md              ustalenia, plan i otwarte sprawy (aktualizowane po każdym zadaniu)
+  notatki/                  moje notatki przesłane w rozmowie (np. plan z 23.10)
   drogowskaz/               plan działania w PDF i jego źródło (plan.html, build.js)
                             oraz workflow wersji A i B (workflow.html, build_workflow.js)
   automatyzacja/            Kod.gs: ankiety Google → propozycja; INSTRUKCJA.md
@@ -52,7 +54,7 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (20.10.2026, kalendarz rezerwacji działa)
+## Stan zapisu (23.10.2026, plan z notatki w `firma/STAN-PRAC.md`)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|

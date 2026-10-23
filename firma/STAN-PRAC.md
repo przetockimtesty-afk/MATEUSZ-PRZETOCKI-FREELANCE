@@ -1,4 +1,4 @@
-# Stan prac (aktualizacja 20.10.2026)
+# Stan prac (aktualizacja 23.10.2026)
 
 ## Najważniejsze ustalenia
 
@@ -42,6 +42,61 @@
 - [x] Strona „Umów rozmowę” `/rozmowa/` z kalendarzem jako szkic (id 100). W CSS strony: kalendarz nie chowa się pod przyklejonym nagłówkiem, a na stronie z kalendarzem nie ma dolnego paska z ankietą.
 - [x] Próba na lokalnym WordPressie z tą samą wtyczką: plik wczytał się bez uwag, terminy zgodne z godzinami (także po zmianie czasu 25.10), rezerwacja na komputerze i telefonie, błędy formularza, e-maile do klienta i do Mateusza z plikiem .ics, bez błędów JavaScriptu.
 
+## Plan od 23.10.2026 (notatka Mateusza, `firma/notatki/2026-10-23-notatka-z-telefonu.md`)
+
+Ustalenia Mateusza z notatki: demo na razie znika ze strony (sekcje zostają w źródle). Realizacje pokazują na środku kalendarz z filmem, a pod nim 3 wcześniejsze projekty: bundle ze sticky barem, kalkulator prania tapicerki i kreator prezentów z podglądem na żywo. Od startu strona ma GA4, piksel Meta (PixelYourSite, wersja darmowa) i baner Complianz, a baza mailingowa powstaje od początku. Będzie jedna prezentacja sprzedażowa i krótka prezentacja „jak przebiega współpraca”. Filmy dla klientów są w playlistach „wymagane na start” i „dobrowolne”.
+
+Etap 1, do startu we wtorek 27.10:
+- [ ] 1. Ankieta wyceny na stronie zamiast ankiet Google A i B: wtyczka MP Ankiety (szkielet dla wszystkich klientów) i jedna ankieta z pytaniami zależnymi od branży. Odpowiedzi idą do automatu propozycji w `Kod.gs`, a na końcu jest dobrowolna zgoda na newsletter. Potem trzeba podpiąć 36 przycisków `#ankieta`.
+- [ ] 2. Usunąć demo i zaślepki: stronę 50 przenieść do szkiców i usunąć 11 przycisków `#demo`. Zdjąć też karty Demo A (główna, Realizacje), sekcje demo na 3 stronach branż i link `#propozycja` (Jak pracuję). Zamiast demo: link do `/rozmowa/` albo film. Przedtem przenieść zmiany Mateusza z edytora do `zbuduj.js`.
+- [ ] 3. Trzy nowe zasady na „O mnie” i na głównej. Propozycja do akceptacji:
+  - wszystko jest Twoje, bez abonamentu;
+  - techniką zajmuję się ja, bez Twoich haseł;
+  - cena, termin i zakres na piśmie, do tego 30 dni wsparcia.
+- [ ] 4. Realizacje: kalendarz na środku z filmem 30–40 s (nagranie na lokalnej kopii strony, MP4 bez YouTube'a), pod nim 3 projekty w układzie problem → co zrobiłem → co to daje. Zrzuty i opisy daje Mateusz; zrzuty puresofa.pl można zrobić samemu.
+- [ ] 5. Complianz, PixelYourSite i GA4 (instalacja za zgodą Mateusza, identyfikatory od niego):
+  - zdarzenia z wtyczek MP: ankieta wysłana, rozmowa umówiona;
+  - test zgód w oknie prywatnym: przy kłopotach PixelYourSite z Complianz piksel idzie przez Complianz;
+  - API konwersji na start wyłączone;
+  - polityka prywatności i polityka cookies.
+- [ ] 6. Mateusz: e-mail i adres w edytorze (stopka, Kontakt, polityka, regulamin), data publikacji. Dopiski „do ustalenia z radcą” zastąpić standardowym brzmieniem, radca sprawdzi je po starcie.
+
+Etap 2, do pierwszego klienta (ok. 6.11):
+- [ ] 7. Jeden proces po „TAK” w prezentacji, na „Jak pracuję” i w umowie:
+  - umowa i zadatek 40% w 3 dni;
+  - formularz materiałów i playlista „Na start”;
+  - szkic w 5 dni roboczych od kompletu, 2 rundy poprawek;
+  - odbiór, druga płatność i publikacja;
+  - 30 dni wsparcia, opinia w dniu 14, podsumowanie w dniu 30.
+- [ ] 8. Prezentacja „Jak przebiega współpraca” (6 slajdów, także jako PDF do umowy).
+- [ ] 9. Jedna prezentacja sprzedażowa ze szkicu Mateusza (10 slajdów), z poprawkami:
+  - badania tylko ze źródłem;
+  - ceny gotowych systemów z datą;
+  - „0 zł abonamentu za kalendarz” zamiast „0 zł/mc”;
+  - nazwy pakietów jak na stronie, do decyzji;
+  - zwrot z inwestycji z liczb z ankiety.
+  Jako szablon dla automatu pomija slajdy niepasujące do branży.
+- [ ] 10. Filmy w 3 playlistach: „Na start”, „Ułatwienia”, „Obsługa strony”. Scenariusze pisze Claude, nagrywa Mateusz. Do uwzględnienia:
+  - w LH.pl są „Ustawienia → Uprawnienia do serwerów” zamiast wysyłania haseł;
+  - przy linku partnerskim LH.pl powiedzieć wprost, że to polecenie;
+  - Gmail od 2026 nie pobiera poczty przez POP3: przekierowanie i „Wyślij jako” albo skrzynka w aplikacji Gmail;
+  - Google Workspace z organizacją założoną po maju 2024 domyślnie blokuje klucze kont usługi i osoby spoza domeny;
+  - arkusz rezerwacji przez link `/copy`, bez skryptu.
+- [ ] 11. Formularze na MP Ankiety, bez indeksowania: Materiały (pytania branżowe), Ustawienia kalendarza (z nich plik ustawień MP Rezerwacje), Uwagi do szkicu, Odbiór, Po 30 dniach.
+- [ ] 12. MP Rezerwacje 0.1.1 (za zgodą Mateusza): e-maile i Google w tle, bez duplikatu po ponownym kliknięciu, zdarzenie dla GA4 i piksela.
+
+Etap 3, po starcie:
+- [ ] 13. Baza mailingowa:
+  - zgody z ankiety od startu, zapisane w WordPressie Mateusza z datą i treścią zgody;
+  - narzędzie do wysyłki przy pierwszym newsletterze: Brevo albo MailPoet;
+  - bez własnej wysyłki.
+- [ ] 14. Search Console i mapa strony w dniu startu, przegląd liczb po 2 tygodniach.
+
+Czeka na Mateusza:
+- decyzje: kolejność, zgoda na Complianz, PixelYourSite i MP Rezerwacje 0.1.1, nazwy pakietów (propozycja: bez zmian), treść 3 zasad;
+- materiały: zrzuty i opisy 3 projektów, identyfikatory GA4 i piksela, konto partnera LH.pl;
+- odpowiedź: czy wydarzenia z rezerwacji pojawiają się już w Kalendarzu Google.
+
 ## Otwarte sprawy
 
 - [x] Kalendarz na mateuszprzetocki.pl działa (20.10): Mateusz wczytał ustawienia i dodał cron w LH.pl; strona `/rozmowa/` (100) opublikowana, 13 przycisków na 12 stronach prowadzi do niej, karta na Kontakcie i polityka prywatności (dane z rezerwacji, LH.pl, usuwanie po 365 dniach) zaktualizowane.
@@ -54,7 +109,7 @@
 - [ ] Wtyczka MP Rezerwacje: test z prawdziwym kontem Google (konto usługi w Google Cloud Mateusza i testowy kalendarz): zajętość i zapis wydarzeń, dodatkowy kalendarz bez dostępu, odwołanie i ponowienie zapisu, całodniowe wydarzenie oznaczone jako „Zajęty”, arkusz. Najprościej na mateuszprzetocki.pl, gdy kalendarz będzie już działał.
 - [ ] Wtyczka MP Rezerwacje: zdecydować o aktualizacjach (własny kanał aktualizacji z przyciskiem „Zaktualizuj” na stronach klientów albo ręczne wgrywanie ZIP) i o tym, czy klient ma sam zmieniać godziny i urlopy (dziś tylko administrator).
 
-- [ ] Uogólnić ankietę A w `Kod.gs` pod wszystkie branże. Teraz nie robimy; przypomnieć, gdy Mateusz zapyta o niedokończone zadania.
+- [ ] Ankieta wyceny: zamiast uogólniania ankiety A w `Kod.gs` powstaje ankieta na stronie z pytaniami zależnymi od branży (plan z 23.10, punkt 1). W `Kod.gs` zostaje automat propozycji i dochodzi przyjmowanie odpowiedzi ze strony.
 - [ ] Dopasować prezentacje i szablon propozycji do nowych kolorów. Odłożone, niepilne.
 - [ ] Usunąć folder `plan-freelancer/` ze starego repozytorium `oneproductstore`, jeśli wszystko jest skopiowane tutaj (Mateusz się zgodził). Zablokowane: sesja nie dostała dostępu do `oneproductstore`.
 - [x] Zdjęcia Mateusza na stronie, nowe z 20.10 (WebP z Dysku: „zalozonerece_1 (1).webp”, „recewkieszeni 1.webp”, „Nowoczesne biuro programisty z polską stroną internetową.webp”). Na głównej duże z założonymi rękami, na „O mnie” duże z rękami w kieszeniach, na obu małe przy komputerze, a na górze głównej twarz przy imieniu. Media 101–104, bez metadanych. Stare zdjęcia z 19.10 (media 92–94) usunięte z WordPressa. Plików zdjęć nie ma w repozytorium.
