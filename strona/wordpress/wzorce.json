@@ -1,0 +1,14 @@
+{
+ "email": {
+  "id": 126,
+  "tytul": "Dane kontaktowe · e-mail (Kontakt)"
+ },
+ "dane": {
+  "id": 127,
+  "tytul": "Dane kontaktowe · usługodawca (polityka prywatności, regulamin)"
+ },
+ "stopka": {
+  "id": 128,
+  "tytul": "Dane kontaktowe · stopka"
+ }
+}

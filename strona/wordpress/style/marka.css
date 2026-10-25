@@ -451,6 +451,8 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 
 /* Kalendarz rezerwacji (wtyczka MP Rezerwacje): przy przejściu do kolejnego kroku nie chowa się pod przyklejonym nagłówkiem */
 .mp-rez { scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 0px) + 88px); }
+/* Ankieta: przy przejściu do następnego kroku początek ankiety nie chowa się pod przyklejonym nagłówkiem */
+.mp-ank { --mp-ank-odstep: calc(var(--wp-admin--admin-bar--height, 0px) + 88px); }
 
 /* Przyklejony pasek z przyciskiem na telefonie */
 .mp-pasek-telefon { display: none; }
@@ -475,8 +477,10 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 	.mp-pasek-telefon .wp-block-button, .mp-pasek-telefon .wp-block-button__link { width: 100%; }
 	body { padding-bottom: 77px; }
 	/* na stronie z kalendarzem rezerwacji pasek z ankietą zasłaniałby formularz (link do ankiety jest obok kalendarza) */
-	body:has(.mp-rez) .mp-pasek-telefon { display: none; }
-	body:has(.mp-rez) { padding-bottom: 0; }
+	body:has(.mp-rez) .mp-pasek-telefon, body:has(.mp-ank) .mp-pasek-telefon { display: none; }
+	body:has(.mp-rez), body:has(.mp-ank) { padding-bottom: 0; }
+	/* strony z ankietą: na telefonie ankieta zaczyna się zaraz pod nagłówkiem i wstępem */
+	.mp-ankieta-uklad .mp-hero-tekst .is-style-lista-znaczniki, .mp-ankieta-uklad .mp-hero-tekst .is-style-podpis { display: none; }
 }
 
 @media (max-width: 781px) and (prefers-reduced-motion: no-preference) {
@@ -489,3 +493,52 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 @media (prefers-reduced-motion: reduce) {
 	.wp-block-button__link, .is-style-strzalka a::after, .ze-strzalka .wp-block-button__link::after { transition: none; }
 }
+
+/* Ustawienia cookies: przycisk jak link (stopka, polityka cookies); widać go dopiero, gdy działa baner Complianz */
+.mp-link-cookies { display: none; margin: 0; padding: 0; border: 0; background: none; font: inherit; font-size: inherit; color: inherit; text-decoration: none; cursor: pointer; }
+.cmplz-optin .mp-link-cookies { display: inline-block; }
+/* pływająca zakładka „Zarządzaj zgodą” Complianz: zamiast niej link „Ustawienia cookies” w stopce każdej strony */
+#cmplz-manage-consent { display: none !important; }
+.mp-link-cookies:hover, .mp-link-cookies:focus-visible { text-decoration: underline; }
+.mp-stopka .mp-link-cookies { font-size: 13px; color: var(--wp--preset--color--szary-na-czerni); }
+.mp-stopka .mp-link-cookies:hover { color: var(--wp--preset--color--krem); }
+.is-style-spis .mp-link-cookies { margin-top: 14px; font-size: 15px; font-weight: 600; text-decoration: underline; }
+
+/* Polityka cookies: dokument z Complianz w układzie stron prawnych */
+.mp-dokument-cmplz #cmplz-document { max-width: 680px; margin: 0; padding: 0; font-size: inherit; }
+.mp-dokument-cmplz #cmplz-document h3 { margin-top: 28px; font-size: 19px; }
+.mp-dokument-cmplz #cmplz-document p, .mp-dokument-cmplz #cmplz-document li { font-size: inherit; line-height: 1.6; }
+.mp-dokument-cmplz #cmplz-document a { color: var(--wp--preset--color--czern); }
+
+/* Baner zgody (Complianz): kolory i przyciski marki; „Odmów” wygląda tak samo jak „Akceptuję” */
+.cmplz-cookiebanner {
+	--cmplz_banner_background_color: var(--wp--preset--color--biel);
+	--cmplz_banner_border_color: var(--wp--preset--color--linia);
+	--cmplz_banner_border_width: 1px;
+	--cmplz_banner_border_radius: 16px;
+	--cmplz_text_color: var(--wp--preset--color--czern);
+	--cmplz_hyperlink_color: var(--wp--preset--color--czern);
+	--cmplz_title_font_size: 17px;
+	--cmplz_text_font_size: 14px;
+	--cmplz_link_font_size: 13px;
+	--cmplz_button_font_size: 15px;
+	--cmplz_button_border_radius: 9999px;
+	--cmplz_button_accept_background_color: var(--wp--preset--color--czern);
+	--cmplz_button_accept_border_color: var(--wp--preset--color--czern);
+	--cmplz_button_accept_text_color: var(--wp--preset--color--krem);
+	--cmplz_button_deny_background_color: var(--wp--preset--color--czern);
+	--cmplz_button_deny_border_color: var(--wp--preset--color--czern);
+	--cmplz_button_deny_text_color: var(--wp--preset--color--krem);
+	--cmplz_button_settings_background_color: transparent;
+	--cmplz_button_settings_border_color: var(--wp--preset--color--czern);
+	--cmplz_button_settings_text_color: var(--wp--preset--color--czern);
+	--cmplz_slider_active_color: var(--wp--preset--color--czern);
+	--cmplz_category_header_always_active_color: var(--wp--preset--color--grafit);
+	font-family: var(--wp--preset--font-family--inter);
+	box-shadow: 0 16px 48px rgba(22, 21, 20, 0.16) !important;
+}
+.cmplz-cookiebanner .cmplz-title { font-family: var(--wp--preset--font-family--inter-tight); font-weight: 600; letter-spacing: -0.01em; }
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn { font-family: inherit; font-weight: 600; border-width: 1.5px !important; }
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-accept:hover, .cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-deny:hover { background-color: var(--wp--preset--color--czern-hover); border-color: var(--wp--preset--color--czern-hover) !important; }
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-view-preferences:hover, .cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-save-preferences:hover { background-color: var(--wp--preset--color--krem); }
+@media (max-width: 768px) { .cmplz-cookiebanner { --cmplz_banner_border_radius: 16px 16px 0 0; } }

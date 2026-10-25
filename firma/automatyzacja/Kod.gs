@@ -319,6 +319,7 @@ function setup() {
   // Automat zakładamy od nowa, żeby nigdy nie działał podwójnie.
   ScriptApp.getProjectTriggers().forEach(t => ScriptApp.deleteTrigger(t));
   arkuszZeStrony();
+  ScriptApp.newTrigger('porzadekZeStrony').timeBased().everyDays(1).atHour(3).create();
   if (log.getParent().getSheetByName(ARKUSZ_ZE_STRONY).getDataRange().getValues().some(w => w[5] === 'czeka')) zaplanujZeStrony();
 
   const linki = {};
@@ -688,6 +689,26 @@ function utworzZOstatniejZeStrony() {
   const d = JSON.parse(wiersze[wiersze.length - 1][6]);
   const linki = utworzPrezentacje(wersjaZeStrony(d), odpowiedziZeStrony(d), new Date(d.utworzona || Date.now()));
   Logger.log('%s · %s', linki.prezentacja, linki.propozycja);
+}
+
+/**
+ * Codziennie w nocy: usuwa z arkusza „Ze strony” odpowiedzi starsze niż rok, tak jak obiecuje polityka prywatności strony.
+ * Nie rusza arkusza, dopóki czeka w nim ankieta na prezentację (zeStrony() pracuje na numerach wierszy).
+ */
+function porzadekZeStrony() {
+  const blokada = LockService.getScriptLock();
+  blokada.waitLock(20000);
+  try {
+    const log = arkuszZeStrony();
+    const wiersze = log.getDataRange().getValues();
+    if (wiersze.some(w => w[5] === 'czeka')) return;
+    const granica = new Date(Date.now() - 365 * 24 * 3600 * 1000);
+    for (let i = wiersze.length - 1; i >= 1; i--) {
+      if (wiersze[i][0] instanceof Date && wiersze[i][0] < granica) log.deleteRow(i + 1);
+    }
+  } finally {
+    blokada.releaseLock();
+  }
 }
 
 /** Wersja B dla firm remontowych i innych branż, w których pierwszy krok to wycena zlecenia. */

@@ -37,6 +37,12 @@ blocks.registerBlockType(rezerwacja.name, { ...rezerwacja, save: () => null });
 // Blok „Ankieta” z wtyczki MP Ankiety: to samo, pytania są w atrybucie „definicja”
 const ankieta = require('../wtyczki/mp-ankiety/bloki/ankieta/block.json');
 blocks.registerBlockType(ankieta.name, { ...ankieta, save: () => null });
+// Blok „Dokument” z wtyczki Complianz (polityka cookies): treść generuje wtyczka z odpowiedzi w kreatorze
+blocks.registerBlockType('complianz/document', {
+	apiVersion: 3, title: 'Complianz: dokument', category: 'widgets',
+	attributes: { title: { type: 'string' }, selectedDocument: { type: 'string' }, documentSyncStatus: { type: 'string' }, customDocument: { type: 'string' } },
+	save: () => null,
+});
 
 console.log = konsola.log;
 module.exports = { blocks, konsola };

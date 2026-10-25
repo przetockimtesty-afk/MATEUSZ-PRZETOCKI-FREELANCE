@@ -14,6 +14,34 @@ W mailu są też wskazówki (np. „klient nie ma strony”), szkic podsumowania
 
 Działa na Twoim koncie Google, za darmo, bez Make, Zapiera i bez AI. Całość to plik `Kod.gs` z tego folderu.
 
+## Ankieta na stronie (od 25.10.2026, ok. 10 minut)
+
+Ankieta wyceny jest teraz na stronie (`/wycena/`, wtyczka MP Ankiety). Strona wysyła każdą odpowiedź
+do tego samego skryptu, a on robi z niej prezentację i szkic propozycji, tak jak z ankiety Google.
+Ankiety Google A i B zostają jako zapasowe.
+
+1. Zaktualizuj kod jak w punkcie „Masz już poprzednią wersję” niżej (wklej nowy `Kod.gs`, zostaw swoje
+   `USTAWIENIA`, uruchom `setup`).
+2. Wybierz funkcję `ustawSekretStrony` → **Uruchom**. W „Dzienniku wykonania” pojawi się sekret
+   (długi ciąg liter i cyfr). Skopiuj go. Wklejasz go tylko w WordPressie, nigdzie więcej.
+3. **Wdróż → Nowe wdrożenie** → ikona koła zębatego → **Aplikacja internetowa**.
+   Opis: „Ankieta ze strony”, **Wykonaj jako: Ja**, **Kto ma dostęp: Każdy** → **Wdróż**.
+   Zezwól na uprawnienia, jeśli Google zapyta. Skopiuj **adres URL aplikacji internetowej** (kończy się na `/exec`).
+4. WordPress → **Ankiety → Ustawienia → Automat**: wklej adres do „Adres automatu”, sekret do „Sekret”
+   → **Zapisz ustawienia** → **Sprawdź połączenie z automatem**. Ma się pokazać „Automat odpowiedział poprawnie.”
+5. Test: wypełnij `/wycena/` z drugiego adresu e-mail. Po około minucie w arkuszu z odpowiedziami jest
+   karta „Ze strony” z wierszem „gotowe A: …” (albo B), a na skrzynkę przychodzi mail z linkami do prezentacji i propozycji.
+
+Dobrze wiedzieć:
+
+- Po każdej zmianie kodu: **Wdróż → Zarządzaj wdrożeniami** → ołówek → Wersja: **Nowa wersja** → **Wdróż**.
+  Bez tego aplikacja internetowa działa dalej na starym kodzie. Adres URL się nie zmienia.
+- Co noc automat usuwa z karty „Ze strony” odpowiedzi starsze niż rok (tak mówi polityka prywatności strony).
+  Na stronie odpowiedzi usuwają się same po 365 dniach (Ankiety → Ustawienia).
+- Gdy automat nie odpowiada, strona i tak zapisuje odpowiedź, wysyła Ci e-mail i ponawia wysyłkę do automatu
+  (do 3 razy, co godzinę). W panelu Ankiety jest przycisk „Wyślij ponownie do automatu”.
+- Wiersz z „błąd: …” w karcie „Ze strony”: popraw przyczynę (zwykle szablon) i uruchom `utworzZOstatniejZeStrony`.
+
 ## Masz już poprzednią wersję: aktualizacja (5 minut)
 
 1. script.google.com → projekt „Ankieta → prezentacja”. Skopiuj do notatek swoje wartości z `USTAWIENIA`:

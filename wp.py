@@ -186,13 +186,23 @@ def lint_plik(plik):
 
 # ---------------------------------------------------------------- zapis
 
+def bez_renderu(dane):
+    """Backup trzyma to, co da się przywrócić (raw). Wyrenderowany HTML rozwija wzorce synchronizowane
+    i bloki wtyczek, więc przeniósłby do repozytorium dane, które są tylko w WordPressie (np. kontaktowe)."""
+    if isinstance(dane, dict):
+        return {k: bez_renderu(v) for k, v in dane.items() if k not in ("rendered", "_links")}
+    if isinstance(dane, list):
+        return [bez_renderu(x) for x in dane]
+    return dane
+
+
 def backup(typ, pid):
     BACKUPS.mkdir(exist_ok=True)
     dane = zapytaj(f"wp/v2/{typ}/{pid}?context=edit")
     if "content" not in dane and "meta" not in dane:
         sys.exit("Backup pusty — brak context=edit? Przerywam, nic nie zapisuję.")
     p = BACKUPS / f"{typ}-{pid}-{datetime.now():%Y%m%d-%H%M%S}.json"
-    p.write_text(json.dumps(dane, ensure_ascii=False, indent=1), encoding="utf-8")
+    p.write_text(json.dumps(bez_renderu(dane), ensure_ascii=False, indent=1), encoding="utf-8")
     tresc = (dane.get("content") or {}).get("raw", "")
     print(f"backup: {p}  ({len(tresc)} zn. treści, {len(dane.get('meta') or {})} meta)")
     return p, dane

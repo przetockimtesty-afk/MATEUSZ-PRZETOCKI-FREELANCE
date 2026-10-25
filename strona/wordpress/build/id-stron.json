@@ -13,5 +13,12 @@
  "doradcy": 51,
  "biura": 52,
  "terapeuci": 53,
- "rozmowa": 100
+ "rozmowa": 100,
+ "cookies": 133,
+ "wycena": 136,
+ "materialy": 137,
+ "ustawieniaKalendarza": 138,
+ "uwagiDoSzkicu": 139,
+ "odbiorStrony": 140,
+ "po30Dniach": 141
 }

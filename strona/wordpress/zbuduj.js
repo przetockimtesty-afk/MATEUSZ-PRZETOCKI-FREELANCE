@@ -31,10 +31,14 @@ const U = {
 	glowna: '/', dlaKogo: '/dla-kogo/', doradcy: '/dla-kogo/doradcy-kredytowi/', biura: '/dla-kogo/biura-rachunkowe/',
 	terapeuci: '/dla-kogo/psycholodzy-i-terapeuci/', oferta: '/oferta/', jakPracuje: '/jak-pracuje/', pytania: '/pytania/',
 	realizacje: '/realizacje/', demo: '/realizacje/demo-doradca-kredytowy/', oMnie: '/o-mnie/', kontakt: '/kontakt/',
-	polityka: '/polityka-prywatnosci/', regulamin: '/regulamin/', rozmowa: '/rozmowa/',
+	polityka: '/polityka-prywatnosci/', regulamin: '/regulamin/', rozmowa: '/rozmowa/', cookies: '/polityka-cookies/',
 };
-// Zaślepki do podmiany, gdy będą prawdziwe linki (ankieta A ze źródłem „Ze strony internetowej”, Demo A)
-const ANKIETA = '#ankieta';
+// Ankiety z wtyczki MP Ankiety (ankiety.js). Dopóki wtyczki nie ma na stronie, strony z ankietami są szkicami,
+// a przyciski „Wyceń stronę” prowadzą do zaślepki #ankieta. Po włączeniu wtyczki: true i wysyłka stron, nagłówka i stopki.
+const ANKIETY_WLACZONE = false;
+const ANKIETY = require('./ankiety');
+// Zaślepka do podmiany, gdy będzie prawdziwy link (Demo A)
+const ANKIETA = ANKIETY_WLACZONE ? '/wycena/' : '#ankieta';
 const ROZMOWA = U.rozmowa;
 const DEMO = '#demo';
 
@@ -103,6 +107,11 @@ function obraz(nazwa, o = {}) {
 	const opis = LISTA_OBRAZOW.find((x) => x.nazwa === nazwa);
 	return blok('core/image', { id: m.id, url: m.url, alt: o.alt ?? (opis ? opis.alt : ''), caption: o.podpis, sizeSlug: 'full', linkDestination: 'none', className: o.klasa, width: o.szer, align: o.wyrownaj });
 }
+
+// Dane kontaktowe (e-mail, adres) są tylko w WordPressie, we wzorcach synchronizowanych „Dane kontaktowe · …”.
+// W repozytorium jest tylko ich ID (wzorce.json); bez niego zostaje zaślepka.
+const WZORCE = wczytaj(path.join(TU, 'wzorce.json'), {});
+const wzorzec = (nazwa, zaslepka) => (WZORCE[nazwa] ? blok('core/block', { ref: WZORCE[nazwa].id }) : zaslepka);
 
 // zdjęcia Mateusza: duże (na głównej założone ręce, na „O mnie” ręce w kieszeniach) i małe przy pracy; pliki są tylko w mediach WordPressa, nie w repozytorium
 const zdjecia = (duze) => [obraz(duze, { alt: 'Mateusz Przetocki' }), obraz('mateusz-przetocki-przy-komputerze', { alt: 'Mateusz Przetocki przy pracy nad stroną z kalendarzem rezerwacji' })];
@@ -491,16 +500,15 @@ strona('kontakt', { tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5
 		], { klasa: 'is-style-karta-ankieta' })]],
 		['45%', [grupa([
 			karta([ikona('video'), h3('Rozmowa 30&nbsp;minut na Google Meet'), p('Wybierasz wolny termin w&nbsp;moim kalendarzu i&nbsp;od razu dostajesz potwierdzenie.'), przyciski([przycisk('Umów 30&nbsp;minut', ROZMOWA, { obrys: true })])]),
-			karta([ikona('mail'), h3('E-mail'), p('Odpowiadam w&nbsp;ciągu dnia roboczego.'), strzalka('kontakt@…', '#email')]),
+			karta([ikona('mail'), h3('E-mail'), p('Odpowiadam w&nbsp;ciągu dnia roboczego.'), wzorzec('email', strzalka('kontakt@…', '#email'))]),
 		], { gap: '20px' })]],
 	])], { id: 'drogi', gora: '16px', dol: '0' }),
 	sekcja([kolumny([
-		['40%', [nad('Dane usługodawcy'), szary('Nie podaję numeru telefonu: wszystko ustalamy na piśmie, a&nbsp;jeśli wolisz rozmowę, umówisz ją w&nbsp;kalendarzu.', { klasa: 'mp-maly-tekst' })]],
+		['40%', [nad('Dane usługodawcy'), szary(`Nie podaję numeru telefonu: wszystko ustalamy na piśmie, a&nbsp;jeśli wolisz rozmowę, umówisz ją w&nbsp;kalendarzu. Pełne dane, z&nbsp;adresem, są w&nbsp;<a href="${U.regulamin}">regulaminie</a>.`, { klasa: 'mp-maly-tekst' })]],
 		['60%', [lista([
 			'<strong>Imię i&nbsp;nazwisko</strong> Mateusz Przetocki',
-			'<strong>Adres</strong> [adres zamieszkania albo do korespondencji, po rozmowie z&nbsp;radcą]',
-			'<strong>E-mail</strong> kontakt@…',
-			`<strong>Dokumenty</strong> <a href="${U.polityka}">Polityka prywatności</a> · <a href="${U.regulamin}">Regulamin</a>`,
+			'<strong>Miasto</strong> Kraków',
+			`<strong>Dokumenty</strong> <a href="${U.polityka}">Polityka prywatności</a> · <a href="${U.cookies}">Polityka cookies</a> · <a href="${U.regulamin}">Regulamin</a>`,
 		], { klasa: 'is-style-lista-dane' })]],
 	])], { id: 'dane', gora: 'clamp(56px, 6.7vw, 96px)' }),
 ]);
@@ -528,40 +536,131 @@ strona('rozmowa', { tytul: 'Umów rozmowę', slug: 'rozmowa', opis: 'Umów 30 mi
 	], { gora: 'clamp(24px, 2.8vw, 40px)', gap: 'var:preset|spacing|50' }),
 ]);
 
+// Strony z ankietami: tekst po lewej, ankieta po prawej (jak kalendarz na /rozmowa/).
+// Wycena jest publiczna, formularze dla klientów są tylko z linku: „ukryta” = noindex i brak w mapie strony.
+function stronaAnkiety(klucz, meta, { okruszki: ok, nadtytul, tytul, tekst, punkty, podpis: pd, reszta = [], definicja, ukryta }) {
+	strona(klucz, { ...meta, status: ANKIETY_WLACZONE ? undefined : 'draft' }, [
+		sekcja([
+			ok ? okruszki(ok) : null,
+			kolumny([
+				['40%', [
+					nad(nadtytul),
+					h1(tytul),
+					wstep(tekst),
+					lista(punkty, { klasa: 'is-style-lista-znaczniki' }),
+					pd ? podpis(pd) : null,
+					...reszta,
+				], { klasa: 'mp-hero-tekst' }],
+				// wstęp ankiety zastępuje tekst strony po lewej
+				['60%', [blok('mp/ankieta', { definicja: { ...definicja, wstep: undefined }, ukryta })]],
+			], { pion: 'top', gap: '48px', klasa: 'mp-ankieta-uklad' }),
+		], { gora: 'clamp(24px, 2.8vw, 40px)', gap: 'var:preset|spacing|50' }),
+	]);
+}
+stronaAnkiety('wycena', { tytul: 'Wycena strony', slug: 'wycena', opis: 'Kilka pytań o firmę i klientów, a w 48 godzin propozycja na piśmie: pakiet, łączna kwota i termin. Bez telefonu i bez zobowiązań.' }, {
+	okruszki: [['Strona główna', U.glowna], 'Wycena'],
+	nadtytul: 'Wycena w&nbsp;5&nbsp;minut',
+	tytul: 'Sprawdź, ile kosztowałaby <em>Twoja</em> strona',
+	tekst: 'Kilka pytań o&nbsp;firmę i&nbsp;klientów, a&nbsp;w&nbsp;48 godzin propozycja na piśmie: pakiet, łączna kwota i&nbsp;termin.',
+	punkty: [
+		'Propozycja opiera się na Twoich odpowiedziach: cel strony, punkt wyjścia i&nbsp;jak sprawdzimy efekt po 3&nbsp;miesiącach.',
+		'Bez telefonu i&nbsp;bez zobowiązań. Odpowiadam osobiście.',
+	],
+	podpis: 'Bez zobowiązań · propozycja w&nbsp;48&nbsp;h',
+	reszta: [strzalka('Wolisz porozmawiać? Umów 30&nbsp;minut', ROZMOWA)],
+	definicja: ANKIETY.wycena,
+});
+stronaAnkiety('materialy', { tytul: 'Materiały na stronę', slug: 'materialy', opis: 'Formularz dla klientów: firma, dane do stopki, usługi, pytania klientów i pliki potrzebne do strony.' }, {
+	nadtytul: 'Dla klientów', tytul: 'Materiały na <em>stronę</em>',
+	tekst: 'Z&nbsp;tych odpowiedzi powstaną teksty i&nbsp;układ Twojej strony. Pisz tak, jak mówisz do klienta, resztę dopracuję ja.',
+	punkty: ['Ok. 20 minut, 7&nbsp;krótkich kroków. Możesz przerwać i&nbsp;wrócić: odpowiedzi pamięta ta przeglądarka.', 'Szkic strony dostajesz w&nbsp;5&nbsp;dni roboczych od kompletu materiałów i&nbsp;dostępów.', 'Masz pytanie? Odpowiedz na e-mail z&nbsp;tym linkiem.'],
+	definicja: ANKIETY.materialy, ukryta: true,
+});
+stronaAnkiety('ustawieniaKalendarza', { tytul: 'Ustawienia kalendarza', slug: 'ustawienia-kalendarza', opis: 'Formularz dla klientów: spotkania, godziny, pytania przed spotkaniem i powiadomienia w kalendarzu rezerwacji.' }, {
+	nadtytul: 'Dla klientów', tytul: 'Ustawienia <em>kalendarza</em>',
+	tekst: 'Jak długo trwa spotkanie, w&nbsp;jakich godzinach przyjmujesz i&nbsp;o&nbsp;co pytać klienta przy rezerwacji.',
+	punkty: ['Ok. 7 minut, 5&nbsp;kroków. Wszystko da się później zmienić.', 'Przy odbiorze strony zrobimy razem próbną rezerwację.'],
+	definicja: ANKIETY.kalendarz, ukryta: true,
+});
+stronaAnkiety('uwagiDoSzkicu', { tytul: 'Uwagi do szkicu', slug: 'uwagi-do-szkicu', opis: 'Formularz dla klientów: uwagi do szkicu strony w jednym miejscu.' }, {
+	nadtytul: 'Dla klientów', tytul: 'Uwagi do <em>szkicu</em>',
+	tekst: 'Wszystkie uwagi w&nbsp;jednym miejscu, żeby żadna nie zginęła w&nbsp;wiadomościach.',
+	punkty: ['Obejrzyj szkic na telefonie i&nbsp;na komputerze, a&nbsp;potem wpisz tu wszystkie uwagi.', 'Także drobiazgi: jedna lista to szybsze poprawki.', 'W&nbsp;cenie są 2&nbsp;rundy poprawek.'],
+	definicja: ANKIETY.szkic, ukryta: true,
+});
+stronaAnkiety('odbiorStrony', { tytul: 'Odbiór strony', slug: 'odbior-strony', opis: 'Formularz dla klientów: sprawdzenie strony przed publikacją i potwierdzenie odbioru.' }, {
+	nadtytul: 'Dla klientów', tytul: 'Odbiór <em>strony</em>',
+	tekst: 'Zanim strona pójdzie w&nbsp;świat, sprawdź ją tak, jak zrobi to Twój klient: formularze, kalendarz, dane i&nbsp;teksty.',
+	punkty: ['Ok. 10 minut.', 'Po potwierdzeniu odbioru i&nbsp;płatności końcowej publikuję stronę.'],
+	definicja: ANKIETY.odbior, ukryta: true,
+});
+stronaAnkiety('po30Dniach', { tytul: 'Po 30 dniach', slug: 'po-30-dniach', opis: 'Formularz dla klientów: jak strona działa po pierwszym miesiącu.' }, {
+	nadtytul: 'Dla klientów', tytul: 'Pierwsze 30&nbsp;<em>dni</em>',
+	tekst: 'Minął miesiąc od startu strony. Kilka pytań o&nbsp;to, jak działa: liczby, opinia i&nbsp;co poprawić.',
+	punkty: ['Ok. 5 minut.', 'Podsumowanie z&nbsp;liczbami wyślę Ci e-mailem.'],
+	definicja: ANKIETY.po30, ukryta: true,
+});
+
 // Strony prawne: spis treści + dokument
+const PRZYCISK_COOKIES = '<button type="button" class="cmplz-manage-consent mp-link-cookies">Ustawienia cookies</button>';
 function dokument(klucz, meta, { okruszek, tytul, tekst, spis, tresc }) {
 	strona(klucz, meta, [
-		heroPodstrony({ okruszki: [['Strona główna', U.glowna], okruszek], etykieta: 'Szkic do sprawdzenia przez radcę', tytul, tekst }),
+		heroPodstrony({ okruszki: [['Strona główna', U.glowna], okruszek], nadtytul: 'Dokumenty', tytul, tekst }),
 		sekcja([kolumny([
 			['30%', [grupa([p('Spis treści'), lista(spis.map(([id, t]) => `<a href="#${id}">${t}</a>`), { numerowana: true })], { klasa: 'is-style-spis', tag: 'nav' })]],
 			['70%', [grupa(tresc, { klasa: 'mp-dokument' })]],
 		])], { gora: '0' }),
 	]);
 }
-dokument('polityka', { tytul: 'Polityka prywatności', slug: 'polityka-prywatnosci', opis: 'Jakie dane zbieram przez ankietę i kalendarz, po co, jak długo je przechowuję i jakie masz prawa. Strona nie używa ciasteczek analitycznych.' }, {
+const DANE_ZASLEPKA = () => p('Mateusz Przetocki, [adres], e-mail: kontakt@…');
+dokument('polityka', { tytul: 'Polityka prywatności', slug: 'polityka-prywatnosci', opis: 'Jakie dane zbieram przez ankietę, kalendarz i e-mail, po co, jak długo je przechowuję, jakie ciasteczka ustawia strona i jakie masz prawa.' }, {
 	okruszek: 'Polityka prywatności', tytul: 'Polityka prywatności',
-	tekst: 'Kto przetwarza Twoje dane, gdy wypełniasz ankietę, umawiasz rozmowę albo piszesz e-mail, po co i&nbsp;jak długo.',
-	spis: [['administrator', 'Kto jest administratorem'], ['cele', 'Jakie dane i&nbsp;po co'], ['odbiorcy', 'Komu przekazuję dane'], ['okres', 'Jak długo je przechowuję'], ['prawa', 'Twoje prawa'], ['cookies', 'Ciasteczka'], ['kontakt-dane', 'Kontakt w&nbsp;sprawie danych']],
+	tekst: 'Kto przetwarza Twoje dane, gdy wypełniasz ankietę, umawiasz rozmowę albo piszesz e-mail, po co, jak długo i&nbsp;jakie ciasteczka ustawia strona.',
+	spis: [['administrator', 'Kto jest administratorem'], ['cele', 'Jakie dane, po co i&nbsp;na jakiej podstawie'], ['odbiorcy', 'Komu przekazuję dane'], ['okres', 'Jak długo je przechowuję'], ['prawa', 'Twoje prawa'], ['cookies', 'Ciasteczka, statystyki i&nbsp;reklamy'], ['kontakt-dane', 'Kontakt w&nbsp;sprawie danych']],
 	tresc: [
 		h2('1. Kto jest administratorem', { id: 'administrator' }),
-		p('Administratorem danych jest Mateusz Przetocki, [adres zamieszkania albo do korespondencji], e-mail: kontakt@…. Prowadzę działalność sam, więc Twoje dane widzę tylko ja.'),
-		h2('2. Jakie dane i&nbsp;po co', { id: 'cele' }),
-		lista(['<strong>Ankieta wyceny:</strong> imię, e-mail i&nbsp;odpowiedzi o&nbsp;Twojej firmie. Używam ich, żeby odpowiedzieć na zapytanie i&nbsp;przygotować propozycję.', '<strong>Rezerwacja rozmowy:</strong> imię, e-mail, telefon (jeśli go podasz), wybrany termin i&nbsp;odpowiedzi na trzy krótkie pytania o&nbsp;Twoją firmę. Używam ich, żeby umówić, przygotować i&nbsp;przeprowadzić rozmowę na Google Meet, przypomnieć o&nbsp;niej i&nbsp;umożliwić zmianę terminu.', '<strong>E-mail:</strong> adres i&nbsp;treść wiadomości. Używam ich, żeby odpowiedzieć.']),
-		p('[Podstawa prawna dla każdego celu: do ustalenia z&nbsp;radcą.] Nie proszę o&nbsp;dane wrażliwe i&nbsp;nie wysyłam newslettera.'),
+		p('Administratorem Twoich danych osobowych jestem ja:'),
+		wzorzec('dane', DANE_ZASLEPKA()),
+		p('Pracuję sam, więc Twoje dane widzę tylko ja. Przechowują je w&nbsp;moim imieniu firmy wymienione w&nbsp;punkcie 3.'),
+		h2('2. Jakie dane, po co i&nbsp;na jakiej podstawie', { id: 'cele' }),
+		lista([
+			'<strong>Ankieta wyceny:</strong> imię albo nazwa firmy, e-mail i&nbsp;odpowiedzi o&nbsp;Twojej firmie. Używam ich, żeby odpowiedzieć na zapytanie i&nbsp;przygotować propozycję. Podstawa: działania przed zawarciem umowy, podjęte na Twoje żądanie (art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;b RODO).',
+			'<strong>Rezerwacja rozmowy:</strong> imię, e-mail, telefon (jeśli go podasz), wybrany termin i&nbsp;odpowiedzi na trzy krótkie pytania o&nbsp;Twoją firmę. Używam ich, żeby umówić, przygotować i&nbsp;przeprowadzić rozmowę na Google Meet, przypomnieć o&nbsp;niej i&nbsp;umożliwić zmianę terminu. Podstawa: art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;b RODO.',
+			'<strong>E-mail:</strong> adres i&nbsp;treść wiadomości. Używam ich, żeby odpowiedzieć. Podstawa: mój prawnie uzasadniony interes, czyli odpowiadanie na wiadomości (art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;f RODO), a&nbsp;gdy piszesz w&nbsp;sprawie zamówienia, art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;b RODO.',
+			'<strong>Wiadomości o&nbsp;nowościach:</strong> tylko gdy zaznaczysz zgodę w&nbsp;ankiecie. Zapisuję e-mail, datę i&nbsp;treść zgody i&nbsp;co jakiś czas wysyłam krótką wiadomość o&nbsp;stronach i&nbsp;rezerwacjach. Podstawa: Twoja zgoda (art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;a RODO).',
+			'<strong>Statystyki i&nbsp;reklamy:</strong> tylko po zgodzie w&nbsp;banerze cookies. Google Analytics i&nbsp;piksel Meta zbierają informacje o&nbsp;wizycie: odwiedzone strony, skąd trafiasz na stronę, urządzenie, przybliżoną lokalizację i&nbsp;identyfikatory z&nbsp;ciasteczek. Używam ich, żeby wiedzieć, które strony i&nbsp;reklamy działają, i&nbsp;żeby pokazywać moje reklamy osobom, które były na stronie. Podstawa: Twoja zgoda (art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;a RODO i&nbsp;art.&nbsp;399 Prawa komunikacji elektronicznej).',
+		]),
+		p('Gdy zawrzemy umowę o&nbsp;wykonanie strony, dane potrzebne do jej wykonania i&nbsp;rozliczenia opisuje umowa. Dane mogę też przechowywać, żeby ustalić, dochodzić albo bronić roszczeń (art.&nbsp;6 ust.&nbsp;1 lit.&nbsp;f RODO).'),
+		p('Podanie danych jest dobrowolne, ale bez adresu e-mail nie odpowiem na ankietę i&nbsp;nie potwierdzę rozmowy. Nie proszę o&nbsp;dane wrażliwe, np. o&nbsp;zdrowiu. Nie podejmuję wobec Ciebie decyzji opartych wyłącznie na automatycznym przetwarzaniu danych.'),
 		h2('3. Komu przekazuję dane', { id: 'odbiorcy' }),
-		lista(['<strong>Google:</strong> ankieta, rozmowa na Google Meet i&nbsp;dokumenty, w&nbsp;których przygotowuję propozycję. Dane mogą być przekazywane do USA. [Podstawa przekazania i&nbsp;umowa powierzenia: do ustalenia z&nbsp;radcą.]', '<strong>LH.pl:</strong> hosting strony (tu zapisują się rezerwacje rozmów) i&nbsp;skrzynka kontakt@….']),
+		p('Dane przechowują i&nbsp;przetwarzają w&nbsp;moim imieniu:'),
+		lista([
+			'<strong>LH.pl:</strong> hosting strony (tu zapisują się odpowiedzi z&nbsp;ankiety i&nbsp;rezerwacje rozmów) i&nbsp;poczta e-mail w&nbsp;domenie mateuszprzetocki.pl.',
+			'<strong>Google:</strong> Google Meet (rozmowa), Kalendarz Google (termin rozmowy), Arkusze i&nbsp;Dokumenty Google (kopia odpowiedzi z&nbsp;ankiety i&nbsp;propozycja), poczta Gmail i&nbsp;Google Analytics (statystyki, tylko po zgodzie).',
+		]),
+		p('Piksel Meta (tylko po zgodzie) przekazuje dane o&nbsp;wizycie firmie Meta Platforms Ireland Limited. Za zebranie i&nbsp;przekazanie tych danych odpowiadam razem z&nbsp;Meta, a&nbsp;za to, co Meta robi z&nbsp;nimi dalej, odpowiada Meta: <a href="https://www.facebook.com/privacy/policy/" rel="nofollow noopener" target="_blank">polityka prywatności Meta</a>.'),
+		p('Google i&nbsp;Meta mogą przekazywać dane do USA. Obie firmy mają certyfikat EU-US Data Privacy Framework, który według decyzji Komisji Europejskiej zapewnia odpowiedni poziom ochrony danych. Nie sprzedaję danych.'),
 		h2('4. Jak długo je przechowuję', { id: 'okres' }),
-		p('Dane z&nbsp;rezerwacji rozmowy usuwają się automatycznie 365 dni po rozmowie. Zostaje tylko termin, bez danych osobowych.'),
-		p('[Okres przechowywania dla ankiety i&nbsp;korespondencji: do ustalenia z&nbsp;radcą.]'),
+		lista([
+			'<strong>Ankieta wyceny:</strong> do 12 miesięcy od wysłania. Na stronie odpowiedzi usuwają się same po 365 dniach.',
+			'<strong>Rezerwacja rozmowy:</strong> dane usuwają się same 365 dni po rozmowie. Zostaje tylko termin, bez danych osobowych.',
+			'<strong>Korespondencja:</strong> tak długo, jak potrzebuję jej do załatwienia sprawy.',
+			'<strong>Wiadomości o&nbsp;nowościach:</strong> do wycofania zgody.',
+			`<strong>Statystyki:</strong> Google Analytics przechowuje dane o&nbsp;wizytach do 14 miesięcy. Czas działania ciasteczek podaje <a href="${U.cookies}">polityka cookies</a>.`,
+		]),
+		p('Jeśli zawrzemy umowę, dane z&nbsp;ankiety i&nbsp;korespondencji przechowuję przez czas jej wykonania, a&nbsp;potem do przedawnienia roszczeń i&nbsp;tak długo, jak wymagają tego przepisy podatkowe.'),
 		h2('5. Twoje prawa', { id: 'prawa' }),
-		p('Możesz zażądać dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania i&nbsp;przeniesienia, a&nbsp;także wnieść sprzeciw. Wystarczy e-mail na kontakt@….'),
-		p('Masz też prawo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych.'),
-		h2('6. Ciasteczka', { id: 'cookies' }),
-		p('Strona nie używa ciasteczek śledzących ani reklamowych.'),
-		p('Odwiedziny liczę we wtyczce Koko Analytics, która zapisuje statystyki na serwerze tej strony. [Ustawienie ciasteczek we wtyczce: sprawdzić przed publikacją.]'),
+		p('Masz prawo dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania i&nbsp;przeniesienia. Możesz też wnieść sprzeciw wobec przetwarzania opartego na moim prawnie uzasadnionym interesie.'),
+		p('Zgodę na wiadomości o&nbsp;nowościach, statystyki i&nbsp;reklamy możesz wycofać w&nbsp;każdej chwili. Nie zmienia to zgodności z&nbsp;prawem tego, co działo się przed jej wycofaniem. Zgodę na ciasteczka zmienisz w&nbsp;ustawieniach cookies (link w&nbsp;stopce strony).'),
+		p('Wystarczy e-mail na adres z&nbsp;punktu 1. Odpowiadam najpóźniej w&nbsp;ciągu miesiąca.'),
+		p('Masz też prawo złożyć skargę do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa).'),
+		h2('6. Ciasteczka, statystyki i&nbsp;reklamy', { id: 'cookies' }),
+		p('Bez Twojej zgody strona zapisuje w&nbsp;przeglądarce tylko to, czego potrzebuje do działania: Twój wybór w&nbsp;banerze cookies i&nbsp;odpowiedzi z&nbsp;niedokończonej ankiety, żeby nie zniknęły po odświeżeniu (do 14&nbsp;dni).'),
+		p('Google Analytics (statystyki) i&nbsp;piksel Meta (reklamy na Facebooku i&nbsp;Instagramie) włączają się dopiero po Twojej zgodzie w&nbsp;banerze cookies. Zgodę zmienisz w&nbsp;każdej chwili przez link „Ustawienia cookies” w&nbsp;stopce strony.'),
+		p(`Listę ciasteczek, ich dostawców i&nbsp;czas działania znajdziesz w&nbsp;<a href="${U.cookies}">polityce cookies</a>.`),
 		h2('7. Kontakt w&nbsp;sprawie danych', { id: 'kontakt-dane' }),
-		p('Pytania o&nbsp;dane wysyłasz na kontakt@…. Odpowiadam w&nbsp;ciągu dnia roboczego.'),
-		p('Ostatnia zmiana: [data publikacji]', { kolor: 'grafit' }),
+		p('Pytania o&nbsp;dane wysyłasz e-mailem na adres z&nbsp;punktu 1. Odpowiadam w&nbsp;ciągu dnia roboczego.'),
+		p('Ostatnia zmiana: 25 października 2026', { kolor: 'grafit' }),
 	],
 });
 dokument('regulamin', { tytul: 'Regulamin', slug: 'regulamin', opis: 'Zasady zamówienia strony: propozycja, zadatek, poprawki, prawa autorskie, odstąpienie od umowy i reklamacje.' }, {
@@ -570,24 +669,33 @@ dokument('regulamin', { tytul: 'Regulamin', slug: 'regulamin', opis: 'Zasady zam
 	spis: [['uslugodawca', 'Usługodawca'], ['uslugi', 'Jakie usługi obejmuje'], ['wymagania', 'Wymagania techniczne'], ['zasady', 'Zasady korzystania'], ['reklamacje', 'Reklamacje'], ['odstapienie', 'Odstąpienie od umowy o&nbsp;stronę'], ['koncowe', 'Postanowienia końcowe']],
 	tresc: [
 		h2('1. Usługodawca', { id: 'uslugodawca' }),
-		p('Usługi na stronie mateuszprzetocki.pl świadczy Mateusz Przetocki, [adres zamieszkania albo do korespondencji], e-mail: kontakt@….'),
+		p('Usługi na stronie mateuszprzetocki.pl świadczy:'),
+		wzorzec('dane', DANE_ZASLEPKA()),
 		h2('2. Jakie usługi obejmuje', { id: 'uslugi' }),
-		lista(['<strong>Ankieta wyceny:</strong> formularz, po którego wysłaniu w&nbsp;48 godzin dostajesz propozycję na piśmie.', '<strong>Rezerwacja rozmowy:</strong> wybór terminu 30-minutowej rozmowy na Google Meet.', '<strong>Kontakt e-mail:</strong> odpowiedź na pytanie wysłane na kontakt@….']),
+		lista(['<strong>Ankieta wyceny:</strong> formularz, po którego wysłaniu w&nbsp;48 godzin dostajesz propozycję na piśmie.', '<strong>Rezerwacja rozmowy:</strong> wybór terminu 30-minutowej rozmowy na Google Meet.', '<strong>Kontakt e-mail:</strong> odpowiedź na pytanie wysłane na adres z&nbsp;punktu 1.']),
 		p('Korzystanie z&nbsp;tych usług jest bezpłatne i&nbsp;do niczego nie zobowiązuje. Umowę o&nbsp;wykonanie strony zawieramy osobno, na piśmie, po akceptacji propozycji.'),
 		h2('3. Wymagania techniczne', { id: 'wymagania' }),
 		p('Wystarczy urządzenie z&nbsp;dostępem do internetu, aktualna przeglądarka i&nbsp;adres e-mail. Do rozmowy na Google Meet potrzebujesz też mikrofonu.'),
 		h2('4. Zasady korzystania', { id: 'zasady' }),
 		lista(['Podajesz prawdziwe dane kontaktowe, żebym mógł odpowiedzieć.', 'W&nbsp;formularzach nie podajesz danych wrażliwych, np. o&nbsp;zdrowiu.', 'Nie przesyłasz treści sprzecznych z&nbsp;prawem.', 'Rezerwację rozmowy możesz odwołać lub przenieść z&nbsp;linku w&nbsp;potwierdzeniu.']),
 		h2('5. Reklamacje', { id: 'reklamacje' }),
-		p('Reklamację dotyczącą działania ankiety albo rezerwacji wysyłasz na kontakt@…. Odpowiadam w&nbsp;ciągu [14]&nbsp;dni.'),
+		p('Reklamację dotyczącą działania ankiety albo rezerwacji wysyłasz e-mailem na adres z&nbsp;punktu 1. Odpowiadam w&nbsp;ciągu 14&nbsp;dni.'),
 		h2('6. Odstąpienie od umowy o&nbsp;stronę', { id: 'odstapienie' }),
-		p('Umowę o&nbsp;wykonanie strony zawieramy na odległość, więc konsument i&nbsp;jednoosobowa firma mają 14&nbsp;dni na odstąpienie od niej.'),
-		p('[Zasady odstąpienia, w&nbsp;tym przy pracach rozpoczętych na Twoją prośbę: do ustalenia z&nbsp;radcą.]'),
+		p('Umowę o&nbsp;wykonanie strony zawieramy na odległość. Konsument i&nbsp;osoba prowadząca jednoosobową firmę, dla której umowa nie ma charakteru zawodowego, mogą od niej odstąpić w&nbsp;ciągu 14&nbsp;dni od jej zawarcia, bez podania przyczyny. Wystarczy e-mail na adres z&nbsp;punktu 1.'),
+		p('Jeśli na Twoją prośbę zacznę prace przed upływem tych 14&nbsp;dni, po odstąpieniu płacisz za wykonaną część, a&nbsp;resztę wpłat zwracam w&nbsp;ciągu 14&nbsp;dni. Gdy wykonam całą usługę, prawo odstąpienia wygasa. Szczegóły i&nbsp;formularz odstąpienia są w&nbsp;umowie.'),
 		h2('7. Postanowienia końcowe', { id: 'koncowe' }),
-		p(`Zasady przetwarzania danych opisuje <a href="${U.polityka}">polityka prywatności</a>. O&nbsp;zmianach regulaminu informuję na tej stronie.`),
-		p('Obowiązuje od: [data publikacji]', { kolor: 'grafit' }),
+		p(`Zasady przetwarzania danych opisuje <a href="${U.polityka}">polityka prywatności</a>, a&nbsp;ciasteczka <a href="${U.cookies}">polityka cookies</a>. O&nbsp;zmianach regulaminu informuję na tej stronie.`),
+		p('Obowiązuje od 25 października 2026', { kolor: 'grafit' }),
 	],
 });
+// Polityka cookies: treść i listę ciasteczek generuje Complianz (blok „Dokument”) z odpowiedzi w kreatorze i ze skanu strony
+strona('cookies', { tytul: 'Polityka cookies', slug: 'polityka-cookies', opis: 'Jakie ciasteczka ustawia strona, kto je dostarcza i jak długo działają. Statystyki i reklamy włączają się tylko za Twoją zgodą.' }, [
+	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Polityka cookies'], nadtytul: 'Dokumenty', tytul: 'Polityka cookies', tekst: 'Statystyki i&nbsp;reklamy włączają się tylko za Twoją zgodą. Niżej lista ciasteczek, kto je dostarcza i&nbsp;jak długo działają.' }),
+	sekcja([kolumny([
+		['30%', [grupa([p('Na skróty'), lista([`<a href="${U.polityka}">Polityka prywatności</a>`, `<a href="${U.regulamin}">Regulamin</a>`]), html(PRZYCISK_COOKIES)], { klasa: 'is-style-spis', tag: 'nav' })]],
+		['70%', [grupa([blok('complianz/document', { title: 'Polityka cookies', selectedDocument: 'cookie-statement' })], { klasa: 'mp-dokument mp-dokument-cmplz' })]],
+	])], { gora: '0' }),
+]);
 
 // Dla kogo
 strona('dlaKogo', { tytul: 'Dla kogo', slug: 'dla-kogo', opis: 'Strony dla doradców, biur rachunkowych, terapeutów i innych specjalistów, u których sprzedaż zaczyna się od rozmowy. Znajdź swoją branżę. Od 1 200 zł.' }, [
@@ -858,8 +966,11 @@ const stopkaStrony = [
 				['22%', [h2('Na skróty'), linkiStopki([['Realizacje', U.realizacje], ['Jak pracuję', U.jakPracuje], ['O&nbsp;mnie', U.oMnie], ['Pytania', U.pytania], ['Kontakt', U.kontakt]])]],
 			], { klasa: 'mp-stopka-kolumny', gap: '40px' }),
 			wiersz([
-				p('Mateusz Przetocki · [adres z&nbsp;danych z&nbsp;ustawy] · kontakt@…'),
-				p(`<a href="${U.polityka}">Polityka prywatności</a> · <a href="${U.regulamin}">Regulamin</a>`),
+				wzorzec('stopka', p('Mateusz Przetocki · Kraków · kontakt@…')),
+				wiersz([
+					p(`<a href="${U.polityka}">Polityka prywatności</a>`), p(`<a href="${U.cookies}">Polityka cookies</a>`), p(`<a href="${U.regulamin}">Regulamin</a>`),
+					html(PRZYCISK_COOKIES),
+				], { klasa: 'mp-stopka-linki', gap: '6px 20px' }),
 			], { klasa: 'mp-stopka-dol', justify: 'space-between', gap: '12px 20px' }),
 		], { align: 'wide', gap: '56px' }),
 	], { align: 'full', klasa: 'mp-stopka is-style-ciemna', tlo: 'czern', tekst: 'szary-na-czerni', pad: { top: 'clamp(64px, 6vw, 80px)', bottom: '40px' }, layout: { type: 'constrained' } }),

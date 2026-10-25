@@ -41,11 +41,59 @@
   "opis": "Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.",
   "url": "/rozmowa/"
  },
+ "wycena": {
+  "tytul": "Wycena strony",
+  "slug": "wycena",
+  "rodzic": null,
+  "opis": "Kilka pytań o firmę i klientów, a w 48 godzin propozycja na piśmie: pakiet, łączna kwota i termin. Bez telefonu i bez zobowiązań.",
+  "url": "/wycena/",
+  "status": "draft"
+ },
+ "materialy": {
+  "tytul": "Materiały na stronę",
+  "slug": "materialy",
+  "rodzic": null,
+  "opis": "Formularz dla klientów: firma, dane do stopki, usługi, pytania klientów i pliki potrzebne do strony.",
+  "url": "/materialy/",
+  "status": "draft"
+ },
+ "ustawieniaKalendarza": {
+  "tytul": "Ustawienia kalendarza",
+  "slug": "ustawienia-kalendarza",
+  "rodzic": null,
+  "opis": "Formularz dla klientów: spotkania, godziny, pytania przed spotkaniem i powiadomienia w kalendarzu rezerwacji.",
+  "url": "/ustawienia-kalendarza/",
+  "status": "draft"
+ },
+ "uwagiDoSzkicu": {
+  "tytul": "Uwagi do szkicu",
+  "slug": "uwagi-do-szkicu",
+  "rodzic": null,
+  "opis": "Formularz dla klientów: uwagi do szkicu strony w jednym miejscu.",
+  "url": "/uwagi-do-szkicu/",
+  "status": "draft"
+ },
+ "odbiorStrony": {
+  "tytul": "Odbiór strony",
+  "slug": "odbior-strony",
+  "rodzic": null,
+  "opis": "Formularz dla klientów: sprawdzenie strony przed publikacją i potwierdzenie odbioru.",
+  "url": "/odbior-strony/",
+  "status": "draft"
+ },
+ "po30Dniach": {
+  "tytul": "Po 30 dniach",
+  "slug": "po-30-dniach",
+  "rodzic": null,
+  "opis": "Formularz dla klientów: jak strona działa po pierwszym miesiącu.",
+  "url": "/po-30-dniach/",
+  "status": "draft"
+ },
  "polityka": {
   "tytul": "Polityka prywatności",
   "slug": "polityka-prywatnosci",
   "rodzic": null,
-  "opis": "Jakie dane zbieram przez ankietę i kalendarz, po co, jak długo je przechowuję i jakie masz prawa. Strona nie używa ciasteczek analitycznych.",
+  "opis": "Jakie dane zbieram przez ankietę, kalendarz i e-mail, po co, jak długo je przechowuję, jakie ciasteczka ustawia strona i jakie masz prawa.",
   "url": "/polityka-prywatnosci/"
  },
  "regulamin": {
@@ -54,6 +102,13 @@
   "rodzic": null,
   "opis": "Zasady zamówienia strony: propozycja, zadatek, poprawki, prawa autorskie, odstąpienie od umowy i reklamacje.",
   "url": "/regulamin/"
+ },
+ "cookies": {
+  "tytul": "Polityka cookies",
+  "slug": "polityka-cookies",
+  "rodzic": null,
+  "opis": "Jakie ciasteczka ustawia strona, kto je dostarcza i jak długo działają. Statystyki i reklamy włączają się tylko za Twoją zgodą.",
+  "url": "/polityka-cookies/"
  },
  "dlaKogo": {
   "tytul": "Dla kogo",

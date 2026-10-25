@@ -51,11 +51,11 @@ def wczytaj(nazwa, zast=None):
 
 
 def kopia(sciezka, nazwa):
-    """Kopia zapasowa dowolnego zasobu REST (context=edit) do backups/."""
+    """Kopia zapasowa dowolnego zasobu REST (context=edit) do backups/, bez wyrenderowanego HTML (wp.bez_renderu)."""
     BACKUPS.mkdir(exist_ok=True)
     dane = zapytaj(sciezka + ("&" if "?" in sciezka else "?") + "context=edit")
     p = BACKUPS / f"{nazwa}-{datetime.now():%Y%m%d-%H%M%S}.json"
-    p.write_text(json.dumps(dane, ensure_ascii=False, indent=1), encoding="utf-8")
+    p.write_text(json.dumps(wp.bez_renderu(dane), ensure_ascii=False, indent=1), encoding="utf-8")
     print(f"  kopia: {p.relative_to(REPO)}")
     return dane
 
@@ -183,7 +183,7 @@ def style():
 
 
 # nowe strony na końcu, żeby nie przesuwać menu_order (i nie nadpisywać) pozostałych
-KOLEJNOSC = ["glowna", "oferta", "realizacje", "demo", "kontakt", "polityka", "regulamin", "dlaKogo", "doradcy", "biura", "terapeuci", "jakPracuje", "pytania", "oMnie", "rozmowa"]
+KOLEJNOSC = ["glowna", "oferta", "realizacje", "demo", "kontakt", "polityka", "regulamin", "dlaKogo", "doradcy", "biura", "terapeuci", "jakPracuje", "pytania", "oMnie", "rozmowa", "cookies", "wycena", "materialy", "ustawieniaKalendarza", "uwagiDoSzkicu", "odbiorStrony", "po30Dniach"]
 POLA_STRONY = ["title", "slug", "status", "content", "excerpt", "template", "comment_status", "ping_status", "menu_order", "parent"]
 
 
