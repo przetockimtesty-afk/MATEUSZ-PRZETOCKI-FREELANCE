@@ -8,6 +8,9 @@
  * 2. Po każdej odpowiedzi automat kopiuje szablon prezentacji (Google Slides) i szablon propozycji
  *    (Google Docs), wpisuje w pola {{…}} dane z ankiety, ostrożnie liczy koszt problemu, pomija puste slajdy
  *    i wysyła Ci mail z linkami, wskazówkami i szkicem podsumowania.
+ * 3. Od 25.10.2026 główna ankieta wyceny jest na stronie (wtyczka MP Ankiety, /wycena/). Strona wysyła odpowiedź
+ *    do doPost (aplikacja internetowa), a ta robi to samo co ankiety Google: prezentację i szkic propozycji.
+ *    Ankiety Google A i B zostają jako zapasowe.
  *
  * Jak uruchomić krok po kroku: automatyzacja/INSTRUKCJA.md.
  */
@@ -315,6 +318,8 @@ function setup() {
 
   // Automat zakładamy od nowa, żeby nigdy nie działał podwójnie.
   ScriptApp.getProjectTriggers().forEach(t => ScriptApp.deleteTrigger(t));
+  arkuszZeStrony();
+  if (log.getParent().getSheetByName(ARKUSZ_ZE_STRONY).getDataRange().getValues().some(w => w[5] === 'czeka')) zaplanujZeStrony();
 
   const linki = {};
   ['A', 'B'].forEach(w => {
@@ -596,6 +601,141 @@ function zrodlaKosztu(w) {
       ? 'To osoby, które chcą się umówić wtedy, gdy nikt nie odbiera telefonu.'
       : 'To klienci, którzy chcą poznać cenę i zamówić wtedy, gdy nikt nie odbiera telefonu.') +
     ' Pozostałe liczby pochodzą z Państwa ankiety.';
+}
+
+// ===================== Ankieta na stronie (wtyczka MP Ankiety) =====================
+
+const ARKUSZ_ZE_STRONY = 'Ze strony';
+const NAGLOWKI_ZE_STRONY = ['Data', 'Ankieta', 'Nr', 'Firma', 'E-mail', 'Stan', 'Dane'];
+
+/**
+ * Uruchom raz (i po każdej wymianie sekretu). Tworzy sekret do podpisu wiadomości ze strony.
+ * Sekret pokazuje się w dzienniku wykonania: wklej go w WordPressie w Ankiety → Ustawienia → Sekret.
+ */
+function ustawSekretStrony() {
+  const sekret = Utilities.getUuid().replace(/-/g, '') + Utilities.getUuid().replace(/-/g, '');
+  PropertiesService.getScriptProperties().setProperty('SEKRET_STRONY', sekret);
+  arkuszZeStrony();
+  Logger.log('Sekret dla Ankiety → Ustawienia (wklej go tylko tam): %s', sekret);
+}
+
+/**
+ * Aplikacja internetowa (Wdróż → Aplikacja internetowa, wykonuj jako: ja, dostęp: każdy).
+ * Wtyczka MP Ankiety wysyła {dane, podpis}. Sprawdzamy podpis HMAC-SHA256 tym samym sekretem, zapisujemy
+ * odpowiedź w arkuszu „Ze strony” i odpowiadamy od razu. Prezentację i propozycję robi zeStrony() minutę później.
+ */
+function doPost(e) {
+  try {
+    const sekret = PropertiesService.getScriptProperties().getProperty('SEKRET_STRONY');
+    if (!sekret) return wynikJson({ok: false, blad: 'Brak sekretu: uruchom w skrypcie ustawSekretStrony.'});
+    const tresc = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    const dane = String(tresc.dane || '');
+    if (!dane || podpisStrony(dane, sekret) !== String(tresc.podpis || '')) return wynikJson({ok: false, blad: 'Zły podpis.'});
+    const d = JSON.parse(dane);
+    if (d.test) return wynikJson({ok: true, test: true});
+
+    const blokada = LockService.getScriptLock();
+    blokada.waitLock(20000);
+    try {
+      const log = arkuszZeStrony();
+      const wiersze = log.getDataRange().getValues();
+      const jest = wiersze.some(w => w[1] === d.ankieta && String(w[2]) === String(d.id));
+      if (!jest) {
+        log.appendRow([new Date(d.utworzona || Date.now()), d.ankieta, d.id, d.nazwa || '', d.email || '', d.ankieta === 'wycena' ? 'czeka' : 'zapisana', dane]);
+        if (d.ankieta === 'wycena') zaplanujZeStrony();
+      }
+    } finally {
+      blokada.releaseLock();
+    }
+    return wynikJson({ok: true});
+  } catch (err) {
+    return wynikJson({ok: false, blad: String(err)});
+  }
+}
+
+/** Zadanie jednorazowe: prezentacje i propozycje z ankiet wyceny ze strony (najwyżej 5 naraz). */
+function zeStrony() {
+  ScriptApp.getProjectTriggers().filter(t => t.getHandlerFunction() === 'zeStrony').forEach(t => ScriptApp.deleteTrigger(t));
+  const log = arkuszZeStrony();
+  const wiersze = log.getDataRange().getValues();
+  let zrobione = 0;
+  let zostalo = 0;
+  for (let i = 1; i < wiersze.length; i++) {
+    if (wiersze[i][5] !== 'czeka') continue;
+    if (zrobione >= 5) {
+      zostalo++;
+      continue;
+    }
+    zrobione++;
+    try {
+      const d = JSON.parse(wiersze[i][6]);
+      const wersja = wersjaZeStrony(d);
+      const linki = utworzPrezentacje(wersja, odpowiedziZeStrony(d), new Date(d.utworzona || Date.now()));
+      log.getRange(i + 1, 6).setValue('gotowe ' + wersja + ': ' + linki.propozycja);
+    } catch (err) {
+      log.getRange(i + 1, 6).setValue('błąd: ' + String(err).slice(0, 300));
+      MailApp.sendEmail(adres(), 'Automat ankieta ze strony → prezentacja: błąd',
+        'Prezentacja nie powstała (arkusz „' + ARKUSZ_ZE_STRONY + '”, wiersz ' + (i + 1) + ').\n\n' + err + '\n\n' + (err && err.stack ? err.stack : ''));
+    }
+  }
+  if (zostalo) zaplanujZeStrony();
+}
+
+/** Prezentacje jeszcze raz z ostatniej ankiety ze strony (np. po poprawce szablonu). */
+function utworzZOstatniejZeStrony() {
+  const wiersze = arkuszZeStrony().getDataRange().getValues().filter(w => w[1] === 'wycena');
+  if (!wiersze.length) return Logger.log('Nie ma jeszcze ankiet wyceny ze strony.');
+  const d = JSON.parse(wiersze[wiersze.length - 1][6]);
+  const linki = utworzPrezentacje(wersjaZeStrony(d), odpowiedziZeStrony(d), new Date(d.utworzona || Date.now()));
+  Logger.log('%s · %s', linki.prezentacja, linki.propozycja);
+}
+
+/** Wersja B dla firm remontowych i innych branż, w których pierwszy krok to wycena zlecenia. */
+function wersjaZeStrony(d) {
+  const w = d.wartosci || {};
+  return w.BRANZA === 'remont' || w.MODEL === 'B' ? 'B' : 'A';
+}
+
+/** Odpowiedzi ze strony w tym samym kształcie co z ankiety Google ({FIRMA: …, PYTA: …}). */
+function odpowiedziZeStrony(d) {
+  const o = Object.assign({}, d.teksty || {});
+  o.FIRMA = o.FIRMA || d.nazwa || '';
+  o.EMAIL = o.EMAIL || d.email || '';
+  o.ZRODLO = 'Strona' + (o.ZRODLO ? ': ' + tekst(o.ZRODLO) : '');
+  o._lista = d.odpowiedzi || [];
+  o._branza = (d.wartosci || {}).BRANZA || '';
+  return o;
+}
+
+function arkuszZeStrony() {
+  const props = PropertiesService.getScriptProperties();
+  let arkusz = otworzJesliJest(props.getProperty('ARKUSZ'), id => SpreadsheetApp.openById(id));
+  if (!arkusz) {
+    arkusz = SpreadsheetApp.create('Ankiety: odpowiedzi, prezentacje i propozycje');
+    DriveApp.getFileById(arkusz.getId()).moveTo(folderRoboczy());
+    props.setProperty('ARKUSZ', arkusz.getId());
+  }
+  let log = arkusz.getSheetByName(ARKUSZ_ZE_STRONY);
+  if (!log) {
+    log = arkusz.insertSheet(ARKUSZ_ZE_STRONY);
+    log.getRange(1, 1, 1, NAGLOWKI_ZE_STRONY.length).setValues([NAGLOWKI_ZE_STRONY]).setFontWeight('bold');
+    log.setFrozenRows(1);
+  }
+  return log;
+}
+
+function zaplanujZeStrony() {
+  const jest = ScriptApp.getProjectTriggers().some(t => t.getHandlerFunction() === 'zeStrony');
+  if (!jest) ScriptApp.newTrigger('zeStrony').timeBased().after(60 * 1000).create();
+}
+
+function podpisStrony(dane, sekret) {
+  return Utilities.computeHmacSha256Signature(dane, sekret, Utilities.Charset.UTF_8)
+    .map(b => ('0' + (b & 0xff).toString(16)).slice(-2)).join('');
+}
+
+function wynikJson(x) {
+  return ContentService.createTextOutput(JSON.stringify(x)).setMimeType(ContentService.MimeType.JSON);
 }
 
 // ===================== Ankiety =====================
@@ -889,14 +1029,20 @@ function trescMaila(w, dane, o, linki, arkuszUrl) {
   else if (dane.zalozona) wskazowki.push(w === 'A'
     ? 'Klient nie podał, ilu umówionych zostaje klientami: w propozycji i na slajdzie jest założenie ' + t.SKUTECZNOSC + '. Zapytaj i popraw.'
     : 'Klient nie podał, ile zapytań kończy się zleceniem: w propozycji i na slajdzie jest założenie ' + t.SKUTECZNOSC + '. Zapytaj i popraw.');
-  if (w === 'A') wskazowki.push('Rozliczenie: doradca kredytowy i agent ubezpieczeniowy zwykle mają sprzedaż zwolnioną z VAT, ' +
-    'więc faktura VAT przez Useme kosztowałaby ich 23% więcej. Poleć fakturę bez VAT.');
+  const branza = o._branza || '';
+  if (w === 'A' && ['biuro', 'kancelaria'].indexOf(branza) !== -1) wskazowki.push('Rozliczenie: biura rachunkowe i kancelarie są zwykle ' +
+    'płatnikami VAT, więc faktura VAT przez Useme może być dla nich wygodniejsza (odliczą VAT). Zapytaj, co wolą.');
+  else if (w === 'A') wskazowki.push('Rozliczenie: doradca kredytowy, agent ubezpieczeniowy, psycholog i fizjoterapeuta zwykle mają sprzedaż ' +
+    'zwolnioną z VAT, więc faktura VAT przez Useme kosztowałaby ich 23% więcej. Poleć fakturę bez VAT.');
   if (dane.budzetNiski) wskazowki.push('Budżet klienta to do 1 500 zł, a wariant 2 kosztuje ' + t.CENA2 + ': rozważ polecenie wariantu 1 albo mniejszy zakres.');
   if (w === 'A' && dane.maStrone) wskazowki.push('Klient ma już stronę: rozważ zamiast wariantów 1–2 moduł umawiania na obecnej stronie (800–1 200 zł).');
   if (w === 'B' && !dane.maStrone) wskazowki.push('Klient nie ma strony: wariant 1 to mini-strona z kalkulatorem, cena zawiera konfigurację hostingu i domeny.');
-  const wiersze = ANKIETY[w].pytania.filter(p => p.id).map(p =>
-    '<tr><td style="padding:4px 16px 4px 0;color:#5d6782;vertical-align:top">' + esc(p.tytul) +
-    '</td><td style="padding:4px 0">' + esc(tekst(o[p.id]) || '—') + '</td></tr>').join('');
+  const pary = o._lista
+    ? o._lista.map(x => [x.pytanie, x.tekst])
+    : ANKIETY[w].pytania.filter(p => p.id).map(p => [p.tytul, tekst(o[p.id])]);
+  const wiersze = pary.map(x =>
+    '<tr><td style="padding:4px 16px 4px 0;color:#5d6782;vertical-align:top">' + esc(x[0]) +
+    '</td><td style="padding:4px 0">' + esc(x[1] || '—') + '</td></tr>').join('');
   return '' +
     '<p><b><a href="' + linki.prezentacja + '">Prezentacja dla ' + esc(t.FIRMA) + '</a></b> (wersja ' + w + ', rozmowa ' + t.DATA + ')' +
     '<br><b><a href="' + linki.propozycja + '">Szkic propozycji</a></b> (do wysłania do ' + t.TERMIN + ')' +

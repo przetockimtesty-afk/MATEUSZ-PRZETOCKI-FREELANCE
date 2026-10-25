@@ -1,0 +1,26 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "mp/ankieta",
+	"version": "0.1.0",
+	"title": "Ankieta",
+	"category": "widgets",
+	"icon": "feedback",
+	"description": "Ankieta albo formularz w krokach: pytania zależne od odpowiedzi, zapis w panelu Ankiety, e-maile. Pytania są w definicji bloku (JSON).",
+	"keywords": [ "ankieta", "formularz", "wycena", "pytania", "materiały" ],
+	"textdomain": "mp-ankiety",
+	"attributes": {
+		"definicja": { "type": "object", "default": {} },
+		"ukryta": { "type": "boolean", "default": false }
+	},
+	"supports": {
+		"html": false,
+		"multiple": false,
+		"anchor": true,
+		"align": [ "wide" ],
+		"spacing": { "margin": true }
+	},
+	"editorScript": "file:./edit.js",
+	"viewScript": "file:./view.js",
+	"style": "file:./style.css"
+}

@@ -34,6 +34,9 @@ require('@wordpress/block-library').registerCoreBlocks();
 // Blok „Rezerwacja terminu” z własnej wtyczki MP Rezerwacje: rysuje go PHP na serwerze, w treści jest tylko komentarz z atrybutami
 const rezerwacja = require('../wtyczki/mp-rezerwacje/bloki/rezerwacja/block.json');
 blocks.registerBlockType(rezerwacja.name, { ...rezerwacja, save: () => null });
+// Blok „Ankieta” z wtyczki MP Ankiety: to samo, pytania są w atrybucie „definicja”
+const ankieta = require('../wtyczki/mp-ankiety/bloki/ankieta/block.json');
+blocks.registerBlockType(ankieta.name, { ...ankieta, save: () => null });
 
 console.log = konsola.log;
 module.exports = { blocks, konsola };

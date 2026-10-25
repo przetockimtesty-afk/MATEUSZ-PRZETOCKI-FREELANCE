@@ -1,0 +1,41 @@
+/* MP Ankiety: panel w WordPressie. Kolory WordPressa, akcenty marki (błękit, krem). */
+
+.mp-panel { --mp-panel-linia: #dcdcde; --mp-panel-szary: #50575e; --mp-panel-blekit: #dce8f3; }
+.mp-panel code { font-size: 12px; }
+.mp-gdzie { max-width: 880px; margin: 12px 0 0; padding: 10px 14px; background: #fff; border-left: 4px solid #a7c7e7; }
+
+.mp-pasek { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin: 8px 0 10px; }
+.mp-pasek .subsubsub { float: none; margin: 0; }
+.mp-pasek .search-box { float: none; display: flex; gap: 6px; }
+.mp-pasek .search-box input[type="search"] { min-width: 260px; }
+
+.mp-tabela th, .mp-tabela td { padding: 12px 14px; vertical-align: top; }
+.mp-tabela .mp-kol-data { width: 110px; }
+.mp-tabela .mp-kol-akcje { width: 90px; text-align: right; }
+.mp-tabela tr.mp-nowa td { background: #f6fbff; }
+.mp-maly { display: block; margin-top: 2px; font-size: 13px; color: var(--mp-panel-szary); }
+.mp-zrodlo { overflow-wrap: anywhere; }
+.mp-znaczek { display: inline-block; margin: 4px 4px 0 6px; padding: 2px 10px; border-radius: 999px; background: var(--mp-panel-blekit); color: #161514; font-size: 12px; font-weight: 500; }
+.mp-znaczek--blad { background: #fcf0f1; color: #8a2424; }
+.mp-pusto { max-width: 880px; padding: 28px; background: #fff; border: 1px dashed #c3c4c7; border-radius: 12px; text-align: center; }
+
+.mp-meta { font-size: 14px; }
+.mp-odpowiedz { max-width: 880px; margin: 16px 0; padding: 4px 24px 20px; background: #fff; border: 1px solid var(--mp-panel-linia); border-radius: 12px; }
+.mp-odpowiedz h2 { margin: 22px 0 8px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--mp-panel-szary); }
+.mp-odpowiedz dl { display: grid; grid-template-columns: minmax(160px, 38%) 1fr; margin: 0; border-top: 1px solid var(--mp-panel-linia); }
+.mp-odpowiedz dt, .mp-odpowiedz dd { margin: 0; padding: 10px 12px 10px 0; border-bottom: 1px solid var(--mp-panel-linia); }
+.mp-odpowiedz dt { color: var(--mp-panel-szary); }
+.mp-odpowiedz dd { overflow-wrap: anywhere; }
+.mp-akcje-odpowiedzi { display: flex; gap: 10px; align-items: center; }
+.mp-check { display: inline-flex; align-items: center; gap: 6px; margin-left: 10px; }
+.mp-dziennik { max-width: 880px; }
+
+@media (max-width: 782px) {
+	.mp-tabela thead { display: none; }
+	.mp-tabela tr, .mp-tabela td { display: block; width: auto !important; }
+	.mp-tabela td { padding: 6px 14px; }
+	.mp-tabela td[data-etykieta]::before { content: attr(data-etykieta); display: block; font-size: 12px; color: var(--mp-panel-szary); }
+	.mp-tabela .mp-kol-akcje { text-align: left; padding-bottom: 14px; }
+	.mp-odpowiedz dl { grid-template-columns: 1fr; }
+	.mp-odpowiedz dt { padding-bottom: 0; border-bottom: 0; }
+}
