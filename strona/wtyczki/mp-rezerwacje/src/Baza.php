@@ -9,7 +9,7 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Baza {
 
-	const WERSJA = 1;
+	const WERSJA = 2;
 
 	public static function tabela(): string {
 		global $wpdb;
@@ -34,6 +34,8 @@ final class Baza {
 			forma varchar(20) NOT NULL DEFAULT '',
 			odpowiedzi longtext NULL,
 			zrodlo varchar(255) NOT NULL DEFAULT '',
+			klucz char(32) NULL,
+			w_tle varchar(20) NOT NULL DEFAULT '',
 			google_id varchar(255) NOT NULL DEFAULT '',
 			google_blad varchar(255) NOT NULL DEFAULT '',
 			odwolal varchar(20) NOT NULL DEFAULT '',
@@ -43,6 +45,7 @@ final class Baza {
 			zmieniona datetime NOT NULL,
 			PRIMARY KEY  (id),
 			UNIQUE KEY token (token),
+			UNIQUE KEY klucz (klucz),
 			KEY poczatek (poczatek),
 			KEY email (email)
 		) {$wpdb->get_charset_collate()};"
@@ -71,7 +74,29 @@ final class Baza {
 		if ( isset( $dane['odpowiedzi'] ) && is_array( $dane['odpowiedzi'] ) ) {
 			$dane['odpowiedzi'] = wp_json_encode( $dane['odpowiedzi'], JSON_UNESCAPED_UNICODE );
 		}
-		return $wpdb->insert( self::tabela(), $dane ) ? (int) $wpdb->insert_id : 0;
+		// Ten sam klucz od przeglądarki (ponowne wysłanie) kończy się błędem unikalności, nie drugą rezerwacją.
+		$poprzednie = $wpdb->suppress_errors( true );
+		$wynik      = $wpdb->insert( self::tabela(), $dane );
+		$wpdb->suppress_errors( $poprzednie );
+		return $wynik ? (int) $wpdb->insert_id : 0;
+	}
+
+	public static function usun( int $id ): bool {
+		global $wpdb;
+		return (bool) $wpdb->delete( self::tabela(), array( 'id' => $id ) );
+	}
+
+	/** Rezerwacja zapisana wcześniej z tym samym kluczem formularza (ponowne kliknięcie, zerwane połączenie). */
+	public static function po_kluczu( string $klucz ): ?array {
+		global $wpdb;
+		$wiersz = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::tabela() . ' WHERE klucz = %s', $klucz ), ARRAY_A );
+		return $wiersz ? self::rozpakuj( $wiersz ) : null;
+	}
+
+	/** Rezerwacje, przy których e-maile i Google czekają na zadanie w tle dłużej niż do granicy. */
+	public static function czekajace_w_tle( string $granica ): array {
+		global $wpdb;
+		return array_map( 'intval', $wpdb->get_col( $wpdb->prepare( 'SELECT id FROM ' . self::tabela() . " WHERE w_tle <> '' AND utworzona < %s ORDER BY id LIMIT 20", $granica ) ) ?: array() );
 	}
 
 	/**

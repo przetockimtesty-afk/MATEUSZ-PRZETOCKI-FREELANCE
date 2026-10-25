@@ -157,6 +157,29 @@
 			},
 		} );
 	}
+	// Lista spotkań: „zaznacz wszystkie” i przycisk „Usuń zaznaczone” aktywny dopiero po zaznaczeniu.
+	const zbiorczo = document.getElementById( 'mp-zbiorczo' );
+	if ( zbiorczo ) {
+		const pola = () => Array.from( document.querySelectorAll( 'input[form="mp-zbiorczo"][name="ids[]"]' ) );
+		const przycisk = zbiorczo.querySelector( '[data-mp-zbiorczo]' );
+		const odswiez = function () {
+			const ile = pola().filter( ( p ) => p.checked ).length;
+			przycisk.disabled = ! ile;
+			przycisk.textContent = ile ? 'Usuń zaznaczone (' + ile + ')' : 'Usuń zaznaczone';
+		};
+		document.addEventListener( 'change', function ( e ) {
+			if ( e.target.matches( '[data-mp-wszystkie]' ) ) {
+				pola().forEach( ( p ) => {
+					p.checked = e.target.checked;
+				} );
+			}
+			if ( e.target.matches( '[data-mp-wszystkie], input[form="mp-zbiorczo"]' ) ) {
+				odswiez();
+			}
+		} );
+		odswiez();
+	}
+
 	const promien = document.getElementById( 'mp-promien' );
 	if ( promien ) {
 		promien.addEventListener( 'input', function () {

@@ -211,7 +211,7 @@ final class Panel {
 		check_admin_referer( 'mp_rez_' . $akcja );
 		$powrot = wp_get_referer() ?: admin_url( 'admin.php?page=' . self::STRONA );
 
-		if ( in_array( $akcja, array( 'odwolaj', 'ponow_google', 'csv' ), true ) ) {
+		if ( in_array( $akcja, array( 'odwolaj', 'ponow_google', 'csv', 'usun', 'usun_zaznaczone' ), true ) ) {
 			if ( ! current_user_can( self::uprawnienie() ) ) {
 				wp_die( 'Brak uprawnień.', 403 );
 			}
@@ -229,6 +229,20 @@ final class Panel {
 				$powiadom = ! empty( $_POST['powiadom'] );
 				$wynik    = Rezerwacje::odwolaj( $rez, 'wlasciciel', (string) wp_unslash( $_POST['powod'] ?? '' ), $powiadom ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput -- czyści Rezerwacje::odwolaj().
 				self::komunikat( is_wp_error( $wynik ) ? $wynik->get_error_message() : 'Spotkanie odwołane' . ( $powiadom ? ', klient dostał e-mail.' : '.' ), is_wp_error( $wynik ) ? 'error' : 'success' );
+				break;
+
+			case 'usun':
+			case 'usun_zaznaczone':
+				$ids     = 'usun' === $akcja ? array( absint( $_POST['id'] ?? 0 ) ) : array_map( 'absint', (array) wp_unslash( $_POST['ids'] ?? array() ) );
+				$usuniete = 0;
+				foreach ( array_unique( array_filter( $ids ) ) as $id ) {
+					$rez = Baza::po_id( $id );
+					if ( $rez && Rezerwacje::usun( $rez ) ) {
+						++$usuniete;
+					}
+				}
+				$arkusz = Google::arkusz_wlaczony() ? ' Wiersze w arkuszu Google zostają (usuń je tam ręcznie, jeśli trzeba).' : '';
+				self::komunikat( $usuniete ? sprintf( 'Usunięte spotkania: %d.', $usuniete ) . $arkusz : 'Nic nie zostało usunięte.', $usuniete ? 'success' : 'warning' );
 				break;
 
 			case 'ponow_google':

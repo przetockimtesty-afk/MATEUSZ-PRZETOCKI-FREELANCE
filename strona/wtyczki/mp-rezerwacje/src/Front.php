@@ -108,6 +108,14 @@ final class Front {
 			),
 			'pytania' => $pytania,
 			'telefon' => Ustawienia::get( 'telefon' ),
+			// Nazwy zdarzeń po rezerwacji: GA4 (gtag) i piksel Meta (fbq, zdarzenie standardowe „Schedule”).
+			'zdarzenia' => (array) apply_filters(
+				'mp_rezerwacje_zdarzenia',
+				array(
+					'ga4'  => 'book_appointment',
+					'meta' => 'Schedule',
+				)
+			),
 			'teksty'  => array(
 				'naglowek'  => ( $a['naglowek'] ?? '' ) ?: Ustawienia::get( 'teksty.naglowek' ),
 				'dalej'     => $liczba ? 'Dalej: ' . $liczba : 'Dalej',

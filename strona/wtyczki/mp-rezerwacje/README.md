@@ -26,7 +26,8 @@ Wersja 0.1.0 z 20.10.2026: szkielet działający od początku do końca, sprawdz
 - Spotkanie w swoim Kalendarzu Google, a zajęte godziny z Google znikają z kalendarza na stronie (opcjonalnie).
 - Wiersz w Arkuszu Google przy każdej rezerwacji, zmianie i odwołaniu (opcjonalnie).
 - W WordPressie menu **Rezerwacje → Spotkania**: liczniki, lista dzień po dniu, wyszukiwanie, odwołanie
-  z wiadomością do klienta, CSV do Excela; w kokpicie widżet „Najbliższe spotkania”.
+  z wiadomością do klienta, usuwanie spotkań (pojedynczo albo zaznaczonych, np. próbnych, bez e-maila do klienta),
+  CSV do Excela; w kokpicie widżet „Najbliższe spotkania”.
 
 Koszty: zero. Calendar API i Sheets API są bezpłatne w tych ilościach, konto usługi nie wymaga
 weryfikacji aplikacji ani płatnego Google Workspace.
@@ -156,6 +157,15 @@ i są podpięte pod Narzędzia → Eksport / Usuwanie danych osobowych. Wierszy 
 usuwa (narzędzie WordPressa o tym przypomina). Nie pytamy o zdrowie (RODO art. 9); dla psychologów opis
 wydarzenia w Google jest domyślnie minimalny.
 
+Odpowiedź dla klienta przychodzi od razu po zapisie rezerwacji, a Kalendarz Google i e-maile idą w tle
+(po wysłaniu odpowiedzi przez PHP-FPM albo LiteSpeed, inaczej przez WP-Cron; zaległe co godzinę). E-mail ma
+limit 20 s na połączenie z serwerem SMTP. Formularz ma klucz, więc ponowne wysłanie (zerwane połączenie,
+podwójne kliknięcie) zwraca tę samą rezerwację zamiast „Ktoś właśnie zajął ten termin”.
+
+Pomiar: po rezerwacji `dataLayer.push({event: 'mp_rezerwacja'})` zawsze, a zdarzenie GA4 `book_appointment`
+(`gtag`) i piksela Meta `Schedule` (`fbq`) tylko wtedy, gdy te skrypty są na stronie, czyli po zgodzie na
+ciasteczka. Nazwy zmienia filtr `mp_rezerwacje_zdarzenia`.
+
 Google: wydarzenie ma stałe id zależne od rezerwacji, więc ponowienie zapisu nie robi duplikatu;
 dodatkowy kalendarz bez dostępu jest pomijany (z wpisem w dzienniku), a zajętość z głównego zostaje;
 odwołane spotkanie, którego nie udało się usunąć z Google, czeka na „Zapisz je ponownie w Google”.
@@ -177,6 +187,14 @@ odwołane spotkanie, którego nie udało się usunąć z Google, czeka na „Zap
 - Niezależny przegląd kodu (bezpieczeństwo i logika): 12 uwag, wszystkie poprawione i sprawdzone
   (m.in. równoczesne odwołania: przechodzi jedno, długie nazwy spotkań, strefa „UTC+1”, „<10%” w opcjach,
   zmiana terminu spotkania, którego rodzaju już nie ma w ustawieniach).
+
+## Zmiany
+
+- **0.1.1** (25.10.2026): e-maile i Google w tle (strona nie czeka na serwer poczty), klucz formularza
+  (bez duplikatu i fałszywego „termin zajęty” po ponownym wysłaniu), limit czasu SMTP 20 s, zdarzenia
+  dla GA4 i piksela Meta, usuwanie spotkań w panelu (pojedynczo i zaznaczonych; wydarzenie znika też
+  z Kalendarza Google). Baza: kolumny `klucz` i `w_tle` (dodają się same po aktualizacji).
+- **0.1.0** (20.10.2026): pierwsza wersja.
 
 ## Czego świadomie nie ma
 

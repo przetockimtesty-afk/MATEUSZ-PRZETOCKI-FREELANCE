@@ -16,6 +16,8 @@ final class Wtyczka {
 
 		add_action( 'init', array( self::class, 'zaplanuj' ) );
 		add_action( 'mp_rezerwacje_co_godzine', array( Rezerwacje::class, 'wyslij_przypomnienia' ) );
+		add_action( 'mp_rezerwacje_co_godzine', array( Rezerwacje::class, 'dokoncz_zalegle' ) );
+		add_action( 'mp_rezerwacje_w_tle', array( Rezerwacje::class, 'dokoncz_nowa' ) );
 		add_action( 'mp_rezerwacje_codziennie', array( Prywatnosc::class, 'anonimizuj_stare' ) );
 
 		if ( is_admin() ) {

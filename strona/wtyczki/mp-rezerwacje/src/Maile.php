@@ -246,8 +246,10 @@ final class Maile {
 		$naglowki[] = 'Content-Type: text/html; charset=UTF-8';
 		$nadawca    = (string) ( Ustawienia::get( 'maile.nadawca' ) ?: Ustawienia::nazwa_wlasciciela() );
 		$nazwa      = fn() => $nadawca;
-		$alt        = function ( $phpmailer ) use ( $tekst ) {
+		// Wersja tekstowa i limit czasu SMTP 20 s (domyślnie PHPMailer czeka 5 minut na niedziałający serwer).
+		$alt = function ( $phpmailer ) use ( $tekst ) {
 			$phpmailer->AltBody = $tekst; // phpcs:ignore WordPress.NamingConventions.ValidVariableName
+			$phpmailer->Timeout = 20; // phpcs:ignore WordPress.NamingConventions.ValidVariableName
 		};
 
 		$zalaczniki = array();
@@ -260,10 +262,10 @@ final class Maile {
 		}
 
 		add_filter( 'wp_mail_from_name', $nazwa );
-		add_action( 'phpmailer_init', $alt );
+		add_action( 'phpmailer_init', $alt, PHP_INT_MAX );
 		$wynik = wp_mail( $do, $m['temat'], $html, $naglowki, $zalaczniki );
 		remove_filter( 'wp_mail_from_name', $nazwa );
-		remove_action( 'phpmailer_init', $alt );
+		remove_action( 'phpmailer_init', $alt, PHP_INT_MAX );
 
 		if ( $katalog ) {
 			wp_delete_file( $katalog . '/termin.ics' );

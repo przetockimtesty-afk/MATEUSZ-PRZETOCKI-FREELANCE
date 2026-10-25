@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       MP Rezerwacje
  * Description:       Kalendarz rezerwacji na stronie: wolne terminy, krótki formularz, potwierdzenia e-mail z plikiem .ics i opcjonalnie Kalendarz Google klienta.
- * Version:           0.1.0
+ * Version:           0.1.1
  * Requires at least: 6.5
  * Requires PHP:      8.1
  * Author:            Mateusz Przetocki
@@ -14,7 +14,7 @@ namespace MP\Rezerwacje;
 
 defined( 'ABSPATH' ) || exit;
 
-const WERSJA = '0.1.0';
+const WERSJA = '0.1.1';
 const PLIK   = __FILE__;
 
 spl_autoload_register(

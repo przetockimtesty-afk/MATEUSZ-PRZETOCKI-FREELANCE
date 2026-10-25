@@ -88,9 +88,17 @@ $mp_dzien = '';
 		<?php endif; ?>
 	</div>
 	<?php else : ?>
+	<form id="mp-zbiorczo" class="mp-zbiorczo" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" onsubmit="return window.confirm('Usunąć zaznaczone spotkania na zawsze? Klienci nie dostaną e-maila, a nadchodzące spotkania znikną też z Kalendarza Google.');">
+		<input type="hidden" name="action" value="mp_rez_akcja">
+		<input type="hidden" name="akcja" value="usun_zaznaczone">
+		<?php wp_nonce_field( 'mp_rez_usun_zaznaczone' ); ?>
+		<button class="button" data-mp-zbiorczo disabled>Usuń zaznaczone</button>
+		<span class="mp-maly">Np. próbne rezerwacje. Liczniki i statystyki liczą się od nowa.</span>
+	</form>
 	<table class="widefat mp-tabela">
 		<thead>
 			<tr>
+				<td class="check-column"><input type="checkbox" data-mp-wszystkie aria-label="Zaznacz wszystkie na tej stronie"></td>
 				<th scope="col" class="mp-kol-termin">Termin</th>
 				<th scope="col">Klient</th>
 				<th scope="col">Spotkanie</th>
@@ -108,9 +116,10 @@ $mp_dzien = '';
 			if ( $mp_data !== $mp_dzien ) :
 				$mp_dzien = $mp_data;
 				?>
-			<tr class="mp-dzien"><th colspan="5" scope="rowgroup"><?php echo esc_html( Czas::wielka( Czas::data( $mp_od ) ) ); ?></th></tr>
+			<tr class="mp-dzien"><th colspan="6" scope="rowgroup"><?php echo esc_html( Czas::wielka( Czas::data( $mp_od ) ) ); ?></th></tr>
 			<?php endif; ?>
 			<tr class="<?php echo 'odwolana' === $rez['status'] ? 'mp-odwolana' : ''; ?>">
+				<th scope="row" class="check-column"><input type="checkbox" name="ids[]" value="<?php echo (int) $rez['id']; ?>" form="mp-zbiorczo" aria-label="<?php echo esc_attr( 'Zaznacz: ' . ( $rez['imie'] ?: 'spotkanie' ) . ', ' . $mp_kiedy[0] ); ?>"></th>
 				<td class="mp-kol-termin" data-etykieta="Termin">
 					<strong><?php echo esc_html( $mp_kiedy[0] ); ?></strong>
 					<span class="mp-maly"><?php echo esc_html( $mp_kiedy[1] ); ?></span>
@@ -167,6 +176,13 @@ $mp_dzien = '';
 						</form>
 					</details>
 					<?php endif; ?>
+					<form method="post" class="mp-usun" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" onsubmit="return window.confirm('<?php echo esc_js( 'potwierdzona' === $rez['status'] && ! $mp_bylo ? 'Usunąć to spotkanie na zawsze? Klient nie dostanie e-maila (żeby go powiadomić, użyj „Odwołaj”). Spotkanie zniknie też z Kalendarza Google.' : 'Usunąć to spotkanie z listy na zawsze?' ); ?>');">
+						<input type="hidden" name="action" value="mp_rez_akcja">
+						<input type="hidden" name="akcja" value="usun">
+						<input type="hidden" name="id" value="<?php echo (int) $rez['id']; ?>">
+						<?php wp_nonce_field( 'mp_rez_usun' ); ?>
+						<button class="button-link button-link-delete">Usuń</button>
+					</form>
 				</td>
 			</tr>
 		<?php endforeach; ?>

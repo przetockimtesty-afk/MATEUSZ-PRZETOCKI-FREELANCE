@@ -33,6 +33,10 @@
 .mp-odwolaj > summary::-webkit-details-marker { display: none; }
 .mp-odwolaj form { position: absolute; z-index: 20; top: calc(100% + 6px); right: 0; display: grid; gap: 8px; width: 280px; padding: 14px; background: #fff; border: 1px solid var(--mp-panel-linia); border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, .12); }
 .mp-odwolaj textarea { width: 100%; }
+.mp-zbiorczo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 0 0 10px; }
+.mp-tabela .check-column { width: 2.2em; padding: 12px 0 0 10px; vertical-align: top; }
+.mp-usun { display: inline-block; margin: 8px 0 0 8px; }
+.mp-usun .button-link-delete { font-size: 13px; }
 .mp-pusto { max-width: 880px; padding: 28px; background: #fff; border: 1px dashed #c3c4c7; border-radius: 12px; text-align: center; }
 
 @media (max-width: 782px) {

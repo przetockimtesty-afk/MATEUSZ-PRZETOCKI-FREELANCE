@@ -30,7 +30,33 @@
 			wysyla: false,
 			wynik: null,
 			zapytanie: 0,
+			klucz: losowy(),
 		};
+
+		/** Klucz formularza: ponowne wysłanie tej samej rezerwacji nie tworzy drugiej. */
+		function losowy() {
+			if ( window.crypto && window.crypto.randomUUID ) {
+				return window.crypto.randomUUID();
+			}
+			return 'k' + Date.now().toString( 36 ) + Math.random().toString( 36 ).slice( 2 ) + Math.random().toString( 36 ).slice( 2 );
+		}
+
+		/** Pomiar: dataLayer zawsze, GA4 i piksel Meta tylko wtedy, gdy są na stronie (po zgodzie na ciasteczka). */
+		function zdarzenie() {
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push( { event: 'mp_rezerwacja', mp_wizyta: stan.wizyta } );
+			const z = dane.zdarzenia || {};
+			try {
+				if ( z.ga4 && typeof window.gtag === 'function' ) {
+					window.gtag( 'event', z.ga4, { appointment_type: stan.wizyta } );
+				}
+				if ( z.meta && typeof window.fbq === 'function' ) {
+					window.fbq( 'track', z.meta, { content_name: stan.wizyta } );
+				}
+			} catch ( e ) {
+				// skrypt pomiaru nie może zepsuć potwierdzenia
+			}
+		}
 
 		/* ---------- Pomocnicze ---------- */
 
@@ -729,10 +755,13 @@
 						zgoda: !! v.zgoda,
 						www: www ? www.value : '',
 						strona: dane.strona,
+						klucz: stan.klucz,
 					} ),
 				} );
 				stan.wysyla = false;
+				stan.klucz = losowy();
 				idz( 'gotowe' );
+				zdarzenie();
 			} catch ( blad ) {
 				stan.wysyla = false;
 				if ( blad.code === 'termin_zajety' ) {
