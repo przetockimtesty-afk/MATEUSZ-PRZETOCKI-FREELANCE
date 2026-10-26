@@ -35,7 +35,7 @@ const U = {
 };
 // Ankiety z wtyczki MP Ankiety (ankiety.js). Dopóki wtyczki nie ma na stronie, strony z ankietami są szkicami,
 // a przyciski „Wyceń stronę” prowadzą do zaślepki #ankieta. Po włączeniu wtyczki: true i wysyłka stron, nagłówka i stopki.
-const ANKIETY_WLACZONE = false;
+const ANKIETY_WLACZONE = true;
 const ANKIETY = require('./ankiety');
 const ANKIETA = ANKIETY_WLACZONE ? '/wycena/' : '#ankieta';
 const ROZMOWA = U.rozmowa;
@@ -456,6 +456,9 @@ strona('oferta', { tytul: 'Pakiety i ceny', slug: 'oferta', opis: 'Trzy pakiety 
 ]);
 
 // Realizacje: na środku kalendarz z filmem, pod nim 3 wcześniejsze projekty (zrzuty i opisy dwóch z nich przyśle Mateusz)
+// Zrzuty projektów: klucz z media.json albo null. Bez zrzutu karta nie ma obrazka (zamiast szarej zaślepki, decyzja 26.10).
+const ZRZUTY = { zestawy: null, kalkulator: null, kreator: null };
+const zrzutProjektu = (nazwa) => (ZRZUTY[nazwa] ? obraz(ZRZUTY[nazwa], { klasa: 'mp-zrzut' }) : null);
 const projekt = (zrzut, tytul, problem, zrobione, efekt, link) => karta([
 	zrzut, etykieta('Projekt własny', 'piasek'), h3(tytul, { klasa: 'mp-h3-maly' }),
 	lista([`<strong>Problem</strong> ${problem}`, `<strong>Co zrobiłem</strong> ${zrobione}`, `<strong>Co to daje</strong> ${efekt}`], { klasa: 'is-style-lista-projekt' }),
@@ -487,16 +490,16 @@ strona('realizacje', { tytul: 'Realizacje', slug: 'realizacje', opis: 'Kalendarz
 	sekcja([
 		naglowekSekcji('Wcześniejsze projekty', 'Sklepy i&nbsp;wtyczki, które zbudowałem <em>dla siebie</em>', 'Zanim zacząłem robić strony dla specjalistów, prowadziłem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. To projekty własne, nie realizacje dla klientów.'),
 		siatka([
-			projekt(obraz('zaslepka-zrzut', { klasa: 'mp-zrzut' }), 'Zestawy produktów ze stałym paskiem zakupu',
+			projekt(zrzutProjektu('zestawy'), 'Zestawy produktów ze stałym paskiem zakupu',
 				'Na długiej stronie produktu przycisk zakupu znikał z&nbsp;ekranu.',
 				'Wtyczkę do WooCommerce: zestawy produktów w&nbsp;jednej cenie i&nbsp;pasek z&nbsp;przyciskiem, który zostaje na ekranie.',
 				'Przycisk zakupu jest zawsze pod ręką, także na telefonie.'),
-			projekt(obraz('zaslepka-zrzut', { klasa: 'mp-zrzut' }), 'Kalkulator ceny prania tapicerki',
+			projekt(zrzutProjektu('kalkulator'), 'Kalkulator ceny prania tapicerki',
 				'Klient chciał znać cenę od razu, a&nbsp;wycena przez telefon zajmowała czas.',
 				'Kalkulator na stronie puresofa.pl: klient wybiera meble i&nbsp;dodatki, a&nbsp;cena liczy się na bieżąco.',
 				'Cena z&nbsp;kalkulatora jest ceną ostateczną, bez dopłat przy drzwiach.',
 				p('<a href="https://puresofa.pl/" rel="nofollow noopener" target="_blank">Zobacz na puresofa.pl</a>', { klasa: 'is-style-strzalka' })),
-			projekt(obraz('zaslepka-zrzut', { klasa: 'mp-zrzut' }), 'Kreator prezentów z&nbsp;podglądem na żywo',
+			projekt(zrzutProjektu('kreator'), 'Kreator prezentów z&nbsp;podglądem na żywo',
 				'Przed zamówieniem prezentu z&nbsp;personalizacją klient nie wiedział, jak będzie wyglądał.',
 				'Wtyczkę do WooCommerce: klient wpisuje tekst i&nbsp;wybiera wzór, a&nbsp;podgląd zmienia się na żywo.',
 				'Klient widzi gotowy prezent, zanim zapłaci.'),

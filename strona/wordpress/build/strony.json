@@ -47,48 +47,42 @@
   "slug": "wycena",
   "rodzic": null,
   "opis": "Kilka pytań o firmę i klientów, a w 48 godzin propozycja na piśmie: pakiet, łączna kwota i termin. Bez telefonu i bez zobowiązań.",
-  "url": "/wycena/",
-  "status": "draft"
+  "url": "/wycena/"
  },
  "materialy": {
   "tytul": "Materiały na stronę",
   "slug": "materialy",
   "rodzic": null,
   "opis": "Formularz dla klientów: firma, dane do stopki, usługi, pytania klientów i pliki potrzebne do strony.",
-  "url": "/materialy/",
-  "status": "draft"
+  "url": "/materialy/"
  },
  "ustawieniaKalendarza": {
   "tytul": "Ustawienia kalendarza",
   "slug": "ustawienia-kalendarza",
   "rodzic": null,
   "opis": "Formularz dla klientów: spotkania, godziny, pytania przed spotkaniem i powiadomienia w kalendarzu rezerwacji.",
-  "url": "/ustawienia-kalendarza/",
-  "status": "draft"
+  "url": "/ustawienia-kalendarza/"
  },
  "uwagiDoSzkicu": {
   "tytul": "Uwagi do szkicu",
   "slug": "uwagi-do-szkicu",
   "rodzic": null,
   "opis": "Formularz dla klientów: uwagi do szkicu strony w jednym miejscu.",
-  "url": "/uwagi-do-szkicu/",
-  "status": "draft"
+  "url": "/uwagi-do-szkicu/"
  },
  "odbiorStrony": {
   "tytul": "Odbiór strony",
   "slug": "odbior-strony",
   "rodzic": null,
   "opis": "Formularz dla klientów: sprawdzenie strony przed publikacją i potwierdzenie odbioru.",
-  "url": "/odbior-strony/",
-  "status": "draft"
+  "url": "/odbior-strony/"
  },
  "po30Dniach": {
   "tytul": "Po 30 dniach",
   "slug": "po-30-dniach",
   "rodzic": null,
   "opis": "Formularz dla klientów: jak strona działa po pierwszym miesiącu.",
-  "url": "/po-30-dniach/",
-  "status": "draft"
+  "url": "/po-30-dniach/"
  },
  "polityka": {
   "tytul": "Polityka prywatności",

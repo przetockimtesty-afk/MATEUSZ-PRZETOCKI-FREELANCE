@@ -58,7 +58,7 @@ stron z WordPressa.
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
-| Strona mateuszprzetocki.pl (WordPress: 16 opublikowanych stron, `/polityka-cookies/` od 25.10; szkice: `/wycena/` i 5 formularzy dla klientów, demo) | źródło `strona/wordpress/`, kopie `backups/` (bez wyrenderowanego HTML) | projekt w Claude Design to wzór | — |
+| Strona mateuszprzetocki.pl (WordPress: 21 opublikowanych stron, w tym `/wycena/` i 5 formularzy dla klientów tylko z linku od 26.10; szkic: demo; indeksowanie włączone) | źródło `strona/wordpress/`, kopie `backups/` (bez wyrenderowanego HTML) | projekt w Claude Design to wzór | — |
 | Dane kontaktowe na stronie (e-mail, adres) | nie, z zasady; tylko ID wzorców w `strona/wordpress/wzorce.json` | — | — |
 | Film z kalendarza na „Realizacjach” (media 143, okładka 144) | nie: jest na nim zdjęcie Mateusza | — | — |
 | Zdjęcia Mateusza (na stronie: media 101–104 w WordPressie) | nie, z zasady | — | oryginały, 3 pliki WebP i ich wersje PNG |
@@ -75,8 +75,8 @@ stron z WordPressa.
 | Scenariusze filmów dla klientów (3 playlisty) | `firma/filmy/scenariusze.md` | — | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |
-| Wtyczka MP Rezerwacje (na stronie 0.1.0, do wgrania 0.1.1) | szkielet `strona/wtyczki/mp-rezerwacje/`, ZIP `strona/wtyczki/zip/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
-| Wtyczka MP Ankiety 0.1.0 (do wgrania) | szkielet `strona/wtyczki/mp-ankiety/`, ZIP `strona/wtyczki/zip/`, ankiety mojej strony `strona/wordpress/ankiety.js` | — | — |
+| Wtyczka MP Rezerwacje (na stronie 0.1.1 od 26.10) | szkielet `strona/wtyczki/mp-rezerwacje/`, ZIP `strona/wtyczki/zip/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
+| Wtyczka MP Ankiety 0.1.0 (na stronie od 26.10) | szkielet `strona/wtyczki/mp-ankiety/`, ZIP `strona/wtyczki/zip/`, ankiety mojej strony `strona/wordpress/ankiety.js` | — | — |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.

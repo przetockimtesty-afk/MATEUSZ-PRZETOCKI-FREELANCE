@@ -48,21 +48,23 @@
 Ustalenia Mateusza z notatki: demo na razie znika ze strony (sekcje zostają w źródle). Realizacje pokazują na środku kalendarz z filmem, a pod nim 3 wcześniejsze projekty: bundle ze sticky barem, kalkulator prania tapicerki i kreator prezentów z podglądem na żywo. Od startu strona ma GA4, piksel Meta (PixelYourSite, wersja darmowa) i baner Complianz, a baza mailingowa powstaje od początku. Będzie jedna prezentacja sprzedażowa i krótka prezentacja „jak przebiega współpraca”. Filmy dla klientów są w playlistach „wymagane na start” i „dobrowolne”.
 
 Etap 1, do startu we wtorek 27.10:
-- [ ] 1. Ankieta wyceny na stronie zamiast ankiet Google A i B: wtyczka MP Ankiety (szkielet dla wszystkich klientów) i jedna ankieta z pytaniami zależnymi od branży. Odpowiedzi idą do automatu propozycji w `Kod.gs`, a na końcu jest dobrowolna zgoda na newsletter. Potem trzeba podpiąć 36 przycisków `#ankieta`.
+- [x] 1. (26.10, bez automatu) Ankieta wyceny na stronie zamiast ankiet Google A i B: wtyczka MP Ankiety (szkielet dla wszystkich klientów) i jedna ankieta z pytaniami zależnymi od branży. Odpowiedzi idą do automatu propozycji w `Kod.gs`, a na końcu jest dobrowolna zgoda na newsletter. Potem trzeba podpiąć 36 przycisków `#ankieta`.
   - [x] Wtyczka MP Ankiety 0.1.0 i 6 ankiet (25.10), test lokalny z banerem zgód: cała ścieżka, przywracanie po odświeżeniu, e-maile, zdarzenie `mp_ankieta_wyslana`.
   - [x] Strony w WordPressie jako szkice (25.10): `/wycena/` (136) i formularze tylko z linku `/materialy/` (137), `/ustawienia-kalendarza/` (138), `/uwagi-do-szkicu/` (139), `/odbior-strony/` (140), `/po-30-dniach/` (141).
   - [x] `Kod.gs`: przyjmowanie odpowiedzi ze strony i co noc usuwanie odpowiedzi starszych niż rok; instrukcja w `firma/automatyzacja/INSTRUKCJA.md` („Ankieta na stronie”).
-  - [ ] Mateusz: wgrać ZIP-y MP Rezerwacje 0.1.1 (zastąpić) i MP Ankiety 0.1.0 (włączyć), wdrożyć `Kod.gs` jako aplikację internetową, wkleić adres i sekret w Ankiety → Ustawienia.
-  - [ ] Potem agent: `ANKIETY_WLACZONE = true` w `zbuduj.js`, wysyłka stron, nagłówka i stopki (36 przycisków na `/wycena/`, formularze opublikowane z noindex), ustawienia powiadomień ankiet, próbna ankieta.
+  - [x] Mateusz (26.10): ZIP-y wgrane, na stronie MP Rezerwacje 0.1.1 i MP Ankiety 0.1.0.
+  - [ ] Mateusz: wdrożyć `Kod.gs` jako aplikację internetową i wkleić adres i sekret w Ankiety → Ustawienia → Automat. Do tego czasu odpowiedzi zapisują się na stronie i przychodzą e-mailem, bez prezentacji i szkicu propozycji.
+  - [x] Agent (26.10): `ANKIETY_WLACZONE = true`, 38 przycisków prowadzi do `/wycena/` (34 na stronach, w tym szkic demo, 4 w nagłówku, stopce i na stronie 404). `/wycena/` i 5 formularzy opublikowane; formularze mają noindex, nofollow i nie ma ich w mapie strony. Ustawienia ankiet domyślne: powiadomienia na adres administratora, nadawca „Mateusz Przetocki”. Próbna ankieta na telefonie przeszła (odpowiedź 201, bez błędów).
 - [x] 2. (26.10, przełącznik `DEMO_WLACZONE` w `zbuduj.js`) Usunąć demo i zaślepki: stronę 50 przenieść do szkiców i usunąć 11 przycisków `#demo`. Zdjąć też karty Demo A (główna, Realizacje), sekcje demo na 3 stronach branż i link `#propozycja` (Jak pracuję). Zamiast demo: link do `/rozmowa/` albo film. Przedtem przenieść zmiany Mateusza z edytora do `zbuduj.js`.
 - [x] 3. (26.10) Trzy nowe zasady na „O mnie” i na głównej (`ZASADY` w `zbuduj.js`). Zaakceptowane przez Mateusza:
   - wszystko jest Twoje, bez abonamentu;
   - techniką zajmuję się ja, bez Twoich haseł;
   - cena, termin i zakres na piśmie, do tego 30 dni wsparcia.
-- [ ] 4. Realizacje: kalendarz na środku z filmem 30–40 s (nagranie na lokalnej kopii strony, MP4 bez YouTube'a), pod nim 3 projekty w układzie problem → co zrobiłem → co to daje. Zrzuty i opisy daje Mateusz; zrzuty puresofa.pl można zrobić samemu.
+- [x] 4. (26.10, bez zrzutów) Realizacje: kalendarz na środku z filmem 30–40 s (nagranie na lokalnej kopii strony, MP4 bez YouTube'a), pod nim 3 projekty w układzie problem → co zrobiłem → co to daje. Zrzuty i opisy daje Mateusz; zrzuty puresofa.pl można zrobić samemu.
   - [x] Film 34 s z napisami (telefon, 780 × 1688, MP4 1,2 MB) w mediach WordPressa: 143, okładka 144. Na filmie jest zdjęcie Mateusza, więc pliku nie ma w repozytorium. Skrypt nagrania był w plikach tymczasowych sesji (CDP screencast przy html zoom 2).
   - [x] Karta filmu na głównej, przyciski „Zobacz film z kalendarza” na głównej i 3 stronach branż.
-  - [ ] Mateusz: zrzuty i opisy 3 projektów (karty mają zaślepki i robocze opisy; Mateusz poprosił, żeby tego nie robić za niego).
+  - [x] Zaślepki zdjęte 26.10: karty projektów są bez obrazka, dopóki nie ma zrzutu (`ZRZUTY` w `zbuduj.js`: klucz z `media.json` albo null).
+  - [ ] Mateusz: zrzuty i opisy 3 projektów (Mateusz poprosił, żeby tego nie robić za niego). Zrzut wgrywamy do mediów, wpisujemy klucz w `ZRZUTY` i wysyłamy stronę.
 - [x] 5. (25–26.10) Complianz, PixelYourSite i GA4 (instalacja za zgodą Mateusza, identyfikatory od niego):
   - zdarzenia z wtyczek MP: ankieta wysłana, rozmowa umówiona;
   - test zgód w oknie prywatnym: przy kłopotach PixelYourSite z Complianz piksel idzie przez Complianz;
@@ -103,21 +105,22 @@ Etap 3, po starcie:
   - zgody z ankiety od startu, zapisane w WordPressie Mateusza z datą i treścią zgody;
   - narzędzie do wysyłki przy pierwszym newsletterze: Brevo albo MailPoet;
   - bez własnej wysyłki.
-- [ ] 14. Search Console i mapa strony w dniu startu, przegląd liczb po 2 tygodniach.
+- [ ] 14. Search Console i mapa strony w dniu startu, przegląd liczb po 2 tygodniach. Od 26.10 strony publiczne są już do indeksowania (bez noindex), a `wp-sitemap.xml` ma 16 stron, bez formularzy dla klientów i szkicu demo. Search Console można dodać od razu.
 
   Zamiast wpisywania w edytorze: dane kontaktowe są we wzorcach synchronizowanych „Dane kontaktowe · …” (126 e-mail na Kontakcie, 127 usługodawca w polityce i regulaminie, 128 stopka), tylko w WordPressie. Adres tylko w polityce i regulaminie, telefonu na stronie nie ma (decyzja z 25.10: strona „bez telefonu”). Polityka i regulamin mają standardowe brzmienie z datą 25.10.2026, radca sprawdzi je po starcie.
 
-Pilne przed startem (26.10): strona nie wysyła e-maili. Reset hasła w wp-admin kończy się błędem „nie wysłano wiadomości email”, więc prawdopodobnie nie dochodzą też potwierdzenia rezerwacji. Mateusz ma hasło tymczasowe do konta `mateuszprzetocki` (ustawione przez API na jego prośbę, do zmiany w Profilu). Następny krok: WP Mail SMTP → Narzędzia → Test e-maila i zrzut wyniku.
+E-maile ze strony (26.10): WP Mail SMTP nie logował się do skrzynki („Could not authenticate”), więc nie wychodziła żadna poczta, także reset hasła. Mateusz poprawił login i hasło skrzynki (według niego „chyba działa”). Hasło tymczasowe do konta `mateuszprzetocki` ustawione przez API na jego prośbę; ma je zmienić w Profilu. Około 6:00 agent wysłał próbną ankietę i zrobił próbną rezerwację (sobota 21.11, 12:30, „TEST Claude – proszę usunąć”), obie na adres administratora. Czeka na potwierdzenie Mateusza, że przyszły 4 e-maile, i na usunięcie obu prób w panelu (Rezerwacje → Spotkania, Ankiety).
 
 Czeka na Mateusza (26.10):
-- ZIP-y MP Rezerwacje 0.1.1 i MP Ankiety 0.1.0 (w `strona/wtyczki/zip/`), wdrożenie `Kod.gs` i sekret w Ankiety → Ustawienia;
+- potwierdzić, że doszły e-maile z próbnej ankiety i rezerwacji, potem usunąć obie próby w panelu; zmienić hasło tymczasowe;
+- wdrożenie `Kod.gs` i adres z sekretem w Ankiety → Ustawienia → Automat;
 - znacznik weryfikacji domeny Meta, ewentualnie nowy token API konwersji, drugi skan Complianz;
 - zrzuty i opisy 3 projektów;
 - prezentacja sprzedażowa w automacie: eksport do PowerPointa z notatkami, plik na Dysk, ten sam link w `szablonA` i `szablonB`, e-mail w `USTAWIENIA.podpis`, `setup` i nowa wersja wdrożenia (instrukcja, „Prezentacja sprzedażowa zamiast A i B”);
 - PDF „Jak przebiega współpraca” do umowy (eksport z claude.ai);
 - nagrania filmów według `firma/filmy/scenariusze.md`;
 - decyzja: wersja B w automacie to nadal stara oferta z kalkulatorem (1 600 / 2 500 / 3 400 zł, „Strona, która wycenia”), a strona pokazuje firmom remontowym te same pakiety co innym (1 200 / 1 800 / 2 500 zł). Slajdy B w prezentacji biorą nazwy i ceny z automatu. Zostawić B czy ujednolicić?
-- 27.10: odznaczyć „Proś wyszukiwarki o nieindeksowanie”, Search Console;
+- Search Console (indeksowanie jest już włączone, opcja „Proś wyszukiwarki o nieindeksowanie” jest odznaczona);
 - decyzja: na górze głównej nadal jest ilustracja telefonu z dema („Projekt demonstracyjny”, Anna Nowak); można ją zamienić na kadr z filmu kalendarza.
 
 ## Otwarte sprawy
