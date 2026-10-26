@@ -553,4 +553,8 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 .cmplz-cookiebanner .cmplz-buttons .cmplz-btn { font-family: inherit; font-weight: 600; border-width: 1.5px !important; }
 .cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-accept:hover, .cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-deny:hover { background-color: var(--wp--preset--color--czern-hover); border-color: var(--wp--preset--color--czern-hover) !important; }
 .cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-view-preferences:hover, .cmplz-cookiebanner .cmplz-buttons .cmplz-btn.cmplz-save-preferences:hover { background-color: var(--wp--preset--color--krem); }
+/* przyciski nie rozciągają się na wysokość tekstu, gdy baner jest paskiem na dole ekranu */
+.cmplz-cookiebanner .cmplz-buttons { align-items: center; }
+.cmplz-cookiebanner .cmplz-buttons .cmplz-btn { height: auto; min-height: 48px; }
+@media (min-width: 1024px) { .cmplz-cookiebanner .cmplz-buttons { align-self: center; } .cmplz-cookiebanner .cmplz-buttons .cmplz-btn { min-width: 0; flex: 1 1 0; } }
 @media (max-width: 768px) { .cmplz-cookiebanner { --cmplz_banner_border_radius: 16px 16px 0 0; } }

@@ -1,4 +1,4 @@
-# Stan prac (aktualizacja 23.10.2026)
+# Stan prac (aktualizacja 26.10.2026)
 
 ## Najważniejsze ustalenia
 
@@ -48,18 +48,28 @@ Ustalenia Mateusza z notatki: demo na razie znika ze strony (sekcje zostają w �
 
 Etap 1, do startu we wtorek 27.10:
 - [ ] 1. Ankieta wyceny na stronie zamiast ankiet Google A i B: wtyczka MP Ankiety (szkielet dla wszystkich klientów) i jedna ankieta z pytaniami zależnymi od branży. Odpowiedzi idą do automatu propozycji w `Kod.gs`, a na końcu jest dobrowolna zgoda na newsletter. Potem trzeba podpiąć 36 przycisków `#ankieta`.
-- [ ] 2. Usunąć demo i zaślepki: stronę 50 przenieść do szkiców i usunąć 11 przycisków `#demo`. Zdjąć też karty Demo A (główna, Realizacje), sekcje demo na 3 stronach branż i link `#propozycja` (Jak pracuję). Zamiast demo: link do `/rozmowa/` albo film. Przedtem przenieść zmiany Mateusza z edytora do `zbuduj.js`.
-- [ ] 3. Trzy nowe zasady na „O mnie” i na głównej. Propozycja do akceptacji:
+  - [x] Wtyczka MP Ankiety 0.1.0 i 6 ankiet (25.10), test lokalny z banerem zgód: cała ścieżka, przywracanie po odświeżeniu, e-maile, zdarzenie `mp_ankieta_wyslana`.
+  - [x] Strony w WordPressie jako szkice (25.10): `/wycena/` (136) i formularze tylko z linku `/materialy/` (137), `/ustawienia-kalendarza/` (138), `/uwagi-do-szkicu/` (139), `/odbior-strony/` (140), `/po-30-dniach/` (141).
+  - [x] `Kod.gs`: przyjmowanie odpowiedzi ze strony i co noc usuwanie odpowiedzi starszych niż rok; instrukcja w `firma/automatyzacja/INSTRUKCJA.md` („Ankieta na stronie”).
+  - [ ] Mateusz: wgrać ZIP-y MP Rezerwacje 0.1.1 (zastąpić) i MP Ankiety 0.1.0 (włączyć), wdrożyć `Kod.gs` jako aplikację internetową, wkleić adres i sekret w Ankiety → Ustawienia.
+  - [ ] Potem agent: `ANKIETY_WLACZONE = true` w `zbuduj.js`, wysyłka stron, nagłówka i stopki (36 przycisków na `/wycena/`, formularze opublikowane z noindex), ustawienia powiadomień ankiet, próbna ankieta.
+- [x] 2. (26.10, przełącznik `DEMO_WLACZONE` w `zbuduj.js`) Usunąć demo i zaślepki: stronę 50 przenieść do szkiców i usunąć 11 przycisków `#demo`. Zdjąć też karty Demo A (główna, Realizacje), sekcje demo na 3 stronach branż i link `#propozycja` (Jak pracuję). Zamiast demo: link do `/rozmowa/` albo film. Przedtem przenieść zmiany Mateusza z edytora do `zbuduj.js`.
+- [x] 3. (26.10) Trzy nowe zasady na „O mnie” i na głównej (`ZASADY` w `zbuduj.js`). Zaakceptowane przez Mateusza:
   - wszystko jest Twoje, bez abonamentu;
   - techniką zajmuję się ja, bez Twoich haseł;
   - cena, termin i zakres na piśmie, do tego 30 dni wsparcia.
 - [ ] 4. Realizacje: kalendarz na środku z filmem 30–40 s (nagranie na lokalnej kopii strony, MP4 bez YouTube'a), pod nim 3 projekty w układzie problem → co zrobiłem → co to daje. Zrzuty i opisy daje Mateusz; zrzuty puresofa.pl można zrobić samemu.
-- [ ] 5. Complianz, PixelYourSite i GA4 (instalacja za zgodą Mateusza, identyfikatory od niego):
+  - [x] Film 34 s z napisami (telefon, 780 × 1688, MP4 1,2 MB) w mediach WordPressa: 143, okładka 144. Na filmie jest zdjęcie Mateusza, więc pliku nie ma w repozytorium. Skrypt nagrania był w plikach tymczasowych sesji (CDP screencast przy html zoom 2).
+  - [x] Karta filmu na głównej, przyciski „Zobacz film z kalendarza” na głównej i 3 stronach branż.
+  - [ ] Mateusz: zrzuty i opisy 3 projektów (karty mają zaślepki i robocze opisy; Mateusz poprosił, żeby tego nie robić za niego).
+- [x] 5. (25–26.10) Complianz, PixelYourSite i GA4 (instalacja za zgodą Mateusza, identyfikatory od niego):
   - zdarzenia z wtyczek MP: ankieta wysłana, rozmowa umówiona;
   - test zgód w oknie prywatnym: przy kłopotach PixelYourSite z Complianz piksel idzie przez Complianz;
   - API konwersji na start wyłączone;
   - polityka prywatności i polityka cookies.
-- [ ] 6. Mateusz: e-mail i adres w edytorze (stopka, Kontakt, polityka, regulamin), data publikacji. Dopiski „do ustalenia z radcą” zastąpić standardowym brzmieniem, radca sprawdzi je po starcie.
+  - Zrobione: Complianz po kreatorze Mateusza (ściąga `firma/wdrozenia/complianz-kreator.md`) blokuje PixelYourSite do zgody (sprawdzone w kodzie strony 26.10: skrypty `type="text/plain"`, kategoria marketing). Piksel 1850828869571123 i GA4 G-1K161TZP9R wpisał Mateusz (import profilu PYS na świeżej instalacji nie zapisuje ID: błąd wtyczki). API konwersji włączył Mateusz; też działa dopiero po zgodzie, bo zdarzenia z serwera wysyła zablokowany skrypt. Nowa strona `/polityka-cookies/` (133), linki i przycisk „Ustawienia cookies” w stopce, baner w kolorach marki.
+  - [ ] Mateusz: znacznik weryfikacji domeny Meta w PixelYourSite → „Verify your domain” (pole puste); jeśli token API konwersji to ten z czatu, wygenerować nowy; drugi skan Complianz (Website Scan → Skanuj, Cookiedatabase → Synchronizuj), żeby polityka cookies miała listę ciasteczek; opcjonalnie krótszy tekst baneru (propozycja w ściądze).
+- [x] 6. (25.10) Mateusz: e-mail i adres w edytorze (stopka, Kontakt, polityka, regulamin), data publikacji. Dopiski „do ustalenia z radcą” zastąpić standardowym brzmieniem, radca sprawdzi je po starcie.
 
 Etap 2, do pierwszego klienta (ok. 6.11):
 - [ ] 7. Jeden proces po „TAK” w prezentacji, na „Jak pracuję” i w umowie:
@@ -92,10 +102,14 @@ Etap 3, po starcie:
   - bez własnej wysyłki.
 - [ ] 14. Search Console i mapa strony w dniu startu, przegląd liczb po 2 tygodniach.
 
-Czeka na Mateusza:
-- decyzje: kolejność, zgoda na Complianz, PixelYourSite i MP Rezerwacje 0.1.1, nazwy pakietów (propozycja: bez zmian), treść 3 zasad;
-- materiały: zrzuty i opisy 3 projektów, identyfikatory GA4 i piksela, konto partnera LH.pl;
-- odpowiedź: czy wydarzenia z rezerwacji pojawiają się już w Kalendarzu Google.
+  Zamiast wpisywania w edytorze: dane kontaktowe są we wzorcach synchronizowanych „Dane kontaktowe · …” (126 e-mail na Kontakcie, 127 usługodawca w polityce i regulaminie, 128 stopka), tylko w WordPressie. Adres tylko w polityce i regulaminie, telefonu na stronie nie ma (decyzja z 25.10: strona „bez telefonu”). Polityka i regulamin mają standardowe brzmienie z datą 25.10.2026, radca sprawdzi je po starcie.
+
+Czeka na Mateusza (26.10):
+- ZIP-y MP Rezerwacje 0.1.1 i MP Ankiety 0.1.0 (w `strona/wtyczki/zip/`), wdrożenie `Kod.gs` i sekret w Ankiety → Ustawienia;
+- znacznik weryfikacji domeny Meta, ewentualnie nowy token API konwersji, drugi skan Complianz;
+- zrzuty i opisy 3 projektów;
+- 27.10: odznaczyć „Proś wyszukiwarki o nieindeksowanie”, Search Console;
+- decyzja: na górze głównej nadal jest ilustracja telefonu z dema („Projekt demonstracyjny”, Anna Nowak); można ją zamienić na kadr z filmu kalendarza.
 
 ## Otwarte sprawy
 

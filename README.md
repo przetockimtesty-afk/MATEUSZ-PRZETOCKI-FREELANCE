@@ -54,22 +54,26 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (23.10.2026, plan z notatki w `firma/STAN-PRAC.md`)
+## Stan zapisu (26.10.2026)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
-| Strona mateuszprzetocki.pl (WordPress, 15 podstron z kalendarzem `/rozmowa/`) | źródło `strona/wordpress/`, kopie `backups/` | projekt w Claude Design to wzór | — |
+| Strona mateuszprzetocki.pl (WordPress: 16 opublikowanych stron, `/polityka-cookies/` od 25.10; szkice: `/wycena/` i 5 formularzy dla klientów, demo) | źródło `strona/wordpress/`, kopie `backups/` (bez wyrenderowanego HTML) | projekt w Claude Design to wzór | — |
+| Dane kontaktowe na stronie (e-mail, adres) | nie, z zasady; tylko ID wzorców w `strona/wordpress/wzorce.json` | — | — |
+| Film z kalendarza na „Realizacjach” (media 143, okładka 144) | nie: jest na nim zdjęcie Mateusza | — | — |
 | Zdjęcia Mateusza (na stronie: media 101–104 w WordPressie) | nie, z zasady | — | oryginały, 3 pliki WebP i ich wersje PNG |
+| Ustawienia Complianz i PixelYourSite (piksel, GA4, API konwersji) | ściąga kreatora `firma/wdrozenia/complianz-kreator.md` | — | — |
 | Drogowskaz PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | Workflow A i B PDF | tak | — | tak, ta sama wersja co w repozytorium |
-| PROFIL.md, Kod.gs, INSTRUKCJA.md | tak | — | — |
+| PROFIL.md, Kod.gs (z ankietą ze strony), INSTRUKCJA.md | tak | — | — |
 | Plan strony (z tytułami SEO i przepisami branż) | kopia z 19.10, po zmianach | wersja robocza | — |
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
 | Prezentacje A i B | źródła | tak | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |
-| Wtyczka MP Rezerwacje 0.1.0 (włączona na mateuszprzetocki.pl) | szkielet `strona/wtyczki/mp-rezerwacje/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
+| Wtyczka MP Rezerwacje (na stronie 0.1.0, do wgrania 0.1.1) | szkielet `strona/wtyczki/mp-rezerwacje/`, ZIP `strona/wtyczki/zip/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
+| Wtyczka MP Ankiety 0.1.0 (do wgrania) | szkielet `strona/wtyczki/mp-ankiety/`, ZIP `strona/wtyczki/zip/`, ankiety mojej strony `strona/wordpress/ankiety.js` | — | — |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.
