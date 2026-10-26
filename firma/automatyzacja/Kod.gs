@@ -11,15 +11,19 @@
  * 3. Od 25.10.2026 główna ankieta wyceny jest na stronie (wtyczka MP Ankiety, /wycena/). Strona wysyła odpowiedź
  *    do doPost (aplikacja internetowa), a ta robi to samo co ankiety Google: prezentację i szkic propozycji.
  *    Ankiety Google A i B zostają jako zapasowe.
+ * 4. Od 26.10.2026 jedna „Prezentacja sprzedażowa” służy za szablon A i B. Slajd ze znacznikiem „[tylko A]”
+ *    albo „[tylko B]” w notatkach automat pomija w drugiej wersji, a slajd z „[liczby z ankiety]” wtedy,
+ *    gdy nie ma z czego policzyć kosztu problemu.
  *
  * Jak uruchomić krok po kroku: automatyzacja/INSTRUKCJA.md.
  */
 
 // ===================== USTAWIENIA: uzupełnij przed uruchomieniem setup =====================
 const USTAWIENIA = {
-  // Link do szablonu A „Konsultacja”: plik .pptx na Dysku albo Prezentacja Google.
+  // Link do szablonu prezentacji A (konsultacja): plik .pptx na Dysku albo Prezentacja Google.
+  // Od 26.10.2026 to „Prezentacja sprzedażowa”, wspólna dla A i B.
   szablonA: 'WKLEJ_TUTAJ_LINK_DO_SZABLONU_A',
-  // Link do szablonu B „Wycena”: plik .pptx na Dysku albo Prezentacja Google.
+  // Link do szablonu B (wycena): zwykle ten sam co szablonA. Automat zrobi wtedy jeden szablon Google dla obu.
   szablonB: 'WKLEJ_TUTAJ_LINK_DO_SZABLONU_B',
   // Dokąd wysyłać linki do gotowych prezentacji. Puste = adres Twojego konta Google.
   email: '',
@@ -386,14 +390,18 @@ function utworzPrezentacje(wersja, o, kiedy) {
   const kopia = szablon.makeCopy('Rozmowa ' + wersja + ' · ' + t.FIRMA + ' · ' + t.DATA, folder);
   const pres = SlidesApp.openById(kopia.getId());
   klucze.forEach(k => pres.replaceAllText('{{' + k + '}}', t[k], false));
+  const drugaWersja = wersja === 'A' ? '[tylko b]' : '[tylko a]';
   pres.getSlides().forEach(slajd => {
     const notatki = slajd.getNotesPage().getSpeakerNotesShape();
+    const uwagi = notatki ? notatki.getText().asString().toLowerCase() : ''; // znaczniki z szablonu, zanim wejdą odpowiedzi klienta
     if (notatki) klucze.forEach(k => notatki.getText().replaceAllText('{{' + k + '}}', t[k], false));
 
     const tekst = tekstSlajdu(slajd).toLowerCase();
+    const zLiczbami = uwagi.indexOf('[liczby z ankiety]') !== -1 ||
+      (tekst.indexOf('koszt problemu') !== -1 && tekst.indexOf('ile kosztuje') !== -1);
     if (tekst.indexOf('tylko dla ciebie') !== -1) pomin(slajd); // ściągi: zostają w pliku, nie w pokazie
-    else if (tekst.indexOf('koszt problemu') !== -1 && tekst.indexOf('ile kosztuje') !== -1 &&
-      (!dane.koszt || tekst.indexOf('{{') !== -1)) pomin(slajd); // bez liczb albo slajd ze starego szablonu
+    else if (uwagi.indexOf(drugaWersja) !== -1) pomin(slajd); // slajd dla drugiej wersji (jedna prezentacja na A i B)
+    else if (zLiczbami && (!dane.koszt || tekst.indexOf('{{') !== -1)) pomin(slajd); // bez liczb albo slajd ze starego szablonu
     else if (tekst.indexOf('[nazwa projektu]') !== -1) pomin(slajd); // przykład z portfolio, którego jeszcze nie uzupełniłeś
   });
   pres.saveAndClose();
@@ -533,6 +541,11 @@ function policz(w, o, kiedy) {
   t.KWOTA = kwota === null ? '—' : zlote(kwota);
   t.ROK = koszt ? zlote(klienciRok * kwota) : '—';
   t.GODZ = godz ? godzinyTekst(godz) : 'dodatkowe godziny';
+  const zw = zwrot(ceny[1], kwota, klienciRok);
+  t.ZWROT = !zw.potrzeba ? '—' : w === 'A'
+    ? (zw.potrzeba === 1 ? 'pierwszym dodatkowym kliencie' : zw.potrzeba + ' dodatkowych klientach')
+    : (zw.potrzeba === 1 ? 'pierwszym dodatkowym zleceniu' : zw.potrzeba + ' dodatkowych zleceniach');
+  t.ZWROT_CZAS = zw.miesiace ? 'ok. ' + (zw.miesiace === 1 ? '1 miesiąca' : zw.miesiace + ' miesięcy') : '—';
 
   // Propozycja: warianty, ceny, daty, utrzymanie, podpis
   const cena1 = ceny[0] + (w === 'B' && !maStrone ? DOPLATA_BEZ_STRONY : 0);
@@ -572,8 +585,9 @@ function policz(w, o, kiedy) {
  */
 function akapitKosztu(w, d) {
   const odzyskane = Math.round(d.ileRok * ODZYSK);
-  const potrzeba = Math.max(1, Math.ceil(d.cena2 / d.kwota - 1e-9)); // ilu klientów (zleceń) pokrywa cenę wariantu 2
-  const miesiace = Math.max(1, Math.ceil(potrzeba * 12 / d.klienciRok - 1e-9));
+  const zw = zwrot(d.cena2, d.kwota, d.klienciRok);
+  const potrzeba = zw.potrzeba;
+  const miesiace = zw.miesiace;
   const tempo = ', przy tym tempie w ciągu ok. ' + (miesiace === 1 ? '1 miesiąca' : miesiace + ' miesięcy') + '.';
   const rocznie = d.klienciRok * d.kwota;
   const kwoty = ' to ok. ' + zlote(rocznie) + ' rocznie (ok. ' + zlote(Math.round(rocznie / 12 / 10) * 10) + ' miesięcznie). ';
@@ -592,6 +606,13 @@ function akapitKosztu(w, d) {
     ', to ok. ' + (d.klienciRok === 1 ? '1 dodatkowego zlecenia' : liczbaTekst(d.klienciRok) + ' dodatkowych zleceń') + ' rocznie. ' +
     'Przy ' + zlote(d.kwota) + ' za zlecenie' + kwoty + 'Wariant 2 (' + zlote(d.cena2) + ') zwraca się po ' +
     (potrzeba === 1 ? 'pierwszym dodatkowym zleceniu' : potrzeba + ' dodatkowych zleceniach') + tempo;
+}
+
+/** Po ilu dodatkowych klientach (zleceniach) zwraca się wariant 2 i w ilu miesiącach przy tempie z ankiety (0 = nie da się policzyć). */
+function zwrot(cena2, kwota, klienciRok) {
+  const potrzeba = kwota > 0 ? Math.max(1, Math.ceil(cena2 / kwota - 1e-9)) : 0;
+  const miesiace = potrzeba && klienciRok >= 1 ? Math.max(1, Math.ceil(potrzeba * 12 / klienciRok - 1e-9)) : 0;
+  return {potrzeba: potrzeba, miesiace: miesiace};
 }
 
 /** Przypis pod kosztem problemu: skąd założenie „co trzecia osoba”. */
@@ -866,6 +887,14 @@ function szablonGoogle(id, litera, folder) {
   const props = PropertiesService.getScriptProperties();
   const zapamietany = props.getProperty('SZABLON_' + litera);
   if (props.getProperty('ZRODLO_' + litera) === id && istnieje(zapamietany)) return zapamietany;
+  // Ten sam plik w szablonA i szablonB (jedna prezentacja sprzedażowa): obie wersje dostają jedną kopię Google.
+  const druga = litera === 'A' ? 'B' : 'A';
+  const wspolny = props.getProperty('SZABLON_' + druga);
+  if (props.getProperty('ZRODLO_' + druga) === id && istnieje(wspolny)) {
+    props.setProperty('ZRODLO_' + litera, id);
+    props.setProperty('SZABLON_' + litera, wspolny);
+    return wspolny;
+  }
   const typ = DriveApp.getFileById(id).getMimeType();
   let wynik;
   if (typ === MimeType.GOOGLE_SLIDES) {

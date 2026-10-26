@@ -1,0 +1,35 @@
+<section id="zwrot-b" data-transition="fade" style="background:#e8e0d4;color:#161514;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<x-shape kind="ellipse" style="background:#a7c7e7;width:14px;height:14px"></x-shape>
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#5c574f">Zwrot z&#160;inwestycji · liczby z&#160;Twojej ankiety</p>
+</div>
+<h2 style="font-family:'Inter Tight', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;letter-spacing:-1px;color:#161514">Kiedy strona się zwraca</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:2px solid #d9d0c3;border-radius:24px;padding:36px">
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:88px;font-weight:600;line-height:1;color:#161514">{{STRATY}}</p>
+<p style="font-size:26px;line-height:1.4;color:#5c574f">telefonów w&#160;roku zostaje bez odpowiedzi</p>
+</div>
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1;color:#5c574f">×</p>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:2px solid #d9d0c3;border-radius:24px;padding:36px">
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:88px;font-weight:600;line-height:1;color:#161514">{{SZANSA}}</p>
+<p style="font-size:26px;line-height:1.4;color:#5c574f">szansa na zlecenie: strona przejmie co trzecie zapytanie, a&#160;zleceniem kończy się {{SKUTECZNOSC}} zapytań</p>
+</div>
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1;color:#5c574f">=</p>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:2px solid #d9d0c3;border-radius:24px;padding:36px">
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:88px;font-weight:600;line-height:1;color:#161514">{{NOWI}}</p>
+<p style="font-size:26px;line-height:1.4;color:#5c574f">dodatkowych zleceń rocznie, czyli <b>{{ROK}}</b> przy {{KWOTA}} za zlecenie</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:32px;background:#161514;border-radius:24px;padding:40px 48px">
+<div style="width:72px;height:72px;background:#34312d;border-radius:9999px;display:flex;align-items:center;justify-content:center"><x-icon name="Chart" style="color:#a7c7e7;width:36px;height:36px"></x-icon></div>
+<p style="flex:1;font-size:36px;line-height:1.35;color:#f5f2ec">Pakiet „Strona, która wycenia” ({{CENA2}}) zwraca się po <span style="color:#a7c7e7">{{ZWROT}}</span>, przy tym tempie w&#160;ciągu {{ZWROT_CZAS}}.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5c574f">„Co trzecie”: ok. 30% rezerwacji online poza godzinami pracy (Mayo Clinic, JMIR Med Inform 2021) · reszta liczb z&#160;ankiety</p>
+<aside>[tylko B] [liczby z ankiety] Pytanie: „Ile średnio wart jest dla Pana/Pani jedno zlecenie i ile takich zleceń potrzeba, żeby ta strona w pełni się spłaciła?”
+
+Liczby liczy automat z ankiety, ostrożnie: telefony bez odpowiedzi w zeszłym tygodniu razy 4 i razy 12 miesięcy, razy szansa na zlecenie. Strona przejmie co trzecie z tych zapytań, a zleceniem kończy się tyle, ile dziś (zlecenia przez zapytania). Gdy klient tego nie podał, automat przyjmuje 25% i dopisuje „założenie”. Gdy nie podał kwoty albo wychodzi mniej niż 1 dodatkowe zlecenie rocznie, automat pomija ten slajd.
+
+Zwrot: cena polecanego pakietu podzielona przez wartość jednego zlecenia, zaokrąglona w górę. Bez ankiety policz to na głos razem z klientem. Nie zawyżaj: mniejsza liczba, ale wiarygodna, przekonuje bardziej.</aside>
+</section>

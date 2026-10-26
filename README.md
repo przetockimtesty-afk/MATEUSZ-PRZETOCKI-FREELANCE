@@ -65,11 +65,14 @@ stron z WordPressa.
 | Ustawienia Complianz i PixelYourSite (piksel, GA4, API konwersji) | ściąga kreatora `firma/wdrozenia/complianz-kreator.md` | — | — |
 | Drogowskaz PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | Workflow A i B PDF | tak | — | tak, ta sama wersja co w repozytorium |
-| PROFIL.md, Kod.gs (z ankietą ze strony), INSTRUKCJA.md | tak | — | — |
+| PROFIL.md, Kod.gs (ankieta ze strony, jedna prezentacja dla A i B, pola zwrotu), INSTRUKCJA.md | tak | — | — |
 | Plan strony (z tytułami SEO i przepisami branż) | kopia z 19.10, po zmianach | wersja robocza | — |
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
-| Prezentacje A i B | źródła | tak | — |
+| Prezentacja sprzedażowa (zastępuje A i B w automacie) | źródło `firma/prezentacje/sprzedaz/` | tak: https://claude.ai/artifact/HXPH6cbCgCu9JELWYmmzaz | — (plik .pptx do szablonu wgrywa Mateusz) |
+| Prezentacja „Jak przebiega współpraca” | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA | — (PDF do umowy eksportuje Mateusz) |
+| Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
+| Scenariusze filmów dla klientów (3 playlisty) | `firma/filmy/scenariusze.md` | — | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |
 | Wtyczka MP Rezerwacje (na stronie 0.1.0, do wgrania 0.1.1) | szkielet `strona/wtyczki/mp-rezerwacje/`, ZIP `strona/wtyczki/zip/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |

@@ -3,8 +3,9 @@
 Klient wypełnia ankietę Google (A „Konsultacja” albo B „Wycena”). Po około minucie dostajesz mail
 z dwoma linkami:
 
-- **Prezentacja w Google Slides** z wypełnionymi polami: firma, data, „Co usłyszałem”, koszt problemu,
-  termin propozycji i dzień decyzji. Pełne odpowiedzi są w notatkach pod slajdami.
+- **Prezentacja w Google Slides** („Prezentacja sprzedażowa”) z wypełnionymi polami: firma, data, liczby
+  z ankiety, ceny pakietów, zwrot z inwestycji i daty startu. Pytania do klienta i pełne odpowiedzi z ankiety
+  są w notatkach pod slajdami.
 - **Szkic propozycji w Google Docs**: 8 bloków z sekcji 17 drogowskazu. Zawiera liczby klienta, cel z miarą
   sukcesu, ostrożnie policzony koszt problemu, polecany wariant 2 opisany przed tabelą i wyróżniony w tabeli,
   ceny, daty, rozliczenie i koszty domeny z hostingiem. Sprawdzasz, poprawiasz zdania i wysyłasz PDF.
@@ -42,6 +43,34 @@ Dobrze wiedzieć:
   (do 3 razy, co godzinę). W panelu Ankiety jest przycisk „Wyślij ponownie do automatu”.
 - Wiersz z „błąd: …” w karcie „Ze strony”: popraw przyczynę (zwykle szablon) i uruchom `utworzZOstatniejZeStrony`.
 
+## Prezentacja sprzedażowa zamiast A i B (od 26.10.2026, ok. 10 minut)
+
+Prezentacje A „Konsultacja” i B „Wycena” zastępuje jedna „Prezentacja sprzedażowa” (claude.ai, źródło
+w `firma/prezentacje/sprzedaz/`). Automat robi z niej prezentację dla obu wersji i sam pomija slajdy,
+które nie pasują do branży klienta.
+
+1. Otwórz „Prezentacja sprzedażowa” w claude.ai → Udostępnij → Eksport → PowerPoint, w wersji z edytowalnym
+   tekstem (nie „slajdy jako obrazy”). Notatki muszą zostać w pliku, bo są w nich znaczniki (niżej).
+2. Wgraj plik .pptx na Dysk Google i skopiuj link do niego.
+3. script.google.com → projekt „Ankieta → prezentacja”: wklej nowy `Kod.gs`, a swoje wartości w `USTAWIENIA`
+   zostaw. Ten sam link wklej w `szablonA` i w `szablonB`. W `podpis` dopisz e-mail (i telefon, jeśli chcesz):
+   podpis jest też na ostatnim slajdzie prezentacji.
+4. Zapisz i uruchom `setup`. Powstanie jeden szablon Google Slides dla obu wersji. Stare szablony A i B
+   możesz usunąć z folderu.
+5. Wdróż → Zarządzaj wdrożeniami → ołówek → Wersja: Nowa wersja → Wdróż (aplikacja dla ankiety ze strony).
+6. Test: uruchom `utworzZOstatniejZeStrony` albo wypełnij ankietę testową. W gotowej prezentacji slajdy
+   drugiej wersji są pominięte (na liście slajdów wyszarzone), a slajd „Kiedy strona się zwraca” ma liczby.
+
+Znaczniki w notatkach slajdów:
+
+- `[tylko A]`: slajd tylko dla wersji A (konsultacje), w wersji B pominięty;
+- `[tylko B]`: slajd tylko dla wersji B (wyceny, firmy remontowe), w wersji A pominięty;
+- `[liczby z ankiety]`: slajd ze zwrotem z inwestycji, pominięty, gdy klient nie podał kwoty albo wychodzi
+  mniej niż 1 nowy klient (zlecenie) rocznie.
+
+Znaczników nie usuwaj. Slajd bez znacznika pokazuje się w obu wersjach. Nowy slajd tylko dla jednej wersji
+dostaje znacznik na początku notatek.
+
 ## Masz już poprzednią wersję: aktualizacja (5 minut)
 
 1. script.google.com → projekt „Ankieta → prezentacja”. Skopiuj do notatek swoje wartości z `USTAWIENIA`:
@@ -67,20 +96,20 @@ i „Szkic propozycji” w arkuszu oraz nowy tytuł, opis i podziękowanie ankie
 
 ## Pierwsze uruchomienie (około 20 minut)
 
-### 1. Szablony prezentacji (2 × 2 minuty)
+### 1. Szablon prezentacji (2 minuty)
 
-1. Otwórz „Prezentacja A · Konsultacja” (przypięta w pasku bocznym claude.ai).
+1. Otwórz „Prezentacja sprzedażowa” w claude.ai.
 2. Udostępnij → Eksport → PowerPoint, w wersji z edytowalnym tekstem (nie „slajdy jako obrazy”).
 3. Wgraj plik .pptx na Dysk Google i skopiuj link do niego (otwórz go i skopiuj adres z paska).
-   Nie musisz go konwertować: skrypt sam zrobi z niego Prezentację Google „Szablon A · Google Slides”.
-4. To samo dla prezentacji B.
+   Nie musisz go konwertować: skrypt sam zrobi z niego Prezentację Google „Szablon A · Google Slides”,
+   wspólną dla obu wersji.
 
 ### 2. Skrypt (5 minut)
 
 1. Wejdź na script.google.com → Nowy projekt. Nazwij go „Ankieta → prezentacja”.
 2. Skasuj zawartość pliku `Kod.gs` w edytorze i wklej cały kod z pliku `Kod.gs` z tego folderu.
-3. Na górze, w `USTAWIENIA`, wklej linki do plików A i B w miejsce `WKLEJ_TUTAJ_…`.
-   Uzupełnij `podpis` (pod propozycją). Ceny trzech wariantów są w `ceny`, a koszty domeny i hostingu
+3. Na górze, w `USTAWIENIA`, wklej link do pliku .pptx w miejsce obu `WKLEJ_TUTAJ_…` (`szablonA` i `szablonB`).
+   Uzupełnij `podpis` (pod propozycją i na ostatnim slajdzie). Ceny trzech wariantów są w `ceny`, a koszty domeny i hostingu
    w `utrzymanie`: zmieniasz je tam, gdy zmieni się Twój cennik albo cennik dostawcy.
    Maile przychodzą na adres Twojego konta Google; inny adres wpisz w `email`.
 4. Zapisz (Ctrl+S).
@@ -94,21 +123,21 @@ i „Szkic propozycji” w arkuszu oraz nowy tytuł, opis i podziękowanie ankie
    Na liście jest też „łączenie z usługą zewnętrzną”: skrypt używa jej tylko do zamiany .pptx
    na Prezentację Google przez Dysk Google.
 3. Po chwili przychodzi mail „Automat ankieta → prezentacja: linki”: ankiety A i B, linki ze źródłem,
-   arkusz z odpowiedziami, folder na Dysku, dwa szablony prezentacji i dwa szablony propozycji.
-4. Otwórz szablon prezentacji A i B z maila i raz uzupełnij slajd „Przykład” (portfolio). Dopóki jest
-   na nim „[Nazwa projektu]”, automat ten slajd pomija.
+   arkusz z odpowiedziami, folder na Dysku, szablon prezentacji (ten sam link przy A i B) i dwa szablony propozycji.
 
-Od teraz wzorem dla automatu są szablony z maila. Gdy zmienisz coś w prezentacji na claude.ai, nanieś
-tę samą zmianę w szablonie Google (albo wyeksportuj, wgraj nowy .pptx, wklej jego link w `USTAWIENIA`
-i uruchom `setup` jeszcze raz).
+Od teraz wzorem dla automatu jest szablon prezentacji z maila. Gdy zmienisz coś w prezentacji na claude.ai,
+nanieś tę samą zmianę w szablonie Google (albo wyeksportuj, wgraj nowy .pptx, wklej jego link w `szablonA`
+i `szablonB` i uruchom `setup` jeszcze raz).
 
 ### 4. Test (3 minuty)
 
 1. Wypełnij ankietę A wymyślonymi danymi: 12 osób pyta, 7 się umawia, 3 zostają klientami,
    jeden klient przynosi 3000 zł.
 2. Po około minucie przychodzi mail „Gotowe: prezentacja i szkic propozycji · …”.
-3. W prezentacji sprawdź slajd „Koszt problemu”: 60 × 14% = 8, czyli 24 000 zł rocznie. Jeśli długi
-   tekst wychodzi poza kafelek, popraw rozmiar w szablonie Google.
+3. W prezentacji sprawdź slajd „Kiedy strona się zwraca”: 60 × 14% = 8, czyli 24 000 zł rocznie, a pakiet
+   „Wizytówka, która umawia” zwraca się po pierwszym dodatkowym kliencie, w ciągu ok. 2 miesięcy. Slajdy
+   wersji B (np. „Czy dobrze rozumiem?” z zapytaniami o cenę) są pominięte. Jeśli długi tekst wychodzi
+   poza kafelek, popraw rozmiar w szablonie Google.
 4. W szkicu propozycji sprawdź punkt 2 („Punkt wyjścia: 7 z 12… nowi klienci 3 z 7”, miara 9 z 12,
    „Wariant 2 zwraca się po pierwszym dodatkowym kliencie, w ciągu ok. 2 miesięcy”), wyróżniony wiersz
    wariantu 2 w tabeli i punkt 7 (rozliczenie, domena i hosting).
@@ -190,9 +219,10 @@ Szablon propozycji poprawiasz w Dokumentach Google (link w mailu z setup): zmien
 - **Bez ankiety:** ankietę wypełniasz sam w trakcie pytań na Meecie, w drugiej karcie. Po wysłaniu
   prezentacja i szkic są gotowe po około minucie.
 - **Pokaz:** prezentację otwierasz z maila → Pokaz slajdów → w Meet udostępniasz kartę. Widok prezentera
-  pokazuje notatki, a w notatkach slajdu „Co usłyszałem” są pełne odpowiedzi klienta.
-- Ściągi z pytaniami są w pliku, ale pominięte w pokazie. Gdy klient nie poda kwoty, slajd
-  „Koszt problemu” też jest pominięty.
+  pokazuje notatki: przy każdym slajdzie pytanie do klienta, a przy slajdzie „Czy dobrze rozumiem?”
+  pełne odpowiedzi z ankiety.
+- Slajdy drugiej wersji (A albo B) są w pliku, ale pominięte w pokazie. Gdy klient nie poda kwoty, slajd
+  „Kiedy strona się zwraca” też jest pominięty.
 - Klientowi nie wysyłasz linku do prezentacji (notatki są w pliku). Dostaje propozycję w PDF.
 
 ## Gdy coś nie działa
@@ -206,6 +236,9 @@ Szablon propozycji poprawiasz w Dokumentach Google (link w mailu z setup): zmien
   nawiasu). Popraw je w szablonie Google Slides albo Google Docs.
 - **Slajd „Koszt problemu” jest zawsze pominięty:** szablon prezentacji ma stary slajd kosztu (mail
   z setup o tym mówi). Wyeksportuj prezentację z claude.ai jeszcze raz i wklej nowy link w `USTAWIENIA`.
+- **W prezentacji pokazują się slajdy obu wersji (A i B):** plik .pptx nie ma notatek ze znacznikami
+  `[tylko A]` i `[tylko B]`. Wyeksportuj prezentację jeszcze raz (z notatkami) albo dopisz znaczniki
+  na początku notatek w szablonie Google.
 - **Usunąłeś szablon prezentacji albo propozycji:** uruchom `setup`, zrobi nowy. Szablon propozycji
   automat odtworzy też sam przy następnej ankiecie.
 - **Poprawiłeś szablon i chcesz odtworzyć ostatnie pliki:** uruchom funkcję `utworzZOstatnichOdpowiedzi`.
@@ -230,7 +263,7 @@ Prezentacja:
 | `{{SKAD}}` | skąd przychodzili klienci | skąd przychodzą zapytania |
 | `{{PYTA}}`, `{{UMAWIA}}`, `{{KLIENCI}}` | ile pyta, ile się umawia, ilu zostaje klientami | — |
 | `{{ZAPYTANIA}}`, `{{PRZEPADA}}`, `{{ZLECENIA}}` | — | zapytania w tygodniu, telefony bez odpowiedzi, zlecenia |
-| `{{PRZESZKADZA}}` | co najbardziej męczy (skrót do 85 znaków) | tylko w notatkach |
+| `{{PRZESZKADZA}}` | co najbardziej męczy (skrót do 85 znaków) | co przeszkadza w wycenach (to samo) |
 | `{{ELEMENTY}}` | — | co trzeba wiedzieć do wyceny (skrót do 80 znaków) |
 | `{{CEL}}` | po czym będzie widać, że było warto | to samo |
 | `{{STRATY}}` | osoby w roku, które pytają i się nie umawiają | telefony bez odpowiedzi w roku |
@@ -239,9 +272,15 @@ Prezentacja:
 | `{{NOWI}}` | nowi klienci rocznie: STRATY × SZANSA, w dół do pełnych | dodatkowe zlecenia rocznie |
 | `{{KWOTA}}`, `{{ROK}}` | kwota z jednego klienta; NOWI × KWOTA | przeciętne zlecenie; to samo |
 | `{{GODZ}}` | czas pierwszej rozmowy razy liczba pytających, na tydzień | czas na wyceny w tygodniu |
+| `{{ZWROT}}` | po ilu dodatkowych klientach zwraca się wariant 2: cena ÷ kwota, w górę | po ilu dodatkowych zleceniach |
+| `{{ZWROT_CZAS}}` | w ilu miesiącach przy tempie NOWI na rok | to samo |
+| `{{CENA1}}`, `{{CENA2}}`, `{{CENA3}}` | ceny pakietów z `USTAWIENIA.ceny.A` | ceny z `USTAWIENIA.ceny.B` |
+| `{{WARIANT1}}` | — | kalkulator na obecnej stronie albo mini-strona z kalkulatorem |
+| `{{MATERIALY_DO}}`, `{{PUBLIKACJA}}` | jak w szkicu propozycji | to samo |
+| `{{PODPIS}}` | `USTAWIENIA.podpis` (ostatni slajd) | to samo |
 | `{{UTRZYMANIE}}` | koszty domeny i hostingu z `USTAWIENIA.utrzymanie` | to samo |
-| `{{TERMIN}}` | następny dzień roboczy po rozmowie, 18:00 | to samo |
-| `{{DECYZJA}}` | 3 dni robocze po rozmowie | to samo |
+| `{{TERMIN}}` | następny dzień roboczy po rozmowie, 18:00 (starsze prezentacje A i B) | to samo |
+| `{{DECYZJA}}` | 3 dni robocze po rozmowie (starsze prezentacje A i B) | to samo |
 
 Szkic propozycji:
 

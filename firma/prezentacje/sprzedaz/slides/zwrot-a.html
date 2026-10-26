@@ -1,0 +1,35 @@
+<section id="zwrot-a" data-transition="fade" style="background:#e8e0d4;color:#161514;font-family:'Inter', Arial, sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:36px">
+<div style="display:flex;flex-direction:column;gap:20px">
+<div style="display:flex;flex-direction:row;align-items:center;gap:16px">
+<x-shape kind="ellipse" style="background:#a7c7e7;width:14px;height:14px"></x-shape>
+<p style="font-size:24px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#5c574f">Zwrot z&#160;inwestycji · liczby z&#160;Twojej ankiety</p>
+</div>
+<h2 style="font-family:'Inter Tight', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1.1;letter-spacing:-1px;color:#161514">Kiedy strona się zwraca</h2>
+</div>
+<div style="display:flex;flex-direction:row;gap:24px;align-items:center">
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:2px solid #d9d0c3;border-radius:24px;padding:36px">
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:88px;font-weight:600;line-height:1;color:#161514">{{STRATY}}</p>
+<p style="font-size:26px;line-height:1.4;color:#5c574f">osób w&#160;roku pyta i&#160;się nie umawia</p>
+</div>
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1;color:#5c574f">×</p>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:2px solid #d9d0c3;border-radius:24px;padding:36px">
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:88px;font-weight:600;line-height:1;color:#161514">{{SZANSA}}</p>
+<p style="font-size:26px;line-height:1.4;color:#5c574f">szansa na nowego klienta: strona umówi co trzecią osobę, a&#160;klientami zostaje {{SKUTECZNOSC}} umówionych</p>
+</div>
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:72px;font-weight:600;line-height:1;color:#5c574f">=</p>
+<div style="flex:1;align-self:stretch;display:flex;flex-direction:column;gap:8px;background:#ffffff;border:2px solid #d9d0c3;border-radius:24px;padding:36px">
+<p style="font-family:'Inter Tight', Arial, sans-serif;font-size:88px;font-weight:600;line-height:1;color:#161514">{{NOWI}}</p>
+<p style="font-size:26px;line-height:1.4;color:#5c574f">nowych klientów rocznie, czyli <b>{{ROK}}</b> przy {{KWOTA}} z&#160;jednego klienta</p>
+</div>
+</div>
+<div style="display:flex;flex-direction:row;align-items:center;gap:32px;background:#161514;border-radius:24px;padding:40px 48px">
+<div style="width:72px;height:72px;background:#34312d;border-radius:9999px;display:flex;align-items:center;justify-content:center"><x-icon name="Chart" style="color:#a7c7e7;width:36px;height:36px"></x-icon></div>
+<p style="flex:1;font-size:36px;line-height:1.35;color:#f5f2ec">Pakiet „Wizytówka, która umawia” ({{CENA2}}) zwraca się po <span style="color:#a7c7e7">{{ZWROT}}</span>, przy tym tempie w&#160;ciągu {{ZWROT_CZAS}}.</p>
+</div>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#5c574f">„Co trzecia”: ok. 30% rezerwacji online poza godzinami pracy (Mayo Clinic, JMIR Med Inform 2021) · reszta liczb z&#160;ankiety</p>
+<aside>[tylko A] [liczby z ankiety] Pytanie: „Ile średnio warta jest dla Pana/Pani jedna obsłużona usługa/konsultacja i ile takich rezerwacji potrzeba, żeby ta strona w pełni się spłaciła?”
+
+Liczby liczy automat z ankiety, ostrożnie: osoby, które pytają i się nie umawiają, razy 12 miesięcy, razy szansa, że zostaną klientami. Strona umówi co trzecią z nich (w badaniu Mayo Clinic ok. 30% rezerwacji online przypadało poza godzinami pracy), a klientami zostaje tyle, ile dziś. Gdy klient nie podał, ilu umówionych zostaje klientami, automat przyjmuje 25% i dopisuje „założenie”. Gdy nie podał kwoty albo wychodzi mniej niż 1 nowy klient rocznie, automat pomija ten slajd.
+
+Zwrot: cena polecanego pakietu podzielona przez wartość jednego klienta, zaokrąglona w górę. Bez ankiety policz to na głos razem z klientem. Nie zawyżaj: mniejsza liczba, ale wiarygodna, przekonuje bardziej.</aside>
+</section>

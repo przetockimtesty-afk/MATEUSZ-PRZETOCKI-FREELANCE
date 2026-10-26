@@ -228,6 +228,16 @@ const BRANZE = {
 	prawo: { nr: '06', kategoria: 'Prawo', tytul: 'Kancelarie prawne', tekst: 'Klient z&nbsp;poważną sprawą szuka kancelarii wieczorem. Zakres praktyki i&nbsp;kalendarz pierwszej konsultacji pozwalają mu umówić się, zanim zadzwoni gdzie indziej.', tagi: ['zakres praktyki', 'pierwsza konsultacja', 'zasady samorządu'], link: 'Wyceń stronę dla kancelarii', url: ANKIETA },
 	remont: { nr: '07', kategoria: 'Remonty', tytul: 'Firmy remontowe i&nbsp;wykończeniowe', tekst: 'Jesteś na budowie, a&nbsp;telefon dzwoni z&nbsp;prośbą o&nbsp;wycenę. Formularz z&nbsp;zakresem prac, metrażem i&nbsp;zdjęciami oraz kalendarz oględzin oszczędzają Ci jazd na próżno.', tagi: ['realizacje przed i&nbsp;po', 'formularz wyceny', 'termin oględzin'], link: 'Wyceń stronę dla firmy', url: ANKIETA },
 };
+// Proces współpracy (plan z 23.10, punkt 7): ten sam na „Jak pracuję”, w prezentacji „Jak przebiega współpraca” i w umowie
+const PROCES = [
+	['Ankieta, 5&nbsp;minut', 'Pytania o&nbsp;Twoją firmę i&nbsp;klientów. Bez telefonu.'],
+	['Propozycja w&nbsp;48&nbsp;h', 'Na piśmie: pakiet, łączna kwota i&nbsp;termin. Ważna 14&nbsp;dni.'],
+	['Umowa i&nbsp;zadatek 40%', 'Podpisujesz umowę bez spotkania, skanem albo w&nbsp;telefonie, i&nbsp;w&nbsp;3&nbsp;dni wpłacasz zadatek.'],
+	['Materiały i&nbsp;dostępy', 'Wypełniasz formularz materiałów i&nbsp;według krótkich filmów dajesz mi dostęp do domeny i&nbsp;hostingu.'],
+	['Szkic w&nbsp;5&nbsp;dni roboczych', 'Od kompletu materiałów, z&nbsp;filmem 2–3&nbsp;minuty. Potem 2&nbsp;rundy poprawek.'],
+	['Odbiór i&nbsp;publikacja', 'Sprawdzasz stronę według listy, wpłacasz resztę (60%), a&nbsp;ja publikuję stronę i&nbsp;przesyłam instrukcję.'],
+	['30&nbsp;dni wsparcia', 'Odpowiadam na pytania i&nbsp;poprawiam drobiazgi. W&nbsp;14. dniu proszę o&nbsp;opinię, w&nbsp;30. wysyłam podsumowanie.'],
+];
 // Trzy zasady (zaakceptowane przez Mateusza 25.10): na „O mnie”, a w skrócie na głównej
 const ZASADY = [
 	['Wszystko jest Twoje, bez abonamentu', 'Domena, hosting i&nbsp;strona są na Ciebie, a&nbsp;kalendarz rezerwacji działa na Twojej stronie bez miesięcznego abonamentu.'],
@@ -898,18 +908,12 @@ branza('terapeuci', { tytul: 'Psycholodzy i terapeuci', slug: 'psycholodzy-i-ter
 });
 
 // Jak pracuję
-strona('jakPracuje', { tytul: 'Jak pracuję', slug: 'jak-pracuje', opis: 'Ankieta w 5 minut, propozycja w 48 h, szkic w 5 dni roboczych, start i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł.' }, [
+strona('jakPracuje', { tytul: 'Jak pracuję', slug: 'jak-pracuje', opis: 'Ankieta w 5 minut, propozycja w 48 h, umowa i zadatek, szkic w 5 dni roboczych, odbiór i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł.' }, [
 	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Jak pracuję'], nadtytul: 'Jak pracuję', tytul: 'Od ankiety do <em>gotowej</em> strony', tekst: 'Wszystko ustalamy na piśmie. Rozmowa na Google Meet tylko wtedy, gdy wolisz porozmawiać.', dol: 'clamp(56px, 6.7vw, 96px)' }),
 	sekcja([
-		naglowekSekcji('Pięć kroków', 'Każdy krok ma <em>termin</em>'),
+		naglowekSekcji('Siedem kroków', 'Każdy krok ma <em>termin</em>'),
 		grupa([
-			siatka([
-				krok(1, 'Ankieta, 5&nbsp;minut', 'Pytania o&nbsp;Twoją firmę i&nbsp;klientów. Bez telefonu.'),
-				krok(2, 'Propozycja w&nbsp;48&nbsp;h', 'Jednostronicowa, na piśmie: pakiet, łączna kwota i&nbsp;termin.'),
-				krok(3, 'Zadatek i&nbsp;materiały', 'Zadatek 40% i&nbsp;to, czego potrzebuję od Ciebie: zdjęcie, dane i&nbsp;dostęp do domeny.'),
-				krok(4, 'Szkic w&nbsp;5&nbsp;dni roboczych', 'Do akceptacji, z&nbsp;filmem 2–3&nbsp;minuty i&nbsp;2&nbsp;rundami poprawek.'),
-				krok(5, 'Publikacja i&nbsp;30&nbsp;dni wsparcia', 'Po płatności końcowej: instrukcja, nagranie i&nbsp;wsparcie przez miesiąc.'),
-			], { min: '200px', gap: { top: '0', left: '28px' } }),
+			siatka(PROCES.map(([t, o], i) => krok(i + 1, t, o)), { min: '230px', gap: { top: '0', left: '28px' } }),
 			wiersz([p('48&nbsp;h na propozycję · 2&nbsp;rundy poprawek · zadatek 40%'), strzalka('Umów 30&nbsp;minut i&nbsp;zapytaj o&nbsp;szczegóły', ROZMOWA)], { klasa: 'mp-przypis-ciemny', justify: 'space-between' }),
 		], { gap: '22px' }),
 	], { id: 'kroki', ciemna: true }),
@@ -920,10 +924,10 @@ strona('jakPracuje', { tytul: 'Jak pracuję', slug: 'jak-pracuje', opis: 'Ankiet
 		])],
 		['60%', [lista([
 			'<strong>Ankieta</strong> <em>5&nbsp;minut</em>',
-			'<strong>Zdjęcie portretowe</strong> <em>telefon wystarczy</em>',
-			'<strong>Dane formalne</strong> <em>do stopki i&nbsp;polityki prywatności</em>',
-			'<strong>Domena i&nbsp;hosting na Twoje dane</strong> <em>dostęp albo zakup według mojej instrukcji</em>',
-			'<strong>Uwagi do szkicu</strong> <em>ok.&nbsp;20&nbsp;minut</em>',
+			'<strong>Formularz materiałów</strong> <em>ok.&nbsp;20&nbsp;minut: firma, usługi, pytania klientów, zdjęcie</em>',
+			'<strong>Domena i&nbsp;hosting na Twoje dane</strong> <em>zakup albo dostęp według krótkich filmów, bez wysyłania haseł</em>',
+			'<strong>Uwagi do szkicu</strong> <em>ok.&nbsp;15&nbsp;minut, w&nbsp;jednym formularzu</em>',
+			'<strong>Odbiór strony</strong> <em>ok.&nbsp;10&nbsp;minut, według listy</em>',
 		], { klasa: 'is-style-lista-wiersze' })]],
 	])], { id: 'potrzebuje' }),
 	sekcja([

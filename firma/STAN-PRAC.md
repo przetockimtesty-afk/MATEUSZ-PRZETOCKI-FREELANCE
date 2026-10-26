@@ -11,7 +11,8 @@
 
 ## Zasady pracy z artefaktami
 
-- Prezentacji A i B nie wysyłamy klientom jako linku.
+- Prezentacji sprzedażowej (ani starych A i B) nie wysyłamy klientom jako linku, bo w notatkach są ściągi. Prezentacja „Jak przebiega współpraca” może iść do klienta jako PDF z umową.
+- Prezentacje w claude.ai (typ Slides) sprawdzamy dopiero wtedy, gdy Mateusz poprosi: bez renderowania i zrzutów.
 - Projekt w Claude Design: plansz nie renderujemy ani nie sprawdzamy zrzutami, chyba że Mateusz poprosi. Przed publikacją `canvas.json` czytamy jego aktualną wersję.
 
 ## Zrobione 19.10.2026 (druga rozmowa)
@@ -72,28 +73,30 @@ Etap 1, do startu we wtorek 27.10:
 - [x] 6. (25.10) Mateusz: e-mail i adres w edytorze (stopka, Kontakt, polityka, regulamin), data publikacji. Dopiski „do ustalenia z radcą” zastąpić standardowym brzmieniem, radca sprawdzi je po starcie.
 
 Etap 2, do pierwszego klienta (ok. 6.11):
-- [ ] 7. Jeden proces po „TAK” w prezentacji, na „Jak pracuję” i w umowie:
+- [x] 7. (26.10) Jeden proces po „TAK” w prezentacji, na „Jak pracuję” i w umowie (`PROCES` w `zbuduj.js`, strona 47 wysłana 26.10, umowa już miała te warunki):
   - umowa i zadatek 40% w 3 dni;
   - formularz materiałów i playlista „Na start”;
   - szkic w 5 dni roboczych od kompletu, 2 rundy poprawek;
   - odbiór, druga płatność i publikacja;
   - 30 dni wsparcia, opinia w dniu 14, podsumowanie w dniu 30.
-- [ ] 8. Prezentacja „Jak przebiega współpraca” (6 slajdów, także jako PDF do umowy).
-- [ ] 9. Jedna prezentacja sprzedażowa ze szkicu Mateusza (10 slajdów), z poprawkami:
-  - badania tylko ze źródłem;
-  - ceny gotowych systemów z datą;
-  - „0 zł abonamentu za kalendarz” zamiast „0 zł/mc”;
-  - nazwy pakietów jak na stronie, do decyzji;
-  - zwrot z inwestycji z liczb z ankiety.
-  Jako szablon dla automatu pomija slajdy niepasujące do branży.
-- [ ] 10. Filmy w 3 playlistach: „Na start”, „Ułatwienia”, „Obsługa strony”. Scenariusze pisze Claude, nagrywa Mateusz. Do uwzględnienia:
+- [x] 8. (26.10) Prezentacja „Jak przebiega współpraca” (6 slajdów): https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA, źródło w `firma/prezentacje/wspolpraca/`. [ ] PDF do umowy eksportuje Mateusz (Udostępnij → Eksport → PDF).
+- [x] 9. (26.10) Jedna prezentacja sprzedażowa ze szkicu Mateusza: https://claude.ai/artifact/HXPH6cbCgCu9JELWYmmzaz, źródło w `firma/prezentacje/sprzedaz/`. Klient widzi 11 slajdów (10 z notatki i „Czy dobrze rozumiem?” z liczbami z ankiety), w szablonie jest 14, bo 3 slajdy mają wersję A i B. Pytania Mateusza są w notatkach. Poprawki:
+  - badania tylko ze źródłem: „zasada 5 minut” zastąpiona badaniem Harvard Business Review 2011 (pierwsza godzina), „co trzecia osoba” z Mayo Clinic 2021;
+  - ceny gotowych systemów z datą 26.10.2026: Booksy Biz 145 zł netto/mies., Bookero 19,90–89,90 zł (Kalendarz Google dopiero w Premium), SimplyBook.me Basic 13,90 USD, Calendly Standard 10 USD przy płatności rocznej;
+  - „0 zł abonamentu za kalendarz”, a obok koszt domeny i hostingu;
+  - zdanie „zwraca się w pierwszym roku” usunięte (nieprawda przy tańszych abonamentach); w notatkach: taniej niż Booksy po 13–20 miesiącach, niż Bookero Premium po ok. 2–3 latach;
+  - nazwy pakietów jak na stronie, ceny z `USTAWIENIA.ceny`;
+  - zwrot z inwestycji z liczb z ankiety: nowe pola `{{ZWROT}}` i `{{ZWROT_CZAS}}` w `Kod.gs`;
+  - demo zastąpione testem na żywo na `/rozmowa/` albo filmem z kalendarza; na końcu propozycja, umowa i zadatek (Useme jako faktura VAT).
+  Szablon dla automatu: znaczniki `[tylko A]`, `[tylko B]` i `[liczby z ankiety]` w notatkach; `Kod.gs` pomija według nich slajdy, a ten sam plik w `szablonA` i `szablonB` daje jeden szablon Google (test na atrapie Apps Script 26.10). Instrukcja: `firma/automatyzacja/INSTRUKCJA.md`, „Prezentacja sprzedażowa zamiast A i B”.
+- [ ] 10. Filmy w 3 playlistach: „Na start”, „Ułatwienia”, „Obsługa strony”. Scenariusze pisze Claude, nagrywa Mateusz. Scenariusze gotowe 26.10: `firma/filmy/scenariusze.md`. Do uwzględnienia:
   - w LH.pl są „Ustawienia → Uprawnienia do serwerów” zamiast wysyłania haseł;
   - przy linku partnerskim LH.pl powiedzieć wprost, że to polecenie;
   - Gmail od 2026 nie pobiera poczty przez POP3: przekierowanie i „Wyślij jako” albo skrzynka w aplikacji Gmail;
   - Google Workspace z organizacją założoną po maju 2024 domyślnie blokuje klucze kont usługi i osoby spoza domeny;
   - arkusz rezerwacji przez link `/copy`, bez skryptu.
 - [ ] 11. Formularze na MP Ankiety, bez indeksowania: Materiały (pytania branżowe), Ustawienia kalendarza (z nich plik ustawień MP Rezerwacje), Uwagi do szkicu, Odbiór, Po 30 dniach.
-- [ ] 12. MP Rezerwacje 0.1.1 (za zgodą Mateusza): e-maile i Google w tle, bez duplikatu po ponownym kliknięciu, zdarzenie dla GA4 i piksela.
+- [x] 12. (25.10) MP Rezerwacje 0.1.1 (za zgodą Mateusza): e-maile i Google w tle, bez duplikatu po ponownym kliknięciu, zdarzenie dla GA4 i piksela, usuwanie spotkań. ZIP w `strona/wtyczki/zip/`, wgrywa Mateusz (Etap 1, punkt 1).
 
 Etap 3, po starcie:
 - [ ] 13. Baza mailingowa:
@@ -108,6 +111,10 @@ Czeka na Mateusza (26.10):
 - ZIP-y MP Rezerwacje 0.1.1 i MP Ankiety 0.1.0 (w `strona/wtyczki/zip/`), wdrożenie `Kod.gs` i sekret w Ankiety → Ustawienia;
 - znacznik weryfikacji domeny Meta, ewentualnie nowy token API konwersji, drugi skan Complianz;
 - zrzuty i opisy 3 projektów;
+- prezentacja sprzedażowa w automacie: eksport do PowerPointa z notatkami, plik na Dysk, ten sam link w `szablonA` i `szablonB`, e-mail w `USTAWIENIA.podpis`, `setup` i nowa wersja wdrożenia (instrukcja, „Prezentacja sprzedażowa zamiast A i B”);
+- PDF „Jak przebiega współpraca” do umowy (eksport z claude.ai);
+- nagrania filmów według `firma/filmy/scenariusze.md`;
+- decyzja: wersja B w automacie to nadal stara oferta z kalkulatorem (1 600 / 2 500 / 3 400 zł, „Strona, która wycenia”), a strona pokazuje firmom remontowym te same pakiety co innym (1 200 / 1 800 / 2 500 zł). Slajdy B w prezentacji biorą nazwy i ceny z automatu. Zostawić B czy ujednolicić?
 - 27.10: odznaczyć „Proś wyszukiwarki o nieindeksowanie”, Search Console;
 - decyzja: na górze głównej nadal jest ilustracja telefonu z dema („Projekt demonstracyjny”, Anna Nowak); można ją zamienić na kadr z filmu kalendarza.
 
