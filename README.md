@@ -74,6 +74,7 @@ stron z WordPressa.
 | Prezentacja „Jak przebiega współpraca” | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA | — (PDF do umowy eksportuje Mateusz) |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
 | Scenariusze filmów dla klientów (3 playlisty) | `firma/filmy/scenariusze.md` | kopia w zakładce „Scenariusze filmów” rozpiski | — |
+| Lista wszystkich zadań Mateusza (PDF, 9 stron, ze scenariuszami filmów) | `firma/zadania/` (źródło `zadania.html` i PDF) | ta sama lista w rozpisce (wiersz niżej) | — (plik wysłany w czacie 26.10) |
 | Rozpiska dla Mateusza: kroki na 26.10, tabela filmów ze statusem, decyzje | skrót w `firma/STAN-PRAC.md` | tak: https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (statusy i odhaczenia są tylko tam) | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |

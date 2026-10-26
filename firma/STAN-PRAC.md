@@ -74,6 +74,7 @@ Etap 1, do startu we wtorek 27.10:
   - polityka prywatności i polityka cookies.
   - Zrobione: Complianz po kreatorze Mateusza (ściąga `firma/wdrozenia/complianz-kreator.md`) blokuje PixelYourSite do zgody (sprawdzone w kodzie strony 26.10: skrypty `type="text/plain"`, kategoria marketing). Piksel 1850828869571123 i GA4 G-1K161TZP9R wpisał Mateusz (import profilu PYS na świeżej instalacji nie zapisuje ID: błąd wtyczki). API konwersji włączył Mateusz; też działa dopiero po zgodzie, bo zdarzenia z serwera wysyła zablokowany skrypt. Nowa strona `/polityka-cookies/` (133), linki i przycisk „Ustawienia cookies” w stopce, baner w kolorach marki.
   - [ ] Mateusz: znacznik weryfikacji domeny Meta w PixelYourSite → „Verify your domain” (pole puste); jeśli token API konwersji to ten z czatu, wygenerować nowy; drugi skan Complianz (Website Scan → Skanuj, Cookiedatabase → Synchronizuj), żeby polityka cookies miała listę ciasteczek; opcjonalnie krótszy tekst baneru (propozycja w ściądze).
+- [x] (26.10) Pasek z przyciskiem na telefonie: wersja A z trzech pokazanych (jasna karta „Wycena w 5 minut · Propozycja w 48 h · bez zobowiązań” i mały przycisk „Wyceń stronę”). Na komputerze i na stronach z kalendarzem albo ankietą ukryty; miejsce na pasek jest na dole stopki, w jej kolorze. Sprawdzony na telefonie 360 i 390 px.
 - [x] 6. (25.10) Mateusz: e-mail i adres w edytorze (stopka, Kontakt, polityka, regulamin), data publikacji. Dopiski „do ustalenia z radcą” zastąpić standardowym brzmieniem, radca sprawdzi je po starcie.
 
 Etap 2, do pierwszego klienta (ok. 6.11):
@@ -114,7 +115,7 @@ Etap 3, po starcie:
 
 E-maile ze strony (26.10): WP Mail SMTP nie logował się do skrzynki („Could not authenticate”), więc nie wychodziła żadna poczta, także reset hasła. Mateusz poprawił login i hasło skrzynki (według niego „chyba działa”). Hasło tymczasowe do konta `mateuszprzetocki` ustawione przez API na jego prośbę; ma je zmienić w Profilu. Około 6:00 agent wysłał próbną ankietę i zrobił próbną rezerwację (sobota 21.11, 12:30, „TEST Claude – proszę usunąć”), obie na adres administratora. Czeka na potwierdzenie Mateusza, że przyszły 4 e-maile, i na usunięcie obu prób w panelu (Rezerwacje → Spotkania, Ankiety).
 
-Czeka na Mateusza (26.10). Rozpiska z tymi krokami, tabelą 15 filmów ze statusem i decyzjami: https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (dokument w claude.ai, zakładki „Do zrobienia” i „Scenariusze filmów”; odhaczenia i statusy są tylko tam):
+Czeka na Mateusza (26.10). Wszystko w jednym pliku: `firma/zadania/Zadania_Mateusza.pdf` (9 stron: dziś, do pierwszego klienta, później, 9 decyzji, linki, scenariusze filmów; źródło `zadania.html`, PDF z `node firma/zadania/zbuduj.js`; Mateusz dostał go w czacie 26.10). Ta sama lista do odhaczania: rozpiska https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (zakładki „Do zrobienia” i „Scenariusze filmów”; odhaczenia i statusy są tylko tam). Przy zmianie zadań poprawiać oba miejsca:
 - sprawdzić, czy próbna rezerwacja (sob 21.11, 12:30) jest w Kalendarzu Google: w kalendarzu konta Google podłączonego do sesji jej nie ma. Jeśli u Mateusza też nie, połączenie z Google nie działa (Rezerwacje → Ustawienia → Google → Sprawdź połączenie);
 - potwierdzić, że doszły e-maile z próbnej ankiety i rezerwacji, potem usunąć obie próby w panelu; zmienić hasło tymczasowe;
 - wdrożenie `Kod.gs` i adres z sekretem w Ankiety → Ustawienia → Automat;
@@ -126,7 +127,7 @@ Czeka na Mateusza (26.10). Rozpiska z tymi krokami, tabelą 15 filmów ze status
 - decyzja: wersja B w automacie to nadal stara oferta z kalkulatorem (1 600 / 2 500 / 3 400 zł, „Strona, która wycenia”), a strona pokazuje firmom remontowym te same pakiety co innym (1 200 / 1 800 / 2 500 zł). Slajdy B w prezentacji biorą nazwy i ceny z automatu. Zostawić B czy ujednolicić?
 - Search Console (indeksowanie jest już włączone, opcja „Proś wyszukiwarki o nieindeksowanie” jest odznaczona): Prefiks URL, tag HTML wklejony w Rank Math (albo kod do agenta, wpisze przez API), potem mapa `sitemap_index.xml`;
 - usunąć wyłączoną wtyczkę Yoast;
-- decyzje z rozpiski: pasek z przyciskiem na telefonie (warianty A, B, C pokazane 26.10), obrazek do udostępniania linku 1200 × 630 px (dziś strona nie ma `og:image`), rola konta `agentai`;
+- decyzje z PDF i rozpiski (9 spraw), m.in. obrazek do udostępniania linku 1200 × 630 px (dziś strona nie ma `og:image`), rola konta `agentai`, Two Factor i cache, narzędzie do newslettera, aktualizacje MP Rezerwacje u klientów;
 - decyzja: na górze głównej nadal jest ilustracja telefonu z dema („Projekt demonstracyjny”, Anna Nowak); można ją zamienić na kadr z filmu kalendarza.
 
 ## Otwarte sprawy
