@@ -84,6 +84,25 @@ Od tej chwili na stronie jest baner z przyciskami „Akceptuję”, „Odmów”
 1. Napisz mi, że skończone. Włączam PixelYourSite z pikselem Meta i GA4 i sprawdzam w oknie prywatnym, że przed zgodą nic się nie ładuje, a po „Akceptuję” ładuje się piksel i GA4.
 2. Gdy dam znać: Complianz → Kreator → **Website Scan** → **Skanuj**, potem **Cookiedatabase.org** → **Synchronizuj** → przejdź do końca i **Zakończ**. Wtedy w polityce cookies pojawi się lista ciasteczek Google i Meta.
 
+## Czerwone krzyżyki po synchronizacji (26.10)
+
+Czerwony krzyżyk przy usłudze albo ciasteczku znaczy „brakujące pola”, nie błąd (sprawdzone w kodzie Complianz 7.5.6). Usługa jest kompletna, gdy ma nazwę i typ („Service Types”), a gdy zaznaczone jest „Dane są udostępniane tej usłudze”, także adres polityki prywatności. Ciasteczko jest kompletne, gdy ma usługę, cel i czas przechowywania. Zielona kartka znaczy „będzie w polityce cookies”, a zielony kalendarz „wykryte niedawno”.
+
+- **PixelYourSite** (usługa): w „Service Types” wybierz typ marketingowy → Zapisz. „Dane są udostępniane tej usłudze” zostaw puste: to wtyczka na serwerze strony, a dane dostają Meta i Google, które są na liście osobno.
+- **Unknown Service**: cookiedatabase.org nie zna tych nazw, więc pola trzeba wpisać ręcznie. Czasy są z kodu PixelYourSite 11.4.4 przy ustawieniach domyślnych (`cookie_duration` 7 dni, `external_id_expire` 180 dni) i z MP Ankiety:
+
+| Ciasteczko | Usługa | Cel | Wygaśnięcie |
+|---|---|---|---|
+| `pys_first_visit`, `pysTrafficSource`, `pys_landing_page`, `last_pysTrafficSource`, `last_pys_landing_page`, `pys_utm_…` i `last_pys_utm_…` | PixelYourSite | Marketing | 7 dni |
+| `pbid` (identyfikator przeglądarki dla API konwersji) | PixelYourSite | Marketing | 180 dni |
+| `pys_advanced_form_data` (dane z formularzy do dopasowania w Meta) | PixelYourSite | Marketing | 30 dni |
+| `pys_event_referrer`, `pys_session_entry_referrer`, `pys_start_session`, `pys_session_limit` | PixelYourSite | Marketing | sesja |
+| `pys_cd` (sprawdzenie domeny ciasteczek) | PixelYourSite | Marketing | 365 dni |
+| `lastExternalReferrer`, `lastExternalReferrerTime` (pamięć przeglądarki, zapisuje je piksel Meta) | Facebook | Marketing | bez terminu |
+| `mp-ankieta:136:wycena` (szkic ankiety w pamięci przeglądarki) | WordPress | Funkcjonalne | 14 dni, usuwany po wysłaniu ankiety |
+
+Potem jeszcze raz **Synchronizuj**, przejdź do końca kreatora i **Zakończ**. U klienta tabela jest ta sama, zmienia się tylko numer strony w kluczu ankiety.
+
 ## Dobrze wiedzieć
 
 - GA4 i piksel ładują się dopiero po zgodzie na marketing (Complianz blokuje cały PixelYourSite jako marketing). Statystyki będą więc liczyć tylko osoby, które klikną „Akceptuję”. Tak jest najbezpieczniej prawnie.
