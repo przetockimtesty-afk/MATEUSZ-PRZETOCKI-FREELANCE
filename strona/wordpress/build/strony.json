@@ -17,7 +17,7 @@
   "tytul": "Realizacje",
   "slug": "realizacje",
   "rodzic": null,
-  "opis": "Dema i strony klientów do klikania: zobacz, jak klient sam umawia konsultację. Każde demo jest podpisane jako projekt demonstracyjny. Od 1 200 zł.",
+  "opis": "Kalendarz rezerwacji na filmie i wcześniejsze projekty: wtyczki do sklepów i kalkulator wyceny. Strony klientów pokazuję za ich zgodą.",
   "url": "/realizacje/"
  },
  "demo": {
@@ -25,7 +25,8 @@
   "slug": "demo-doradca-kredytowy",
   "rodzic": "realizacje",
   "opis": "Projekt demonstracyjny: jak doradca kredytowy dostaje konsultacje z kalendarza i formularza analizy. Problem, rozwiązanie i film. Od 1 800 zł.",
-  "url": "/realizacje/demo-doradca-kredytowy/"
+  "url": "/realizacje/demo-doradca-kredytowy/",
+  "status": "draft"
  },
  "kontakt": {
   "tytul": "Kontakt",

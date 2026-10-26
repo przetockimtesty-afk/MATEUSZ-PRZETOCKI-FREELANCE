@@ -33,7 +33,8 @@ UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
 PAUZA = 2          # s między zapytaniami — antybot/LiteSpeed tną serie
 BACKUPS = Path("backups")
 TYPY_MIME = {"jpg": "image/jpeg", "jpeg": "image/jpeg", "png": "image/png", "gif": "image/gif",
-             "webp": "image/webp", "svg": "image/svg+xml", "pdf": "application/pdf"}
+             "webp": "image/webp", "svg": "image/svg+xml", "pdf": "application/pdf",
+             "mp4": "video/mp4", "webm": "video/webm"}
 
 
 def env(plik=".env"):

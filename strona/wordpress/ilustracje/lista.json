@@ -1,7 +1,7 @@
 [
  {
   "nazwa": "telefon-rezerwacja-powiadomienie",
-  "alt": "Telefon z ekranem rezerwacji z dema i powiadomieniem o nowej konsultacji w czwartek o 19:30",
+  "alt": "Telefon z ekranem rezerwacji i powiadomieniem o nowej konsultacji w czwartek o 19:30",
   "szerokosc": 336,
   "wysokosc": 612,
   "plik": "ilustracje/png/telefon-rezerwacja-powiadomienie.png"
@@ -15,7 +15,7 @@
  },
  {
   "nazwa": "telefon-pytania-termin",
-  "alt": "Najczęstsze pytania i wybór terminu na stronie dema",
+  "alt": "Najczęstsze pytania i wybór terminu na stronie",
   "szerokosc": 236,
   "wysokosc": 480,
   "plik": "ilustracje/png/telefon-pytania-termin.png"
@@ -29,7 +29,7 @@
  },
  {
   "nazwa": "demo-laptop-telefon",
-  "alt": "Strona ekspertki kredytowej z dema na komputerze i na telefonie",
+  "alt": "Strona ekspertki kredytowej na komputerze i na telefonie",
   "szerokosc": 600,
   "wysokosc": 383,
   "plik": "ilustracje/png/demo-laptop-telefon.png"
@@ -43,7 +43,7 @@
  },
  {
   "nazwa": "doradcy-rezerwacja",
-  "alt": "Ekran rezerwacji konsultacji z dema",
+  "alt": "Ekran rezerwacji konsultacji u doradcy kredytowego",
   "szerokosc": 236,
   "wysokosc": 480,
   "plik": "ilustracje/png/doradcy-rezerwacja.png"

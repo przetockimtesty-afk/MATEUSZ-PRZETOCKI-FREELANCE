@@ -374,6 +374,18 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 .mp-demo-a .wp-block-buttons { margin-top: 30px; }
 .mp-demo-a .wp-block-image { margin: 0; }
 
+/* Film z kalendarza (Realizacje) i jego okładka (karta na głównej): ekran telefonu w czarnej ramce */
+.mp-film-telefon { margin: 0 auto; max-width: 340px; }
+.mp-film-telefon video { display: block; width: 100%; height: auto; aspect-ratio: 390 / 844; object-fit: cover; border: 10px solid var(--wp--preset--color--czern); border-radius: 36px; background: var(--wp--preset--color--krem); box-shadow: 0 24px 60px rgba(22, 21, 20, 0.16); }
+.mp-film-plakat { margin: 0 auto !important; max-width: 250px; }
+.mp-film-plakat img { display: block; width: 100%; height: auto; border: 8px solid var(--wp--preset--color--czern); border-radius: 30px; box-shadow: 0 18px 44px rgba(22, 21, 20, 0.14); }
+.mp-kalendarz-tekst .wp-block-buttons { margin-top: 8px; }
+
+/* Wcześniejsze projekty: problem → co zrobiłem → co to daje */
+.is-style-lista-projekt { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--wp--preset--color--linia); }
+.is-style-lista-projekt > li { margin: 0; padding: 10px 0; border-bottom: 1px solid var(--wp--preset--color--linia); font-size: 15px; line-height: 1.5; }
+.is-style-lista-projekt > li strong { display: block; margin-bottom: 2px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--wp--preset--color--grafit); }
+
 /* Przypisy pod siatkami */
 .mp-przypis, .mp-przypis-tekst { border-top: 1px solid var(--wp--preset--color--linia); padding-top: 22px; font-size: 15px; color: var(--wp--preset--color--grafit); }
 .mp-przypis { gap: 14px 24px !important; }

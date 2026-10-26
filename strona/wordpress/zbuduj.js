@@ -37,10 +37,18 @@ const U = {
 // a przyciski „Wyceń stronę” prowadzą do zaślepki #ankieta. Po włączeniu wtyczki: true i wysyłka stron, nagłówka i stopki.
 const ANKIETY_WLACZONE = false;
 const ANKIETY = require('./ankiety');
-// Zaślepka do podmiany, gdy będzie prawdziwy link (Demo A)
 const ANKIETA = ANKIETY_WLACZONE ? '/wycena/' : '#ankieta';
 const ROZMOWA = U.rozmowa;
+// Demo A (strona ekspertki kredytowej) na razie nie jest pokazywane (decyzja Mateusza z 23.10): strona demo jest szkicem,
+// a zamiast przycisków „Zobacz demo” są „Umów 30 minut” i film z kalendarza. Sekcje zostają tu, gotowe do powrotu.
+const DEMO_WLACZONE = false;
 const DEMO = '#demo';
+// Film z kalendarza rezerwacji (nagrany na kopii strony, plik tylko w mediach WordPressa: jest na nim zdjęcie Mateusza)
+const FILM = {
+	id: 143, url: 'https://mateuszprzetocki.pl/wp-content/uploads/2026/10/kalendarz-rezerwacji-na-telefonie.mp4',
+	plakat: { id: 144, url: 'https://mateuszprzetocki.pl/wp-content/uploads/2026/10/kalendarz-rezerwacji-na-telefonie-plakat.webp' },
+};
+const FILM_ADRES = '/realizacje/#kalendarz';
 
 // ---------------------------------------------------------------- klocki
 
@@ -220,6 +228,22 @@ const BRANZE = {
 	prawo: { nr: '06', kategoria: 'Prawo', tytul: 'Kancelarie prawne', tekst: 'Klient z&nbsp;poważną sprawą szuka kancelarii wieczorem. Zakres praktyki i&nbsp;kalendarz pierwszej konsultacji pozwalają mu umówić się, zanim zadzwoni gdzie indziej.', tagi: ['zakres praktyki', 'pierwsza konsultacja', 'zasady samorządu'], link: 'Wyceń stronę dla kancelarii', url: ANKIETA },
 	remont: { nr: '07', kategoria: 'Remonty', tytul: 'Firmy remontowe i&nbsp;wykończeniowe', tekst: 'Jesteś na budowie, a&nbsp;telefon dzwoni z&nbsp;prośbą o&nbsp;wycenę. Formularz z&nbsp;zakresem prac, metrażem i&nbsp;zdjęciami oraz kalendarz oględzin oszczędzają Ci jazd na próżno.', tagi: ['realizacje przed i&nbsp;po', 'formularz wyceny', 'termin oględzin'], link: 'Wyceń stronę dla firmy', url: ANKIETA },
 };
+// Trzy zasady (zaakceptowane przez Mateusza 25.10): na „O mnie”, a w skrócie na głównej
+const ZASADY = [
+	['Wszystko jest Twoje, bez abonamentu', 'Domena, hosting i&nbsp;strona są na Ciebie, a&nbsp;kalendarz rezerwacji działa na Twojej stronie bez miesięcznego abonamentu.'],
+	['Techniką zajmuję się ja', 'Konfiguruję domenę, pocztę, kalendarz i&nbsp;formularze. Dostaję osobne konto na czas pracy, nigdy Twoich haseł.'],
+	['Cena, termin i&nbsp;zakres na piśmie', 'Po ankiecie dostajesz propozycję z&nbsp;łączną kwotą i&nbsp;terminem, a&nbsp;po starcie 30&nbsp;dni wsparcia.'],
+];
+const filmKalendarza = () => blok('core/video', { id: FILM.id, src: FILM.url, poster: FILM.plakat.url, autoplay: true, loop: true, muted: true, playsInline: true, controls: true, preload: 'metadata', className: 'mp-film-telefon' });
+const przyciskFilmu = () => przyciski([przycisk('Zobacz film z&nbsp;kalendarza', FILM_ADRES, { obrys: true, strzalka: true })], { srodek: true });
+// drugi przycisk w pierwszym ekranie: demo albo rozmowa
+const drugiPrzycisk = () => (DEMO_WLACZONE ? przycisk('Zobacz demo', DEMO, { obrys: true }) : przycisk('Umów 30&nbsp;minut', ROZMOWA, { obrys: true }));
+const kartaFilmu = (tytulPoziom) => karta([
+	kolumny([
+		['55%', [etykieta('Projekt własny', 'piasek'), nag(tytulPoziom, 'Kalendarz rezerwacji na telefonie', { klasa: 'mp-tytul-demo' }), szary('Klient wybiera termin, odpowiada na 3&nbsp;krótkie pytania i&nbsp;od razu dostaje potwierdzenie. Zobacz pół minuty nagrania z&nbsp;telefonu.', { klasa: 'mp-tekst-demo' }), etykiety(['kalendarz', 'pytania przed spotkaniem', 'potwierdzenie e-mailem']), przyciski([przycisk('Zobacz film', FILM_ADRES, { strzalka: true }), przycisk('Sprawdź na żywo', ROZMOWA, { obrys: true })])]],
+		['45%', [blok('core/image', { id: FILM.plakat.id, url: FILM.plakat.url, alt: 'Kalendarz rezerwacji na telefonie: wybór dnia i godziny', sizeSlug: 'full', linkDestination: 'custom', href: FILM_ADRES, className: 'mp-film-plakat' })]],
+	], { pion: 'center', klasa: 'mp-demo-a' }),
+], { klasa: 'mp-karta-demo' });
 const kartaDemoA = (tytulPoziom, tekst) => karta([
 	kolumny([
 		['45%', [etykieta('Projekt demonstracyjny', 'piasek'), nag(tytulPoziom, 'Strona ekspertki kredytowej', { klasa: 'mp-tytul-demo' }), szary(tekst, { klasa: 'mp-tekst-demo' }), etykiety(['formularz analizy', 'kalendarz', 'pytania i&nbsp;odpowiedzi']), przyciski([przycisk('Zobacz na żywo', DEMO, { strzalka: true }), przycisk('Opis przykładu', U.demo, { obrys: true })])]],
@@ -230,7 +254,7 @@ const kartaDemoA = (tytulPoziom, tekst) => karta([
 // ---------------------------------------------------------------- strony
 
 const STRONY = {};
-function strona(klucz, meta, bloki) { STRONY[klucz] = { ...meta, bloki }; }
+function strona(klucz, meta, bloki) { STRONY[klucz] = { ...meta, bloki: bloki.filter(Boolean) }; }
 
 // Strona główna
 strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Strony wizytówki z kalendarzem i formularzem: klient sam umawia konsultację, a Ty wiesz, z czym przyjdzie. Od 1 200 zł, gotowe w ok. 2 tygodnie.' }, [
@@ -241,7 +265,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 				h1('Klienci umawiają się <em>sami.</em><br>Nawet wieczorem.'),
 				wstep('Robię strony wizytówki z&nbsp;kalendarzem konsultacji i&nbsp;krótkim formularzem pytań. Klient wybiera termin wtedy, kiedy Cię szuka, a&nbsp;Ty rano wiesz, z&nbsp;czym przyjdzie.'),
 				lista(['Z&nbsp;kalendarzem od 1&nbsp;800&nbsp;zł', 'gotowa w&nbsp;ok.&nbsp;2&nbsp;tygodnie', 'wszystko ustalamy na piśmie'], { klasa: 'is-style-lista-kropki' }),
-				przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), przycisk('Zobacz demo', DEMO, { obrys: true })]),
+				przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), drugiPrzycisk()]),
 				podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h'),
 				wiersz([obraz('mateusz-przetocki-twarz', { alt: '' }), p('Mateusz Przetocki, Kraków. Odpowiadam osobiście.')], { klasa: 'mp-osoba', nowrap: true }),
 			], { klasa: 'mp-hero' }],
@@ -295,7 +319,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 			['telefon-pytania-termin', 'Czyta odpowiedzi i&nbsp;wybiera termin', '02'],
 			['telefon-potwierdzenie', 'Dostaje potwierdzenie, a&nbsp;Ty komplet informacji', '03'],
 		]),
-		przyciski([przycisk('Zobacz demo na żywo', DEMO, { obrys: true, strzalka: true })], { srodek: true }),
+		DEMO_WLACZONE ? przyciski([przycisk('Zobacz demo na żywo', DEMO, { obrys: true, strzalka: true })], { srodek: true }) : przyciskFilmu(),
 	], { id: 'jak-wyglada', gora: '24px' }),
 	sekcja([
 		naglowekSekcji('Dla kogo', 'Dla specjalistów, którzy <em>zaczynają</em> od konsultacji'),
@@ -311,7 +335,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 	sekcja([
 		wiersz([grupa([nad('Realizacje'), h2('Zobacz, jak to <em>działa</em>')], { gap: '22px' }), strzalka('Wszystkie realizacje', U.realizacje)], { justify: 'space-between', pion: 'bottom', gap: '18px 40px' }),
 		grupa([
-			kartaDemoA(3, 'Formularz wstępnej analizy, kalendarz konsultacji i&nbsp;odpowiedzi na pytania klientów w&nbsp;jednym miejscu.'),
+			DEMO_WLACZONE ? kartaDemoA(3, 'Formularz wstępnej analizy, kalendarz konsultacji i&nbsp;odpowiedzi na pytania klientów w&nbsp;jednym miejscu.') : kartaFilmu(3),
 			szary('Wcześniej: własne sklepy internetowe i&nbsp;wtyczki do WordPressa. Od listopada: pierwsza strona klientki, za jej zgodą.', { klasa: 'mp-maly-tekst' }),
 		], { gap: '28px' }),
 	], { id: 'realizacje' }),
@@ -340,7 +364,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 			['50%', tekstSekcji('O&nbsp;mnie', 'Strony robię <em>sam</em>, od ankiety do startu', [
 				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat codziennie rozmawiałem z&nbsp;klientami przy sprzedaży. Wiem, o&nbsp;co ludzie pytają, zanim się zdecydują, i&nbsp;wiem, że rezygnują, gdy nikt nie odpowiada.'),
 				p('Strony buduję na WordPressie i&nbsp;każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.'),
-				etykiety(['Demo zawsze podpisuję jako demo', 'Domena i&nbsp;dane są Twoje', 'Propozycja w&nbsp;48 godzin'], 'obrys'),
+				etykiety(ZASADY.map(([t]) => t), 'obrys'),
 				strzalka('Więcej o&nbsp;mnie', U.oMnie),
 			])],
 		], { pion: 'center' }),
@@ -421,27 +445,58 @@ strona('oferta', { tytul: 'Pakiety i ceny', slug: 'oferta', opis: 'Trzy pakiety 
 	nastepnyKrok([['Jak pracuję', U.jakPracuje], ['Pytania o&nbsp;cenę i&nbsp;warunki', U.pytania]]),
 ]);
 
-// Realizacje
-strona('realizacje', { tytul: 'Realizacje', slug: 'realizacje', opis: 'Dema i strony klientów do klikania: zobacz, jak klient sam umawia konsultację. Każde demo jest podpisane jako projekt demonstracyjny. Od 1 200 zł.' }, [
-	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Realizacje'], nadtytul: 'Realizacje', tytul: 'Realizacje', tekst: 'Strony z&nbsp;umawianiem konsultacji, które możesz kliknąć. Demo zawsze podpisuję jako demo.' }),
-	sekcja([
+// Realizacje: na środku kalendarz z filmem, pod nim 3 wcześniejsze projekty (zrzuty i opisy dwóch z nich przyśle Mateusz)
+const projekt = (zrzut, tytul, problem, zrobione, efekt, link) => karta([
+	zrzut, etykieta('Projekt własny', 'piasek'), h3(tytul, { klasa: 'mp-h3-maly' }),
+	lista([`<strong>Problem</strong> ${problem}`, `<strong>Co zrobiłem</strong> ${zrobione}`, `<strong>Co to daje</strong> ${efekt}`], { klasa: 'is-style-lista-projekt' }),
+	link || null,
+], { gap: '16px', klasa: 'mp-projekt' });
+strona('realizacje', { tytul: 'Realizacje', slug: 'realizacje', opis: 'Kalendarz rezerwacji na filmie i wcześniejsze projekty: wtyczki do sklepów i kalkulator wyceny. Strony klientów pokazuję za ich zgodą.' }, [
+	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Realizacje'], nadtytul: 'Realizacje', tytul: 'Realizacje', tekst: 'Kalendarz rezerwacji, który dostają moje strony, i&nbsp;wcześniejsze projekty. Od listopada dochodzą tu strony klientów, za ich zgodą.' }),
+	DEMO_WLACZONE ? sekcja([
 		kartaDemoA(2, 'Klient z&nbsp;polecenia szuka doradczyni wieczorem i&nbsp;widzi tylko numer telefonu. Na tej stronie czyta odpowiedzi, wypełnia krótki formularz wstępnej analizy i&nbsp;sam wybiera termin konsultacji.'),
+	], { id: 'demo-a', gora: '16px', gap: '20px' }) : null,
+	sekcja([
+		kolumny([
+			['50%', [
+				nad('Kalendarz rezerwacji'),
+				h2('Klient umawia się <em>sam</em>, nawet wieczorem'),
+				p('Tak działa kalendarz, który dostajesz na swojej stronie. To ta sama wtyczka, przez którą umówisz się ze mną: moja własna, bez abonamentu i&nbsp;bez płatnych platform rezerwacji.'),
+				lista([
+					'Klient wybiera dzień i&nbsp;godzinę spośród Twoich wolnych terminów.',
+					'Odpowiada na 3&nbsp;krótkie pytania, więc wiesz, z&nbsp;czym przyjdzie.',
+					'Od razu dostaje potwierdzenie e-mailem z&nbsp;plikiem do kalendarza, a&nbsp;Ty powiadomienie.',
+				], { klasa: 'is-style-lista-znaczniki' }),
+				przyciski([przycisk('Sprawdź na żywo', ROZMOWA, { strzalka: true }), przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { obrys: true })]),
+				podpis('Projekt własny · działa na tej stronie, w&nbsp;zakładce „Umów rozmowę”'),
+			], { klasa: 'mp-kalendarz-tekst' }],
+			['50%', [filmKalendarza()]],
+		], { pion: 'center', gap: '48px', klasa: 'mp-kalendarz-film' }),
 		karta([wiersz([etykieta('Strona klientki', 'obrys'), szary('W&nbsp;listopadzie powstaje pierwsza strona dla doradczyni kredytowej. Pokażę ją tutaj za jej zgodą, a&nbsp;po 30&nbsp;dniach dodam liczby i&nbsp;jej opinię.', { klasa: 'mp-rozciagnij' })], { gap: '14px 32px' })], { styl: 'is-style-karta-przerywana' }),
-	], { id: 'demo-a', gora: '16px', gap: '20px' }),
+	], { id: 'kalendarz', gora: '16px' }),
 	sekcja([
 		naglowekSekcji('Wcześniejsze projekty', 'Sklepy i&nbsp;wtyczki, które zbudowałem <em>dla siebie</em>', 'Zanim zacząłem robić strony dla specjalistów, prowadziłem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. To projekty własne, nie realizacje dla klientów.'),
 		siatka([
-			['Konfigurator statuetki z&nbsp;podglądem', 'Wtyczka do własnego sklepu na WooCommerce.'],
-			['Zestawy produktów', 'Wtyczka do własnego sklepu na WooCommerce.'],
-			['Stały pasek z&nbsp;przyciskiem zakupu', 'Wtyczka do własnego sklepu na WooCommerce.'],
-			['Pomiar skuteczności reklam', 'Piksel Meta we własnym sklepie na WooCommerce.'],
-		].map(([t, o]) => karta([obraz('zaslepka-zrzut', { klasa: 'mp-zrzut' }), etykieta('Projekt własny', 'piasek'), h3(t, { klasa: 'mp-h3-maly' }), szary(o, { klasa: 'mp-maly-tekst' })], { gap: '16px', klasa: 'mp-projekt' }))),
+			projekt(obraz('zaslepka-zrzut', { klasa: 'mp-zrzut' }), 'Zestawy produktów ze stałym paskiem zakupu',
+				'Na długiej stronie produktu przycisk zakupu znikał z&nbsp;ekranu.',
+				'Wtyczkę do WooCommerce: zestawy produktów w&nbsp;jednej cenie i&nbsp;pasek z&nbsp;przyciskiem, który zostaje na ekranie.',
+				'Przycisk zakupu jest zawsze pod ręką, także na telefonie.'),
+			projekt(obraz('zaslepka-zrzut', { klasa: 'mp-zrzut' }), 'Kalkulator ceny prania tapicerki',
+				'Klient chciał znać cenę od razu, a&nbsp;wycena przez telefon zajmowała czas.',
+				'Kalkulator na stronie puresofa.pl: klient wybiera meble i&nbsp;dodatki, a&nbsp;cena liczy się na bieżąco.',
+				'Cena z&nbsp;kalkulatora jest ceną ostateczną, bez dopłat przy drzwiach.',
+				p('<a href="https://puresofa.pl/" rel="nofollow noopener" target="_blank">Zobacz na puresofa.pl</a>', { klasa: 'is-style-strzalka' })),
+			projekt(obraz('zaslepka-zrzut', { klasa: 'mp-zrzut' }), 'Kreator prezentów z&nbsp;podglądem na żywo',
+				'Przed zamówieniem prezentu z&nbsp;personalizacją klient nie wiedział, jak będzie wyglądał.',
+				'Wtyczkę do WooCommerce: klient wpisuje tekst i&nbsp;wybiera wzór, a&nbsp;podgląd zmienia się na żywo.',
+				'Klient widzi gotowy prezent, zanim zapłaci.'),
+		], { min: '280px' }),
 	], { id: 'wczesniej', tlo: 'piasek' }),
-	nastepnyKrok([['Jak działa strona ekspertki kredytowej', U.demo], ['Strony dla Twojej branży', U.dlaKogo]]),
+	nastepnyKrok([['Umów 30&nbsp;minut i&nbsp;sprawdź kalendarz na żywo', U.rozmowa], ['Strony dla Twojej branży', U.dlaKogo]]),
 ]);
 
 // Opis przykładu: Demo A
-strona('demo', { tytul: 'Strona ekspertki kredytowej', slug: 'demo-doradca-kredytowy', rodzic: 'realizacje', opis: 'Projekt demonstracyjny: jak doradca kredytowy dostaje konsultacje z kalendarza i formularza analizy. Problem, rozwiązanie i film. Od 1 800 zł.' }, [
+strona('demo', { status: DEMO_WLACZONE ? undefined : 'draft', tytul: 'Strona ekspertki kredytowej', slug: 'demo-doradca-kredytowy', rodzic: 'realizacje', opis: 'Projekt demonstracyjny: jak doradca kredytowy dostaje konsultacje z kalendarza i formularza analizy. Problem, rozwiązanie i film. Od 1 800 zł.' }, [
 	heroPodstrony({
 		okruszki: [['Strona główna', U.glowna], ['Realizacje', U.realizacje], 'Strona ekspertki kredytowej'], etykieta: 'Projekt demonstracyjny',
 		tytul: 'Strona ekspertki kredytowej, która <em>umawia</em> konsultacje',
@@ -731,7 +786,7 @@ function branza(klucz, meta, d) {
 	strona(klucz, { ...meta, rodzic: 'dlaKogo' }, [
 		heroPodstrony({
 			okruszki: [['Strona główna', U.glowna], ['Dla kogo', U.dlaKogo], d.okruszek], nadtytul: d.nadtytul, tytul: d.tytul, tekst: d.tekst,
-			reszta: [etykiety(d.tagi), przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), przycisk('Zobacz demo', DEMO, { obrys: true })]), podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h')],
+			reszta: [etykiety(d.tagi), przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), drugiPrzycisk()]), podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h')],
 			dol: 'clamp(56px, 6.7vw, 96px)',
 		}),
 		sekcja([kolumny([
@@ -745,7 +800,7 @@ function branza(klucz, meta, d) {
 		sekcja([
 			naglowekSekcji('Jak to wygląda', d.jakWyglada, null, { srodek: true }),
 			ekrany(d.ekrany),
-			wiersz([przycisk_('Zobacz demo na żywo'), d.opisPrzykladu ? strzalka('Opis przykładu', U.demo) : null].filter(Boolean), { justify: 'center', gap: '16px 28px' }),
+			DEMO_WLACZONE ? wiersz([przycisk_('Zobacz demo na żywo'), d.opisPrzykladu ? strzalka('Opis przykładu', U.demo) : null].filter(Boolean), { justify: 'center', gap: '16px 28px' }) : przyciskFilmu(),
 		], { id: 'jak-wyglada', gora: '0' }),
 		sekcja([kolumny([
 			['40%', tekstSekcji(d.przepisy[0], d.przepisy[1], [szary(d.przepisy[2])])],
@@ -776,7 +831,7 @@ branza('doradcy', { tytul: 'Doradcy kredytowi', slug: 'doradcy-kredytowi', opis:
 		['file-text', 'Informacje formalne w&nbsp;jednym miejscu', 'Wpis do rejestru KNF i&nbsp;informacje, których wymaga ustawa.'],
 		['user', 'Dane i&nbsp;logo sieci, jeśli w&nbsp;niej działasz', 'Klient od razu widzi, z&nbsp;kim współpracujesz.'],
 	],
-	jakWyglada: 'Demo strony <em>ekspertki</em> kredytowej',
+	jakWyglada: DEMO_WLACZONE ? 'Demo strony <em>ekspertki</em> kredytowej' : 'Konsultacja umówiona <em>wieczorem</em>',
 	ekrany: [['doradcy-rezerwacja', 'Klient wybiera termin, także wieczorem'], ['doradcy-formularz', 'Odpowiada na 3&nbsp;pytania w&nbsp;przedziałach'], ['telefon-potwierdzenie', 'Ty rano masz komplet informacji']],
 	opisPrzykladu: true,
 	przepisy: ['Przepisy i&nbsp;zasady', 'O&nbsp;co dbam na stronie <em>doradcy</em>', 'Strona doradcy ma informować, nie obiecywać. Te punkty sprawdzam przed publikacją.', ['Wpis do rejestru KNF i&nbsp;informacje z&nbsp;art.&nbsp;17 ustawy o&nbsp;kredycie hipotecznym.', 'Słowa „doradca” i&nbsp;„doradztwo” tylko w&nbsp;zakresie, na który pozwala ustawa.', 'Stopy i&nbsp;raty tylko z&nbsp;przykładem reprezentatywnym.', 'Formularz z&nbsp;przedziałami kwot, bez PESEL i&nbsp;skanów dokumentów.']],
@@ -855,7 +910,7 @@ strona('jakPracuje', { tytul: 'Jak pracuję', slug: 'jak-pracuje', opis: 'Ankiet
 				krok(4, 'Szkic w&nbsp;5&nbsp;dni roboczych', 'Do akceptacji, z&nbsp;filmem 2–3&nbsp;minuty i&nbsp;2&nbsp;rundami poprawek.'),
 				krok(5, 'Publikacja i&nbsp;30&nbsp;dni wsparcia', 'Po płatności końcowej: instrukcja, nagranie i&nbsp;wsparcie przez miesiąc.'),
 			], { min: '200px', gap: { top: '0', left: '28px' } }),
-			wiersz([p('48&nbsp;h na propozycję · 2&nbsp;rundy poprawek · zadatek 40%'), strzalka('Zobacz przykładową propozycję (PDF)', '#propozycja')], { klasa: 'mp-przypis-ciemny', justify: 'space-between' }),
+			wiersz([p('48&nbsp;h na propozycję · 2&nbsp;rundy poprawek · zadatek 40%'), strzalka('Umów 30&nbsp;minut i&nbsp;zapytaj o&nbsp;szczegóły', ROZMOWA)], { klasa: 'mp-przypis-ciemny', justify: 'space-between' }),
 		], { gap: '22px' }),
 	], { id: 'kroki', ciemna: true }),
 	sekcja([kolumny([
@@ -907,7 +962,7 @@ strona('pytania', { tytul: 'Pytania', slug: 'pytania', opis: 'Odpowiedzi na 12 p
 				['Czy strona będzie w&nbsp;Google?', 'Dbam o&nbsp;to, co od tego zależy: szybką stronę, podstawy SEO, a&nbsp;w&nbsp;pakiecie „Wizytówka, która umawia” także Profil Firmy w&nbsp;Google, gdy firma spełnia wytyczne. Nie obiecuję konkretnego miejsca w&nbsp;wynikach.'],
 			]),
 			grupaPytan('doswiadczenie', '04 · Doświadczenie', [
-				['Czy robiłeś już takie projekty?', `Ten system pokazuję na projekcie demonstracyjnym strony ekspertki kredytowej. Od listopada wdrażam go u&nbsp;pierwszych klientów, a&nbsp;ich strony dodaję tutaj za ich zgodą. Wcześniej budowałem własne sklepy internetowe i&nbsp;wtyczki do WordPressa. <a href="${U.realizacje}">Realizacje</a>`],
+				['Czy robiłeś już takie projekty?', `Kalendarz i&nbsp;formularz działają na tej stronie: gdy umawiasz się ze mną, widzisz dokładnie to, co zobaczą Twoi klienci. Od listopada wdrażam je u&nbsp;pierwszych klientów, a&nbsp;ich strony dodaję tutaj za ich zgodą. Wcześniej budowałem własne sklepy internetowe i&nbsp;wtyczki do WordPressa. <a href="${U.realizacje}">Realizacje</a>`],
 			]),
 		], { gap: '56px' })]],
 	])], { gora: '0' }),
@@ -932,11 +987,7 @@ strona('oMnie', { tytul: 'O mnie', slug: 'o-mnie', opis: 'Robię strony wizytów
 	], { gora: 'clamp(24px, 2.8vw, 40px)', gap: 'var:preset|spacing|50' }),
 	sekcja([
 		naglowekSekcji('Dlaczego ja', 'Trzy zasady, których się <em>trzymam</em>'),
-		siatka([
-			krok(1, 'Demo zawsze podpisuję jako demo', 'Projekty demonstracyjne mają pasek „Projekt demonstracyjny”, a&nbsp;ich dane są fikcyjne.'),
-			krok(2, 'Domena i&nbsp;dane są Twoje', 'Domena, hosting i&nbsp;strona są na Ciebie. Dostaję osobne konto, nigdy Twoich haseł.'),
-			krok(3, 'Propozycja w&nbsp;48 godzin', 'Po ankiecie dostajesz na piśmie pakiet, łączną kwotę i&nbsp;termin.'),
-		], { min: '260px', gap: { top: '0', left: '28px' } }),
+		siatka(ZASADY.map(([t, o], i) => krok(i + 1, t, o)), { min: '260px', gap: { top: '0', left: '28px' } }),
 	], { id: 'zasady', ciemna: true }),
 	nastepnyKrok([['Realizacje', U.realizacje], ['Jak pracuję', U.jakPracuje]], { cta: ['Porozmawiajmy o&nbsp;<em>Twojej</em> stronie', '5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Odpowiadam osobiście.'], drugi: 'Umów 30&nbsp;minut na Google Meet' }),
 ]);
