@@ -466,8 +466,9 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 /* Ankieta: przy przejściu do następnego kroku początek ankiety nie chowa się pod przyklejonym nagłówkiem */
 .mp-ank { --mp-ank-odstep: calc(var(--wp-admin--admin-bar--height, 0px) + 88px); }
 
-/* Przyklejony pasek z przyciskiem na telefonie */
-.mp-pasek-telefon { display: none; }
+/* Przyklejony pasek z przyciskiem na telefonie: jasna karta nad treścią (wersja A z 26.10).
+   Dwie klasy, bo układ flex WordPressa (body .is-layout-flex { display: flex }) przebija jedną. */
+.wp-block-group.mp-pasek-telefon { display: none; }
 
 @media (max-width: 781px) {
 	.mp-naglowek { min-height: 64px; }
@@ -485,12 +486,18 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 	.wp-block-columns.mp-stopka-kolumny > .wp-block-column { flex-basis: calc(50% - 20px) !important; }
 	.wp-block-columns.mp-stopka-kolumny > .wp-block-column:first-child { flex-basis: 100% !important; }
 	.is-style-spis { position: static; }
-	.mp-pasek-telefon { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 12px 20px; border-top: 1px solid var(--wp--preset--color--linia-ciemna); }
-	.mp-pasek-telefon .wp-block-button, .mp-pasek-telefon .wp-block-button__link { width: 100%; }
-	body { padding-bottom: 77px; }
+	.wp-block-group.mp-pasek-telefon { display: flex; position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 30; margin: 0; padding: 10px 10px 10px 18px; border: 1px solid var(--wp--preset--color--linia); border-radius: 22px; background: rgba(245, 242, 236, 0.95); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+	.mp-pasek-tekst { min-width: 0; }
+	.mp-pasek-tekst > p { margin: 0; line-height: 1.3; }
+	.mp-pasek-tytul { font-family: var(--wp--preset--font-family--inter-tight); font-size: 16px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; color: var(--wp--preset--color--czern); }
+	.mp-pasek-tekst > .mp-pasek-podpis { margin-top: 2px; font-size: 12.5px; line-height: 1.4; color: var(--wp--preset--color--grafit); }
+	.mp-pasek-telefon .wp-block-buttons { flex: none; }
+	.mp-pasek-telefon .wp-block-button.mp-maly > .wp-block-button__link { min-height: 42px; padding: 0 16px; font-size: 14.5px; white-space: nowrap; }
+	/* miejsce na pasek na dole stopki, w jej kolorze (padding stopki jest w stylu bloku, stąd !important) */
+	.mp-stopka { padding-bottom: 132px !important; }
 	/* na stronie z kalendarzem rezerwacji pasek z ankietą zasłaniałby formularz (link do ankiety jest obok kalendarza) */
 	body:has(.mp-rez) .mp-pasek-telefon, body:has(.mp-ank) .mp-pasek-telefon { display: none; }
-	body:has(.mp-rez), body:has(.mp-ank) { padding-bottom: 0; }
+	body:has(.mp-rez) .mp-stopka, body:has(.mp-ank) .mp-stopka { padding-bottom: 40px !important; }
 	/* strony z ankietą: na telefonie ankieta zaczyna się zaraz pod nagłówkiem i wstępem */
 	.mp-ankieta-uklad .mp-hero-tekst .is-style-lista-znaczniki, .mp-ankieta-uklad .mp-hero-tekst .is-style-podpis { display: none; }
 }
@@ -500,7 +507,7 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 		.mp-pasek-telefon { animation: mp-pasek-pokaz linear both; animation-timeline: scroll(root block); animation-range: 0 100vh; }
 	}
 }
-@keyframes mp-pasek-pokaz { 0%, 75% { transform: translateY(110%); } 100% { transform: translateY(0); } }
+@keyframes mp-pasek-pokaz { 0%, 75% { transform: translateY(calc(100% + 24px)); } 100% { transform: translateY(0); } }
 
 @media (prefers-reduced-motion: reduce) {
 	.wp-block-button__link, .is-style-strzalka a::after, .ze-strzalka .wp-block-button__link::after { transition: none; }

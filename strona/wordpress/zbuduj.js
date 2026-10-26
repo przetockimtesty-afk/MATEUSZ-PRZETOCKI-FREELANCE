@@ -1031,7 +1031,11 @@ const stopkaStrony = [
 			], { klasa: 'mp-stopka-dol', justify: 'space-between', gap: '12px 20px' }),
 		], { align: 'wide', gap: '56px' }),
 	], { align: 'full', klasa: 'mp-stopka is-style-ciemna', tlo: 'czern', tekst: 'szary-na-czerni', pad: { top: 'clamp(64px, 6vw, 80px)', bottom: '40px' }, layout: { type: 'constrained' } }),
-	grupa([przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true })])], { klasa: 'mp-pasek-telefon is-style-ciemna', tlo: 'czern' }),
+	// pasek na telefonie (wersja A z 26.10): jasna karta, obietnica po lewej, mały przycisk po prawej
+	wiersz([
+		grupa([p('Wycena w&nbsp;5&nbsp;minut', { klasa: 'mp-pasek-tytul' }), p('Propozycja w&nbsp;48&nbsp;h · bez zobowiązań', { klasa: 'mp-pasek-podpis' })], { klasa: 'mp-pasek-tekst' }),
+		przyciski([przycisk('Wyceń stronę', ANKIETA, { strzalka: true, maly: true })]),
+	], { klasa: 'mp-pasek-telefon', justify: 'space-between', pion: 'center', nowrap: true, gap: '12px' }),
 ];
 const szablon404 = [
 	tp('header', 'header'),
