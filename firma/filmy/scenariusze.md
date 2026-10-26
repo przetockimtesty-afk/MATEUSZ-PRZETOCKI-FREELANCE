@@ -14,7 +14,7 @@ Wspólne dla wszystkich filmów:
 - film „niepubliczny” (dostęp przez link), playlisty też niepubliczne;
 - na początku jedno zdanie: co zrobimy i ile to trwa; na końcu: co mi wysłać albo co się stanie dalej;
 - dane z ekranu (e-maile, numery kont, hasła, ID kalendarza) zamazane albo z konta testowego;
-- tytuł zaczyna się od numeru, np. „1.3 · Dostęp do kalendarza (2 minuty)”; w opisie lista kroków z filmu
+- tytuł zaczyna się od numeru, np. „1.4 · Kalendarz Google: udostępnienie (2 minuty)”; w opisie lista kroków z filmu
   i link do formularza materiałów;
 - zanim nagrasz: sprawdź, czy ekrany w LH.pl i Google wyglądają tak samo jak w scenariuszu. Nazwy przycisków się zmieniają.
 
@@ -39,7 +39,7 @@ Kolejność ma znaczenie: domena i hosting są pierwsze, bo od nich zależy resz
 
 1. Mówisz wprost: „Link w opisie to mój link polecający. Ty dostajesz rabat (kod LH-20-464919), a ja prowizję od LH.pl.
    Cena dla Ciebie jest taka sama albo niższa niż bez linku.” (Sprawdź przed nagraniem, czy kod działa i ile daje.)
-2. Ekran: lh.pl z linku → wybór pakietu hostingu, który podałem w propozycji → domena.
+2. Ekran: lh.pl z linku → pakiet hostingu z propozycji → domena.
 3. Dane firmy albo osoby: **na klienta**, nie na Mateusza. Faktura też na klienta.
 4. Płatność. Pokaż, gdzie przychodzi e-mail z potwierdzeniem.
 5. Na koniec: „Jak zapłacisz, przejdź do filmu 1.3. Nie wysyłaj mi haseł.”

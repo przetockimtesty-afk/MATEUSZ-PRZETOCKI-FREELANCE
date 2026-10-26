@@ -93,7 +93,7 @@ Etap 2, do pierwszego klienta (ok. 6.11):
   - zwrot z inwestycji z liczb z ankiety: nowe pola `{{ZWROT}}` i `{{ZWROT_CZAS}}` w `Kod.gs`;
   - demo zastąpione testem na żywo na `/rozmowa/` albo filmem z kalendarza; na końcu propozycja, umowa i zadatek (Useme jako faktura VAT).
   Szablon dla automatu: znaczniki `[tylko A]`, `[tylko B]` i `[liczby z ankiety]` w notatkach; `Kod.gs` pomija według nich slajdy, a ten sam plik w `szablonA` i `szablonB` daje jeden szablon Google (test na atrapie Apps Script 26.10). Instrukcja: `firma/automatyzacja/INSTRUKCJA.md`, „Prezentacja sprzedażowa zamiast A i B”.
-- [ ] 10. Filmy w 3 playlistach: „Na start”, „Ułatwienia”, „Obsługa strony”. Scenariusze pisze Claude, nagrywa Mateusz. Scenariusze gotowe 26.10: `firma/filmy/scenariusze.md`. Do uwzględnienia:
+- [ ] 10. Filmy w 3 playlistach: „Na start”, „Ułatwienia”, „Obsługa strony”. Scenariusze pisze Claude, nagrywa Mateusz. Scenariusze gotowe 26.10: `firma/filmy/scenariusze.md`, ich kopia i tabela ze statusem nagrania w rozpisce (link wyżej, „Czeka na Mateusza”). Do uwzględnienia:
   - w LH.pl są „Ustawienia → Uprawnienia do serwerów” zamiast wysyłania haseł;
   - przy linku partnerskim LH.pl powiedzieć wprost, że to polecenie;
   - Gmail od 2026 nie pobiera poczty przez POP3: przekierowanie i „Wyślij jako” albo skrzynka w aplikacji Gmail;
@@ -114,7 +114,8 @@ Etap 3, po starcie:
 
 E-maile ze strony (26.10): WP Mail SMTP nie logował się do skrzynki („Could not authenticate”), więc nie wychodziła żadna poczta, także reset hasła. Mateusz poprawił login i hasło skrzynki (według niego „chyba działa”). Hasło tymczasowe do konta `mateuszprzetocki` ustawione przez API na jego prośbę; ma je zmienić w Profilu. Około 6:00 agent wysłał próbną ankietę i zrobił próbną rezerwację (sobota 21.11, 12:30, „TEST Claude – proszę usunąć”), obie na adres administratora. Czeka na potwierdzenie Mateusza, że przyszły 4 e-maile, i na usunięcie obu prób w panelu (Rezerwacje → Spotkania, Ankiety).
 
-Czeka na Mateusza (26.10):
+Czeka na Mateusza (26.10). Rozpiska z tymi krokami, tabelą 15 filmów ze statusem i decyzjami: https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (dokument w claude.ai, zakładki „Do zrobienia” i „Scenariusze filmów”; odhaczenia i statusy są tylko tam):
+- sprawdzić, czy próbna rezerwacja (sob 21.11, 12:30) jest w Kalendarzu Google: w kalendarzu konta Google podłączonego do sesji jej nie ma. Jeśli u Mateusza też nie, połączenie z Google nie działa (Rezerwacje → Ustawienia → Google → Sprawdź połączenie);
 - potwierdzić, że doszły e-maile z próbnej ankiety i rezerwacji, potem usunąć obie próby w panelu; zmienić hasło tymczasowe;
 - wdrożenie `Kod.gs` i adres z sekretem w Ankiety → Ustawienia → Automat;
 - znacznik weryfikacji domeny Meta, ewentualnie nowy token API konwersji, drugi skan Complianz;
@@ -123,7 +124,9 @@ Czeka na Mateusza (26.10):
 - PDF „Jak przebiega współpraca” do umowy (eksport z claude.ai);
 - nagrania filmów według `firma/filmy/scenariusze.md`;
 - decyzja: wersja B w automacie to nadal stara oferta z kalkulatorem (1 600 / 2 500 / 3 400 zł, „Strona, która wycenia”), a strona pokazuje firmom remontowym te same pakiety co innym (1 200 / 1 800 / 2 500 zł). Slajdy B w prezentacji biorą nazwy i ceny z automatu. Zostawić B czy ujednolicić?
-- Search Console (indeksowanie jest już włączone, opcja „Proś wyszukiwarki o nieindeksowanie” jest odznaczona);
+- Search Console (indeksowanie jest już włączone, opcja „Proś wyszukiwarki o nieindeksowanie” jest odznaczona): Prefiks URL, tag HTML wklejony w Rank Math (albo kod do agenta, wpisze przez API), potem mapa `sitemap_index.xml`;
+- usunąć wyłączoną wtyczkę Yoast;
+- decyzje z rozpiski: pasek z przyciskiem na telefonie (warianty A, B, C pokazane 26.10), obrazek do udostępniania linku 1200 × 630 px (dziś strona nie ma `og:image`), rola konta `agentai`;
 - decyzja: na górze głównej nadal jest ilustracja telefonu z dema („Projekt demonstracyjny”, Anna Nowak); można ją zamienić na kadr z filmu kalendarza.
 
 ## Otwarte sprawy
@@ -138,7 +141,7 @@ Czeka na Mateusza (26.10):
 - [ ] Wtyczka MP Rezerwacje: test z prawdziwym kontem Google (konto usługi w Google Cloud Mateusza i testowy kalendarz): zajętość i zapis wydarzeń, dodatkowy kalendarz bez dostępu, odwołanie i ponowienie zapisu, całodniowe wydarzenie oznaczone jako „Zajęty”, arkusz. Najprościej na mateuszprzetocki.pl, gdy kalendarz będzie już działał.
 - [ ] Wtyczka MP Rezerwacje: zdecydować o aktualizacjach (własny kanał aktualizacji z przyciskiem „Zaktualizuj” na stronach klientów albo ręczne wgrywanie ZIP) i o tym, czy klient ma sam zmieniać godziny i urlopy (dziś tylko administrator).
 
-- [ ] Ankieta wyceny: zamiast uogólniania ankiety A w `Kod.gs` powstaje ankieta na stronie z pytaniami zależnymi od branży (plan z 23.10, punkt 1). W `Kod.gs` zostaje automat propozycji i dochodzi przyjmowanie odpowiedzi ze strony.
+- [x] (26.10) Ankieta wyceny: zamiast uogólniania ankiety A w `Kod.gs` powstaje ankieta na stronie z pytaniami zależnymi od branży (plan z 23.10, punkt 1). W `Kod.gs` zostaje automat propozycji i dochodzi przyjmowanie odpowiedzi ze strony.
 - [ ] Dopasować prezentacje i szablon propozycji do nowych kolorów. Odłożone, niepilne.
 - [ ] Usunąć folder `plan-freelancer/` ze starego repozytorium `oneproductstore`, jeśli wszystko jest skopiowane tutaj (Mateusz się zgodził). Zablokowane: sesja nie dostała dostępu do `oneproductstore`.
 - [x] Zdjęcia Mateusza na stronie, nowe z 20.10 (WebP z Dysku: „zalozonerece_1 (1).webp”, „recewkieszeni 1.webp”, „Nowoczesne biuro programisty z polską stroną internetową.webp”). Na głównej duże z założonymi rękami, na „O mnie” duże z rękami w kieszeniach, na obu małe przy komputerze, a na górze głównej twarz przy imieniu. Media 101–104, bez metadanych. Stare zdjęcia z 19.10 (media 92–94) usunięte z WordPressa. Plików zdjęć nie ma w repozytorium.
@@ -149,14 +152,14 @@ Czeka na Mateusza (26.10):
 - [x] Dostęp do WordPressa działa (19.10): konto `agentai`, rola administrator, logowanie przez Network secret, poprawka nagłówka w `.htaccess`. Stan instalacji w tabeli „Ta instalacja” w `WP-REST.md`.
 - [ ] Zdecydować, czy konto `agentai` zostaje administratorem, czy schodzi do roli Redaktor.
 - [x] Ustawić w WordPressie strefę czasową Europe/Warsaw (19.10).
-- [ ] Do startu 27.10 trzymać zaznaczone w wp-admin „Ustawienia → Czytanie → Proś wyszukiwarki o nieindeksowanie” (robi Mateusz, przez API się nie da). W dniu startu odznaczyć.
-- [ ] Podmienić zaślepki na stronie, gdy będą gotowe:
+- [x] (26.10) Indeksowanie włączone dzień przed startem: w „Ustawienia → Czytanie” opcja „Proś wyszukiwarki o nieindeksowanie” jest odznaczona.
+- [x] (25–26.10) Podmienić zaślepki na stronie (przyciski ankiety prowadzą do `/wycena/`, demo zdjęte, dane kontaktowe we wzorcach, polityka i regulamin ze standardowym brzmieniem):
   - linki: `#ankieta` (36 przycisków na wszystkich stronach), `#demo` (11), `#propozycja` (Jak pracuję), `#email` (Kontakt);
   - teksty: `kontakt@…` (stopka, Kontakt, polityka, regulamin; e-mail wpisuje Mateusz sam w edytorze, nie trafia do repozytorium), „[adres z danych z ustawy]” w stopce, „[adres zamieszkania albo do korespondencji…]” i „[data publikacji]” w polityce i regulaminie, trzy uwagi „do ustalenia z radcą” / „sprawdzić przed publikacją” w polityce prywatności.
 - [ ] Umowa: Mateusz wpisuje we wzorze na Dysku swój adres, e-mail i numer konta, wstawia zdjęcie podpisu nad linią „Wykonawca” i pokazuje wzór radcy razem z polityką i regulaminem (szczególnie pkt 2 start od razu, 9–10 prawa autorskie i licencja na skanie, 12–14 odstąpienie, zadatek, RODO). Poprawki radcy przenieść też do `firma/umowy/umowa.src.html`.
 - [ ] Regulamin strony, pkt 6 „Odstąpienie od umowy o stronę”: zamiast zaślepki „[Zasady odstąpienia… do ustalenia z radcą]” można wstawić skrót § 9 umowy, gdy radca go zatwierdzi.
-- [ ] Zdecydować o wtyczkach WordPressa (propozycja z 19.10: Rank Math, cache, SMTP, Koko Analytics, Two Factor) i o własnych wtyczkach „MP Bloki” i „MP Linki”. Instalacja tylko za zgodą Mateusza.
-- [ ] Po instalacji wtyczki SEO wpisać tytuły SEO z planu strony (opisy SEO już są w zajawkach stron).
+- [ ] Zdecydować o wtyczkach WordPressa (propozycja z 19.10: Rank Math, cache, SMTP, Koko Analytics, Two Factor; od 26.10 są Rank Math i WP Mail SMTP, statystyki daje GA4, zostają cache i Two Factor) i o własnych wtyczkach „MP Bloki” i „MP Linki”. Instalacja tylko za zgodą Mateusza.
+- [x] (26.10) Tytuły SEO z planu strony wpisane w Rank Math (punkt 15).
 
 ## Ustalenia o WordPressie (19.10.2026)
 

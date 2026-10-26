@@ -73,7 +73,8 @@ stron z WordPressa.
 | Prezentacja sprzedażowa (zastępuje A i B w automacie) | źródło `firma/prezentacje/sprzedaz/` | tak: https://claude.ai/artifact/HXPH6cbCgCu9JELWYmmzaz | — (plik .pptx do szablonu wgrywa Mateusz) |
 | Prezentacja „Jak przebiega współpraca” | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA | — (PDF do umowy eksportuje Mateusz) |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
-| Scenariusze filmów dla klientów (3 playlisty) | `firma/filmy/scenariusze.md` | — | — |
+| Scenariusze filmów dla klientów (3 playlisty) | `firma/filmy/scenariusze.md` | kopia w zakładce „Scenariusze filmów” rozpiski | — |
+| Rozpiska dla Mateusza: kroki na 26.10, tabela filmów ze statusem, decyzje | skrót w `firma/STAN-PRAC.md` | tak: https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (statusy i odhaczenia są tylko tam) | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |
 | Wtyczka MP Rezerwacje (na stronie 0.1.1 od 26.10) | szkielet `strona/wtyczki/mp-rezerwacje/`, ZIP `strona/wtyczki/zip/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
