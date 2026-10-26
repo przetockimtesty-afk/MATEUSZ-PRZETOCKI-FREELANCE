@@ -9,8 +9,9 @@
 ## Dysk Google
 
 - Folder „Mateusz Przetocki Freelance”: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw (id `1rwFHbmAzA8V6gCV41brlmOkADtZOGauw`).
-- PDF-y wgrywaj tam tylko wtedy, gdy Mateusz o to poprosi.
-- Złącze Dysku nie przyjmie pliku większego niż ok. kilkadziesiąt KB (plik idzie jako tekst w wywołaniu narzędzia). Większe PDF-y Mateusz wgrywa sam: daj mu link „raw” z GitHuba i link do folderu.
+- Ważne materiały dla Mateusza (zadania, podsumowania, PDF-y i prezentacje, o które prosi) od razu wgrywaj do tego folderu. Gdy zmienia się ich treść, na Dysk też idzie nowa wersja (prośba Mateusza z 26.10).
+- Złącze Dysku nie przyjmie pliku większego niż ok. kilkadziesiąt KB (plik idzie jako tekst w wywołaniu narzędzia). Wtedy treść wgraj jako Dokument Google (HTML, Dysk sam go zamienia), a sam PDF albo PPTX Mateusz wgrywa sam: daj mu plik w czacie albo link „raw” z GitHuba i link do folderu.
+- Złącza do edycji Dokumentów i Prezentacji Google nie ma (jest tylko Dysk i Arkusze), więc nowa wersja to nowy plik. Starego nie usuwaj: zmień jego tytuł na „… (stara wersja)” i powiedz o tym Mateuszowi. Gdy złącze Google Docs będzie włączone, zmieniaj ten sam dokument.
 
 ## Przypominanie, co jest zapisane
 

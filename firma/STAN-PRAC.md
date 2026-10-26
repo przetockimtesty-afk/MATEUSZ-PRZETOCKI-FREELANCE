@@ -14,6 +14,7 @@
 - Prezentacji sprzedażowej (ani starych A i B) nie wysyłamy klientom jako linku, bo w notatkach są ściągi. Prezentacja „Jak przebiega współpraca” może iść do klienta jako PDF z umową.
 - Prezentacje w claude.ai (typ Slides) sprawdzamy dopiero wtedy, gdy Mateusz poprosi: bez renderowania i zrzutów.
 - Projekt w Claude Design: plansz nie renderujemy ani nie sprawdzamy zrzutami, chyba że Mateusz poprosi. Przed publikacją `canvas.json` czytamy jego aktualną wersję.
+- Od 26.10 ważne materiały (zadania, podsumowania, PDF-y i prezentacje) od razu trafiają na Dysk, a ich nowe wersje też (zasady w `CLAUDE.md`, „Dysk Google”).
 
 ## Zrobione 19.10.2026 (druga rozmowa)
 
@@ -115,7 +116,7 @@ Etap 3, po starcie:
 
 E-maile ze strony (26.10): WP Mail SMTP nie logował się do skrzynki („Could not authenticate”), więc nie wychodziła żadna poczta, także reset hasła. Mateusz poprawił login i hasło skrzynki (według niego „chyba działa”). Hasło tymczasowe do konta `mateuszprzetocki` ustawione przez API na jego prośbę; ma je zmienić w Profilu. Około 6:00 agent wysłał próbną ankietę i zrobił próbną rezerwację (sobota 21.11, 12:30, „TEST Claude – proszę usunąć”), obie na adres administratora. Czeka na potwierdzenie Mateusza, że przyszły 4 e-maile, i na usunięcie obu prób w panelu (Rezerwacje → Spotkania, Ankiety).
 
-Czeka na Mateusza (26.10). Wszystko w jednym pliku: `firma/zadania/Zadania_Mateusza.pdf` (9 stron: dziś, do pierwszego klienta, później, 9 decyzji, linki, scenariusze filmów; źródło `zadania.html`, PDF z `node firma/zadania/zbuduj.js`; Mateusz dostał go w czacie 26.10). Ta sama lista do odhaczania: rozpiska https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (zakładki „Do zrobienia” i „Scenariusze filmów”; odhaczenia i statusy są tylko tam). Przy zmianie zadań poprawiać oba miejsca:
+Czeka na Mateusza (26.10). Wszystko w jednym pliku: `firma/zadania/Zadania_Mateusza.pdf` (9 stron: dziś, do pierwszego klienta, później, 9 decyzji, linki, scenariusze filmów; źródło `zadania.html`, PDF z `node firma/zadania/zbuduj.js`; Mateusz dostał go w czacie 26.10; na Dysku jest ta sama treść jako Dokument Google „Zadania · wszystko w jednym miejscu (stan na 26.10.2026)”, a sam PDF wgrywa Mateusz, bo jest za duży dla złącza). Ta sama lista do odhaczania: rozpiska https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (zakładki „Do zrobienia” i „Scenariusze filmów”; odhaczenia i statusy są tylko tam). Przy zmianie zadań poprawiać oba miejsca:
 - sprawdzić, czy próbna rezerwacja (sob 21.11, 12:30) jest w Kalendarzu Google: w kalendarzu konta Google podłączonego do sesji jej nie ma. Jeśli u Mateusza też nie, połączenie z Google nie działa (Rezerwacje → Ustawienia → Google → Sprawdź połączenie);
 - potwierdzić, że doszły e-maile z próbnej ankiety i rezerwacji, potem usunąć obie próby w panelu; zmienić hasło tymczasowe;
 - wdrożenie `Kod.gs` i adres z sekretem w Ankiety → Ustawienia → Automat;
