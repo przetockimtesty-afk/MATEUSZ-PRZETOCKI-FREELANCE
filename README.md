@@ -62,6 +62,7 @@ stron z WordPressa.
 | Dane kontaktowe na stronie (e-mail, adres) | nie, z zasady; tylko ID wzorców w `strona/wordpress/wzorce.json` | — | — |
 | Film z kalendarza na „Realizacjach” (media 143, okładka 144) | nie: jest na nim zdjęcie Mateusza | — | — |
 | Zdjęcia Mateusza (na stronie: media 101–104 w WordPressie) | nie, z zasady | — | oryginały, 3 pliki WebP i ich wersje PNG |
+| SEO w Rank Math (tytuły, opisy, noindex formularzy, ustawienia) | tytuły w `strona/wordpress/zbuduj.js` (`TYTULY_SEO`), wysyłka `wyslij.py seo`, kopie ustawień w `backups/rankmath-*` | — | — |
 | Ustawienia Complianz i PixelYourSite (piksel, GA4, API konwersji) | ściąga kreatora `firma/wdrozenia/complianz-kreator.md` | — | — |
 | Drogowskaz PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | Workflow A i B PDF | tak | — | tak, ta sama wersja co w repozytorium |

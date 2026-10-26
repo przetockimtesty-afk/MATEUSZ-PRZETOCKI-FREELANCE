@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Wgrywa stronę z build/ na mateuszprzetocki.pl przez REST API (klient wp.py).
 
-Kolejność: grafiki → fonty → style globalne → strony → menu → nagłówek i stopka → 404 → ustawienia.
+Kolejność: grafiki → fonty → style globalne → strony → menu → nagłówek i stopka → 404 → ustawienia → SEO (Rank Math).
 Przed każdym nadpisaniem robi kopię do backups/ (w katalogu głównym repozytorium).
 Ponowne uruchomienie niczego nie dubluje: istniejące media, fonty i strony są aktualizowane.
 Nie nadpisuje stron, stylów, menu, nagłówka, stopki ani ustawień zmienionych w WordPressie
@@ -9,12 +9,15 @@ po ostatniej wysyłce (odciski w build/wyslane.json). Wtedy zatrzymuje się prze
 
 Użycie (z katalogu głównego repozytorium):
   python3 strona/wordpress/wyslij.py            # wszystko
-  python3 strona/wordpress/wyslij.py strony     # tylko jeden etap: media|fonty|style|strony|menu|czesci|ustawienia
+  python3 strona/wordpress/wyslij.py strony     # tylko jeden etap: media|fonty|style|strony|menu|czesci|ustawienia|seo
   ... --nadpisz                                 # świadomie nadpisuje zmiany zrobione w WordPressie
+  python3 strona/wordpress/wyslij.py seo --tylko=glowna,oferta   # SEO tylko dla wybranych stron (pilotaż)
 """
 import hashlib
+import html
 import importlib.util
 import json
+import re
 import subprocess
 import sys
 import time
@@ -279,7 +282,100 @@ def ustawienia():
     print(f"  show_on_front={odp['show_on_front']} page_on_front={odp['page_on_front']} site_icon={odp['site_icon']}")
 
 
-ETAPY = {"media": media, "fonty": fonty, "style": style, "strony": strony, "menu": menu, "czesci": czesci, "ustawienia": ustawienia}
+# Rank Math: ustawienia, które zmieniamy (reszta zostaje domyślna albo taka, jak ustawi Mateusz w panelu)
+SEO_TYTULY = {"title_separator": "|", "404_title": "Tej strony tu nie ma %sep% %sitename%", "disable_author_archives": "on",
+              "knowledgegraph_type": "person", "knowledgegraph_name": "Mateusz Przetocki", "website_name": "Mateusz Przetocki",
+              # strony to usługi, nie artykuły; „Article” dokładał też autora strony (konto agenta) do danych dla Google
+              "pt_page_default_rich_snippet": "off"}
+SEO_MAPA = {"authors_sitemap": "off"}
+# okruszki tylko w danych dla Google (BreadcrumbList); widoczne okruszki są w treści stron, Rank Math ich nie wstawia
+SEO_OGOLNE = {"breadcrumbs": "on", "breadcrumbs_home_label": "Strona główna"}
+POLA_SEO = ["title", "description", "robots"]
+STRONA = wp.API.split("/wp-json/")[0]
+
+
+def seo_na_froncie(url):
+    """Tytuł, opis i roboty z wyrenderowanej strony, bez logowania (tak widzi to Google)."""
+    kod, tresc = zapytaj(f"{STRONA}{url}?nc={int(time.time())}", metoda="GET", surowe=True, anon=True)
+    if kod != 200 or tresc.lstrip()[:1] != "<":
+        sys.exit(f"{url}: HTTP {kod}, to nie jest strona. Przerywam.")
+
+    def znajdz(wzor):
+        m = re.search(wzor, tresc, re.S)
+        return html.unescape(m.group(1)).strip() if m else ""
+    return {"title": znajdz(r"<title[^>]*>(.*?)</title>"),
+            "description": znajdz(r"<meta\s+name=[\"']description[\"']\s+content=[\"']([^\"']*)"),
+            "robots": znajdz(r"<meta\s+name=[\"']robots[\"']\s+content=[\"']([^\"']*)")}
+
+
+def ustawienia_seo(typ, zmiany):
+    """Ustawienia Rank Math: kopia obecnych (pusty zapis zwraca komplet), pilnowanie zmian z panelu, zapis tylko naszych pól."""
+    # przełączniki wysyłamy jako „on”/„off”, a Rank Math odsyła je jako true/false
+    norm = lambda v: {"on": True, "off": False}.get(v, v) if isinstance(v, str) else v
+    # „updated” musi być listą: Rank Math robi na nim in_array(), a null w PHP 8 kończy się błędem krytycznym (500)
+    obecne = zapytaj("rankmath/v1/updateSettings", {"type": typ, "settings": {}, "updated": []})["settings"]
+    BACKUPS.mkdir(exist_ok=True)
+    p = BACKUPS / f"rankmath-{typ}-{datetime.now():%Y%m%d-%H%M%S}.json"
+    p.write_text(json.dumps(obecne, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"  kopia: {p.relative_to(REPO)}")
+    chciane = {k: norm(v) for k, v in zmiany.items()}
+    teraz = {k: norm(obecne.get(k)) for k in zmiany}
+    pilnuj(f"rankmath-{typ}", teraz, list(zmiany))
+    if teraz == chciane:
+        zapamietaj(f"rankmath-{typ}", teraz, list(zmiany))
+        print(f"  = ustawienia {typ} bez zmian")
+        return
+    odp = zapytaj("rankmath/v1/updateSettings", {"type": typ, "settings": zmiany, "updated": list(zmiany)})["settings"]
+    po = {k: norm(odp.get(k)) for k in zmiany}
+    if po != chciane:
+        sys.exit(f"Rank Math nie zapisał ustawień {typ}: {[k for k in zmiany if po[k] != chciane[k]]}")
+    zapamietaj(f"rankmath-{typ}", po, list(zmiany))
+    print(f"  ~ ustawienia {typ}: {', '.join(zmiany)}")
+
+
+def seo():
+    print("SEO: Rank Math (tytuły, opisy, noindex formularzy, ustawienia)")
+    zbuduj()
+    if "rankmath/v1" not in zapytaj("?_fields=namespaces").get("namespaces", []):
+        sys.exit("Rank Math nie działa (brak rankmath/v1): wtyczka wyłączona albo w wp-admin nie pominięto rejestracji konta.")
+    meta = json.loads((BUILD / "strony.json").read_text(encoding="utf-8"))
+    ids = wczytaj("id-stron.json", {})
+    ustawienia_seo("titles", SEO_TYTULY)
+    ustawienia_seo("sitemap", SEO_MAPA)
+    ustawienia_seo("general", SEO_OGOLNE)
+    # najpierw sprawdzamy wszystkie strony, żeby nie przerwać w połowie zapisu
+    strony_ = [(k, meta[k], ids[k]) for k in KOLEJNOSC if (meta[k].get("status") or "publish") == "publish"]
+    tylko = [a.split("=", 1)[1] for a in sys.argv if a.startswith("--tylko=")]  # pilotaż: --tylko=glowna
+    if tylko:
+        strony_ = [x for x in strony_ if x[0] in tylko[0].split(",")]
+    teraz = {}
+    for klucz, m, pid in strony_:
+        teraz[pid] = seo_na_froncie(m["url"])
+        pilnuj(f"seo-{pid}", teraz[pid], POLA_SEO)
+    zmienione = 0
+    for klucz, m, pid in strony_:
+        ukryta = bool(m.get("ukryta"))
+        if teraz[pid]["title"] == m["seo"] and teraz[pid]["description"] == m["opis"] and ("noindex" in teraz[pid]["robots"]) == ukryta:
+            print(f"  = {m['seo']} (id {pid}) bez zmian")
+            continue
+        zapytaj("rankmath/v1/updateMeta", {"objectType": "post", "objectID": pid, "meta": {
+            "rank_math_title": m["seo"], "rank_math_description": m["opis"],
+            "rank_math_robots": ["noindex", "nofollow"] if ukryta else ["index", "follow"]}})
+        po = seo_na_froncie(m["url"])
+        if po["title"] != m["seo"] or po["description"] != m["opis"] or ("noindex" in po["robots"]) != ukryta:
+            sys.exit(f"{m['url']}: na stronie jest inaczej niż wysłane: {po}")
+        zapamietaj(f"seo-{pid}", po, POLA_SEO)
+        zmienione += 1
+        print(f"  ~ {po['title']} (id {pid}) · opis {len(po['description'])} zn. · {po['robots'].split(',')[0]}{', ' + po['robots'].split(',')[1].strip() if ',' in po['robots'] else ''}")
+    if zmienione:
+        # meta zapisane z boku nie czyszczą pamięci mapy strony Rank Math; czyści ją zapis strony (save_post)
+        glowna = ids["glowna"]
+        zapytaj(f"wp/v2/pages/{glowna}?_fields=id", {"excerpt": meta["glowna"]["opis"]})
+        print("  mapa strony odświeżona (zapis strony głównej bez zmian w treści)")
+
+
+ETAPY = {"media": media, "fonty": fonty, "style": style, "strony": strony, "menu": menu, "czesci": czesci, "ustawienia": ustawienia,
+         "seo": seo}
 
 if __name__ == "__main__":
     wybrane = [a for a in sys.argv[1:] if not a.startswith("--")] or list(ETAPY)

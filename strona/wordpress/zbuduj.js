@@ -346,7 +346,7 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 		wiersz([grupa([nad('Realizacje'), h2('Zobacz, jak to <em>działa</em>')], { gap: '22px' }), strzalka('Wszystkie realizacje', U.realizacje)], { justify: 'space-between', pion: 'bottom', gap: '18px 40px' }),
 		grupa([
 			DEMO_WLACZONE ? kartaDemoA(3, 'Formularz wstępnej analizy, kalendarz konsultacji i&nbsp;odpowiedzi na pytania klientów w&nbsp;jednym miejscu.') : kartaFilmu(3),
-			szary('Wcześniej: własne sklepy internetowe i&nbsp;wtyczki do WordPressa. Od listopada: pierwsza strona klientki, za jej zgodą.', { klasa: 'mp-maly-tekst' }),
+			szary('Wcześniej: własne sklepy internetowe i&nbsp;wtyczki do WordPressa.', { klasa: 'mp-maly-tekst' }),
 		], { gap: '28px' }),
 	], { id: 'realizacje' }),
 	sekcja([
@@ -465,7 +465,7 @@ const projekt = (zrzut, tytul, problem, zrobione, efekt, link) => karta([
 	link || null,
 ], { gap: '16px', klasa: 'mp-projekt' });
 strona('realizacje', { tytul: 'Realizacje', slug: 'realizacje', opis: 'Kalendarz rezerwacji na filmie i wcześniejsze projekty: wtyczki do sklepów i kalkulator wyceny. Strony klientów pokazuję za ich zgodą.' }, [
-	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Realizacje'], nadtytul: 'Realizacje', tytul: 'Realizacje', tekst: 'Kalendarz rezerwacji, który dostają moje strony, i&nbsp;wcześniejsze projekty. Od listopada dochodzą tu strony klientów, za ich zgodą.' }),
+	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Realizacje'], nadtytul: 'Realizacje', tytul: 'Realizacje', tekst: 'Kalendarz rezerwacji, który dostają moje strony, i&nbsp;wcześniejsze projekty.' }),
 	DEMO_WLACZONE ? sekcja([
 		kartaDemoA(2, 'Klient z&nbsp;polecenia szuka doradczyni wieczorem i&nbsp;widzi tylko numer telefonu. Na tej stronie czyta odpowiedzi, wypełnia krótki formularz wstępnej analizy i&nbsp;sam wybiera termin konsultacji.'),
 	], { id: 'demo-a', gora: '16px', gap: '20px' }) : null,
@@ -485,7 +485,6 @@ strona('realizacje', { tytul: 'Realizacje', slug: 'realizacje', opis: 'Kalendarz
 			], { klasa: 'mp-kalendarz-tekst' }],
 			['50%', [filmKalendarza()]],
 		], { pion: 'center', gap: '48px', klasa: 'mp-kalendarz-film' }),
-		karta([wiersz([etykieta('Strona klientki', 'obrys'), szary('W&nbsp;listopadzie powstaje pierwsza strona dla doradczyni kredytowej. Pokażę ją tutaj za jej zgodą, a&nbsp;po 30&nbsp;dniach dodam liczby i&nbsp;jej opinię.', { klasa: 'mp-rozciagnij' })], { gap: '14px 32px' })], { styl: 'is-style-karta-przerywana' }),
 	], { id: 'kalendarz', gora: '16px' }),
 	sekcja([
 		naglowekSekcji('Wcześniejsze projekty', 'Sklepy i&nbsp;wtyczki, które zbudowałem <em>dla siebie</em>', 'Zanim zacząłem robić strony dla specjalistów, prowadziłem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. To projekty własne, nie realizacje dla klientów.'),
@@ -607,7 +606,7 @@ strona('rozmowa', { tytul: 'Umów rozmowę', slug: 'rozmowa', opis: 'Umów 30 mi
 // Strony z ankietami: tekst po lewej, ankieta po prawej (jak kalendarz na /rozmowa/).
 // Wycena jest publiczna, formularze dla klientów są tylko z linku: „ukryta” = noindex i brak w mapie strony.
 function stronaAnkiety(klucz, meta, { okruszki: ok, nadtytul, tytul, tekst, punkty, podpis: pd, reszta = [], definicja, ukryta }) {
-	strona(klucz, { ...meta, status: ANKIETY_WLACZONE ? undefined : 'draft' }, [
+	strona(klucz, { ...meta, ukryta, status: ANKIETY_WLACZONE ? undefined : 'draft' }, [
 		sekcja([
 			ok ? okruszki(ok) : null,
 			kolumny([
@@ -969,7 +968,7 @@ strona('pytania', { tytul: 'Pytania', slug: 'pytania', opis: 'Odpowiedzi na 12 p
 				['Czy strona będzie w&nbsp;Google?', 'Dbam o&nbsp;to, co od tego zależy: szybką stronę, podstawy SEO, a&nbsp;w&nbsp;pakiecie „Wizytówka, która umawia” także Profil Firmy w&nbsp;Google, gdy firma spełnia wytyczne. Nie obiecuję konkretnego miejsca w&nbsp;wynikach.'],
 			]),
 			grupaPytan('doswiadczenie', '04 · Doświadczenie', [
-				['Czy robiłeś już takie projekty?', `Kalendarz i&nbsp;formularz działają na tej stronie: gdy umawiasz się ze mną, widzisz dokładnie to, co zobaczą Twoi klienci. Od listopada wdrażam je u&nbsp;pierwszych klientów, a&nbsp;ich strony dodaję tutaj za ich zgodą. Wcześniej budowałem własne sklepy internetowe i&nbsp;wtyczki do WordPressa. <a href="${U.realizacje}">Realizacje</a>`],
+				['Czy robiłeś już takie projekty?', `Kalendarz i&nbsp;formularz działają na tej stronie: gdy umawiasz się ze mną, widzisz dokładnie to, co zobaczą Twoi klienci. Wcześniej budowałem własne sklepy internetowe i&nbsp;wtyczki do WordPressa. <a href="${U.realizacje}">Realizacje</a>`],
 			]),
 		], { gap: '56px' })]],
 	])], { gora: '0' }),
@@ -1128,6 +1127,25 @@ const STYLE_GLOBALNE = {
 	},
 };
 
+// Tytuły SEO (plan strony, „Tytuły i opisy wszystkich podstron”, poprawione 26.10). Opis SEO to `opis` (zajawka strony).
+// Strona bez wpisu dostaje swój tytuł. Do Rank Math wysyła je `wyslij.py seo`, formularze „ukryta” dostają noindex.
+const TYTULY_SEO = {
+	glowna: 'Strony z kalendarzem konsultacji',
+	oferta: 'Pakiety i ceny stron wizytówek',
+	realizacje: 'Realizacje i kalendarz rezerwacji',
+	kontakt: 'Kontakt i wycena strony',
+	rozmowa: 'Umów 30 minut rozmowy',
+	wycena: 'Wycena strony w 5 minut',
+	dlaKogo: 'Dla kogo robię strony',
+	doradcy: 'Strona dla doradcy kredytowego',
+	biura: 'Strona dla biura rachunkowego',
+	terapeuci: 'Strona dla psychologa i terapeuty',
+	jakPracuje: 'Jak pracuję: od ankiety do startu',
+	pytania: 'Pytania o stronę z kalendarzem',
+	oMnie: 'Kim jestem i jak pracuję',
+};
+const SEO_PODPIS = ' | Mateusz Przetocki';
+
 // ---------------------------------------------------------------- zapis
 
 const serializuj = (lista_) => B.serialize(lista_);
@@ -1138,7 +1156,11 @@ for (const [klucz, s] of Object.entries(STRONY)) {
 }
 for (const [klucz, s] of Object.entries(STRONY)) {
 	fs.writeFileSync(path.join(BUILD, 'strony', `${klucz}.html`), serializuj(s.bloki));
-	meta[klucz] = { tytul: s.tytul, slug: s.slug, rodzic: s.rodzic || null, opis: s.opis, url: s.url, status: s.status };
+	const seo = (TYTULY_SEO[klucz] || s.tytul) + SEO_PODPIS;
+	// Google ucina dłuższe: tytuł ok. 60 znaków, opis ok. 160
+	if (seo.length > 60) throw new Error(`Tytuł SEO strony ${klucz} ma ${seo.length} zn. (najwyżej 60)`);
+	if (s.opis.length > 160) throw new Error(`Opis strony ${klucz} ma ${s.opis.length} zn. (najwyżej 160)`);
+	meta[klucz] = { tytul: s.tytul, slug: s.slug, rodzic: s.rodzic || null, opis: s.opis, url: s.url, status: s.status, seo, ukryta: s.ukryta || undefined };
 }
 fs.writeFileSync(path.join(BUILD, 'strony.json'), JSON.stringify(meta, null, 1));
 fs.writeFileSync(path.join(BUILD, 'czesci', 'naglowek.html'), serializuj(naglowekStrony));

@@ -63,6 +63,8 @@ Etap 1, do startu we wtorek 27.10:
 - [x] 4. (26.10, bez zrzutów) Realizacje: kalendarz na środku z filmem 30–40 s (nagranie na lokalnej kopii strony, MP4 bez YouTube'a), pod nim 3 projekty w układzie problem → co zrobiłem → co to daje. Zrzuty i opisy daje Mateusz; zrzuty puresofa.pl można zrobić samemu.
   - [x] Film 34 s z napisami (telefon, 780 × 1688, MP4 1,2 MB) w mediach WordPressa: 143, okładka 144. Na filmie jest zdjęcie Mateusza, więc pliku nie ma w repozytorium. Skrypt nagrania był w plikach tymczasowych sesji (CDP screencast przy html zoom 2).
   - [x] Karta filmu na głównej, przyciski „Zobacz film z kalendarza” na głównej i 3 stronach branż.
+  - [x] Zapowiedź strony klientki („od listopada”) usunięta 26.10 na prośbę Mateusza: karta na Realizacjach, zdanie w nagłówku Realizacji, dopisek na głównej i w odpowiedzi „Czy robiłeś już takie projekty?”. Wróci, gdy strona klientki będzie gotowa.
+  - [x] Film z kalendarza na telefonie był przesunięty o 20 px w prawo (ramka liczona poza szerokością); poprawka `box-sizing` w `marka.css` 26.10.
   - [x] Zaślepki zdjęte 26.10: karty projektów są bez obrazka, dopóki nie ma zrzutu (`ZRZUTY` w `zbuduj.js`: klucz z `media.json` albo null).
   - [ ] Mateusz: zrzuty i opisy 3 projektów (Mateusz poprosił, żeby tego nie robić za niego). Zrzut wgrywamy do mediów, wpisujemy klucz w `ZRZUTY` i wysyłamy stronę.
 - [x] 5. (25–26.10) Complianz, PixelYourSite i GA4 (instalacja za zgodą Mateusza, identyfikatory od niego):
@@ -105,7 +107,8 @@ Etap 3, po starcie:
   - zgody z ankiety od startu, zapisane w WordPressie Mateusza z datą i treścią zgody;
   - narzędzie do wysyłki przy pierwszym newsletterze: Brevo albo MailPoet;
   - bez własnej wysyłki.
-- [ ] 14. Search Console i mapa strony w dniu startu, przegląd liczb po 2 tygodniach. Od 26.10 strony publiczne są już do indeksowania (bez noindex), a `wp-sitemap.xml` ma 16 stron, bez formularzy dla klientów i szkicu demo. Search Console można dodać od razu.
+- [ ] 14. Search Console i mapa strony w dniu startu, przegląd liczb po 2 tygodniach. Od 26.10 strony publiczne są już do indeksowania (bez noindex), a mapa strony to `https://mateuszprzetocki.pl/sitemap_index.xml` (Rank Math, 16 stron, bez formularzy dla klientów i szkicu demo). Search Console można dodać od razu i zgłosić w nim tę mapę.
+- [x] 15. (26.10) SEO na Rank Math (wybór Mateusza zamiast Yoast; Yoast zainstalowany, wyłączony, do usunięcia): tytuły z planu strony (`TYTULY_SEO` w `zbuduj.js`), opisy z zajawek, formularze dla klientów noindex i poza mapą, separator „|”, polska strona 404, archiwa autorów wyłączone, dane dla Google: Ty na głównej, okruszki na podstronach. Wysyła `python3 strona/wordpress/wyslij.py seo`. Rejestrację konta Rank Math Mateusz pominął w wp-admin.
 
   Zamiast wpisywania w edytorze: dane kontaktowe są we wzorcach synchronizowanych „Dane kontaktowe · …” (126 e-mail na Kontakcie, 127 usługodawca w polityce i regulaminie, 128 stopka), tylko w WordPressie. Adres tylko w polityce i regulaminie, telefonu na stronie nie ma (decyzja z 25.10: strona „bez telefonu”). Polityka i regulamin mają standardowe brzmienie z datą 25.10.2026, radca sprawdzi je po starcie.
 

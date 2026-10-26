@@ -4,21 +4,24 @@
   "slug": "strona-glowna",
   "rodzic": null,
   "opis": "Strony wizytówki z kalendarzem i formularzem: klient sam umawia konsultację, a Ty wiesz, z czym przyjdzie. Od 1 200 zł, gotowe w ok. 2 tygodnie.",
-  "url": "/"
+  "url": "/",
+  "seo": "Strony z kalendarzem konsultacji | Mateusz Przetocki"
  },
  "oferta": {
   "tytul": "Pakiety i ceny",
   "slug": "oferta",
   "rodzic": null,
   "opis": "Trzy pakiety ze stałą ceną: 1 200, 1 800 i 2 500 zł. Propozycja na piśmie w 48 h od ankiety, strona gotowa w ok. 2 tygodnie. Faktura bez VAT.",
-  "url": "/oferta/"
+  "url": "/oferta/",
+  "seo": "Pakiety i ceny stron wizytówek | Mateusz Przetocki"
  },
  "realizacje": {
   "tytul": "Realizacje",
   "slug": "realizacje",
   "rodzic": null,
   "opis": "Kalendarz rezerwacji na filmie i wcześniejsze projekty: wtyczki do sklepów i kalkulator wyceny. Strony klientów pokazuję za ich zgodą.",
-  "url": "/realizacje/"
+  "url": "/realizacje/",
+  "seo": "Realizacje i kalendarz rezerwacji | Mateusz Przetocki"
  },
  "demo": {
   "tytul": "Strona ekspertki kredytowej",
@@ -26,132 +29,156 @@
   "rodzic": "realizacje",
   "opis": "Projekt demonstracyjny: jak doradca kredytowy dostaje konsultacje z kalendarza i formularza analizy. Problem, rozwiązanie i film. Od 1 800 zł.",
   "url": "/realizacje/demo-doradca-kredytowy/",
-  "status": "draft"
+  "status": "draft",
+  "seo": "Strona ekspertki kredytowej | Mateusz Przetocki"
  },
  "kontakt": {
   "tytul": "Kontakt",
   "slug": "kontakt",
   "rodzic": null,
   "opis": "Wyceń stronę w 5 minut w ankiecie albo umów 30 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań.",
-  "url": "/kontakt/"
+  "url": "/kontakt/",
+  "seo": "Kontakt i wycena strony | Mateusz Przetocki"
  },
  "rozmowa": {
   "tytul": "Umów rozmowę",
   "slug": "rozmowa",
   "rodzic": null,
   "opis": "Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.",
-  "url": "/rozmowa/"
+  "url": "/rozmowa/",
+  "seo": "Umów 30 minut rozmowy | Mateusz Przetocki"
  },
  "wycena": {
   "tytul": "Wycena strony",
   "slug": "wycena",
   "rodzic": null,
   "opis": "Kilka pytań o firmę i klientów, a w 48 godzin propozycja na piśmie: pakiet, łączna kwota i termin. Bez telefonu i bez zobowiązań.",
-  "url": "/wycena/"
+  "url": "/wycena/",
+  "seo": "Wycena strony w 5 minut | Mateusz Przetocki"
  },
  "materialy": {
   "tytul": "Materiały na stronę",
   "slug": "materialy",
   "rodzic": null,
   "opis": "Formularz dla klientów: firma, dane do stopki, usługi, pytania klientów i pliki potrzebne do strony.",
-  "url": "/materialy/"
+  "url": "/materialy/",
+  "seo": "Materiały na stronę | Mateusz Przetocki",
+  "ukryta": true
  },
  "ustawieniaKalendarza": {
   "tytul": "Ustawienia kalendarza",
   "slug": "ustawienia-kalendarza",
   "rodzic": null,
   "opis": "Formularz dla klientów: spotkania, godziny, pytania przed spotkaniem i powiadomienia w kalendarzu rezerwacji.",
-  "url": "/ustawienia-kalendarza/"
+  "url": "/ustawienia-kalendarza/",
+  "seo": "Ustawienia kalendarza | Mateusz Przetocki",
+  "ukryta": true
  },
  "uwagiDoSzkicu": {
   "tytul": "Uwagi do szkicu",
   "slug": "uwagi-do-szkicu",
   "rodzic": null,
   "opis": "Formularz dla klientów: uwagi do szkicu strony w jednym miejscu.",
-  "url": "/uwagi-do-szkicu/"
+  "url": "/uwagi-do-szkicu/",
+  "seo": "Uwagi do szkicu | Mateusz Przetocki",
+  "ukryta": true
  },
  "odbiorStrony": {
   "tytul": "Odbiór strony",
   "slug": "odbior-strony",
   "rodzic": null,
   "opis": "Formularz dla klientów: sprawdzenie strony przed publikacją i potwierdzenie odbioru.",
-  "url": "/odbior-strony/"
+  "url": "/odbior-strony/",
+  "seo": "Odbiór strony | Mateusz Przetocki",
+  "ukryta": true
  },
  "po30Dniach": {
   "tytul": "Po 30 dniach",
   "slug": "po-30-dniach",
   "rodzic": null,
   "opis": "Formularz dla klientów: jak strona działa po pierwszym miesiącu.",
-  "url": "/po-30-dniach/"
+  "url": "/po-30-dniach/",
+  "seo": "Po 30 dniach | Mateusz Przetocki",
+  "ukryta": true
  },
  "polityka": {
   "tytul": "Polityka prywatności",
   "slug": "polityka-prywatnosci",
   "rodzic": null,
   "opis": "Jakie dane zbieram przez ankietę, kalendarz i e-mail, po co, jak długo je przechowuję, jakie ciasteczka ustawia strona i jakie masz prawa.",
-  "url": "/polityka-prywatnosci/"
+  "url": "/polityka-prywatnosci/",
+  "seo": "Polityka prywatności | Mateusz Przetocki"
  },
  "regulamin": {
   "tytul": "Regulamin",
   "slug": "regulamin",
   "rodzic": null,
   "opis": "Zasady zamówienia strony: propozycja, zadatek, poprawki, prawa autorskie, odstąpienie od umowy i reklamacje.",
-  "url": "/regulamin/"
+  "url": "/regulamin/",
+  "seo": "Regulamin | Mateusz Przetocki"
  },
  "cookies": {
   "tytul": "Polityka cookies",
   "slug": "polityka-cookies",
   "rodzic": null,
   "opis": "Jakie ciasteczka ustawia strona, kto je dostarcza i jak długo działają. Statystyki i reklamy włączają się tylko za Twoją zgodą.",
-  "url": "/polityka-cookies/"
+  "url": "/polityka-cookies/",
+  "seo": "Polityka cookies | Mateusz Przetocki"
  },
  "dlaKogo": {
   "tytul": "Dla kogo",
   "slug": "dla-kogo",
   "rodzic": null,
   "opis": "Strony dla doradców, biur rachunkowych, terapeutów i innych specjalistów, u których sprzedaż zaczyna się od rozmowy. Znajdź swoją branżę. Od 1 200 zł.",
-  "url": "/dla-kogo/"
+  "url": "/dla-kogo/",
+  "seo": "Dla kogo robię strony | Mateusz Przetocki"
  },
  "doradcy": {
   "tytul": "Doradcy kredytowi",
   "slug": "doradcy-kredytowi",
   "rodzic": "dlaKogo",
   "opis": "Klient umawia konsultację wieczorem, a Ty rano znasz kwotę i wkład własny. Kalendarz, formularz analizy i informacje KNF. Z kalendarzem od 1 800 zł.",
-  "url": "/dla-kogo/doradcy-kredytowi/"
+  "url": "/dla-kogo/doradcy-kredytowi/",
+  "seo": "Strona dla doradcy kredytowego | Mateusz Przetocki"
  },
  "biura": {
   "tytul": "Biura rachunkowe",
   "slug": "biura-rachunkowe",
   "rodzic": "dlaKogo",
   "opis": "Strona odpowiada na stałe pytania o KSeF i dokumenty, a nowy klient sam umawia rozmowę o współpracy, także w sezonie PIT. Z kalendarzem od 1 800 zł.",
-  "url": "/dla-kogo/biura-rachunkowe/"
+  "url": "/dla-kogo/biura-rachunkowe/",
+  "seo": "Strona dla biura rachunkowego | Mateusz Przetocki"
  },
  "terapeuci": {
   "tytul": "Psycholodzy i terapeuci",
   "slug": "psycholodzy-i-terapeuci",
   "rodzic": "dlaKogo",
   "opis": "Spokojna strona z Twoim podejściem i kalendarzem: klient umawia wizytę bez telefonu, a formularz nie pyta o zdrowie. Z kalendarzem od 1 800 zł.",
-  "url": "/dla-kogo/psycholodzy-i-terapeuci/"
+  "url": "/dla-kogo/psycholodzy-i-terapeuci/",
+  "seo": "Strona dla psychologa i terapeuty | Mateusz Przetocki"
  },
  "jakPracuje": {
   "tytul": "Jak pracuję",
   "slug": "jak-pracuje",
   "rodzic": null,
   "opis": "Ankieta w 5 minut, propozycja w 48 h, umowa i zadatek, szkic w 5 dni roboczych, odbiór i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł.",
-  "url": "/jak-pracuje/"
+  "url": "/jak-pracuje/",
+  "seo": "Jak pracuję: od ankiety do startu | Mateusz Przetocki"
  },
  "pytania": {
   "tytul": "Pytania",
   "slug": "pytania",
   "rodzic": null,
   "opis": "Odpowiedzi na 12 pytań przed zamówieniem: koszty w kolejnych latach, domena, poprawki, RODO i kalendarz. Stałe ceny, strony od 1 200 zł.",
-  "url": "/pytania/"
+  "url": "/pytania/",
+  "seo": "Pytania o stronę z kalendarzem | Mateusz Przetocki"
  },
  "oMnie": {
   "tytul": "O mnie",
   "slug": "o-mnie",
   "rodzic": null,
   "opis": "Robię strony wizytówki dla specjalistów, którzy umawiają konsultacje. Wszystko ustalamy na piśmie, a domena i strona są Twoje. Od 1 200 zł.",
-  "url": "/o-mnie/"
+  "url": "/o-mnie/",
+  "seo": "Kim jestem i jak pracuję | Mateusz Przetocki"
  }
 }
