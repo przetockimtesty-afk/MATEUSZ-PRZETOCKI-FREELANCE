@@ -107,6 +107,8 @@ Etap 3, po starcie:
 
   Zamiast wpisywania w edytorze: dane kontaktowe są we wzorcach synchronizowanych „Dane kontaktowe · …” (126 e-mail na Kontakcie, 127 usługodawca w polityce i regulaminie, 128 stopka), tylko w WordPressie. Adres tylko w polityce i regulaminie, telefonu na stronie nie ma (decyzja z 25.10: strona „bez telefonu”). Polityka i regulamin mają standardowe brzmienie z datą 25.10.2026, radca sprawdzi je po starcie.
 
+Pilne przed startem (26.10): strona nie wysyła e-maili. Reset hasła w wp-admin kończy się błędem „nie wysłano wiadomości email”, więc prawdopodobnie nie dochodzą też potwierdzenia rezerwacji. Mateusz ma hasło tymczasowe do konta `mateuszprzetocki` (ustawione przez API na jego prośbę, do zmiany w Profilu). Następny krok: WP Mail SMTP → Narzędzia → Test e-maila i zrzut wyniku.
+
 Czeka na Mateusza (26.10):
 - ZIP-y MP Rezerwacje 0.1.1 i MP Ankiety 0.1.0 (w `strona/wtyczki/zip/`), wdrożenie `Kod.gs` i sekret w Ankiety → Ustawienia;
 - znacznik weryfikacji domeny Meta, ewentualnie nowy token API konwersji, drugi skan Complianz;
