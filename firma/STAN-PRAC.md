@@ -131,6 +131,12 @@ Czeka na Mateusza (26.10). Wszystko w jednym pliku: `firma/zadania/Zadania_Mateu
 - decyzje z PDF i rozpiski (9 spraw), m.in. obrazek do udostępniania linku 1200 × 630 px (dziś strona nie ma `og:image`), rola konta `agentai`, Two Factor i cache, narzędzie do newslettera, aktualizacje MP Rezerwacje u klientów;
 - decyzja: na górze głównej nadal jest ilustracja telefonu z dema („Projekt demonstracyjny”, Anna Nowak); można ją zamienić na kadr z filmu kalendarza.
 
+## Automat propozycji (27.10)
+
+- [x] `Kod.gs`: `setup` padał na starej ankiecie Google (`moveItem` z `TextItem`); poprawka i odporność na przerwany setup (atrapa FormApp). Mateusz wkleił kod, `setup` przeszedł, mail z linkami poszedł na adres z `USTAWIENIA.email` (skrzynka firmowa).
+- [x] MP Ankiety 0.1.1: „Sprawdź połączenie z automatem” dawało kod 400, bo WordPress po przekierowaniu Apps Script wysyłał GET z treścią, a Google go odrzuca. Wtyczka pobiera teraz wynik osobnym GET-em bez treści (atrapa zachowująca się jak Google: stara wersja 400, nowa ok). ZIP `strona/wtyczki/zip/mp-ankiety-0.1.1.zip`.
+- [ ] Mateusz: wgrać MP Ankiety 0.1.1 (Zastąp obecną), „Sprawdź połączenie z automatem”, test `/wycena/`.
+
 ## Dysk na koncie kontakt (27.10)
 
 - [x] Złącza Google (Dysk, Dokumenty, Prezentacje, Arkusze, Kalendarz, Gmail) przełączone na przetockimateusz.kontakt@gmail.com. Nowy folder „Mateusz Przetocki Freelance” z kopiami wszystkich plików ze starego folderu (puresofaadmin, archiwum), nazwy z rodzajem na początku, spis „00 · Przeczytaj najpierw”, podfoldery „Umowy” i „Zdjęcia na stronę”. Dowgrane z repozytorium: instrukcja automatu i ściąga Complianz.

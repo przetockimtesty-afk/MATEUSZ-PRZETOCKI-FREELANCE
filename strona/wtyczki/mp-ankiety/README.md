@@ -90,6 +90,7 @@ POST `application/json`: `{"dane": "<JSON jako tekst>", "podpis": "<hex HMAC-SHA
 `tekst`), `teksty` (`ID` → tekst, przy `wiele` lista etykiet) i `wartosci` (`ID` → wartość). Automat odpowiada
 `{"ok": true}`; inaczej odpowiedź dostaje znaczek „Automat: błąd” i jest ponawiana do 3 razy (co godzinę), a w panelu
 jest przycisk „Wyślij ponownie do automatu”. Test z Ustawień wysyła `{"test": true}`.
+Przekierowania po POST wtyczka nie śledzi sama: wynik pobiera osobnym GET-em bez treści (od 0.1.1), bo Google na GET z treścią odpowiada kodem 400.
 Wzorzec po stronie Google: `doPost` w `firma/automatyzacja/Kod.gs`.
 
 ## Dla programisty

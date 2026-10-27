@@ -62,13 +62,16 @@ final class Automat {
 	/** @return true|WP_Error */
 	private static function zapytanie( array $dane ) {
 		$tekst = (string) wp_json_encode( $dane, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
+		$ua    = 'MP Ankiety/' . WERSJA . '; ' . home_url( '/' );
 		$odp   = wp_remote_post(
 			(string) Ustawienia::get( 'automat.adres' ),
 			array(
 				'timeout'     => 30,
-				'redirection' => 5, // Apps Script odpowiada przekierowaniem na stronę z wynikiem.
+				// Apps Script odpowiada przekierowaniem na stronę z wynikiem. WordPress poszedłby za nim
+				// GET-em z tą samą treścią, a Google odrzuca GET z treścią kodem 400, więc wynik pobieramy niżej sami.
+				'redirection' => 0,
 				'headers'     => array( 'Content-Type' => 'application/json; charset=utf-8' ),
-				'user-agent'  => 'MP Ankiety/' . WERSJA . '; ' . home_url( '/' ),
+				'user-agent'  => $ua,
 				'body'        => (string) wp_json_encode(
 					array(
 						'dane'   => $tekst,
@@ -80,6 +83,14 @@ final class Automat {
 		);
 		if ( is_wp_error( $odp ) ) {
 			return new WP_Error( 'polaczenie', 'Brak połączenia z automatem: ' . $odp->get_error_message() );
+		}
+		$kod    = (int) wp_remote_retrieve_response_code( $odp );
+		$wynik  = (string) wp_remote_retrieve_header( $odp, 'location' );
+		if ( $kod >= 300 && $kod < 400 && '' !== $wynik ) {
+			$odp = wp_remote_get( \WP_Http::make_absolute_url( $wynik, (string) Ustawienia::get( 'automat.adres' ) ), array( 'timeout' => 30, 'redirection' => 3, 'user-agent' => $ua ) );
+			if ( is_wp_error( $odp ) ) {
+				return new WP_Error( 'polaczenie', 'Brak połączenia z automatem: ' . $odp->get_error_message() );
+			}
 		}
 		$kod  = (int) wp_remote_retrieve_response_code( $odp );
 		$json = json_decode( (string) wp_remote_retrieve_body( $odp ), true );
