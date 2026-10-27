@@ -135,7 +135,8 @@ Czeka na Mateusza (26.10). Wszystko w jednym pliku: `firma/zadania/Zadania_Mateu
 
 - [x] `Kod.gs`: `setup` padał na starej ankiecie Google (`moveItem` z `TextItem`); poprawka i odporność na przerwany setup (atrapa FormApp). Mateusz wkleił kod, `setup` przeszedł, mail z linkami poszedł na adres z `USTAWIENIA.email` (skrzynka firmowa).
 - [x] MP Ankiety 0.1.1: „Sprawdź połączenie z automatem” dawało kod 400, bo WordPress po przekierowaniu Apps Script wysyłał GET z treścią, a Google go odrzuca. Wtyczka pobiera teraz wynik osobnym GET-em bez treści (atrapa zachowująca się jak Google: stara wersja 400, nowa ok). ZIP `strona/wtyczki/zip/mp-ankiety-0.1.1.zip`.
-- [ ] Mateusz: wgrać MP Ankiety 0.1.1 (Zastąp obecną), „Sprawdź połączenie z automatem”, test `/wycena/`.
+- [x] Mateusz wgrał MP Ankiety 0.1.1; połączenie z automatem działa, test `/wycena/` dał prezentację, szkic propozycji i mail „Gotowe” (mail przyszedł po `USTAWIENIA.email: ''`: Gmail chowa wiadomość, która wraca do nadawcy przez przekierowanie).
+- [x] Szablon „Szablon A · Google Slides” poprawiony ręcznie w Google Slides (27.10): konwersja z PPTX rozbiła tytuły slajdów 1 i 14 na osobne pola („i nie płacić” + „abonamentu”, „Trzy kroki do” + „startu”), które przy innej szerokości czcionki zawijały się i nachodziły na podtytuł. Teraz każdy tytuł to jedno pole z wyróżnionym słowem (Instrument Serif, kursywa). Przesunięte też: podtytuł i plakietki na slajdzie 1, podpis pierwszej karty na slajdzie 2, opis w niebieskiej karcie na slajdzie 8, opis trzeciej karty na slajdzie 13. Prezentacje wygenerowane wcześniej (np. Jadwiga Test) mają stary układ. Uwaga: nowy eksport PPTX z claude.ai wklejony w `USTAWIENIA` znowu rozbije tytuły, więc szablon poprawiamy w Google Slides, a nie eksportem.
 
 ## Dysk na koncie kontakt (27.10)
 

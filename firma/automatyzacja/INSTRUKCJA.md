@@ -227,6 +227,9 @@ Szablon propozycji poprawiasz w Dokumentach Google (link w mailu z setup): zmien
 
 ## Gdy coś nie działa
 
+- **Tytuł slajdu zawija się albo nachodzi na tekst pod nim:** konwersja z PowerPointa rozbija tytuł z wyróżnionym
+  słowem na osobne pola. W szablonie z 27.10 jest to już poprawione. Zmiany w wyglądzie rób w szablonie Google Slides
+  (link w mailu z setup), nie nowym eksportem z claude.ai: nowy plik .pptx przywróci rozbite tytuły.
 - **„Tej czynności nie można wykonać w przypadku tego dokumentu”:** masz bardzo starą wersję skryptu,
   która nie umiała otworzyć pliku .pptx. Wklej aktualny `Kod.gs` (swoje wartości w `USTAWIENIA` zostaw)
   i uruchom `setup` jeszcze raz.
