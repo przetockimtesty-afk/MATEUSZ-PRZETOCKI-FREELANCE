@@ -812,11 +812,19 @@ function uzupelnijAnkiete(form, w) {
   ANKIETY[w].pytania.forEach(p => {
     if (!p.id) return;
     if (!pole[p.id]) {
-      const item = dodajPytanie(form, p);
-      pole[p.id] = item.getId();
-      mapa[String(item.getId())] = p.id;
-      const przed = poprzednie && otworzJesliJest(pole[poprzednie], id => form.getItemById(id));
-      if (przed) form.moveItem(item, przed.getIndex() + 1);
+      // pytanie dodane przez przerwany setup, jeszcze bez wpisu w mapie: bierzemy je zamiast dodawać drugie
+      const sierota = form.getItems().filter(i => i.getTitle() === p.tytul && !mapa[String(i.getId())])[0];
+      const id = sierota ? sierota.getId() : dodajPytanie(form, p).getId();
+      pole[p.id] = id;
+      mapa[String(id)] = p.id;
+      props.setProperty('MAPA_' + form.getId(), JSON.stringify(mapa));
+      const przed = poprzednie && otworzJesliJest(pole[poprzednie], i => form.getItemById(i));
+      if (przed) {
+        // moveItem przyjmuje ogólny Item z getItemById, nie TextItem zwrócony przez addTextItem
+        const item = form.getItemById(id);
+        const cel = przed.getIndex() + (item.getIndex() > przed.getIndex() ? 1 : 0);
+        if (item.getIndex() !== cel) form.moveItem(item, cel);
+      }
     }
     poprzednie = p.id;
   });
