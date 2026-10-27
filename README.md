@@ -74,7 +74,7 @@ stron z WordPressa.
 | Prezentacja „Jak przebiega współpraca” | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA | — (PDF do umowy eksportuje Mateusz) |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
 | Scenariusze filmów dla klientów (3 playlisty) | `firma/filmy/scenariusze.md` | kopia w zakładce „Scenariusze filmów” rozpiski | — |
-| Lista wszystkich zadań Mateusza (PDF, 9 stron, ze scenariuszami filmów) | `firma/zadania/` (źródło `zadania.html`, PDF z `zbuduj.js`, wersja dla Dokumentów Google z `dokument_google.py`) | ta sama lista w rozpisce (wiersz niżej) | Dokument Google „Zadania · wszystko w jednym miejscu (stan na 26.10.2026)” z tą samą treścią; sam PDF (189 KB, za duży dla złącza) wgrywa Mateusz |
+| Lista wszystkich zadań Mateusza (PDF, 9 stron, ze scenariuszami filmów) | `firma/zadania/` (źródło `zadania.html`, PDF z `zbuduj.js`, wersja dla Dokumentów Google z `dokument_google.py`) | ta sama lista w rozpisce (wiersz niżej) | Dokument Google „Zadania · co mam do zrobienia” (od 27.10 Mateusz odhacza w nim zadania, więc jest nowszy niż źródło w repozytorium); sam PDF wgrywa Mateusz |
 | Rozpiska dla Mateusza: kroki na 26.10, tabela filmów ze statusem, decyzje | skrót w `firma/STAN-PRAC.md` | tak: https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (statusy i odhaczenia są tylko tam) | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |
@@ -84,8 +84,9 @@ stron z WordPressa.
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,
 w edytorze. Repozytorium ma źródło pierwszego wgrania i kopie sprzed każdej zmiany agenta.
 
-Folder na Dysku: https://drive.google.com/drive/folders/1rwFHbmAzA8V6gCV41brlmOkADtZOGauw
-(umowy w podfolderze „Umowy”: https://drive.google.com/drive/folders/1bNf1iI9igG1IVPrbyNRiolhnoFa9mz1A).
+Folder na Dysku (konto przetockimateusz.kontakt@gmail.com, od 27.10): https://drive.google.com/drive/folders/1CdwXf5Rm1dcKV-QBiEEhaQnMhPNzqyUU
+(umowy w podfolderze „Umowy”: https://drive.google.com/drive/folders/1BayTPDz32xQnRddM-FIqxbZfGFU-Io2V). Spis plików: „00 · Przeczytaj najpierw” w tym folderze.
+Stary folder na puresofaadmin@gmail.com zostaje jako archiwum.
 Wzór umowy edytujesz w Dokumencie Google; większą zmianę przenieś też do `firma/umowy/umowa.src.html`.
 
 ## Generowanie plików

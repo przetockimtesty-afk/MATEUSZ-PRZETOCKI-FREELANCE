@@ -6,10 +6,10 @@ a na ostatniej stronie informacja o odstąpieniu z formularzem. We wzorze są li
 wariantów; w kopii dla klienta zostaje jedna. Żywe wersje są w Dokumentach Google w folderze
 „Umowy” na Dysku; tu jest ich źródło.
 
-Na Dysku (folder https://drive.google.com/drive/folders/1bNf1iI9igG1IVPrbyNRiolhnoFa9mz1A):
+Na Dysku konta przetockimateusz.kontakt@gmail.com (folder https://drive.google.com/drive/folders/1BayTPDz32xQnRddM-FIqxbZfGFU-Io2V, kopie z 27.10; pierwsze wersje zostają na puresofaadmin@gmail.com):
 
-- „WZÓR · Umowa o wykonanie strony”: https://docs.google.com/document/d/1LfslztMwoO5yJlXzDrsjEITLCw6wQB4xGXk_sW-fU6Y/edit
-- „Umowa · jak używać”: https://docs.google.com/document/d/18H16HN2spnwy9tNUHKIQYK6464KsQ5qj0D4IOJoOCwQ/edit
+- „Umowa · WZÓR umowy o wykonanie strony”: https://docs.google.com/document/d/1psJH8myyyqnbgYteX7lHS_OBQuLkmg4sWzL-9Nz0XPs/edit
+- „Umowa · jak używać wzoru (krok po kroku)”: https://docs.google.com/document/d/17E7mve7MVsrRnLgq8bfYdE07N_cQrvqzwt09kmJypO0/edit
 
 ## Jak to działa
 

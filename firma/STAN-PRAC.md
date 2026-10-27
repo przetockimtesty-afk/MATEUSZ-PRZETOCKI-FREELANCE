@@ -131,6 +131,12 @@ Czeka na Mateusza (26.10). Wszystko w jednym pliku: `firma/zadania/Zadania_Mateu
 - decyzje z PDF i rozpiski (9 spraw), m.in. obrazek do udostępniania linku 1200 × 630 px (dziś strona nie ma `og:image`), rola konta `agentai`, Two Factor i cache, narzędzie do newslettera, aktualizacje MP Rezerwacje u klientów;
 - decyzja: na górze głównej nadal jest ilustracja telefonu z dema („Projekt demonstracyjny”, Anna Nowak); można ją zamienić na kadr z filmu kalendarza.
 
+## Dysk na koncie kontakt (27.10)
+
+- [x] Złącza Google (Dysk, Dokumenty, Prezentacje, Arkusze, Kalendarz, Gmail) przełączone na przetockimateusz.kontakt@gmail.com. Nowy folder „Mateusz Przetocki Freelance” z kopiami wszystkich plików ze starego folderu (puresofaadmin, archiwum), nazwy z rodzajem na początku, spis „00 · Przeczytaj najpierw”, podfoldery „Umowy” i „Zdjęcia na stronę”. Dowgrane z repozytorium: instrukcja automatu i ściąga Complianz.
+- Mateusz odhacza zadania w Dokumencie Google „Zadania · co mam do zrobienia”; 27.10 usunął z listy hasło tymczasowe, Yoasta i drugi skan Complianz (do potwierdzenia, że zrobione). Ten dokument jest nowszy niż `firma/zadania/zadania.html`.
+- [ ] Do decyzji Mateusza: wygenerowane prezentacje i propozycje z 15–16.10 w folderze „Ankiety i prezentacje klientów” (Elżbieta Krawczyk, Wiktoria Florczyk: próby czy prawdziwe osoby?) i stare PowerPointy A i B w folderze „PREZENTACJE” (zbędne po przejściu automatu na prezentację sprzedażową).
+
 ## Otwarte sprawy
 
 - [x] Kalendarz na mateuszprzetocki.pl działa (20.10): Mateusz wczytał ustawienia i dodał cron w LH.pl; strona `/rozmowa/` (100) opublikowana, 13 przycisków na 12 stronach prowadzi do niej, karta na Kontakcie i polityka prywatności (dane z rezerwacji, LH.pl, usuwanie po 365 dniach) zaktualizowane.
