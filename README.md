@@ -54,7 +54,7 @@ i projekt Apps Script z `Kod.gs`.
 Na Dysku Google, nie tutaj: zdjęcia, filmy, materiały od klientów i kopie
 stron z WordPressa.
 
-## Stan zapisu (26.10.2026)
+## Stan zapisu (28.10.2026)
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
@@ -70,11 +70,11 @@ stron z WordPressa.
 | Plan strony (z tytułami SEO i przepisami branż) | kopia z 19.10, po zmianach | wersja robocza | — |
 | System marki | tak | tak | — |
 | Projekt strony w Claude Design (stopka z „Wszystkie branże”) | tak | tak, wersja 21 | — |
-| Prezentacja sprzedażowa (zastępuje A i B w automacie) | źródło `firma/prezentacje/sprzedaz/` | tak: https://claude.ai/artifact/HXPH6cbCgCu9JELWYmmzaz | — (plik .pptx do szablonu wgrywa Mateusz) |
+| Prezentacja sprzedażowa (zastępuje A i B w automacie) | źródło `firma/prezentacje/sprzedaz/` | tak: https://claude.ai/artifact/HXPH6cbCgCu9JELWYmmzaz (tytuły slajdów 1 i 14 nadal rozbite na osobne pola, więc nowy eksport PPTX psuje szablon) | „Prezentacja sprzedażowa.pptx” (wgrał Mateusz 27.10) i zrobiony z niej „Szablon A · Google Slides” w folderze „Ankiety i prezentacje klientów”, poprawiony 27.10 tylko tam |
 | Prezentacja „Jak przebiega współpraca” | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA | — (PDF do umowy eksportuje Mateusz) |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
-| Scenariusze filmów dla klientów (3 playlisty) | `firma/filmy/scenariusze.md` | kopia w zakładce „Scenariusze filmów” rozpiski | — |
-| Lista wszystkich zadań Mateusza (PDF, 9 stron, ze scenariuszami filmów) | `firma/zadania/` (źródło `zadania.html`, PDF z `zbuduj.js`, wersja dla Dokumentów Google z `dokument_google.py`) | ta sama lista w rozpisce (wiersz niżej) | Dokument Google „Zadania · co mam do zrobienia” (od 27.10 Mateusz odhacza w nim zadania, więc jest nowszy niż źródło w repozytorium); sam PDF wgrywa Mateusz |
+| Scenariusze filmów dla klientów | playlista 1 „Na start” (7 filmów z tekstem lektora, od 28.10): `firma/filmy/na-start.html`; playlisty 2 i 3: `firma/filmy/scenariusze.md` | stara wersja z 26.10 w zakładce „Scenariusze filmów” rozpiski | Dokument Google „Scenariusze · filmy „Na start” dla klienta” (28.10), ta sama treść co `na-start.html` |
+| Lista wszystkich zadań Mateusza (PDF, 9 stron, ze scenariuszami filmów) | `firma/zadania/` (źródło `zadania.html`, PDF z `zbuduj.js`, wersja dla Dokumentów Google z `dokument_google.py`) | ta sama lista w rozpisce (wiersz niżej) | Dokument Google „Zadania · co mam do zrobienia” (od 27.10 Mateusz odhacza w nim zadania, więc jest nowszy niż źródło w repozytorium; 28.10 lista filmów zmieniona na 7 z odnośnikiem do scenariuszy); sam PDF wgrywa Mateusz |
 | Rozpiska dla Mateusza: kroki na 26.10, tabela filmów ze statusem, decyzje | skrót w `firma/STAN-PRAC.md` | tak: https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (statusy i odhaczenia są tylko tam) | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |

@@ -1,4 +1,4 @@
-# Stan prac (aktualizacja 26.10.2026)
+# Stan prac (aktualizacja 28.10.2026)
 
 ## Najważniejsze ustalenia
 
@@ -101,6 +101,10 @@ Etap 2, do pierwszego klienta (ok. 6.11):
   - Gmail od 2026 nie pobiera poczty przez POP3: przekierowanie i „Wyślij jako” albo skrzynka w aplikacji Gmail;
   - Google Workspace z organizacją założoną po maju 2024 domyślnie blokuje klucze kont usługi i osoby spoza domeny;
   - arkusz rezerwacji przez link `/copy`, bez skryptu.
+  - [x] (28.10) Playlista 1 przepisana do nagrania, z decyzją, co jest potrzebne do startu: 7 filmów z tekstem lektora (kolumny „Na ekranie” i „Mówisz”), gdzie nagrywać, co sprawdzić przed nagraniem, co robi Mateusz po kroku klienta, opisy na YouTube, nowy e-mail „Zaczynam” z krokami po kolei i e-mail z adresem konta usługi. Źródło `firma/filmy/na-start.html`, Dokument Google „Scenariusze · filmy „Na start” dla klienta” w folderze firmy. Nowe: 1.4 projekt Google Cloud klienta z rolą „Edytujący” dla Mateusza (wariant A wtyczki), 1.6 stały link Meet (całodniowe wydarzenie co roku, „Wolny”), 1.7 zdjęcie telefonem. Wypadły: arkusz `/copy` (nie ma wzoru, dodatek), film o formularzu materiałów, ID kalendarza. Nazwy przycisków LH.pl i Google sprawdzone tylko przez wyszukiwarkę (sesja nie otwiera lh.pl ani support.google.com), więc przy każdym filmie jest lista „Sprawdź przed nagraniem”.
+  - [ ] Mateusz (28.10): nagranie 7 filmów, wgranie jako niepubliczne do playlisty „Na start”, linki w czacie. Potem: linki do e-maila „Zaczynam” w „Umowa · jak używać” (Dysk i `firma/umowy/instrukcja.src.html`) i do dokumentu ze scenariuszami.
+  - [ ] Przy okazji nagrania filmu 1.4: pierwszy test wariantu A na prawdziwym koncie Google (projekt testowy, konto usługi, „Sprawdź połączenie”).
+  - [ ] Prezentacja „Jak przebiega współpraca”, slajd 3, mówi jeszcze „Kalendarz Google: udostępnienie i ID kalendarza” i w notatkach wymienia arkusz `/copy`. Poprawić, gdy Mateusz poprosi o zmiany w prezentacji.
 - [ ] 11. Formularze na MP Ankiety, bez indeksowania: Materiały (pytania branżowe), Ustawienia kalendarza (z nich plik ustawień MP Rezerwacje), Uwagi do szkicu, Odbiór, Po 30 dniach.
 - [x] 12. (25.10) MP Rezerwacje 0.1.1 (za zgodą Mateusza): e-maile i Google w tle, bez duplikatu po ponownym kliknięciu, zdarzenie dla GA4 i piksela, usuwanie spotkań. ZIP w `strona/wtyczki/zip/`, wgrywa Mateusz (Etap 1, punkt 1).
 
@@ -142,6 +146,7 @@ Czeka na Mateusza (26.10). Wszystko w jednym pliku: `firma/zadania/Zadania_Mateu
 
 - [x] Złącza Google (Dysk, Dokumenty, Prezentacje, Arkusze, Kalendarz, Gmail) przełączone na przetockimateusz.kontakt@gmail.com. Nowy folder „Mateusz Przetocki Freelance” z kopiami wszystkich plików ze starego folderu (puresofaadmin, archiwum), nazwy z rodzajem na początku, spis „00 · Przeczytaj najpierw”, podfoldery „Umowy” i „Zdjęcia na stronę”. Dowgrane z repozytorium: instrukcja automatu i ściąga Complianz.
 - Mateusz odhacza zadania w Dokumencie Google „Zadania · co mam do zrobienia”; 27.10 usunął z listy hasło tymczasowe, Yoasta i drugi skan Complianz (do potwierdzenia, że zrobione). Ten dokument jest nowszy niż `firma/zadania/zadania.html`.
+- [x] (28.10) Spis „00 · Przeczytaj najpierw”: nowe wiersze „Scenariusze · filmy „Na start” dla klienta” i „Prezentacja sprzedażowa (PowerPoint)”, rodzaje plików Scenariusze i Prezentacja, PREZENTACJE opisane jako zbędne. W „Zadania · co mam do zrobienia” lista filmów zmieniona na 7, z odnośnikiem do scenariuszy; stary załącznik dla playlisty 1 oznaczony jako nieaktualny (odhaczenia Mateusza bez zmian).
 - [ ] Do decyzji Mateusza: wygenerowane prezentacje i propozycje z 15–16.10 w folderze „Ankiety i prezentacje klientów” (Elżbieta Krawczyk, Wiktoria Florczyk: próby czy prawdziwe osoby?) i stare PowerPointy A i B w folderze „PREZENTACJE” (zbędne po przejściu automatu na prezentację sprzedażową).
 
 ## Otwarte sprawy
