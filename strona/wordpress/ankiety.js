@@ -52,8 +52,8 @@ const wycena = {
 	prywatnosc: PRYWATNOSC,
 	dziekuje: {
 		naglowek: 'Dziękuję! Odpowiedzi dotarły.',
-		tekst: 'Propozycję na piśmie wyślę na {email} w ciągu 48 godzin. Jeśli wolisz porozmawiać wcześniej, umów 30 minut na Google Meet.',
-		przycisk: 'Umów 30 minut',
+		tekst: 'Propozycję na piśmie wyślę na {email} w ciągu 48 godzin. Jeśli wolisz porozmawiać wcześniej, umów 15 minut na Google Meet.',
+		przycisk: 'Umów 15 minut',
 		adres: '/rozmowa/',
 	},
 	potwierdzenie: {

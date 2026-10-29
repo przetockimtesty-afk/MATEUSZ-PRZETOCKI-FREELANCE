@@ -39,8 +39,10 @@ const ANKIETY_WLACZONE = true;
 const ANKIETY = require('./ankiety');
 const ANKIETA = ANKIETY_WLACZONE ? '/wycena/' : '#ankieta';
 const ROZMOWA = U.rozmowa;
+// sekcje głównej, do których prowadzą menu, stopka i przekierowania starych podstron
+const G = { jakToDziala: '/#jak-to-dziala', pakiety: '/#pakiety', wspolpraca: '/#wspolpraca', oMnie: '/#o-mnie', pytania: '/#pytania', kontakt: '/#kontakt' };
 // Demo A (strona ekspertki kredytowej) na razie nie jest pokazywane (decyzja Mateusza z 23.10): strona demo jest szkicem,
-// a zamiast przycisków „Zobacz demo” są „Umów 30 minut” i film z kalendarza. Sekcje zostają tu, gotowe do powrotu.
+// a zamiast przycisków „Zobacz demo” są „Umów 15 minut” i film z kalendarza. Sekcje zostają tu, gotowe do powrotu.
 const DEMO_WLACZONE = false;
 const DEMO = '#demo';
 // Film z kalendarza rezerwacji (nagrany na kopii strony, plik tylko w mediach WordPressa: jest na nim zdjęcie Mateusza)
@@ -156,7 +158,7 @@ const etykiety = (lista_, ton) => wiersz(lista_.map((t) => etykieta(t, ton)), { 
 const kartaBranzy = ({ nr, kategoria, tytul, tekst, tagi, link, url }) => grupa([
 	nad(`${nr} · ${kategoria}`, { klasa: 'mp-bez-kropki' }), h3(tytul), p(tekst), etykiety(tagi), strzalka(link, url),
 ], { tag: 'article', klasa: 'is-style-karta-branza' });
-function pakiet({ nazwa, cena, waluta = 'zł', dla, plus, punkty, polecany, tekstPrzycisku = 'Wyceń stronę w&nbsp;5&nbsp;minut', url = ANKIETA }) {
+function pakiet({ nazwa, cena, waluta = 'zł netto +&nbsp;VAT', dla, plus, punkty, polecany, tekstPrzycisku = 'Wyceń stronę w&nbsp;5&nbsp;minut', url = ANKIETA }) {
 	return grupa([
 		polecany ? etykieta('Polecam', 'czarna') : null,
 		h3(nazwa),
@@ -175,7 +177,7 @@ function cta(tytul, tekst, o = {}) {
 		p(tekst),
 		przyciski([
 			przycisk(o.glowny || 'Wyceń stronę w&nbsp;5&nbsp;minut', o.glownyUrl || ANKIETA, { strzalka: true }),
-			przycisk(o.drugi || 'Wolisz porozmawiać? Umów 30&nbsp;minut', o.drugiUrl || ROZMOWA, { obrys: true }),
+			przycisk(o.drugi || 'Wolisz porozmawiać? Umów 15&nbsp;minut', o.drugiUrl || ROZMOWA, { obrys: true }),
 		], { srodek: true }),
 	], { klasa: 'is-style-cta is-style-ciemna', tlo: 'czern', tekst: 'krem', gap: '20px' });
 }
@@ -247,7 +249,7 @@ const ZASADY = [
 const filmKalendarza = () => blok('core/video', { id: FILM.id, src: FILM.url, poster: FILM.plakat.url, autoplay: true, loop: true, muted: true, playsInline: true, controls: true, preload: 'metadata', className: 'mp-film-telefon' });
 const przyciskFilmu = () => przyciski([przycisk('Zobacz film z&nbsp;kalendarza', FILM_ADRES, { obrys: true, strzalka: true })], { srodek: true });
 // drugi przycisk w pierwszym ekranie: demo albo rozmowa
-const drugiPrzycisk = () => (DEMO_WLACZONE ? przycisk('Zobacz demo', DEMO, { obrys: true }) : przycisk('Umów 30&nbsp;minut', ROZMOWA, { obrys: true }));
+const drugiPrzycisk = () => (DEMO_WLACZONE ? przycisk('Zobacz demo', DEMO, { obrys: true }) : przycisk('Umów 15&nbsp;minut', ROZMOWA, { obrys: true }));
 const kartaFilmu = (tytulPoziom) => karta([
 	kolumny([
 		['55%', [etykieta('Projekt własny', 'piasek'), nag(tytulPoziom, 'Kalendarz rezerwacji na telefonie', { klasa: 'mp-tytul-demo' }), szary('Klient wybiera termin, odpowiada na 3&nbsp;krótkie pytania i&nbsp;od razu dostaje potwierdzenie. Zobacz pół minuty nagrania z&nbsp;telefonu.', { klasa: 'mp-tekst-demo' }), etykiety(['kalendarz', 'pytania przed spotkaniem', 'potwierdzenie e-mailem']), przyciski([przycisk('Zobacz film', FILM_ADRES, { strzalka: true }), przycisk('Sprawdź na żywo', ROZMOWA, { obrys: true })])]],
@@ -266,137 +268,8 @@ const kartaDemoA = (tytulPoziom, tekst) => karta([
 const STRONY = {};
 function strona(klucz, meta, bloki) { STRONY[klucz] = { ...meta, bloki: bloki.filter(Boolean) }; }
 
-// Strona główna
-strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Strony wizytówki z kalendarzem i formularzem: klient sam umawia konsultację, a Ty wiesz, z czym przyjdzie. Od 1 200 zł, gotowe w ok. 2 tygodnie.' }, [
-	sekcja([
-		kolumny([
-			['58%', [
-				nad('Strony dla specjalistów, którzy umawiają konsultacje'),
-				h1('Klienci umawiają się <em>sami.</em><br>Nawet wieczorem.'),
-				wstep('Robię strony wizytówki z&nbsp;kalendarzem konsultacji i&nbsp;krótkim formularzem pytań. Klient wybiera termin wtedy, kiedy Cię szuka, a&nbsp;Ty rano wiesz, z&nbsp;czym przyjdzie.'),
-				lista(['Z&nbsp;kalendarzem od 1&nbsp;800&nbsp;zł', 'gotowa w&nbsp;ok.&nbsp;2&nbsp;tygodnie', 'wszystko ustalamy na piśmie'], { klasa: 'is-style-lista-kropki' }),
-				przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), drugiPrzycisk()]),
-				podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h'),
-				wiersz([obraz('mateusz-przetocki-twarz', { alt: '' }), p('Mateusz Przetocki, Kraków. Odpowiadam osobiście.')], { klasa: 'mp-osoba', nowrap: true }),
-			], { klasa: 'mp-hero' }],
-			['42%', [obraz('telefon-rezerwacja-powiadomienie', { szer: '336px', wyrownaj: 'center', klasa: 'mp-telefon-hero' })]],
-		], { pion: 'center', gap: '48px' }),
-	], { id: 'start', gora: 'clamp(28px, 3.9vw, 56px)', dol: 'clamp(64px, 6.7vw, 96px)' }),
-	zaufanie([['shield-check', 'Domena i&nbsp;strona są Twoje'], ['refresh-cw', '2&nbsp;rundy poprawek'], ['life-buoy', '30&nbsp;dni wsparcia po starcie'], ['receipt', 'Faktura bez VAT']]),
-	sekcja([
-		kolumny([
-			['55%', tekstSekcji('Dlaczego to ważne', 'Klient dzwoni, gdy jesteś na <em>konsultacji</em>', [p('Oddzwaniasz po godzinie, a&nbsp;on jest już umówiony gdzie indziej. Wieczorem może tylko zostawić numer. A&nbsp;pierwsza rozmowa to zbieranie wciąż tych samych informacji.')])],
-			['45%', [karta([
-				wiersz([p('ok.', { klasa: 'mp-ok' }), p('30%', { klasa: 'is-style-liczba' })], { klasa: 'mp-liczba', nowrap: true }),
-				p('rezerwacji online w&nbsp;badaniu Mayo Clinic (USA, 2021) przypadło poza godzinami pracy.', { klasa: 'mp-opis-liczby' }),
-				p('Źródło: <a href="https://medinform.jmir.org/2021/3/e23450">JMIR Medical Informatics, 2021</a>', { klasa: 'mp-zrodlo' }),
-			], { klasa: 'mp-karta-liczba' })]],
-		], { pion: 'center' }),
-	], { id: 'problem', tlo: 'piasek' }),
-	sekcja([
-		naglowekSekcji('Liczy się pierwsza godzina', 'Kto odpowie <em>pierwszy</em>, ten umawia klienta', 'Klient zwykle pyta kilku specjalistów naraz. Spotkanie dostaje ten, kto odezwie się pierwszy, a&nbsp;kalendarz na stronie odpowiada od razu, także wieczorem.', { srodek: true }),
-		siatka([
-			karta([etykieta('Bez kalendarza', 'piasek'), h3('Oddzwaniasz po spotkaniu'), lista([
-				'<strong>10:05</strong> Klient dzwoni, a&nbsp;Ty masz konsultację.',
-				'<strong>12:30</strong> Oddzwaniasz, gdy kończysz.',
-				'<strong>12:31</strong> „Dziękuję, już się umówiłem gdzie indziej”.',
-			], { klasa: 'mp-os-czasu' })], { klasa: 'mp-sciezka mp-sciezka-zla' }),
-			karta([etykieta('Z kalendarzem', 'czarna'), h3('Klient umawia się sam'), lista([
-				'<strong>21:40</strong> Klient wybiera wolny termin na Twojej stronie.',
-				'<strong>21:41</strong> Dostaje potwierdzenie e‑mailem.',
-				'<strong>8:00</strong> Rano wiesz, kto przyjdzie i&nbsp;z&nbsp;czym.',
-			], { klasa: 'mp-os-czasu' })], { klasa: 'mp-sciezka mp-sciezka-dobra' }),
-			karta([
-				wiersz([p('prawie', { klasa: 'mp-ok' }), p('7×', { klasa: 'is-style-liczba' })], { klasa: 'mp-liczba', nowrap: true }),
-				p('większa szansa na rozmowę z&nbsp;klientem, gdy firma odezwie się w&nbsp;ciągu godziny, a&nbsp;nie godzinę później. Po dobie ponad 60&nbsp;razy mniejsza.', { klasa: 'mp-opis-liczby' }),
-				p('Źródło: <a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads">Harvard Business Review, 2011</a>', { klasa: 'mp-zrodlo' }),
-			], { klasa: 'mp-karta-liczba' }),
-		], { min: '300px', klasa: 'mp-plansza-czasu' }),
-	], { id: 'czas-odpowiedzi' }),
-	sekcja([
-		naglowekSekcji('Co dostajesz', 'Strona, która <em>pracuje</em>, kiedy Ty pracujesz'),
-		siatka([
-			kartaKorzysci('calendar-check', 'Klient umawia się sam', 'Kalendarz konsultacji w&nbsp;2&nbsp;kliknięciach i&nbsp;potwierdzenie e-mailem.'),
-			kartaKorzysci('clipboard-list', 'Wiesz, z&nbsp;czym przyjdzie', 'Krótki formularz wstępnych pytań, bez danych wrażliwych.'),
-			kartaKorzysci('message-circle-question', 'Mniej tych samych pytań', 'Odpowiedzi na najczęstsze pytania, napisane Twoimi słowami.'),
-			kartaKorzysci('search', 'Łatwiej Cię znaleźć w&nbsp;Google', 'Szybka strona, podstawy SEO i&nbsp;Profil Firmy w&nbsp;Google, gdy firma spełnia wytyczne.'),
-		]),
-	], { id: 'korzysci' }),
-	sekcja([
-		naglowekSekcji('Jak to wygląda dla Twojego klienta', 'Trzy kroki, <em>zero</em> telefonów', null, { srodek: true }),
-		ekrany([
-			['telefon-google', 'Znajduje Cię w&nbsp;Google albo z&nbsp;polecenia', '01'],
-			['telefon-pytania-termin', 'Czyta odpowiedzi i&nbsp;wybiera termin', '02'],
-			['telefon-potwierdzenie', 'Dostaje potwierdzenie, a&nbsp;Ty komplet informacji', '03'],
-		]),
-		DEMO_WLACZONE ? przyciski([przycisk('Zobacz demo na żywo', DEMO, { obrys: true, strzalka: true })], { srodek: true }) : przyciskFilmu(),
-	], { id: 'jak-wyglada', gora: '24px' }),
-	sekcja([
-		naglowekSekcji('Dla kogo', 'Dla specjalistów, którzy <em>zaczynają</em> od konsultacji'),
-		grupa([
-			siatka([kartaBranzy(BRANZE.doradcy), kartaBranzy(BRANZE.biura), kartaBranzy(BRANZE.terapeuci)], { min: '300px' }),
-			karta([wiersz([
-				h3('Nie widzisz swojej branży?'),
-				szary('Pracuję też z&nbsp;agentami ubezpieczeniowymi, fizjoterapeutami, kancelariami prawnymi i&nbsp;firmami remontowymi. Jeśli Twojej branży nie ma na liście, napisz, sprawdzę, czy to dla Ciebie.', { klasa: 'mp-rozciagnij' }),
-				wiersz([strzalka('Zobacz wszystkie branże', U.dlaKogo), strzalka('Napisz do mnie', U.kontakt)], { gap: '12px 28px' }),
-			], { gap: '14px 32px', klasa: 'mp-inna-branza' })], { styl: 'is-style-karta-przerywana' }),
-		], { gap: '20px' }),
-	], { id: 'dla-kogo', tlo: 'piasek' }),
-	sekcja([
-		wiersz([grupa([nad('Realizacje'), h2('Zobacz, jak to <em>działa</em>')], { gap: '22px' }), strzalka('Wszystkie realizacje', U.realizacje)], { justify: 'space-between', pion: 'bottom', gap: '18px 40px' }),
-		grupa([
-			DEMO_WLACZONE ? kartaDemoA(3, 'Formularz wstępnej analizy, kalendarz konsultacji i&nbsp;odpowiedzi na pytania klientów w&nbsp;jednym miejscu.') : kartaFilmu(3),
-			szary('Wcześniej: własne sklepy internetowe i&nbsp;wtyczki do WordPressa.', { klasa: 'mp-maly-tekst' }),
-		], { gap: '28px' }),
-	], { id: 'realizacje' }),
-	sekcja([
-		naglowekSekcji('Pakiety i&nbsp;ceny', 'Trzy pakiety. Cena znana <em>przed</em> startem'),
-		grupa([
-			trzyPakiety(PUNKTY.p1),
-			wiersz([p('Domena i&nbsp;hosting na Ciebie: pierwszy rok ok.&nbsp;55–75&nbsp;zł netto, potem ok.&nbsp;320–370&nbsp;zł netto rocznie.'), strzalka('Zobacz, co jest w&nbsp;każdym pakiecie', U.oferta)], { klasa: 'mp-przypis', justify: 'space-between' }),
-		], { gap: '30px' }),
-	], { id: 'pakiety', gora: '24px' }),
-	sekcja([
-		naglowekSekcji('Jak pracuję', 'Od ankiety do <em>gotowej</em> strony'),
-		grupa([
-			siatka([
-				krok(1, 'Ankieta, 5&nbsp;minut', 'Pytania o&nbsp;Twoją firmę i&nbsp;klientów. Bez telefonu.'),
-				krok(2, 'Propozycja w&nbsp;48&nbsp;h', 'Jednostronicowa, na piśmie: pakiet, cena i&nbsp;termin.'),
-				krok(3, 'Szkic w&nbsp;5&nbsp;dni roboczych', 'Z&nbsp;krótkim filmem i&nbsp;2&nbsp;rundami poprawek.'),
-				krok(4, 'Start i&nbsp;30&nbsp;dni wsparcia', 'Publikacja, instrukcja i&nbsp;nagranie dla Ciebie.'),
-			], { gap: { top: '0', left: '28px' } }),
-			wiersz([p('48&nbsp;h na propozycję · 2&nbsp;rundy poprawek · zadatek 40%'), strzalka('Jak pracuję', U.jakPracuje)], { klasa: 'mp-przypis-ciemny', justify: 'space-between' }),
-		], { gap: '22px' }),
-	], { id: 'jak-pracuje', ciemna: true }),
-	sekcja([
-		kolumny([
-			['50%', [grupa(zdjecia('mateusz-przetocki-zalozone-rece'), { klasa: 'mp-zdjecia' })]],
-			['50%', tekstSekcji('O&nbsp;mnie', 'Strony robię <em>sam</em>, od ankiety do startu', [
-				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat codziennie rozmawiałem z&nbsp;klientami przy sprzedaży. Wiem, o&nbsp;co ludzie pytają, zanim się zdecydują, i&nbsp;wiem, że rezygnują, gdy nikt nie odpowiada.'),
-				p('Strony buduję na WordPressie i&nbsp;każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.'),
-				etykiety(ZASADY.map(([t]) => t), 'obrys'),
-				strzalka('Więcej o&nbsp;mnie', U.oMnie),
-			])],
-		], { pion: 'center' }),
-	], { id: 'o-mnie', tlo: 'piasek' }),
-	sekcja([
-		kolumny([
-			['40%', tekstSekcji('Pytania', 'Zanim <em>zapytasz</em>', [szary('Nie ma tu Twojego pytania? Napisz albo umów 30&nbsp;minut na Google Meet.'), strzalka('Wszystkie pytania', U.pytania)])],
-			['60%', [pytania([
-				['Ile to kosztuje?', `Pakiety kosztują 1&nbsp;200, 1&nbsp;800 albo 2&nbsp;500&nbsp;zł. Łączną kwotę z&nbsp;ewentualnymi dodatkami dostajesz na piśmie w&nbsp;48 godzin od ankiety. <a href="${U.oferta}">Cennik pakietów</a>`, true],
-				['Czy muszę rozmawiać przez telefon?', 'Nie. Wszystko ustalamy na piśmie. Jeśli wolisz porozmawiać, umów 30&nbsp;minut na Google Meet.'],
-				['Kto jest właścicielem domeny i&nbsp;strony?', 'Ty. Domena i&nbsp;hosting są na Ciebie, a&nbsp;ja dostaję dostęp na czas pracy.'],
-				['Ile to trwa?', 'Zwykle 2&nbsp;tygodnie od dnia, w&nbsp;którym dostanę materiały.'],
-				['Mam już stronę. Co wtedy?', 'Kalendarz konsultacji i&nbsp;formularz wstępnych pytań dodam do Twojej obecnej strony, w&nbsp;jej stylu. Od 800&nbsp;zł.'],
-			])]],
-		]),
-	], { id: 'pytania' }),
-	sekcja([cta(...STD_CTA)], { id: 'wycena', gora: '0' }),
-]);
-
-// Podgląd nowej strony głównej (plan z 29.10, teksty: strona/teksty-glownej-2026-10-29.html). Strona testowa:
-// bez indeksowania, poza menu i mapą strony, tylko z linku. Po akceptacji Mateusza te sekcje zastąpią główną,
-// a nagłówek, stopka i pasek na telefonie dostaną przycisk „Umów 15 minut”.
+// Strona główna (plan z 29.10, teksty: strona/teksty-glownej-2026-10-29.html), opublikowana 29.10 po akceptacji Mateusza.
+// Te same sekcje ma szkic strony testowej (nowaGlowna, id 192).
 const UMOW = 'Umów 15&nbsp;minut na Google Meet';
 const przyciskUmow = (tekst = UMOW) => przyciski([przycisk(tekst, ROZMOWA, { strzalka: true })]);
 const scena = (zawod, kiedy, tekst) => karta([etykieta(zawod, 'piasek'), h3(kiedy), p(tekst)]);
@@ -406,16 +279,12 @@ const badanie = (liczba, opis, zrodlo, ok) => karta([
 	p(`Źródło: ${zrodlo}`, { klasa: 'mp-zrodlo' }),
 ], { klasa: 'mp-karta-liczba' });
 const strata = (zawod, kwota, jednostka, tekst) => karta([etykieta(zawod, 'piasek'), wiersz([p(kwota), p(jednostka)], { klasa: 'mp-cena' }), p(tekst)]);
-const koszt = ({ rodzaj, ton, nazwa, trzyLata, rok, co, koniec, nasz }) => karta([
-	etykieta(rodzaj, ton), h3(nazwa),
-	szary('Przez 3&nbsp;lata:'),
-	wiersz([p(trzyLata), p('zł')], { klasa: 'mp-cena' }),
-	p(`Przez rok: ${rok}. ${co}`),
-	p(koniec, { kolor: nasz ? undefined : 'grafit' }),
-], { klasa: nasz ? 'mp-sciezka mp-sciezka-dobra' : undefined });
+const porownanie = ({ etykieta: et, ton, tytul, punkty, nasz }) => karta([
+	etykieta(et, ton), h3(tytul),
+	listaIkon(punkty.map((t) => [nasz ? 'check' : 'x', t])),
+], { klasa: nasz ? 'mp-sciezka mp-sciezka-dobra' : undefined, gap: '18px' });
 const PAKIET_PODGLAD = { waluta: 'zł netto +&nbsp;VAT', url: ROZMOWA, tekstPrzycisku: 'Umów 15&nbsp;minut' };
-strona('nowaGlowna', { tytul: 'Podgląd nowej strony głównej', slug: 'podglad-nowej-glownej', ukryta: true, opis: 'Podgląd nowej strony głównej do akceptacji: strona z kalendarzem dla specjalistów, rachunek, koszty, pakiety i bezpieczeństwo.' }, [
-	// Klasa mp-ank chowa na telefonie stary pasek „Wyceń stronę” ze stopki (reguła body:has(.mp-ank) w marka.css).
+const sekcjeGlownej = () => [
 	sekcja([
 		kolumny([
 			['58%', [
@@ -429,7 +298,7 @@ strona('nowaGlowna', { tytul: 'Podgląd nowej strony głównej', slug: 'podglad-
 			], { klasa: 'mp-hero' }],
 			['42%', [obraz('telefon-rezerwacja-powiadomienie', { szer: '336px', wyrownaj: 'center', klasa: 'mp-telefon-hero' })]],
 		], { pion: 'center', gap: '48px' }),
-	], { id: 'start', klasa: 'mp-ank', gora: 'clamp(28px, 3.9vw, 56px)', dol: 'clamp(64px, 6.7vw, 96px)' }),
+	], { id: 'start', gora: 'clamp(28px, 3.9vw, 56px)', dol: 'clamp(64px, 6.7vw, 96px)' }),
 	zaufanie([['shield-check', 'Strona i&nbsp;domena są Twoje'], ['circle-check', '0&nbsp;zł abonamentu'], ['receipt', 'Płacisz po akceptacji, przez Useme'], ['life-buoy', '30&nbsp;dni pomocy po starcie']]),
 	sekcja([
 		naglowekSekcji('Brzmi znajomo?', 'Klient dzwoni, a&nbsp;Ty <em>nie możesz</em> odebrać', 'Oddzwaniasz, gdy kończysz. Tyle że klient umówił się już u&nbsp;kogoś, kto odpowiedział szybciej. Tak to wygląda w&nbsp;trzech zawodach:'),
@@ -478,18 +347,23 @@ strona('nowaGlowna', { tytul: 'Podgląd nowej strony głównej', slug: 'podglad-
 		], { pion: 'center' }),
 	], { id: 'jak-to-dziala' }),
 	sekcja([
-		naglowekSekcji('Koszty', 'Kalendarz na <em>własność</em> zamiast abonamentu', 'Aplikacje do rezerwacji kosztują co miesiąc, a&nbsp;gdy przestajesz płacić, kalendarz znika. Tu płacisz raz, a&nbsp;od drugiego roku tylko za domenę i&nbsp;hosting.'),
+		naglowekSekcji('Abonament czy własność', 'Płacisz co miesiąc za kalendarz, który <em>nigdy</em> nie będzie Twój?', 'Aplikacje do rezerwacji działają na abonament: płacisz za sam kalendarz, bez własnej strony, a&nbsp;gdy przestajesz płacić, kalendarz znika. Tu płacisz raz i&nbsp;dostajesz całość na własność.'),
 		siatka([
-			koszt({ rodzaj: 'Abonament', ton: 'piasek', nazwa: 'Booksy Biz', trzyLata: '5&nbsp;220', rok: '1&nbsp;740&nbsp;zł', co: 'Kalendarz w&nbsp;aplikacji i&nbsp;profil w&nbsp;Booksy.', koniec: 'Gdy przestajesz płacić, kalendarz i&nbsp;profil przestają działać.' }),
-			koszt({ rodzaj: 'Abonament i&nbsp;strona', ton: 'piasek', nazwa: 'Calendly i&nbsp;osobna strona', trzyLata: 'ok. 3&nbsp;550', rok: 'ok.&nbsp;1&nbsp;800&nbsp;zł', co: 'Sam kalendarz, stronę trzeba zrobić osobno.', koniec: 'Gdy przestajesz płacić, link do rezerwacji przestaje działać.' }),
-			koszt({ rodzaj: 'Na własność', ton: 'czarna', nazwa: 'Strona z&nbsp;kalendarzem', trzyLata: 'ok. 2&nbsp;600', rok: 'ok.&nbsp;1&nbsp;870&nbsp;zł', co: 'Strona, kalendarz, pytania przed spotkaniem i&nbsp;przypomnienia.', koniec: '<strong>Wszystko zostaje u&nbsp;Ciebie.</strong>', nasz: true }),
-		], { min: '280px' }),
-		karta([
-			wiersz([p('o&nbsp;połowę'), p('mniej niż za Booksy przez 3&nbsp;lata')], { klasa: 'mp-cena' }),
-			p('Różnica, ok.&nbsp;2&nbsp;600&nbsp;zł, opłaci domenę i&nbsp;hosting na kolejne 7&nbsp;lat.'),
-		], { gap: '12px' }),
-		p('Ceny netto, sprawdzone 29.10.2026 na stronach dostawców i&nbsp;w&nbsp;serwisach porównawczych. Booksy Biz: 145&nbsp;zł miesięcznie za 1&nbsp;osobę. Calendly Standard: 12&nbsp;USD miesięcznie przy płatności co miesiąc, kurs ok.&nbsp;3,7&nbsp;zł; osobna strona liczona jak pakiet Wizytówka (1&nbsp;200&nbsp;zł) z&nbsp;domeną i&nbsp;hostingiem. Strona z&nbsp;kalendarzem: pakiet za 1&nbsp;800&nbsp;zł, domena i&nbsp;hosting w&nbsp;LH.pl ok.&nbsp;55–75&nbsp;zł w&nbsp;pierwszym roku, potem ok.&nbsp;320–370&nbsp;zł rocznie. Booksy daje też dostęp do klientów z&nbsp;aplikacji; jeśli z&nbsp;niego korzystasz, strona może działać obok.', { klasa: 'mp-przypis-tekst' }),
-	], { id: 'koszty', tlo: 'piasek' }),
+			porownanie({ etykieta: 'Aplikacja z&nbsp;abonamentem', ton: 'piasek', tytul: 'Wynajmujesz kalendarz', punkty: [
+				'Płacisz co miesiąc, bez końca.',
+				'Dostajesz sam kalendarz, bez własnej strony.',
+				'Klient umawia się w&nbsp;cudzej aplikacji, często obok konkurencji.',
+				'Przestajesz płacić: kalendarz znika, a&nbsp;profil i&nbsp;opinie zostają w&nbsp;aplikacji.',
+			] }),
+			porownanie({ etykieta: 'Twoja strona z&nbsp;kalendarzem', ton: 'czarna', tytul: 'Masz wszystko na własność', nasz: true, punkty: [
+				'Płacisz raz. Potem tylko domena i&nbsp;hosting na Twoje dane.',
+				'Strona, kalendarz, pytania przed spotkaniem i&nbsp;przypomnienia w&nbsp;jednej cenie.',
+				'Klient umawia się u&nbsp;Ciebie, pod Twoim adresem.',
+				'Nikt nie wyłączy Ci kalendarza. Domena, strona i&nbsp;dane klientów są Twoje.',
+			] }),
+		], { min: '440px' }),
+		wiersz([wstep('<strong>Na swojej stronie to Ty ustalasz zasady.</strong>'), przyciskUmow()], { justify: 'space-between', pion: 'center', gap: '16px 32px' }),
+	], { id: 'wlasnosc', tlo: 'piasek' }),
 	sekcja([
 		naglowekSekcji('Pakiety i&nbsp;ceny', 'Wybierz zakres. Cena jest <em>stała</em>.'),
 		grupa([
@@ -552,10 +426,12 @@ strona('nowaGlowna', { tytul: 'Podgląd nowej strony głównej', slug: 'podglad-
 		]),
 	], { id: 'pytania', tlo: 'piasek' }),
 	sekcja([cta('Sprawdź na sobie, jak to <em>działa</em>', 'Umów 15&nbsp;minut. Umówisz się tym samym kalendarzem, który dostaną Twoi klienci, a&nbsp;po rozmowie będziesz wiedzieć, czy to ma sens w&nbsp;Twojej pracy.', { glowny: UMOW, glownyUrl: ROZMOWA, drugi: 'Wolisz na piśmie? Odpowiedz na kilka pytań', drugiUrl: ANKIETA })], { id: 'kontakt', gora: '0' }),
-]);
+];
+strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Klienci umawiają się sami, nawet wieczorem. Strona z kalendarzem od 1 800 zł netto, bez abonamentu. Szkic w 5 dni roboczych, płatność po akceptacji.' }, sekcjeGlownej());
+strona('nowaGlowna', { status: 'draft', tytul: 'Podgląd nowej strony głównej', slug: 'podglad-nowej-glownej', ukryta: true, opis: 'Podgląd nowej strony głównej do akceptacji: strona z kalendarzem dla specjalistów, rachunek, abonament czy własność, pakiety i bezpieczeństwo.' }, sekcjeGlownej());
 
 // Oferta
-strona('oferta', { tytul: 'Pakiety i ceny', slug: 'oferta', opis: 'Trzy pakiety ze stałą ceną: 1 200, 1 800 i 2 500 zł. Propozycja na piśmie w 48 h od ankiety, strona gotowa w ok. 2 tygodnie. Faktura bez VAT.' }, [
+strona('oferta', { status: 'draft', tytul: 'Pakiety i ceny', slug: 'oferta', opis: 'Trzy pakiety ze stałą ceną: 1 200, 1 800 i 2 500 zł. Propozycja na piśmie w 48 h od ankiety, strona gotowa w ok. 2 tygodnie. Faktura bez VAT.' }, [
 	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Oferta'], nadtytul: 'Oferta', tytul: 'Pakiety i&nbsp;<em>ceny</em>', tekst: 'Trzy pakiety ze stałą ceną. W&nbsp;48 godzin od ankiety dostajesz na piśmie propozycję: pakiet, ewentualne dodatki, łączną kwotę i&nbsp;termin.' }),
 	sekcja([
 		trzyPakiety(PUNKTY.p1oferta),
@@ -664,7 +540,7 @@ strona('realizacje', { tytul: 'Realizacje', slug: 'realizacje', opis: 'Kalendarz
 				'Klient widzi gotowy prezent, zanim zapłaci.'),
 		], { min: '280px' }),
 	], { id: 'wczesniej', tlo: 'piasek' }),
-	nastepnyKrok([['Umów 30&nbsp;minut i&nbsp;sprawdź kalendarz na żywo', U.rozmowa], ['Strony dla Twojej branży', U.dlaKogo]]),
+	nastepnyKrok([['Umów 15&nbsp;minut i&nbsp;sprawdź kalendarz na żywo', U.rozmowa], ['Strony dla Twojej branży', U.dlaKogo]]),
 ]);
 
 // Opis przykładu: Demo A
@@ -714,7 +590,7 @@ strona('demo', { status: DEMO_WLACZONE ? undefined : 'draft', tytul: 'Strona eks
 ]);
 
 // Kontakt
-strona('kontakt', { tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5 minut w ankiecie albo umów 30 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań.' }, [
+strona('kontakt', { status: 'draft', tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5 minut w ankiecie albo umów 15 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań.' }, [
 	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Kontakt'], nadtytul: 'Kontakt', tytul: 'Kontakt', tekst: 'Najszybciej przez ankietę. Wolisz rozmowę albo e-mail? Też dobrze.' }),
 	sekcja([kolumny([
 		['55%', [grupa([
@@ -726,7 +602,7 @@ strona('kontakt', { tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5
 			podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h'),
 		], { klasa: 'is-style-karta-ankieta' })]],
 		['45%', [grupa([
-			karta([ikona('video'), h3('Rozmowa 30&nbsp;minut na Google Meet'), p('Wybierasz wolny termin w&nbsp;moim kalendarzu i&nbsp;od razu dostajesz potwierdzenie.'), przyciski([przycisk('Umów 30&nbsp;minut', ROZMOWA, { obrys: true })])]),
+			karta([ikona('video'), h3('Rozmowa 15&nbsp;minut na Google Meet'), p('Wybierasz wolny termin w&nbsp;moim kalendarzu i&nbsp;od razu dostajesz potwierdzenie.'), przyciski([przycisk('Umów 15&nbsp;minut', ROZMOWA, { obrys: true })])]),
 			karta([ikona('mail'), h3('E-mail'), p('Odpowiadam w&nbsp;ciągu dnia roboczego.'), wzorzec('email', strzalka('kontakt@…', '#email'))]),
 		], { gap: '20px' })]],
 	])], { id: 'drogi', gora: '16px', dol: '0' }),
@@ -741,22 +617,22 @@ strona('kontakt', { tytul: 'Kontakt', slug: 'kontakt', opis: 'Wyceń stronę w 5
 ]);
 
 // Rozmowa: kalendarz z wtyczki MP Rezerwacje (godziny, pytania i e-maile są w jej ustawieniach, plik rezerwacje-ustawienia.json)
-strona('rozmowa', { tytul: 'Umów rozmowę', slug: 'rozmowa', opis: 'Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.' }, [
+strona('rozmowa', { tytul: 'Umów rozmowę', slug: 'rozmowa', opis: 'Umów 15 minut na Google Meet: opowiesz, jak dziś umawiają się Twoi klienci, zobaczysz kalendarz na żywo i usłyszysz, ile kosztuje strona.' }, [
 	sekcja([
-		okruszki([['Strona główna', U.glowna], ['Kontakt', U.kontakt], 'Rozmowa']),
+		okruszki([['Strona główna', U.glowna], 'Rozmowa']),
 		kolumny([
 			['44%', [
-				nad('Rozmowa 30&nbsp;minut'),
+				nad('Rozmowa 15&nbsp;minut'),
 				h1('Porozmawiajmy o&nbsp;Twojej <em>stronie</em>'),
 				wstep('Wybierz wolny termin w&nbsp;kalendarzu. Umawiasz się tak samo, jak będą się umawiać Twoi klienci.'),
 				lista([
-					'Opowiadasz o&nbsp;firmie i&nbsp;klientach, a&nbsp;ja głównie słucham i&nbsp;pytam.',
+					'Opowiadasz, jak dziś umawiają się Twoi klienci, a&nbsp;ja pytam.',
 					'Pokazuję na żywo, jak działa strona z&nbsp;kalendarzem.',
-					'Mówię, ile by kosztowała: trzy warianty z&nbsp;widełkami.',
-					'Po rozmowie dostajesz podsumowanie, a&nbsp;propozycję na piśmie w&nbsp;48&nbsp;h.',
+					'Mówię, który pakiet pasuje i&nbsp;ile kosztuje.',
+					'Propozycję na piśmie dostajesz do 24&nbsp;h po rozmowie.',
 				], { klasa: 'is-style-lista-znaczniki' }),
 				podpis('Bez zobowiązań · nie musisz niczego przygotowywać'),
-				strzalka('Wolisz bez rozmowy? Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA),
+				strzalka('Wolisz na piśmie? Odpowiedz na kilka pytań', ANKIETA),
 			], { klasa: 'mp-hero-tekst' }],
 			['56%', [blok('mp/rezerwacja', {})]],
 		], { pion: 'top', gap: '48px', klasa: 'mp-rozmowa' }),
@@ -794,7 +670,7 @@ stronaAnkiety('wycena', { tytul: 'Wycena strony', slug: 'wycena', opis: 'Kilka p
 		'Bez telefonu i&nbsp;bez zobowiązań. Odpowiadam osobiście.',
 	],
 	podpis: 'Bez zobowiązań · propozycja w&nbsp;48&nbsp;h',
-	reszta: [strzalka('Wolisz porozmawiać? Umów 30&nbsp;minut', ROZMOWA)],
+	reszta: [strzalka('Wolisz porozmawiać? Umów 15&nbsp;minut', ROZMOWA)],
 	definicja: ANKIETY.wycena,
 });
 stronaAnkiety('materialy', { tytul: 'Materiały na stronę', slug: 'materialy', opis: 'Formularz dla klientów: firma, dane do stopki, usługi, pytania klientów i pliki potrzebne do strony.' }, {
@@ -1070,13 +946,13 @@ branza('terapeuci', { tytul: 'Psycholodzy i terapeuci', slug: 'psycholodzy-i-ter
 });
 
 // Jak pracuję
-strona('jakPracuje', { tytul: 'Jak pracuję', slug: 'jak-pracuje', opis: 'Ankieta w 5 minut, propozycja w 48 h, umowa i zadatek, szkic w 5 dni roboczych, odbiór i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł.' }, [
+strona('jakPracuje', { status: 'draft', tytul: 'Jak pracuję', slug: 'jak-pracuje', opis: 'Ankieta w 5 minut, propozycja w 48 h, umowa i zadatek, szkic w 5 dni roboczych, odbiór i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł.' }, [
 	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Jak pracuję'], nadtytul: 'Jak pracuję', tytul: 'Od ankiety do <em>gotowej</em> strony', tekst: 'Wszystko ustalamy na piśmie. Rozmowa na Google Meet tylko wtedy, gdy wolisz porozmawiać.', dol: 'clamp(56px, 6.7vw, 96px)' }),
 	sekcja([
 		naglowekSekcji('Siedem kroków', 'Każdy krok ma <em>termin</em>'),
 		grupa([
 			siatka(PROCES.map(([t, o], i) => krok(i + 1, t, o)), { min: '230px', gap: { top: '0', left: '28px' } }),
-			wiersz([p('48&nbsp;h na propozycję · 2&nbsp;rundy poprawek · zadatek 40%'), strzalka('Umów 30&nbsp;minut i&nbsp;zapytaj o&nbsp;szczegóły', ROZMOWA)], { klasa: 'mp-przypis-ciemny', justify: 'space-between' }),
+			wiersz([p('48&nbsp;h na propozycję · 2&nbsp;rundy poprawek · zadatek 40%'), strzalka('Umów 15&nbsp;minut i&nbsp;zapytaj o&nbsp;szczegóły', ROZMOWA)], { klasa: 'mp-przypis-ciemny', justify: 'space-between' }),
 		], { gap: '22px' }),
 	], { id: 'kroki', ciemna: true }),
 	sekcja([kolumny([
@@ -1105,8 +981,8 @@ strona('jakPracuje', { tytul: 'Jak pracuję', slug: 'jak-pracuje', opis: 'Ankiet
 
 // Pytania
 const grupaPytan = (id, nadtytul, lista_) => grupa([nad(nadtytul), pytania(lista_)], { id, klasa: 'mp-grupa-pytan', gap: '18px' });
-strona('pytania', { tytul: 'Pytania', slug: 'pytania', opis: 'Odpowiedzi na 12 pytań przed zamówieniem: koszty w kolejnych latach, domena, poprawki, RODO i kalendarz. Stałe ceny, strony od 1 200 zł.' }, [
-	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Pytania'], nadtytul: 'Pytania', tytul: 'Zanim <em>zapytasz</em>', tekst: 'Dwanaście odpowiedzi na pytania, które specjaliści zadają przed zamówieniem strony. Nie ma tu Twojego? Napisz albo umów 30&nbsp;minut na Google Meet.' }),
+strona('pytania', { status: 'draft', tytul: 'Pytania', slug: 'pytania', opis: 'Odpowiedzi na 12 pytań przed zamówieniem: koszty w kolejnych latach, domena, poprawki, RODO i kalendarz. Stałe ceny, strony od 1 200 zł.' }, [
+	heroPodstrony({ okruszki: [['Strona główna', U.glowna], 'Pytania'], nadtytul: 'Pytania', tytul: 'Zanim <em>zapytasz</em>', tekst: 'Dwanaście odpowiedzi na pytania, które specjaliści zadają przed zamówieniem strony. Nie ma tu Twojego? Napisz albo umów 15&nbsp;minut na Google Meet.' }),
 	sekcja([kolumny([
 		['28%', [grupa([p('Tematy'), lista([['cena', 'Cena i&nbsp;warunki'], ['wspolpraca', 'Współpraca'], ['wlasnosc', 'Własność i&nbsp;technika'], ['doswiadczenie', 'Doświadczenie']].map(([id, t]) => `<a href="#${id}">${t}</a>`))], { klasa: 'is-style-spis', tag: 'nav' })]],
 		['72%', [grupa([
@@ -1117,7 +993,7 @@ strona('pytania', { tytul: 'Pytania', slug: 'pytania', opis: 'Odpowiedzi na 12 p
 				['Ile kosztuje utrzymanie strony?', `Domenę i&nbsp;hosting opłacasz u&nbsp;dostawcy, na swoje dane: pierwszy rok ok.&nbsp;55–75&nbsp;zł netto, potem ok.&nbsp;320–370&nbsp;zł netto rocznie. Drobne zmiany po 30&nbsp;dniach wsparcia wyceniam przed pracą. <a href="${U.oferta}">Koszty w&nbsp;kolejnych latach</a>`],
 			]),
 			grupaPytan('wspolpraca', '02 · Współpraca', [
-				['Czy muszę rozmawiać przez telefon?', `Nie. Wszystko ustalamy na piśmie. Jeśli wolisz porozmawiać, umów 30&nbsp;minut na Google Meet. <a href="${U.kontakt}">Kontakt</a>`],
+				['Czy muszę rozmawiać przez telefon?', `Nie. Wszystko ustalamy na piśmie. Jeśli wolisz porozmawiać, umów 15&nbsp;minut na Google Meet. <a href="${U.kontakt}">Kontakt</a>`],
 				['Ile to trwa?', `Zwykle 2&nbsp;tygodnie od dnia, w&nbsp;którym dostanę materiały. <a href="${U.jakPracuje}">Kroki i&nbsp;terminy</a>`],
 				['Kto pisze teksty?', `Ja, na podstawie Twojej ankiety i&nbsp;Twoimi słowami. Sprawdzasz je w&nbsp;szkicu i&nbsp;masz 2&nbsp;rundy poprawek. <a href="${U.jakPracuje}">Jak pracuję</a>`],
 			]),
@@ -1136,7 +1012,7 @@ strona('pytania', { tytul: 'Pytania', slug: 'pytania', opis: 'Odpowiedzi na 12 p
 ]);
 
 // O mnie
-strona('oMnie', { tytul: 'O mnie', slug: 'o-mnie', opis: 'Robię strony wizytówki dla specjalistów, którzy umawiają konsultacje. Wszystko ustalamy na piśmie, a domena i strona są Twoje. Od 1 200 zł.' }, [
+strona('oMnie', { status: 'draft', tytul: 'O mnie', slug: 'o-mnie', opis: 'Robię strony wizytówki dla specjalistów, którzy umawiają konsultacje. Wszystko ustalamy na piśmie, a domena i strona są Twoje. Od 1 200 zł.' }, [
 	sekcja([
 		okruszki([['Strona główna', U.glowna], 'O&nbsp;mnie']),
 		kolumny([
@@ -1147,7 +1023,7 @@ strona('oMnie', { tytul: 'O mnie', slug: 'o-mnie', opis: 'Robię strony wizytów
 				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat codziennie rozmawiałem z&nbsp;klientami przy sprzedaży. Wiem, o&nbsp;co ludzie pytają, zanim się zdecydują, i&nbsp;wiem, że rezygnują, gdy nikt nie odpowiada.'),
 				p('Wcześniej budowałem własne sklepy internetowe na WooCommerce i&nbsp;pisałem do nich wtyczki. Dziś robię strony na WordPressie z&nbsp;własnym kalendarzem rezerwacji, tym samym, przez który umówisz się ze mną. Każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość.'),
 				p('Pracuję z&nbsp;Krakowa i&nbsp;wszystko ustalam na piśmie, z&nbsp;terminem na każdy krok: propozycja w&nbsp;48 godzin, szkic w&nbsp;5&nbsp;dni roboczych, publikacja po Twojej akceptacji.'),
-				przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), przycisk('Umów 30&nbsp;minut na Google Meet', ROZMOWA, { obrys: true })]),
+				przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }), przycisk('Umów 15&nbsp;minut na Google Meet', ROZMOWA, { obrys: true })]),
 			]],
 		], { pion: 'center' }),
 	], { gora: 'clamp(24px, 2.8vw, 40px)', gap: 'var:preset|spacing|50' }),
@@ -1155,7 +1031,7 @@ strona('oMnie', { tytul: 'O mnie', slug: 'o-mnie', opis: 'Robię strony wizytów
 		naglowekSekcji('Dlaczego ja', 'Trzy zasady, których się <em>trzymam</em>'),
 		siatka(ZASADY.map(([t, o], i) => krok(i + 1, t, o)), { min: '260px', gap: { top: '0', left: '28px' } }),
 	], { id: 'zasady', ciemna: true }),
-	nastepnyKrok([['Realizacje', U.realizacje], ['Jak pracuję', U.jakPracuje]], { cta: ['Porozmawiajmy o&nbsp;<em>Twojej</em> stronie', '5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Odpowiadam osobiście.'], drugi: 'Umów 30&nbsp;minut na Google Meet' }),
+	nastepnyKrok([['Realizacje', U.realizacje], ['Jak pracuję', U.jakPracuje]], { cta: ['Porozmawiajmy o&nbsp;<em>Twojej</em> stronie', '5&nbsp;minut pytań, jednostronicowa propozycja w&nbsp;48 godzin. Odpowiadam osobiście.'], drugi: 'Umów 15&nbsp;minut na Google Meet' }),
 ]);
 
 // ---------------------------------------------------------------- części szablonu
@@ -1167,7 +1043,7 @@ const naglowekStrony = [
 			blok('core/site-title', { level: 0 }),
 			wiersz([
 				blok('core/navigation', { ref: NAWIGACJA_ID || undefined, overlayMenu: 'mobile', overlayBackgroundColor: 'krem', overlayTextColor: 'czern', layout: { type: 'flex', justifyContent: 'right' }, style: { spacing: { blockGap: '30px' } } }),
-				przyciski([przycisk('Wyceń stronę', ANKIETA, { maly: true })], { klasa: 'mp-przycisk-naglowka' }),
+				przyciski([przycisk('Umów 15&nbsp;minut', ROZMOWA, { maly: true })], { klasa: 'mp-przycisk-naglowka' }),
 			], { nowrap: true, gap: '32px', justify: 'right' }),
 		], { align: 'wide', klasa: 'mp-naglowek', layout: { type: 'flex', flexWrap: 'nowrap', justifyContent: 'space-between' } }),
 	], { align: 'full', tlo: 'krem', layout: { type: 'constrained', wideSize: '1200px' } }),
@@ -1177,10 +1053,10 @@ const stopkaStrony = [
 	grupa([
 		grupa([
 			kolumny([
-				['34%', [blok('core/site-title', { level: 0 }), p('Strony, które odpowiadają na pytania klientów i&nbsp;umawiają ich na konsultację.'), przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { maly: true })])], { klasa: 'mp-stopka-wstep' }],
-				['22%', [h2('Pakiety'), linkiStopki([['Wizytówka · 1&nbsp;200&nbsp;zł', U.oferta], ['Wizytówka, która umawia · 1&nbsp;800&nbsp;zł', U.oferta], ['Pełny start · 2&nbsp;500&nbsp;zł', U.oferta]])]],
-				['22%', [h2('Branże'), linkiStopki([['Doradcy kredytowi', U.doradcy], ['Biura rachunkowe', U.biura], ['Psycholodzy i&nbsp;terapeuci', U.terapeuci], ['Wszystkie branże', U.dlaKogo]])]],
-				['22%', [h2('Na skróty'), linkiStopki([['Realizacje', U.realizacje], ['Jak pracuję', U.jakPracuje], ['O&nbsp;mnie', U.oMnie], ['Pytania', U.pytania], ['Kontakt', U.kontakt]])]],
+				['34%', [blok('core/site-title', { level: 0 }), p('Strony z&nbsp;kalendarzem, przez które klienci umawiają się sami.'), przyciski([przycisk('Umów 15&nbsp;minut', ROZMOWA, { maly: true })])], { klasa: 'mp-stopka-wstep' }],
+				['22%', [h2('Pakiety'), linkiStopki([['Wizytówka · 1&nbsp;200&nbsp;zł netto', G.pakiety], ['Wizytówka, która umawia · 1&nbsp;800&nbsp;zł netto', G.pakiety], ['Pełny start · 2&nbsp;500&nbsp;zł netto', G.pakiety]])]],
+				['22%', [h2('Branże'), linkiStopki([['Doradcy kredytowi', U.doradcy], ['Biura rachunkowe', U.biura], ['Psycholodzy i&nbsp;terapeuci', U.terapeuci]])]],
+				['22%', [h2('Na skróty'), linkiStopki([['Jak to działa', G.jakToDziala], ['Realizacje', U.realizacje], ['Pytania', G.pytania], ['Umów rozmowę', ROZMOWA], ['Wolisz na piśmie?', ANKIETA]])]],
 			], { klasa: 'mp-stopka-kolumny', gap: '40px' }),
 			wiersz([
 				wzorzec('stopka', p('Mateusz Przetocki · Kraków · kontakt@…')),
@@ -1191,10 +1067,10 @@ const stopkaStrony = [
 			], { klasa: 'mp-stopka-dol', justify: 'space-between', gap: '12px 20px' }),
 		], { align: 'wide', gap: '56px' }),
 	], { align: 'full', klasa: 'mp-stopka is-style-ciemna', tlo: 'czern', tekst: 'szary-na-czerni', pad: { top: 'clamp(64px, 6vw, 80px)', bottom: '40px' }, layout: { type: 'constrained' } }),
-	// pasek na telefonie (wersja A z 26.10): jasna karta, obietnica po lewej, mały przycisk po prawej
+	// pasek na telefonie (wersja A z 26.10, od 29.10 z rozmową 15 minut): jasna karta, obietnica po lewej, mały przycisk po prawej
 	wiersz([
-		grupa([p('Wycena w&nbsp;5&nbsp;minut', { klasa: 'mp-pasek-tytul' }), p('Propozycja w&nbsp;48&nbsp;h · bez zobowiązań', { klasa: 'mp-pasek-podpis' })], { klasa: 'mp-pasek-tekst' }),
-		przyciski([przycisk('Wyceń stronę', ANKIETA, { strzalka: true, maly: true })]),
+		grupa([p('Rozmowa 15&nbsp;minut', { klasa: 'mp-pasek-tytul' }), p('Google Meet · bez zobowiązań', { klasa: 'mp-pasek-podpis' })], { klasa: 'mp-pasek-tekst' }),
+		przyciski([przycisk('Umów', ROZMOWA, { strzalka: true, maly: true })]),
 	], { klasa: 'mp-pasek-telefon', justify: 'space-between', pion: 'center', nowrap: true, gap: '12px' }),
 ];
 const szablon404 = [
@@ -1206,8 +1082,8 @@ const szablon404 = [
 				nad('Błąd 404'),
 				h1('Tej strony tu nie ma'),
 				p('Link mógł być stary albo w&nbsp;adresie jest literówka. Zacznij od jednej z&nbsp;tych stron:'),
-				lista([`<a href="${U.glowna}">Strona główna</a>`, `<a href="${U.oferta}">Pakiety i&nbsp;ceny</a>`, `<a href="${U.dlaKogo}">Strony dla Twojej branży</a>`], { klasa: 'is-style-lista-linki' }),
-				wiersz([przyciski([przycisk('Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true })]), podpis('Bez zobowiązań · propozycja w&nbsp;48&nbsp;h')], { gap: '12px 20px' }),
+				lista([`<a href="${U.glowna}">Strona główna</a>`, `<a href="${G.pakiety}">Pakiety i&nbsp;ceny</a>`, `<a href="${U.realizacje}">Realizacje</a>`], { klasa: 'is-style-lista-linki' }),
+				wiersz([przyciski([przycisk(UMOW, ROZMOWA, { strzalka: true })]), podpis('Bez zobowiązań · odpowiadam osobiście')], { gap: '12px 20px' }),
 			]],
 		], { pion: 'center' })], { gora: 'clamp(56px, 6.7vw, 96px)' }),
 	], { tag: 'main', layout: { type: 'constrained' }, margines: { top: '0' } }),
@@ -1218,12 +1094,13 @@ const szablon404 = [
 function nawigacja(idStron) {
 	const link = (label, klucz) => blok('core/navigation-link', { label, type: 'page', id: idStron[klucz], url: STRONY[klucz].url, kind: 'post-type' });
 	const pod = (label, klucz, dzieci) => blok('core/navigation-submenu', { label, type: 'page', id: idStron[klucz], url: STRONY[klucz].url, kind: 'post-type' }, dzieci);
+	// od 29.10: sekcje nowej głównej (kotwice) i Realizacje; przycisk „Umów 15 minut” stoi obok menu w nagłówku
+	const kotwica = (label, url) => blok('core/navigation-link', { label, url, kind: 'custom', isTopLevelLink: true });
 	return [
-		pod('Dla kogo', 'dlaKogo', [link('Doradcy kredytowi', 'doradcy'), link('Biura rachunkowe', 'biura'), link('Psycholodzy i terapeuci', 'terapeuci'), link('Wszystkie branże', 'dlaKogo')]),
-		pod('Oferta', 'oferta', [link('Pakiety i ceny', 'oferta'), link('Jak pracuję', 'jakPracuje'), link('Pytania', 'pytania')]),
+		kotwica('Jak to działa', G.jakToDziala),
+		kotwica('Pakiety', G.pakiety),
 		link('Realizacje', 'realizacje'),
-		link('O mnie', 'oMnie'),
-		link('Kontakt', 'kontakt'),
+		kotwica('O mnie', G.oMnie),
 	];
 }
 
@@ -1294,11 +1171,11 @@ const STYLE_GLOBALNE = {
 // Tytuły SEO (plan strony, „Tytuły i opisy wszystkich podstron”, poprawione 26.10). Opis SEO to `opis` (zajawka strony).
 // Strona bez wpisu dostaje swój tytuł. Do Rank Math wysyła je `wyslij.py seo`, formularze „ukryta” dostają noindex.
 const TYTULY_SEO = {
-	glowna: 'Strony z kalendarzem konsultacji',
+	glowna: 'Strona z kalendarzem dla specjalistów',
 	oferta: 'Pakiety i ceny stron wizytówek',
 	realizacje: 'Realizacje i kalendarz rezerwacji',
 	kontakt: 'Kontakt i wycena strony',
-	rozmowa: 'Umów 30 minut rozmowy',
+	rozmowa: 'Umów 15 minut rozmowy',
 	wycena: 'Wycena strony w 5 minut',
 	dlaKogo: 'Dla kogo robię strony',
 	doradcy: 'Strona dla doradcy kredytowego',

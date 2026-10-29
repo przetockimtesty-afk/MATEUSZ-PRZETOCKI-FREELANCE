@@ -1,37 +1,90 @@
 {
-	"wtyczka": "mp-rezerwacje",
-	"wersja": "0.1.0",
-	"ustawienia": {
-		"osoba": {
-			"imie": "Mateusz Przetocki",
-			"opis": "Strony, które umawiają konsultacje",
-			"zdjecie": 104
-		},
-		"wizyty": [
-			{ "id": "rozmowa", "nazwa": "Rozmowa o Twojej stronie", "czas": 30, "formy": [ "online" ], "opis": "" }
-		],
-		"godziny": { "1": "16:30-20:00", "2": "16:30-20:00", "3": "16:30-20:00", "4": "16:30-20:00", "5": "16:30-20:00", "6": "09:00-13:00", "7": "" },
-		"swieta": true,
-		"zasady": { "krok": 30, "przerwa": 15, "wyprzedzenie": 12, "okno": 30, "limit": 2, "zmiany": 12 },
-		"telefon": "opcjonalny",
-		"pytania": [
-			{ "id": "branza", "etykieta": "Czym się zajmujesz?", "typ": "wybor", "opcje": [ "Doradztwo kredytowe", "Biuro rachunkowe", "Psychologia lub terapia", "Inna branża" ], "wymagane": true, "podpowiedz": "" },
-			{ "id": "strona", "etykieta": "Adres Twojej obecnej strony", "typ": "tekst", "opcje": [], "wymagane": false, "podpowiedz": "np. mojafirma.pl" },
-			{ "id": "przeszkadza", "etykieta": "Co dziś najbardziej przeszkadza Ci w umawianiu klientów?", "typ": "dlugi", "opcje": [], "wymagane": false, "podpowiedz": "" }
-		],
-		"teksty": {
-			"naglowek": "Umów 30 minut na Google Meet",
-			"zapowiedz": "Branża, obecna strona i to, co dziś przeszkadza",
-			"przycisk": "Umawiam rozmowę",
-			"sukces": "Potwierdzenie i szczegóły rozmowy są już w Twojej skrzynce.",
-			"polityka": "https://mateuszprzetocki.pl/polityka-prywatnosci/"
-		},
-		"maile": {
-			"nadawca": "Mateusz Przetocki",
-			"przypomnienie": 24,
-			"potwierdzenie": "Dziękuję za rezerwację. Na rozmowie opowiesz o firmie i klientach, a ja pokażę na żywo, jak działa strona z kalendarzem, i powiem, ile by kosztowała. Nie musisz niczego przygotowywać.",
-			"przypomnienie_tekst": "Przypominam o naszej rozmowie na Google Meet. Gdyby termin przestał Ci pasować, zmienisz go albo odwołasz przez link poniżej.",
-			"podpis": "Mateusz Przetocki\nStrony, które umawiają konsultacje\nmateuszprzetocki.pl"
-		}
-	}
+ "wtyczka": "mp-rezerwacje",
+ "wersja": "0.1.1",
+ "ustawienia": {
+  "osoba": {
+   "imie": "Mateusz Przetocki",
+   "opis": "Strony, które umawiają konsultacje",
+   "zdjecie": 104
+  },
+  "wizyty": [
+   {
+    "id": "rozmowa",
+    "nazwa": "Rozmowa o Twojej stronie",
+    "czas": 15,
+    "formy": [
+     "online"
+    ],
+    "opis": ""
+   }
+  ],
+  "godziny": {
+   "1": "16:30-20:00",
+   "2": "16:30-20:00",
+   "3": "16:30-20:00",
+   "4": "16:30-20:00",
+   "5": "16:30-20:00",
+   "6": "09:00-13:00",
+   "7": ""
+  },
+  "swieta": true,
+  "zasady": {
+   "krok": 30,
+   "przerwa": 15,
+   "wyprzedzenie": 12,
+   "okno": 30,
+   "limit": 2,
+   "zmiany": 12
+  },
+  "telefon": "opcjonalny",
+  "pytania": [
+   {
+    "id": "branza",
+    "etykieta": "Czym się zajmujesz?",
+    "typ": "wybor",
+    "opcje": [
+     "Doradztwo kredytowe",
+     "Biuro rachunkowe",
+     "Psychologia lub terapia",
+     "Inna branża"
+    ],
+    "wymagane": true,
+    "podpowiedz": ""
+   },
+   {
+    "id": "kiedy",
+    "etykieta": "Kiedy chcesz mieć nową stronę?",
+    "typ": "wybor",
+    "opcje": [
+     "W ciągu miesiąca",
+     "W ciągu 2–3 miesięcy",
+     "Jeszcze nie wiem"
+    ],
+    "wymagane": true,
+    "podpowiedz": ""
+   },
+   {
+    "id": "strona",
+    "etykieta": "Adres Twojej obecnej strony",
+    "typ": "tekst",
+    "opcje": [],
+    "wymagane": false,
+    "podpowiedz": "np. mojafirma.pl"
+   }
+  ],
+  "teksty": {
+   "naglowek": "Umów 15 minut na Google Meet",
+   "zapowiedz": "Branża, termin i adres obecnej strony",
+   "przycisk": "Umawiam rozmowę",
+   "sukces": "Potwierdzenie i szczegóły rozmowy są już w Twojej skrzynce.",
+   "polityka": "https://mateuszprzetocki.pl/polityka-prywatnosci/"
+  },
+  "maile": {
+   "nadawca": "Mateusz Przetocki",
+   "przypomnienie": 24,
+   "potwierdzenie": "Dziękuję za rezerwację. W 15 minut opowiesz, jak dziś umawiają się Twoi klienci, a ja pokażę na żywo, jak działa strona z kalendarzem, i powiem, który pakiet pasuje. Nie musisz niczego przygotowywać.",
+   "przypomnienie_tekst": "Przypominam o naszej rozmowie na Google Meet. Gdyby termin przestał Ci pasować, zmienisz go albo odwołasz przez link poniżej.",
+   "podpis": "Mateusz Przetocki\nStrony, które umawiają konsultacje\nmateuszprzetocki.pl"
+  }
+ }
 }

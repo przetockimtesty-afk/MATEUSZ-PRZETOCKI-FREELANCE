@@ -58,11 +58,12 @@ stron z WordPressa.
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
-| Strona mateuszprzetocki.pl (WordPress: 22 opublikowane strony, w tym `/wycena/`, 5 formularzy dla klientów tylko z linku od 26.10 i strona testowa nowej głównej od 29.10 (id 192, noindex); szkic: demo; indeksowanie włączone) | źródło `strona/wordpress/`, kopie `backups/` (bez wyrenderowanego HTML) | projekt w Claude Design to wzór | — |
+| Strona mateuszprzetocki.pl (WordPress: od 29.10 nowa główna; 16 opublikowanych stron: 11 publicznych i 5 formularzy dla klientów tylko z linku; szkice: demo, strona testowa i 5 dawnych podstron z przekierowaniem 301 na sekcje głównej; indeksowanie włączone) | źródło `strona/wordpress/`, kopie `backups/` (bez wyrenderowanego HTML) | projekt w Claude Design to wzór | — |
 | Dane kontaktowe na stronie (e-mail, adres) | nie, z zasady; tylko ID wzorców w `strona/wordpress/wzorce.json` | — | — |
 | Film z kalendarza na „Realizacjach” (media 143, okładka 144) | nie: jest na nim zdjęcie Mateusza | — | — |
 | Zdjęcia Mateusza (na stronie: media 101–104 w WordPressie) | nie, z zasady | — | oryginały, 3 pliki WebP i ich wersje PNG |
 | SEO w Rank Math (tytuły, opisy, noindex formularzy, ustawienia) | tytuły w `strona/wordpress/zbuduj.js` (`TYTULY_SEO`), wysyłka `wyslij.py seo`, kopie ustawień w `backups/rankmath-*` | — | — |
+| Przekierowania 301 (Rank Math, od 29.10: 5 dawnych podstron na sekcje głównej) | lista w `WP-REST.md` (tabela „Ta instalacja”, wiersz „Wtyczki”); same przekierowania są tylko w WordPressie | — | — |
 | Ustawienia Complianz i PixelYourSite (piksel, GA4, API konwersji) | ściąga kreatora `firma/wdrozenia/complianz-kreator.md` | — | — |
 | Drogowskaz PDF | tak | — | tak, ta sama wersja co w repozytorium |
 | Workflow A i B PDF | tak | — | tak, ta sama wersja co w repozytorium |
@@ -74,8 +75,8 @@ stron z WordPressa.
 | Prezentacja „Jak przebiega współpraca” (slajd 3 poprawiony 28.10) | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA, wersja 7 | — (PDF do umowy eksportuje Mateusz, po 28.10 od nowa) |
 | Plan zmian strony i oferty (propozycja z 28.10, decyzje Mateusza z 28.10 na górze) | `strona/plan-zmian-2026-10-28.html` | — | Dokument Google „Plan · strona i oferta: co zmienić (propozycja z 28.10)”, ta sama treść |
 | Plan nowej strony: mapa i sekcje (wersja końcowa z 29.10) | `strona/plan-strony-2026-10-29.html` | — | Dokument Google „Plan · nowa strona: mapa i sekcje”, ta sama treść |
-| Strona testowa nowej głównej: mateuszprzetocki.pl/podglad-nowej-glownej/ (noindex, tylko z linku) | `nowaGlowna` w `strona/wordpress/zbuduj.js`, kopie `backups/pages-192-*` | — | link w dokumentach z planem strony i tekstami |
-| Teksty nowej strony głównej (wersja 2 z 29.10 do akceptacji: 11 sekcji, scenariusz filmu, źródła liczb) | `strona/teksty-glownej-2026-10-29.html` | — | Dokument Google „Plan · teksty strony głównej”, ta sama treść |
+| Strona testowa nowej głównej (id 192, od 29.10 szkic: jej treść jest na głównej) | `nowaGlowna` w `strona/wordpress/zbuduj.js`, kopie `backups/pages-192-*` | — | — |
+| Teksty strony głównej (wersja z 29.10, opublikowana: 11 sekcji z „Abonament czy własność”, scenariusz filmu, źródła liczb, kwoty do rozmów) | `strona/teksty-glownej-2026-10-29.html` | — | Dokument Google „Plan · teksty strony głównej”, ta sama treść |
 | Plan sprzedaży: od pierwszej wiadomości do umowy (propozycja z 28.10, zastępuje sekcje 11 i 16 drogowskazu) | `firma/plan-sprzedazy-2026-10-28.html` | — | Dokument Google „Plan · sprzedaż: od pierwszej wiadomości do umowy”, ta sama treść |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
 | Scenariusze filmów dla klientów | playlista 1 „Na start” (7 filmów z tekstem lektora, od 28.10): `firma/filmy/na-start.html`; playlisty 2 i 3: `firma/filmy/scenariusze.md` | stara wersja z 26.10 w zakładce „Scenariusze filmów” rozpiski | Dokument Google „Scenariusze · filmy „Na start” dla klienta” (28.10), ta sama treść co `na-start.html` |
@@ -83,7 +84,7 @@ stron z WordPressa.
 | Rozpiska dla Mateusza: kroki na 26.10, tabela filmów ze statusem, decyzje | skrót w `firma/STAN-PRAC.md` | tak: https://claude.ai/artifact/H7J4xq9ZYfYWBnhPVr8T1a (statusy i odhaczenia są tylko tam) | — |
 | Wzór umowy i instrukcja | źródło `firma/umowy/` | — | Dokumenty Google w folderze „Umowy”, ta sama wersja 4 |
 | Kalendarz u klienta: wdrożenie krok po kroku | PDF i źródło w `firma/wdrozenia/` | — | Dokument Google z tą samą treścią; PDF do wgrania przez Mateusza |
-| Wtyczka MP Rezerwacje (na stronie 0.1.1 od 26.10) | szkielet `strona/wtyczki/mp-rezerwacje/`, ZIP `strona/wtyczki/zip/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` | — | — |
+| Wtyczka MP Rezerwacje (na stronie 0.1.1 od 26.10) | szkielet `strona/wtyczki/mp-rezerwacje/`, ZIP `strona/wtyczki/zip/`, ustawienia mojej strony `strona/wordpress/rezerwacje-ustawienia.json` (od 29.10 rozmowa 15 minut: plik czeka na wczytanie przez Mateusza w wp-admin; na stronie wciąż 30 minut) | — | — |
 | Wtyczka MP Ankiety 0.1.0 (na stronie od 26.10) | szkielet `strona/wtyczki/mp-ankiety/`, ZIP `strona/wtyczki/zip/`, ankiety mojej strony `strona/wordpress/ankiety.js` | — | — |
 
 Wersja żywa strony jest w WordPressie (LH.pl). Od 19.10 teksty i grafiki edytuję tam,

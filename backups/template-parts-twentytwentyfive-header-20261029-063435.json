@@ -1,0 +1,25 @@
+{
+ "id": "twentytwentyfive//header",
+ "theme": "twentytwentyfive",
+ "content": {
+  "raw": "<!-- wp:group {\"backgroundColor\":\"krem\",\"align\":\"full\",\"layout\":{\"type\":\"constrained\",\"wideSize\":\"1200px\"}} -->\n<div class=\"wp-block-group alignfull has-krem-background-color has-background\"><!-- wp:group {\"align\":\"wide\",\"className\":\"mp-naglowek\",\"layout\":{\"type\":\"flex\",\"flexWrap\":\"nowrap\",\"justifyContent\":\"space-between\"}} -->\n<div class=\"wp-block-group alignwide mp-naglowek\"><!-- wp:site-title {\"level\":0} /-->\n\n<!-- wp:group {\"style\":{\"spacing\":{\"blockGap\":\"32px\"}},\"layout\":{\"type\":\"flex\",\"flexWrap\":\"nowrap\",\"justifyContent\":\"right\"}} -->\n<div class=\"wp-block-group\"><!-- wp:navigation {\"ref\":54,\"overlayBackgroundColor\":\"krem\",\"overlayTextColor\":\"czern\",\"style\":{\"spacing\":{\"blockGap\":\"30px\"}},\"layout\":{\"type\":\"flex\",\"justifyContent\":\"right\"}} /-->\n\n<!-- wp:buttons {\"className\":\"mp-przycisk-naglowka\"} -->\n<div class=\"wp-block-buttons mp-przycisk-naglowka\"><!-- wp:button {\"className\":\"mp-maly\"} -->\n<div class=\"wp-block-button mp-maly\"><a class=\"wp-block-button__link wp-element-button\" href=\"/wycena/\">Wyceń stronę</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons --></div>\n<!-- /wp:group --></div>\n<!-- /wp:group --></div>\n<!-- /wp:group -->",
+  "block_version": 1
+ },
+ "slug": "header",
+ "source": "custom",
+ "origin": "theme",
+ "type": "wp_template_part",
+ "description": "",
+ "title": {
+  "raw": "Header"
+ },
+ "status": "publish",
+ "wp_id": 55,
+ "has_theme_file": true,
+ "author": 2,
+ "area": "header",
+ "modified": "2026-10-26T14:49:30",
+ "date": "2026-10-19T18:33:00",
+ "author_text": "Twenty Twenty-Five",
+ "original_source": "theme"
+}

@@ -1,0 +1,24 @@
+{
+ "id": 54,
+ "date": "2026-10-19T18:32:47",
+ "date_gmt": "2026-10-19T16:32:47",
+ "guid": {
+  "raw": "https://mateuszprzetocki.pl/menu-glowne/"
+ },
+ "modified": "2026-10-19T18:32:47",
+ "modified_gmt": "2026-10-19T16:32:47",
+ "password": "",
+ "slug": "menu-glowne",
+ "status": "publish",
+ "type": "wp_navigation",
+ "link": "https://mateuszprzetocki.pl/menu-glowne/",
+ "title": {
+  "raw": "Menu główne"
+ },
+ "content": {
+  "raw": "<!-- wp:navigation-submenu {\"label\":\"Dla kogo\",\"type\":\"page\",\"id\":46,\"url\":\"/dla-kogo/\",\"kind\":\"post-type\"} -->\n<!-- wp:navigation-link {\"label\":\"Doradcy kredytowi\",\"type\":\"page\",\"id\":51,\"url\":\"/dla-kogo/doradcy-kredytowi/\",\"kind\":\"post-type\"} /-->\n\n<!-- wp:navigation-link {\"label\":\"Biura rachunkowe\",\"type\":\"page\",\"id\":52,\"url\":\"/dla-kogo/biura-rachunkowe/\",\"kind\":\"post-type\"} /-->\n\n<!-- wp:navigation-link {\"label\":\"Psycholodzy i terapeuci\",\"type\":\"page\",\"id\":53,\"url\":\"/dla-kogo/psycholodzy-i-terapeuci/\",\"kind\":\"post-type\"} /-->\n\n<!-- wp:navigation-link {\"label\":\"Wszystkie branże\",\"type\":\"page\",\"id\":46,\"url\":\"/dla-kogo/\",\"kind\":\"post-type\"} /-->\n<!-- /wp:navigation-submenu -->\n\n<!-- wp:navigation-submenu {\"label\":\"Oferta\",\"type\":\"page\",\"id\":41,\"url\":\"/oferta/\",\"kind\":\"post-type\"} -->\n<!-- wp:navigation-link {\"label\":\"Pakiety i ceny\",\"type\":\"page\",\"id\":41,\"url\":\"/oferta/\",\"kind\":\"post-type\"} /-->\n\n<!-- wp:navigation-link {\"label\":\"Jak pracuję\",\"type\":\"page\",\"id\":47,\"url\":\"/jak-pracuje/\",\"kind\":\"post-type\"} /-->\n\n<!-- wp:navigation-link {\"label\":\"Pytania\",\"type\":\"page\",\"id\":48,\"url\":\"/pytania/\",\"kind\":\"post-type\"} /-->\n<!-- /wp:navigation-submenu -->\n\n<!-- wp:navigation-link {\"label\":\"Realizacje\",\"type\":\"page\",\"id\":42,\"url\":\"/realizacje/\",\"kind\":\"post-type\"} /-->\n\n<!-- wp:navigation-link {\"label\":\"O mnie\",\"type\":\"page\",\"id\":49,\"url\":\"/o-mnie/\",\"kind\":\"post-type\"} /-->\n\n<!-- wp:navigation-link {\"label\":\"Kontakt\",\"type\":\"page\",\"id\":43,\"url\":\"/kontakt/\",\"kind\":\"post-type\"} /-->",
+  "protected": false,
+  "block_version": 1
+ },
+ "template": ""
+}

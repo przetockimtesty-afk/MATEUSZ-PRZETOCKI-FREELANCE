@@ -3,16 +3,17 @@
   "tytul": "Strona główna",
   "slug": "strona-glowna",
   "rodzic": null,
-  "opis": "Strony wizytówki z kalendarzem i formularzem: klient sam umawia konsultację, a Ty wiesz, z czym przyjdzie. Od 1 200 zł, gotowe w ok. 2 tygodnie.",
+  "opis": "Klienci umawiają się sami, nawet wieczorem. Strona z kalendarzem od 1 800 zł netto, bez abonamentu. Szkic w 5 dni roboczych, płatność po akceptacji.",
   "url": "/",
-  "seo": "Strony z kalendarzem konsultacji | Mateusz Przetocki"
+  "seo": "Strona z kalendarzem dla specjalistów | Mateusz Przetocki"
  },
  "nowaGlowna": {
   "tytul": "Podgląd nowej strony głównej",
   "slug": "podglad-nowej-glownej",
   "rodzic": null,
-  "opis": "Podgląd nowej strony głównej do akceptacji: strona z kalendarzem dla specjalistów, rachunek, koszty, pakiety i bezpieczeństwo.",
+  "opis": "Podgląd nowej strony głównej do akceptacji: strona z kalendarzem dla specjalistów, rachunek, abonament czy własność, pakiety i bezpieczeństwo.",
   "url": "/podglad-nowej-glownej/",
+  "status": "draft",
   "seo": "Podgląd nowej strony głównej | Mateusz Przetocki",
   "ukryta": true
  },
@@ -22,6 +23,7 @@
   "rodzic": null,
   "opis": "Trzy pakiety ze stałą ceną: 1 200, 1 800 i 2 500 zł. Propozycja na piśmie w 48 h od ankiety, strona gotowa w ok. 2 tygodnie. Faktura bez VAT.",
   "url": "/oferta/",
+  "status": "draft",
   "seo": "Pakiety i ceny stron wizytówek | Mateusz Przetocki"
  },
  "realizacje": {
@@ -45,17 +47,18 @@
   "tytul": "Kontakt",
   "slug": "kontakt",
   "rodzic": null,
-  "opis": "Wyceń stronę w 5 minut w ankiecie albo umów 30 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań.",
+  "opis": "Wyceń stronę w 5 minut w ankiecie albo umów 15 minut rozmowy na Google Meet. Propozycja na piśmie w 48 h, bez zobowiązań.",
   "url": "/kontakt/",
+  "status": "draft",
   "seo": "Kontakt i wycena strony | Mateusz Przetocki"
  },
  "rozmowa": {
   "tytul": "Umów rozmowę",
   "slug": "rozmowa",
   "rodzic": null,
-  "opis": "Umów 30 minut na Google Meet: opowiesz o firmie, zobaczysz na żywo stronę z kalendarzem i usłyszysz, ile by kosztowała. Bez zobowiązań.",
+  "opis": "Umów 15 minut na Google Meet: opowiesz, jak dziś umawiają się Twoi klienci, zobaczysz kalendarz na żywo i usłyszysz, ile kosztuje strona.",
   "url": "/rozmowa/",
-  "seo": "Umów 30 minut rozmowy | Mateusz Przetocki"
+  "seo": "Umów 15 minut rozmowy | Mateusz Przetocki"
  },
  "wycena": {
   "tytul": "Wycena strony",
@@ -172,6 +175,7 @@
   "rodzic": null,
   "opis": "Ankieta w 5 minut, propozycja w 48 h, umowa i zadatek, szkic w 5 dni roboczych, odbiór i 30 dni wsparcia. Twojego czasu potrzebuję ok. 1 h. Strony od 1 200 zł.",
   "url": "/jak-pracuje/",
+  "status": "draft",
   "seo": "Jak pracuję: od ankiety do startu | Mateusz Przetocki"
  },
  "pytania": {
@@ -180,6 +184,7 @@
   "rodzic": null,
   "opis": "Odpowiedzi na 12 pytań przed zamówieniem: koszty w kolejnych latach, domena, poprawki, RODO i kalendarz. Stałe ceny, strony od 1 200 zł.",
   "url": "/pytania/",
+  "status": "draft",
   "seo": "Pytania o stronę z kalendarzem | Mateusz Przetocki"
  },
  "oMnie": {
@@ -188,6 +193,7 @@
   "rodzic": null,
   "opis": "Robię strony wizytówki dla specjalistów, którzy umawiają konsultacje. Wszystko ustalamy na piśmie, a domena i strona są Twoje. Od 1 200 zł.",
   "url": "/o-mnie/",
+  "status": "draft",
   "seo": "Kim jestem i jak pracuję | Mateusz Przetocki"
  }
 }
