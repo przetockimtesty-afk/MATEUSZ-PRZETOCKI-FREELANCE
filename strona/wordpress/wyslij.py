@@ -12,6 +12,7 @@ Użycie (z katalogu głównego repozytorium):
   python3 strona/wordpress/wyslij.py strony     # tylko jeden etap: media|fonty|style|strony|menu|czesci|ustawienia|seo
   ... --nadpisz                                 # świadomie nadpisuje zmiany zrobione w WordPressie
   python3 strona/wordpress/wyslij.py seo --tylko=glowna,oferta   # SEO tylko dla wybranych stron (pilotaż)
+  python3 strona/wordpress/wyslij.py strony --tylko=nowaGlowna   # tylko wybrane strony (reszty nie sprawdza i nie rusza)
 """
 import hashlib
 import html
@@ -186,7 +187,7 @@ def style():
 
 
 # nowe strony na końcu, żeby nie przesuwać menu_order (i nie nadpisywać) pozostałych
-KOLEJNOSC = ["glowna", "oferta", "realizacje", "demo", "kontakt", "polityka", "regulamin", "dlaKogo", "doradcy", "biura", "terapeuci", "jakPracuje", "pytania", "oMnie", "rozmowa", "cookies", "wycena", "materialy", "ustawieniaKalendarza", "uwagiDoSzkicu", "odbiorStrony", "po30Dniach"]
+KOLEJNOSC = ["glowna", "oferta", "realizacje", "demo", "kontakt", "polityka", "regulamin", "dlaKogo", "doradcy", "biura", "terapeuci", "jakPracuje", "pytania", "oMnie", "rozmowa", "cookies", "wycena", "materialy", "ustawieniaKalendarza", "uwagiDoSzkicu", "odbiorStrony", "po30Dniach", "nowaGlowna"]
 POLA_STRONY = ["title", "slug", "status", "content", "excerpt", "template", "comment_status", "ping_status", "menu_order", "parent"]
 
 
@@ -194,17 +195,22 @@ def strony():
     print("Strony")
     zbuduj()
     meta = json.loads((BUILD / "strony.json").read_text(encoding="utf-8"))
-    sprawdz([BUILD / "strony" / f"{k}.html" for k in KOLEJNOSC])
+    tylko = [a.split("=", 1)[1].split(",") for a in sys.argv if a.startswith("--tylko=")]  # np. --tylko=nowaGlowna
+    klucze = [k for k in KOLEJNOSC if not tylko or k in tylko[0]]
+    if not klucze:
+        sys.exit(f"--tylko: nie ma takich stron w KOLEJNOSC: {tylko[0]}")
+    sprawdz([BUILD / "strony" / f"{k}.html" for k in klucze])
     ids = wczytaj("id-stron.json", {})
+    wybrane_id = [ids[k] for k in klucze if k in ids]
     # najpierw sprawdzamy wszystkie strony, żeby nie przerwać w połowie zapisu
     obecne = {}
-    if ids:
-        obecne = {s["id"]: s for s in zapytaj(f"wp/v2/pages?include={','.join(map(str, ids.values()))}&status=publish,draft,pending,future,private"
+    if wybrane_id:
+        obecne = {s["id"]: s for s in zapytaj(f"wp/v2/pages?include={','.join(map(str, wybrane_id))}&status=publish,draft,pending,future,private"
                                              f"&per_page=100&context=edit&_fields=id,{','.join(POLA_STRONY)}")}
         for pid, s in obecne.items():
             pilnuj(f"pages-{pid}", s, POLA_STRONY)
     # rodzice przed dziećmi
-    for klucz in sorted(KOLEJNOSC, key=lambda k: 1 if meta[k]["rodzic"] else 0):
+    for klucz in sorted(klucze, key=lambda k: 1 if meta[k]["rodzic"] else 0):
         m = meta[klucz]
         tresc = (BUILD / "strony" / f"{klucz}.html").read_text(encoding="utf-8")
         problemy = wp.lint_tresc(tresc)

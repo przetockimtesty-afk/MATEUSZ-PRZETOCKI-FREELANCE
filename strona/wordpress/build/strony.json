@@ -7,6 +7,15 @@
   "url": "/",
   "seo": "Strony z kalendarzem konsultacji | Mateusz Przetocki"
  },
+ "nowaGlowna": {
+  "tytul": "Podgląd nowej strony głównej",
+  "slug": "podglad-nowej-glownej",
+  "rodzic": null,
+  "opis": "Podgląd nowej strony głównej do akceptacji: strona z kalendarzem dla specjalistów, rachunek, koszty, pakiety i bezpieczeństwo.",
+  "url": "/podglad-nowej-glownej/",
+  "seo": "Podgląd nowej strony głównej | Mateusz Przetocki",
+  "ukryta": true
+ },
  "oferta": {
   "tytul": "Pakiety i ceny",
   "slug": "oferta",

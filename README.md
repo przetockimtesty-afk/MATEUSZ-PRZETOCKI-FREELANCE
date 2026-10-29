@@ -58,7 +58,7 @@ stron z WordPressa.
 
 | Co | GitHub | claude.ai | Dysk Google |
 |---|---|---|---|
-| Strona mateuszprzetocki.pl (WordPress: 21 opublikowanych stron, w tym `/wycena/` i 5 formularzy dla klientów tylko z linku od 26.10; szkic: demo; indeksowanie włączone) | źródło `strona/wordpress/`, kopie `backups/` (bez wyrenderowanego HTML) | projekt w Claude Design to wzór | — |
+| Strona mateuszprzetocki.pl (WordPress: 22 opublikowane strony, w tym `/wycena/`, 5 formularzy dla klientów tylko z linku od 26.10 i strona testowa nowej głównej od 29.10 (id 192, noindex); szkic: demo; indeksowanie włączone) | źródło `strona/wordpress/`, kopie `backups/` (bez wyrenderowanego HTML) | projekt w Claude Design to wzór | — |
 | Dane kontaktowe na stronie (e-mail, adres) | nie, z zasady; tylko ID wzorców w `strona/wordpress/wzorce.json` | — | — |
 | Film z kalendarza na „Realizacjach” (media 143, okładka 144) | nie: jest na nim zdjęcie Mateusza | — | — |
 | Zdjęcia Mateusza (na stronie: media 101–104 w WordPressie) | nie, z zasady | — | oryginały, 3 pliki WebP i ich wersje PNG |
@@ -74,7 +74,8 @@ stron z WordPressa.
 | Prezentacja „Jak przebiega współpraca” (slajd 3 poprawiony 28.10) | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA, wersja 7 | — (PDF do umowy eksportuje Mateusz, po 28.10 od nowa) |
 | Plan zmian strony i oferty (propozycja z 28.10, decyzje Mateusza z 28.10 na górze) | `strona/plan-zmian-2026-10-28.html` | — | Dokument Google „Plan · strona i oferta: co zmienić (propozycja z 28.10)”, ta sama treść |
 | Plan nowej strony: mapa i sekcje (wersja końcowa z 29.10) | `strona/plan-strony-2026-10-29.html` | — | Dokument Google „Plan · nowa strona: mapa i sekcje”, ta sama treść |
-| Teksty nowej strony głównej (szkic z 29.10 do akceptacji, z tabelą kosztów) | `strona/teksty-glownej-2026-10-29.html` | — | Dokument Google „Plan · teksty strony głównej”, ta sama treść |
+| Strona testowa nowej głównej: mateuszprzetocki.pl/podglad-nowej-glownej/ (noindex, tylko z linku) | `nowaGlowna` w `strona/wordpress/zbuduj.js`, kopie `backups/pages-192-*` | — | link w dokumentach z planem strony i tekstami |
+| Teksty nowej strony głównej (wersja 2 z 29.10 do akceptacji: 11 sekcji, scenariusz filmu, źródła liczb) | `strona/teksty-glownej-2026-10-29.html` | — | Dokument Google „Plan · teksty strony głównej”, ta sama treść |
 | Plan sprzedaży: od pierwszej wiadomości do umowy (propozycja z 28.10, zastępuje sekcje 11 i 16 drogowskazu) | `firma/plan-sprzedazy-2026-10-28.html` | — | Dokument Google „Plan · sprzedaż: od pierwszej wiadomości do umowy”, ta sama treść |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
 | Scenariusze filmów dla klientów | playlista 1 „Na start” (7 filmów z tekstem lektora, od 28.10): `firma/filmy/na-start.html`; playlisty 2 i 3: `firma/filmy/scenariusze.md` | stara wersja z 26.10 w zakładce „Scenariusze filmów” rozpiski | Dokument Google „Scenariusze · filmy „Na start” dla klienta” (28.10), ta sama treść co `na-start.html` |

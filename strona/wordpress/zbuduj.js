@@ -156,14 +156,14 @@ const etykiety = (lista_, ton) => wiersz(lista_.map((t) => etykieta(t, ton)), { 
 const kartaBranzy = ({ nr, kategoria, tytul, tekst, tagi, link, url }) => grupa([
 	nad(`${nr} · ${kategoria}`, { klasa: 'mp-bez-kropki' }), h3(tytul), p(tekst), etykiety(tagi), strzalka(link, url),
 ], { tag: 'article', klasa: 'is-style-karta-branza' });
-function pakiet({ nazwa, cena, dla, plus, punkty, polecany, tekstPrzycisku = 'Wyceń stronę w&nbsp;5&nbsp;minut' }) {
+function pakiet({ nazwa, cena, waluta = 'zł', dla, plus, punkty, polecany, tekstPrzycisku = 'Wyceń stronę w&nbsp;5&nbsp;minut', url = ANKIETA }) {
 	return grupa([
 		polecany ? etykieta('Polecam', 'czarna') : null,
 		h3(nazwa),
-		wiersz([p(cena), p('zł')], { klasa: 'mp-cena' }),
+		wiersz([p(cena), p(waluta)], { klasa: 'mp-cena' }),
 		dla ? p(dla, { klasa: 'mp-dla' }) : null,
 		lista([...(plus ? [{ t: 'Wszystko z&nbsp;poprzedniego pakietu, plus:', klasa: 'mp-plus' }] : []), ...punkty], { klasa: 'is-style-lista-pakiet' }),
-		przyciski([przycisk(tekstPrzycisku, ANKIETA, { obrys: !polecany, strzalka: !!polecany })]),
+		przyciski([przycisk(tekstPrzycisku, url, { obrys: !polecany, strzalka: !!polecany })]),
 	], { tag: 'article', klasa: polecany ? 'is-style-pakiet-polecany' : 'is-style-pakiet', gap: '0' });
 }
 const krok = (nr, tytul, tekst) => grupa([p(String(nr), { klasa: 'is-style-cyfra' }), h3(tytul), p(tekst)], { klasa: 'mp-krok', gap: '0' });
@@ -174,8 +174,8 @@ function cta(tytul, tekst, o = {}) {
 		h2(tytul),
 		p(tekst),
 		przyciski([
-			przycisk(o.glowny || 'Wyceń stronę w&nbsp;5&nbsp;minut', ANKIETA, { strzalka: true }),
-			przycisk(o.drugi || 'Wolisz porozmawiać? Umów 30&nbsp;minut', ROZMOWA, { obrys: true }),
+			przycisk(o.glowny || 'Wyceń stronę w&nbsp;5&nbsp;minut', o.glownyUrl || ANKIETA, { strzalka: true }),
+			przycisk(o.drugi || 'Wolisz porozmawiać? Umów 30&nbsp;minut', o.drugiUrl || ROZMOWA, { obrys: true }),
 		], { srodek: true }),
 	], { klasa: 'is-style-cta is-style-ciemna', tlo: 'czern', tekst: 'krem', gap: '20px' });
 }
@@ -392,6 +392,166 @@ strona('glowna', { tytul: 'Strona główna', slug: 'strona-glowna', opis: 'Stron
 		]),
 	], { id: 'pytania' }),
 	sekcja([cta(...STD_CTA)], { id: 'wycena', gora: '0' }),
+]);
+
+// Podgląd nowej strony głównej (plan z 29.10, teksty: strona/teksty-glownej-2026-10-29.html). Strona testowa:
+// bez indeksowania, poza menu i mapą strony, tylko z linku. Po akceptacji Mateusza te sekcje zastąpią główną,
+// a nagłówek, stopka i pasek na telefonie dostaną przycisk „Umów 15 minut”.
+const UMOW = 'Umów 15&nbsp;minut na Google Meet';
+const przyciskUmow = (tekst = UMOW) => przyciski([przycisk(tekst, ROZMOWA, { strzalka: true })]);
+const scena = (zawod, kiedy, tekst) => karta([etykieta(zawod, 'piasek'), h3(kiedy), p(tekst)]);
+const badanie = (liczba, opis, zrodlo, ok) => karta([
+	wiersz([ok ? p(ok, { klasa: 'mp-ok' }) : null, p(liczba, { klasa: 'is-style-liczba' })], { klasa: 'mp-liczba', nowrap: true }),
+	p(opis, { klasa: 'mp-opis-liczby' }),
+	p(`Źródło: ${zrodlo}`, { klasa: 'mp-zrodlo' }),
+], { klasa: 'mp-karta-liczba' });
+const strata = (zawod, kwota, jednostka, tekst) => karta([etykieta(zawod, 'piasek'), wiersz([p(kwota), p(jednostka)], { klasa: 'mp-cena' }), p(tekst)]);
+const koszt = ({ rodzaj, ton, nazwa, trzyLata, rok, co, koniec, nasz }) => karta([
+	etykieta(rodzaj, ton), h3(nazwa),
+	szary('Przez 3&nbsp;lata:'),
+	wiersz([p(trzyLata), p('zł')], { klasa: 'mp-cena' }),
+	p(`Przez rok: ${rok}. ${co}`),
+	p(koniec, { kolor: nasz ? undefined : 'grafit' }),
+], { klasa: nasz ? 'mp-sciezka mp-sciezka-dobra' : undefined });
+const PAKIET_PODGLAD = { waluta: 'zł netto +&nbsp;VAT', url: ROZMOWA, tekstPrzycisku: 'Umów 15&nbsp;minut' };
+strona('nowaGlowna', { tytul: 'Podgląd nowej strony głównej', slug: 'podglad-nowej-glownej', ukryta: true, opis: 'Podgląd nowej strony głównej do akceptacji: strona z kalendarzem dla specjalistów, rachunek, koszty, pakiety i bezpieczeństwo.' }, [
+	// Klasa mp-ank chowa na telefonie stary pasek „Wyceń stronę” ze stopki (reguła body:has(.mp-ank) w marka.css).
+	sekcja([
+		kolumny([
+			['58%', [
+				nad('Strona z&nbsp;kalendarzem dla specjalistów, którzy umawiają spotkania'),
+				h1('Klienci umawiają się <em>sami.</em><br>Nawet wieczorem.'),
+				wstep('Gdy jesteś na spotkaniu, telefon dzwoni na próżno, a&nbsp;klient umawia się u&nbsp;tego, kto odpowie pierwszy. Twoja nowa strona odpowiada za Ciebie: pokazuje wolne terminy, zadaje pytania przed spotkaniem i&nbsp;wpisuje wizytę do Twojego Kalendarza Google.'),
+				lista(['od 1&nbsp;800&nbsp;zł netto +&nbsp;VAT, jednorazowo', 'szkic w&nbsp;5&nbsp;dni roboczych', 'Twoja część: ok.&nbsp;1&nbsp;godziny'], { klasa: 'is-style-lista-kropki' }),
+				przyciski([przycisk(UMOW, ROZMOWA, { strzalka: true }), przycisk('Zobacz, jak to działa', '#jak-to-dziala', { obrys: true })]),
+				podpis('Umówisz się ze mną tym samym kalendarzem, który dostaną Twoi klienci.'),
+				wiersz([obraz('mateusz-przetocki-twarz', { alt: '' }), p('Mateusz Przetocki, Kraków. Odpowiadam osobiście.')], { klasa: 'mp-osoba', nowrap: true }),
+			], { klasa: 'mp-hero' }],
+			['42%', [obraz('telefon-rezerwacja-powiadomienie', { szer: '336px', wyrownaj: 'center', klasa: 'mp-telefon-hero' })]],
+		], { pion: 'center', gap: '48px' }),
+	], { id: 'start', klasa: 'mp-ank', gora: 'clamp(28px, 3.9vw, 56px)', dol: 'clamp(64px, 6.7vw, 96px)' }),
+	zaufanie([['shield-check', 'Strona i&nbsp;domena są Twoje'], ['circle-check', '0&nbsp;zł abonamentu'], ['receipt', 'Płacisz po akceptacji, przez Useme'], ['life-buoy', '30&nbsp;dni pomocy po starcie']]),
+	sekcja([
+		naglowekSekcji('Brzmi znajomo?', 'Klient dzwoni, a&nbsp;Ty <em>nie możesz</em> odebrać', 'Oddzwaniasz, gdy kończysz. Tyle że klient umówił się już u&nbsp;kogoś, kto odpowiedział szybciej. Tak to wygląda w&nbsp;trzech zawodach:'),
+		siatka([
+			scena('Doradca kredytowy', 'Sobota, 19:30', 'Para po obejrzeniu mieszkania szuka doradcy i&nbsp;dzwoni do trzech. Jesteś na spotkaniu z&nbsp;innym klientem. Kredyt poprowadzi ten, kto odebrał.'),
+			scena('Psycholog', 'Wtorek, 22:10', 'Ktoś pierwszy raz zbiera się, żeby poszukać pomocy. Do gabinetu nie zadzwoni, a&nbsp;gabinet obok ma kalendarz online. Umawia się tam w&nbsp;dwie minuty.'),
+			scena('Biuro rachunkowe', 'Marzec, 15:00', 'W&nbsp;sezonie PIT telefon dzwoni co kwadrans. Nowy klient trafia na zajęty numer i&nbsp;dzwoni do następnego biura z&nbsp;listy.'),
+		], { min: '280px' }),
+		wstep('<strong>Ile takich osób w&nbsp;tygodniu nie dodzwania się do Ciebie?</strong> Każda z&nbsp;nich to spotkanie, którego nie będzie.'),
+	], { id: 'problem', tlo: 'piasek' }),
+	sekcja([
+		naglowekSekcji('Liczą się minuty', 'Kto odpowie <em>pierwszy</em>, ten ma klienta', 'Zainteresowanie stygnie szybciej, niż się wydaje. Tak wynika z&nbsp;badań sprzedaży:'),
+		siatka([
+			badanie('21×', 'większa szansa na rozmowę, z&nbsp;której coś wynika, gdy odpowiesz w&nbsp;ciągu 5&nbsp;minut, a&nbsp;nie po pół godzinie.', 'Lead Response Management Study (J.&nbsp;Oldroyd, InsideSales.com)'),
+			badanie('60×', 'mniejsza szansa, gdy odezwiesz się dopiero po dobie, a&nbsp;nie w&nbsp;ciągu godziny.', '<a href="https://hbr.org/2011/03/the-short-life-of-online-sales-leads">Harvard Business Review</a>'),
+			badanie('30%', 'rezerwacji online w&nbsp;badaniu kliniki Mayo przypadło poza godzinami pracy.', '<a href="https://medinform.jmir.org/2021/3/e23450">JMIR Medical Informatics</a>', 'ok.'),
+		], { min: '280px', klasa: 'mp-plansza-czasu' }),
+		wstep('Kalendarz na Twojej stronie odpowiada od razu, o&nbsp;każdej porze. Klient umawia się, zanim zacznie szukać dalej.'),
+	], { id: 'czas-odpowiedzi' }),
+	sekcja([
+		naglowekSekcji('Rachunek', 'Ile kosztuje Cię <em>jeden</em> nieodebrany telefon', 'Policz na swoich liczbach. Kwoty niżej to przykłady.'),
+		siatka([
+			strata('Doradca kredytowy', '2&nbsp;000', 'zł', 'Przy kredycie na 400&nbsp;000&nbsp;zł nawet 0,5% prowizji to 2&nbsp;000&nbsp;zł, więcej niż strona z&nbsp;kalendarzem.'),
+			strata('Psycholog', '1&nbsp;500', 'zł', 'Nowy klient na 10&nbsp;sesji po 150&nbsp;zł. Prawie cała cena strony z&nbsp;jednej osoby.'),
+			strata('Biuro rachunkowe', '6&nbsp;000', 'zł rocznie', 'Klient na pełnej księgowości za 500&nbsp;zł miesięcznie, często na lata.'),
+		], { min: '280px' }),
+		karta([
+			wstep('Strona z&nbsp;kalendarzem kosztuje raz 1&nbsp;800&nbsp;zł netto. Jeśli umówi się przez nią choć jeden klient, który inaczej poszedłby gdzie indziej, zwraca się przy pierwszym albo drugim takim kliencie.'),
+			przyciskUmow(),
+		], { styl: 'is-style-karta-przerywana', gap: '20px' }),
+	], { id: 'rachunek', tlo: 'piasek' }),
+	sekcja([
+		kolumny([
+			['55%', [
+				nad('Jak to działa'),
+				h2('Tak umawia się <em>Twój</em> klient'),
+				listaIkon([
+					['calendar-check', '<strong>Wybiera wolny termin.</strong> Widzi tylko godziny, które naprawdę masz wolne w&nbsp;Kalendarzu Google.'],
+					['clipboard-list', '<strong>Odpowiada na 2–3 pytania.</strong> Wiesz, z&nbsp;czym przyjdzie, a&nbsp;pierwsza rozmowa jest krótsza.'],
+					['mail', '<strong>Dostaje potwierdzenie i&nbsp;przypomnienie.</strong> Wizyta trafia do Twojego Kalendarza Google, z&nbsp;linkiem do Meet, gdy spotkanie jest online.'],
+				]),
+				szary('<strong>Co znika z&nbsp;Twojego dnia:</strong> telefony w&nbsp;trakcie spotkań, pięć SMS-ów, żeby ustalić termin, zapomniane wizyty i&nbsp;pierwsza rozmowa o&nbsp;tym, co klient mógł napisać wcześniej.'),
+				przyciskUmow('Sprawdź na sobie: umów 15&nbsp;minut'),
+			]],
+			['45%', [filmKalendarza()]],
+		], { pion: 'center' }),
+	], { id: 'jak-to-dziala' }),
+	sekcja([
+		naglowekSekcji('Koszty', 'Kalendarz na <em>własność</em> zamiast abonamentu', 'Aplikacje do rezerwacji kosztują co miesiąc, a&nbsp;gdy przestajesz płacić, kalendarz znika. Tu płacisz raz, a&nbsp;od drugiego roku tylko za domenę i&nbsp;hosting.'),
+		siatka([
+			koszt({ rodzaj: 'Abonament', ton: 'piasek', nazwa: 'Booksy Biz', trzyLata: '5&nbsp;220', rok: '1&nbsp;740&nbsp;zł', co: 'Kalendarz w&nbsp;aplikacji i&nbsp;profil w&nbsp;Booksy.', koniec: 'Gdy przestajesz płacić, kalendarz i&nbsp;profil przestają działać.' }),
+			koszt({ rodzaj: 'Abonament i&nbsp;strona', ton: 'piasek', nazwa: 'Calendly i&nbsp;osobna strona', trzyLata: 'ok. 3&nbsp;550', rok: 'ok.&nbsp;1&nbsp;800&nbsp;zł', co: 'Sam kalendarz, stronę trzeba zrobić osobno.', koniec: 'Gdy przestajesz płacić, link do rezerwacji przestaje działać.' }),
+			koszt({ rodzaj: 'Na własność', ton: 'czarna', nazwa: 'Strona z&nbsp;kalendarzem', trzyLata: 'ok. 2&nbsp;600', rok: 'ok.&nbsp;1&nbsp;870&nbsp;zł', co: 'Strona, kalendarz, pytania przed spotkaniem i&nbsp;przypomnienia.', koniec: '<strong>Wszystko zostaje u&nbsp;Ciebie.</strong>', nasz: true }),
+		], { min: '280px' }),
+		karta([
+			wiersz([p('o&nbsp;połowę'), p('mniej niż za Booksy przez 3&nbsp;lata')], { klasa: 'mp-cena' }),
+			p('Różnica, ok.&nbsp;2&nbsp;600&nbsp;zł, opłaci domenę i&nbsp;hosting na kolejne 7&nbsp;lat.'),
+		], { gap: '12px' }),
+		p('Ceny netto, sprawdzone 29.10.2026 na stronach dostawców i&nbsp;w&nbsp;serwisach porównawczych. Booksy Biz: 145&nbsp;zł miesięcznie za 1&nbsp;osobę. Calendly Standard: 12&nbsp;USD miesięcznie przy płatności co miesiąc, kurs ok.&nbsp;3,7&nbsp;zł; osobna strona liczona jak pakiet Wizytówka (1&nbsp;200&nbsp;zł) z&nbsp;domeną i&nbsp;hostingiem. Strona z&nbsp;kalendarzem: pakiet za 1&nbsp;800&nbsp;zł, domena i&nbsp;hosting w&nbsp;LH.pl ok.&nbsp;55–75&nbsp;zł w&nbsp;pierwszym roku, potem ok.&nbsp;320–370&nbsp;zł rocznie. Booksy daje też dostęp do klientów z&nbsp;aplikacji; jeśli z&nbsp;niego korzystasz, strona może działać obok.', { klasa: 'mp-przypis-tekst' }),
+	], { id: 'koszty', tlo: 'piasek' }),
+	sekcja([
+		naglowekSekcji('Pakiety i&nbsp;ceny', 'Wybierz zakres. Cena jest <em>stała</em>.'),
+		grupa([
+			siatka([
+				pakiet({ ...PAKIET_PODGLAD, nazwa: 'Wizytówka', cena: '1&nbsp;200', dla: 'Na start: klient Cię znajdzie i&nbsp;napisze. Kalendarz możesz dodać później.', punkty: PUNKTY.p1 }),
+				pakiet({ ...PAKIET_PODGLAD, nazwa: 'Wizytówka, która umawia', cena: '1&nbsp;800', dla: 'Gdy chcesz, żeby klienci umawiali się sami.', plus: true, polecany: true, punkty: ['Kalendarz połączony z&nbsp;Twoim Kalendarzem Google', 'Pytania przed spotkaniem i&nbsp;przypomnienia e-mailem', 'Odpowiedzi na najczęstsze pytania i&nbsp;miejsce na opinie', 'Profil Firmy w&nbsp;Google, gdy firma spełnia wytyczne'] }),
+				pakiet({ ...PAKIET_PODGLAD, nazwa: 'Pełny start', cena: '2&nbsp;500', dla: 'Gdy chcesz od razu zbierać opinie i&nbsp;kontakty.', plus: true, punkty: ['Film powitalny 60&nbsp;s i&nbsp;poradnik PDF dla klientów', 'Prośby o&nbsp;opinie: karta z&nbsp;kodem QR i&nbsp;gotowe wiadomości do wysłania z&nbsp;Twojego telefonu'] }),
+			], { min: '300px', klasa: 'mp-pakiety' }),
+			p('Ceny startowe obowiązują dla pierwszych 3&nbsp;firm, w&nbsp;zamian za opinię po starcie. Twoja część to ok.&nbsp;1&nbsp;godziny: krótki formularz i&nbsp;kilka kliknięć, każde pokazane na filmie. Teksty piszę ja. Haseł nie wysyłasz.', { klasa: 'mp-przypis-tekst' }),
+			karta([wiersz([
+				ikona('calendar-check'),
+				grupa([h2('Masz już stronę?', { klasa: 'mp-h2-maly' }), szary('Jeśli działa na WordPressie, dodam do niej sam kalendarz, w&nbsp;jej stylu. Cena netto +&nbsp;VAT.')], { gap: '8px', klasa: 'mp-rozciagnij' }),
+				grupa([wiersz([p('od'), p('800'), p('zł')], { klasa: 'mp-od', nowrap: true }), strzalka('Umów 15&nbsp;minut', ROZMOWA)], { gap: '12px' }),
+			], { gap: '24px 48px', klasa: 'mp-masz-strone' })]),
+		], { gap: '30px' }),
+	], { id: 'pakiety' }),
+	sekcja([
+		naglowekSekcji('Bezpieczeństwo', 'Płacisz za to, co <em>sprawdzisz</em> i&nbsp;zaakceptujesz', 'Oddajesz stronę w&nbsp;obce ręce, więc każda złotówka czeka, aż zobaczysz efekt.'),
+		siatka([
+			kartaKorzysci('receipt', 'Płacisz po akceptacji', 'Dwie części po 50% przez Useme. Każda czeka w&nbsp;Useme i&nbsp;trafia do mnie dopiero, gdy zaakceptujesz szkic, a&nbsp;potem gotową stronę. Stała cena na piśmie, szkic w&nbsp;5&nbsp;dni roboczych, 2&nbsp;rundy poprawek i&nbsp;faktura VAT.'),
+			kartaKorzysci('shield-check', 'Wszystko jest Twoje', 'Domena, hosting, strona i&nbsp;dane klientów są na Ciebie. Haseł nie wysyłasz, tylko dajesz uprawnienia, które cofasz jednym kliknięciem. Stronę może przejąć każdy inny wykonawca.'),
+			kartaKorzysci('life-buoy', 'Pomoc po starcie', '30&nbsp;dni pomocy: odpowiadam na pytania i&nbsp;poprawiam drobiazgi. Potem drobne zmiany na zlecenie, z&nbsp;ceną podaną przed pracą.'),
+		], { min: '280px' }),
+		p('<strong>Dla gabinetów:</strong> dane z&nbsp;rezerwacji zostają na Twoim hostingu i&nbsp;w&nbsp;Twoim Kalendarzu Google, a&nbsp;pytania przed spotkaniem ustawiamy tak, żeby nie zbierać danych o&nbsp;zdrowiu.', { klasa: 'mp-przypis-tekst' }),
+	], { id: 'bezpieczenstwo', tlo: 'piasek' }),
+	sekcja([
+		naglowekSekcji('Współpraca', 'Od rozmowy do działającej strony w&nbsp;<em>4</em> krokach'),
+		grupa([
+			siatka([
+				krok(1, 'Rozmowa 15&nbsp;minut', 'Na Google Meet. Pytam, jak dziś umawiają się Twoi klienci, i&nbsp;pokazuję kalendarz. Bez zobowiązań.'),
+				krok(2, 'Propozycja do 24&nbsp;h', 'Na piśmie: zakres, stała cena i&nbsp;termin.'),
+				krok(3, 'Start i&nbsp;szkic w&nbsp;5&nbsp;dni', 'Umowa i&nbsp;pierwsza część płatności przez Useme, potem krótki formularz z&nbsp;materiałami. Szkic dostajesz w&nbsp;5&nbsp;dni roboczych.'),
+				krok(4, 'Odbiór i&nbsp;30&nbsp;dni pomocy', 'Sprawdzasz stronę i&nbsp;zgłaszasz poprawki, płacisz drugą część, a&nbsp;ja publikuję stronę.'),
+			], { gap: { top: '0', left: '28px' } }),
+			wiersz([p('15&nbsp;minut rozmowy · propozycja do 24&nbsp;h · płatność 50/50 przez Useme'), strzalka('Umów 15&nbsp;minut', ROZMOWA)], { klasa: 'mp-przypis-ciemny', justify: 'space-between' }),
+		], { gap: '22px' }),
+	], { id: 'wspolpraca', ciemna: true }),
+	sekcja([
+		kolumny([
+			['50%', [grupa(zdjecia('mateusz-przetocki-zalozone-rece'), { klasa: 'mp-zdjecia' })]],
+			['50%', tekstSekcji('Kto zrobi Twoją stronę', 'Strony robię <em>sam</em>, od rozmowy do startu', [
+				p('Nazywam się Mateusz Przetocki. Przez 5&nbsp;lat codziennie rozmawiałem z&nbsp;klientami przy sprzedaży. Wiem, o&nbsp;co ludzie pytają, zanim się zdecydują, i&nbsp;wiem, że rezygnują, gdy nikt nie odpowiada.'),
+				p('Strony buduję na WordPressie i&nbsp;każdą testuję ręcznie: formularze, wersję na telefon i&nbsp;szybkość. Na tej stronie działa ten sam kalendarz, który dostaniesz. Umów się na 15&nbsp;minut i&nbsp;sprawdź go na sobie.'),
+				etykiety(ZASADY.map(([t]) => t), 'obrys'),
+				strzalka('Umów 15&nbsp;minut', ROZMOWA),
+			])],
+		], { pion: 'center' }),
+	], { id: 'o-mnie' }),
+	sekcja([
+		kolumny([
+			['40%', tekstSekcji('Pytania', 'Zanim <em>zapytasz</em>', [szary('Nie ma tu Twojego pytania? Zadaj je na rozmowie: 15&nbsp;minut na Google Meet.'), strzalka('Umów 15&nbsp;minut', ROZMOWA)])],
+			['60%', [pytania([
+				['Ile kosztuje utrzymanie?', 'Domena i&nbsp;hosting na Twoje dane: ok.&nbsp;55–75&nbsp;zł netto w&nbsp;pierwszym roku, potem ok.&nbsp;320–370&nbsp;zł netto rocznie. Kalendarz nie ma abonamentu.', true],
+				['Czyje to wszystko jest?', 'Twoje: domena, hosting, strona i&nbsp;dane Twoich klientów. Prawa do strony przechodzą na Ciebie po zapłacie.'],
+				['Ile to trwa?', 'Szkic w&nbsp;5&nbsp;dni roboczych od kompletu materiałów, publikacja po Twojej akceptacji. Zwykle całość zajmuje ok.&nbsp;2&nbsp;tygodnie.'],
+				['Mam już stronę. Co wtedy?', 'Jeśli działa na WordPressie, dodam do niej sam kalendarz, w&nbsp;jej stylu. Od 800&nbsp;zł netto +&nbsp;VAT.'],
+				['Co po 30&nbsp;dniach?', 'Strona działa dalej, bez abonamentu. Drobne zmiany robię na zlecenie, z&nbsp;ceną podaną przed pracą. Wszystko jest na Ciebie, więc stronę może przejąć każdy inny wykonawca.'],
+				['Czego ta strona nie zrobi?', 'Nie sprowadzi ruchu sama z&nbsp;siebie. Klienci muszą o&nbsp;niej usłyszeć: z&nbsp;polecenia, z&nbsp;Profilu Firmy w&nbsp;Google, z&nbsp;Twoich mediów. Strona sprawia, że ci, którzy już Cię szukają, umawiają się, zamiast odpadać.'],
+			])]],
+		]),
+	], { id: 'pytania', tlo: 'piasek' }),
+	sekcja([cta('Sprawdź na sobie, jak to <em>działa</em>', 'Umów 15&nbsp;minut. Umówisz się tym samym kalendarzem, który dostaną Twoi klienci, a&nbsp;po rozmowie będziesz wiedzieć, czy to ma sens w&nbsp;Twojej pracy.', { glowny: UMOW, glownyUrl: ROZMOWA, drugi: 'Wolisz na piśmie? Odpowiedz na kilka pytań', drugiUrl: ANKIETA })], { id: 'kontakt', gora: '0' }),
 ]);
 
 // Oferta
