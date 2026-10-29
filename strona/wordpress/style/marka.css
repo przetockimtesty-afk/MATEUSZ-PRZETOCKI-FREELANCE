@@ -510,6 +510,16 @@ body .wp-site-blocks > * { margin-block-start: 0; }
 	body:has(.mp-rez) .mp-stopka, body:has(.mp-ank) .mp-stopka { padding-bottom: 40px !important; }
 	/* strony z ankietą: na telefonie ankieta zaczyna się zaraz pod nagłówkiem i wstępem */
 	.mp-ankieta-uklad .mp-hero-tekst .is-style-lista-znaczniki, .mp-ankieta-uklad .mp-hero-tekst .is-style-podpis { display: none; }
+	/* /rozmowa/: zwięzły wstęp, żeby kalendarz był na pierwszym ekranie (prośba Mateusza z 29.10): bez okruszków, mniejsze pismo, punkty bliżej siebie */
+	.wp-block-group:has(> .mp-rozmowa) > .is-style-okruszki { display: none; }
+	.wp-block-group:has(> .mp-rozmowa) > .mp-rozmowa { margin-block-start: 0; }
+	.mp-rozmowa.wp-block-columns { gap: 28px !important; }
+	.mp-rozmowa .mp-hero-tekst > * + * { margin-block-start: 14px; }
+	.mp-rozmowa h1 { font-size: 34px; line-height: 1.08; }
+	.mp-rozmowa .is-style-wstep { font-size: 16px; line-height: 1.5; }
+	.mp-rozmowa .is-style-lista-znaczniki > li { padding: 5px 0 5px 28px; border-bottom: 0; font-size: 15.5px; line-height: 1.45; }
+	.mp-rozmowa .is-style-lista-znaczniki > li::before { top: 7px; width: 18px; height: 18px; }
+	.mp-rozmowa .mp-hero-tekst > .is-style-podpis { margin-block-start: 10px; font-size: 13.5px; }
 }
 
 @media (max-width: 781px) and (prefers-reduced-motion: no-preference) {
