@@ -40,7 +40,7 @@ const ANKIETY = require('./ankiety');
 const ANKIETA = ANKIETY_WLACZONE ? '/wycena/' : '#ankieta';
 const ROZMOWA = U.rozmowa;
 // sekcje głównej, do których prowadzą menu, stopka i przekierowania starych podstron
-const G = { jakToDziala: '/#jak-to-dziala', pakiety: '/#pakiety', wspolpraca: '/#wspolpraca', oMnie: '/#o-mnie', pytania: '/#pytania', kontakt: '/#kontakt' };
+const G = { dlaKogo: '/#dla-kogo', jakToDziala: '/#jak-to-dziala', pakiety: '/#pakiety', bezpieczenstwo: '/#bezpieczenstwo', wspolpraca: '/#wspolpraca', oMnie: '/#o-mnie', pytania: '/#pytania', kontakt: '/#kontakt' };
 // Demo A (strona ekspertki kredytowej) na razie nie jest pokazywane (decyzja Mateusza z 23.10): strona demo jest szkicem,
 // a zamiast przycisków „Zobacz demo” są „Umów 15 minut” i film z kalendarza. Sekcje zostają tu, gotowe do powrotu.
 const DEMO_WLACZONE = false;
@@ -1073,10 +1073,11 @@ const stopkaStrony = [
 	grupa([
 		grupa([
 			kolumny([
-				['34%', [blok('core/site-title', { level: 0 }), p('Strony z&nbsp;kalendarzem, przez które klienci umawiają się sami.'), przyciski([przycisk('Umów 15&nbsp;minut', ROZMOWA, { maly: true })])], { klasa: 'mp-stopka-wstep' }],
-				['22%', [h2('Pakiety'), linkiStopki([['Wizytówka · 1&nbsp;200&nbsp;zł netto', G.pakiety], ['Wizytówka, która umawia · 1&nbsp;800&nbsp;zł netto', G.pakiety], ['Pełny start · 2&nbsp;500&nbsp;zł netto', G.pakiety]])]],
-				['22%', [h2('Branże'), linkiStopki([['Doradcy kredytowi', U.doradcy], ['Biura rachunkowe', U.biura], ['Psycholodzy i&nbsp;terapeuci', U.terapeuci]])]],
-				['22%', [h2('Na skróty'), linkiStopki([['Jak to działa', G.jakToDziala], ['Realizacje', U.realizacje], ['Pytania', G.pytania], ['Umów rozmowę', ROZMOWA], ['Wolisz na piśmie?', ANKIETA]])]],
+				// od 29.10: link do każdej strony z mapy strony (opisowe teksty linków), sekcje głównej jako kotwice
+				['34%', [blok('core/site-title', { level: 0 }), p('Strony z&nbsp;kalendarzem rezerwacji dla specjalistów, którzy umawiają spotkania z&nbsp;klientami. Kraków i&nbsp;cała Polska, rozmowy online.'), przyciski([przycisk('Umów 15&nbsp;minut', ROZMOWA, { maly: true })])], { klasa: 'mp-stopka-wstep' }],
+				['22%', [h2('Oferta'), linkiStopki([['Jak to działa', G.jakToDziala], ['Pakiety i&nbsp;ceny', G.pakiety], ['Bezpieczna płatność przez Useme', G.bezpieczenstwo], ['Pytania i&nbsp;odpowiedzi', G.pytania], ['Realizacje', U.realizacje]])]],
+				['22%', [h2('Dla kogo'), linkiStopki([['Strona dla doradcy kredytowego', U.doradcy], ['Strona dla biura rachunkowego', U.biura], ['Strona dla psychologa i&nbsp;terapeuty', U.terapeuci], ['Wszystkie zawody', U.dlaKogo]])]],
+				['22%', [h2('Kontakt'), linkiStopki([['Umów 15&nbsp;minut rozmowy', ROZMOWA], ['Wycena na piśmie', ANKIETA], ['O&nbsp;mnie', G.oMnie]])]],
 			], { klasa: 'mp-stopka-kolumny', gap: '40px' }),
 			wiersz([
 				wzorzec('stopka', p('Mateusz Przetocki · Kraków · kontakt@…')),

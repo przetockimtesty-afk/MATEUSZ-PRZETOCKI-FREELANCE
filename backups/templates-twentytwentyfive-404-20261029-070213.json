@@ -1,0 +1,25 @@
+{
+ "id": "twentytwentyfive//404",
+ "theme": "twentytwentyfive",
+ "content": {
+  "raw": "<!-- wp:template-part {\"slug\":\"header\",\"theme\":\"twentytwentyfive\",\"tagName\":\"header\"} /-->\n\n<!-- wp:group {\"tagName\":\"main\",\"style\":{\"spacing\":{\"margin\":{\"top\":\"0\"}}},\"layout\":{\"type\":\"constrained\"}} -->\n<main class=\"wp-block-group\" style=\"margin-top:0\"><!-- wp:group {\"tagName\":\"section\",\"align\":\"full\",\"style\":{\"spacing\":{\"padding\":{\"top\":\"clamp(56px, 6.7vw, 96px)\",\"bottom\":\"clamp(72px, 8.4vw, 120px)\"}}},\"layout\":{\"type\":\"constrained\"}} -->\n<section class=\"wp-block-group alignfull\" style=\"padding-top:clamp(56px, 6.7vw, 96px);padding-bottom:clamp(72px, 8.4vw, 120px)\"><!-- wp:group {\"align\":\"wide\",\"style\":{\"spacing\":{\"blockGap\":\"var:preset|spacing|50\"}}} -->\n<div class=\"wp-block-group alignwide\"><!-- wp:columns {\"verticalAlignment\":\"center\"} -->\n<div class=\"wp-block-columns are-vertically-aligned-center\"><!-- wp:column {\"width\":\"38%\"} -->\n<div class=\"wp-block-column\" style=\"flex-basis:38%\"><!-- wp:paragraph {\"className\":\"is-style-404\"} -->\n<p class=\"is-style-404\">404</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:column -->\n\n<!-- wp:column {\"width\":\"62%\"} -->\n<div class=\"wp-block-column\" style=\"flex-basis:62%\"><!-- wp:paragraph {\"className\":\"is-style-nadtytul\"} -->\n<p class=\"is-style-nadtytul\">Błąd 404</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:heading {\"level\":1} -->\n<h1 class=\"wp-block-heading\">Tej strony tu nie ma</h1>\n<!-- /wp:heading -->\n\n<!-- wp:paragraph -->\n<p>Link mógł być stary albo w adresie jest literówka. Zacznij od jednej z tych stron:</p>\n<!-- /wp:paragraph -->\n\n<!-- wp:list {\"className\":\"is-style-lista-linki\"} -->\n<ul class=\"wp-block-list is-style-lista-linki\"><!-- wp:list-item -->\n<li><a href=\"/\">Strona główna</a></li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li><a href=\"/#pakiety\">Pakiety i ceny</a></li>\n<!-- /wp:list-item -->\n\n<!-- wp:list-item -->\n<li><a href=\"/realizacje/\">Realizacje</a></li>\n<!-- /wp:list-item --></ul>\n<!-- /wp:list -->\n\n<!-- wp:group {\"style\":{\"spacing\":{\"blockGap\":\"12px 20px\"}},\"layout\":{\"type\":\"flex\"}} -->\n<div class=\"wp-block-group\"><!-- wp:buttons -->\n<div class=\"wp-block-buttons\"><!-- wp:button {\"className\":\"ze-strzalka\"} -->\n<div class=\"wp-block-button ze-strzalka\"><a class=\"wp-block-button__link wp-element-button\" href=\"/rozmowa/\">Umów 15 minut na Google Meet</a></div>\n<!-- /wp:button --></div>\n<!-- /wp:buttons -->\n\n<!-- wp:paragraph {\"className\":\"is-style-podpis\"} -->\n<p class=\"is-style-podpis\">Bez zobowiązań · odpowiadam osobiście</p>\n<!-- /wp:paragraph --></div>\n<!-- /wp:group --></div>\n<!-- /wp:column --></div>\n<!-- /wp:columns --></div>\n<!-- /wp:group --></section>\n<!-- /wp:group --></main>\n<!-- /wp:group -->\n\n<!-- wp:template-part {\"slug\":\"footer\",\"theme\":\"twentytwentyfive\",\"tagName\":\"footer\"} /-->",
+  "block_version": 1
+ },
+ "slug": "404",
+ "source": "custom",
+ "origin": "theme",
+ "type": "wp_template",
+ "description": "Wyświetla się, gdy odwiedzający trafia na nieistniejącą stronę, na przykład niedziałający lub błędnie wpisany adres URL.",
+ "title": {
+  "raw": "Strona: 404"
+ },
+ "status": "publish",
+ "wp_id": 57,
+ "has_theme_file": true,
+ "is_custom": false,
+ "author": 2,
+ "modified": "2026-10-29T07:34:43",
+ "date": "2026-10-19T18:33:07",
+ "author_text": "Twenty Twenty-Five",
+ "original_source": "theme"
+}
