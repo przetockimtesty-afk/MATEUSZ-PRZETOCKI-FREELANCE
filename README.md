@@ -74,6 +74,7 @@ stron z WordPressa.
 | Prezentacja „Jak przebiega współpraca” (slajd 3 poprawiony 28.10) | źródło `firma/prezentacje/wspolpraca/` | tak: https://claude.ai/artifact/YJJgiBYqYbL56kq6dz7bvA, wersja 7 | — (PDF do umowy eksportuje Mateusz, po 28.10 od nowa) |
 | Plan zmian strony i oferty (propozycja z 28.10, decyzje Mateusza z 28.10 na górze) | `strona/plan-zmian-2026-10-28.html` | — | Dokument Google „Plan · strona i oferta: co zmienić (propozycja z 28.10)”, ta sama treść |
 | Plan nowej strony: mapa i sekcje (wersja końcowa z 29.10) | `strona/plan-strony-2026-10-29.html` | — | Dokument Google „Plan · nowa strona: mapa i sekcje”, ta sama treść |
+| Teksty nowej strony głównej (szkic z 29.10 do akceptacji, z tabelą kosztów) | `strona/teksty-glownej-2026-10-29.html` | — | Dokument Google „Plan · teksty strony głównej”, ta sama treść |
 | Plan sprzedaży: od pierwszej wiadomości do umowy (propozycja z 28.10, zastępuje sekcje 11 i 16 drogowskazu) | `firma/plan-sprzedazy-2026-10-28.html` | — | Dokument Google „Plan · sprzedaż: od pierwszej wiadomości do umowy”, ta sama treść |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
 | Scenariusze filmów dla klientów | playlista 1 „Na start” (7 filmów z tekstem lektora, od 28.10): `firma/filmy/na-start.html`; playlisty 2 i 3: `firma/filmy/scenariusze.md` | stara wersja z 26.10 w zakładce „Scenariusze filmów” rozpiski | Dokument Google „Scenariusze · filmy „Na start” dla klienta” (28.10), ta sama treść co `na-start.html` |
