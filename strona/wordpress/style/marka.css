@@ -296,6 +296,18 @@ h1, h2 { text-wrap: balance; }
 .mp-dokument li { margin-bottom: 8px; }
 .mp-uwaga { color: var(--wp--preset--color--grafit); }
 .mp-grupa-pytan { scroll-margin-top: 104px; }
+/* Dla kogo na głównej: zawody w siatce (4 kolumny na komputerze, 2 na telefonie), bez kart, z kreską nad każdym */
+.mp-zawod { padding: 14px 0 18px; border-top: 1px solid var(--wp--preset--color--linia); }
+.mp-zawod > p { margin: 0; }
+.mp-zawod > p:first-child { font-size: 17px; line-height: 1.35; }
+.mp-zawod > .mp-zawod-co { font-size: 14.5px; line-height: 1.45; color: var(--wp--preset--color--grafit); }
+.mp-zawod-co a { color: var(--wp--preset--color--czern); text-underline-offset: 3px; }
+@media (max-width: 600px) {
+	.mp-zawody.wp-block-group { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; column-gap: 16px !important; }
+	.mp-zawod { padding: 12px 0 14px; }
+	.mp-zawod > p:first-child { font-size: 15.5px; }
+	.mp-zawod > .mp-zawod-co { font-size: 13.5px; }
+}
 /* sekcje głównej, do których prowadzą menu i stopka (/#pakiety itd.): nagłówek jest przyklejony, więc nie może zasłonić ich początku */
 .wp-block-post-content > [id] { scroll-margin-top: calc(var(--wp-admin--admin-bar--height, 0px) + 80px); }
 

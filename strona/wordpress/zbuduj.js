@@ -283,6 +283,22 @@ const porownanie = ({ etykieta: et, ton, tytul, punkty, nasz }) => karta([
 	etykieta(et, ton), h3(tytul),
 	listaIkon(punkty.map((t) => [nasz ? 'check' : 'x', t])),
 ], { klasa: nasz ? 'mp-sciezka mp-sciezka-dobra' : undefined, gap: '18px' });
+// Dla kogo (29.10, pomysł Mateusza): zawody, w których klient umawia spotkanie, i to, na co się umawia
+const ZAWODY = [
+	['Doradcy kredytowi', 'analiza zdolności kredytowej'],
+	['Firmy wykończeniowe', 'oględziny i&nbsp;wycena'],
+	['Trenerzy personalni', 'pierwszy trening'],
+	['Psycholodzy i&nbsp;terapeuci', 'pierwsza sesja, także online'],
+	['Pośrednicy nieruchomości', 'prezentacja mieszkania'],
+	['Adwokaci i&nbsp;radcy prawni', 'pierwsza konsultacja'],
+	['Biura rachunkowe', 'rozmowa o&nbsp;współpracy'],
+	['Fizjoterapeuci', 'pierwsza wizyta'],
+	['Dietetycy', 'konsultacja dietetyczna'],
+	['Agenci ubezpieczeniowi', 'przegląd polis'],
+	['Architekci wnętrz', 'spotkanie o&nbsp;projekcie'],
+	['Inny zawód?', `Jeśli umawiasz spotkania, <a href="${ROZMOWA}">zapytaj na rozmowie</a>`],
+];
+const zawod = (nazwa, co) => grupa([p(`<strong>${nazwa}</strong>`), p(co, { klasa: 'mp-zawod-co' })], { klasa: 'mp-zawod', gap: '2px' });
 const PAKIET_PODGLAD = { waluta: 'zł netto +&nbsp;VAT', url: ROZMOWA, tekstPrzycisku: 'Umów 15&nbsp;minut' };
 const sekcjeGlownej = () => [
 	sekcja([
@@ -300,6 +316,10 @@ const sekcjeGlownej = () => [
 		], { pion: 'center', gap: '48px' }),
 	], { id: 'start', gora: 'clamp(28px, 3.9vw, 56px)', dol: 'clamp(64px, 6.7vw, 96px)' }),
 	zaufanie([['shield-check', 'Strona i&nbsp;domena są Twoje'], ['circle-check', '0&nbsp;zł abonamentu'], ['receipt', 'Płacisz po akceptacji, przez Useme'], ['life-buoy', '30&nbsp;dni pomocy po starcie']]),
+	sekcja([
+		naglowekSekcji('Dla kogo', 'Dla każdego, kto umawia <em>spotkania</em> z&nbsp;klientami', 'Klient wybiera termin i&nbsp;odpowiada na kilka pytań. Pytania dopasowuję do zawodu: doradca pyta o&nbsp;kwotę i&nbsp;wkład własny, a&nbsp;firma wykończeniowa o&nbsp;metraż i&nbsp;zdjęcia.'),
+		siatka(ZAWODY.map(([z, co]) => zawod(z, co)), { min: '230px', gap: { top: '0', left: '28px' }, klasa: 'mp-zawody' }),
+	], { id: 'dla-kogo' }),
 	sekcja([
 		naglowekSekcji('Brzmi znajomo?', 'Klient dzwoni, a&nbsp;Ty <em>nie możesz</em> odebrać', 'Oddzwaniasz, gdy kończysz. Tyle że klient umówił się już u&nbsp;kogoś, kto odpowiedział szybciej. Tak to wygląda w&nbsp;trzech zawodach:'),
 		siatka([

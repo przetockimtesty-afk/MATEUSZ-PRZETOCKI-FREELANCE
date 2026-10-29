@@ -76,7 +76,7 @@ stron z WordPressa.
 | Plan zmian strony i oferty (propozycja z 28.10, decyzje Mateusza z 28.10 na górze) | `strona/plan-zmian-2026-10-28.html` | — | Dokument Google „Plan · strona i oferta: co zmienić (propozycja z 28.10)”, ta sama treść |
 | Plan nowej strony: mapa i sekcje (wersja końcowa z 29.10) | `strona/plan-strony-2026-10-29.html` | — | Dokument Google „Plan · nowa strona: mapa i sekcje”, ta sama treść |
 | Strona testowa nowej głównej (id 192, od 29.10 szkic: jej treść jest na głównej) | `nowaGlowna` w `strona/wordpress/zbuduj.js`, kopie `backups/pages-192-*` | — | — |
-| Teksty strony głównej (wersja z 29.10, opublikowana: 11 sekcji z „Abonament czy własność”, scenariusz filmu, źródła liczb, kwoty do rozmów) | `strona/teksty-glownej-2026-10-29.html` | — | Dokument Google „Plan · teksty strony głównej”, ta sama treść |
+| Teksty strony głównej (wersja z 29.10, opublikowana: 12 sekcji, w tym „Dla kogo” i „Abonament czy własność”, scenariusz filmu, źródła liczb, kwoty do rozmów) | `strona/teksty-glownej-2026-10-29.html` | — | Dokument Google „Plan · teksty strony głównej”, ta sama treść |
 | Plan sprzedaży: od pierwszej wiadomości do umowy (propozycja z 28.10, zastępuje sekcje 11 i 16 drogowskazu) | `firma/plan-sprzedazy-2026-10-28.html` | — | Dokument Google „Plan · sprzedaż: od pierwszej wiadomości do umowy”, ta sama treść |
 | Prezentacje A i B (stare, zostają jako zapas) | źródła | tak | — |
 | Scenariusze filmów dla klientów | playlista 1 „Na start” (7 filmów z tekstem lektora, od 28.10): `firma/filmy/na-start.html`; playlisty 2 i 3: `firma/filmy/scenariusze.md` | stara wersja z 26.10 w zakładce „Scenariusze filmów” rozpiski | Dokument Google „Scenariusze · filmy „Na start” dla klienta” (28.10), ta sama treść co `na-start.html` |
